@@ -271,8 +271,17 @@ except Exception:  # noqa: BLE001
 
 
 # Initialize Flask app
+# Serve the built React SPA from frontend/dist when present
+_REACT_DIST = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..', 'frontend', 'dist')
+)
+_react_dist_exists = os.path.isdir(_REACT_DIST)
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_folder=_REACT_DIST if _react_dist_exists else 'static',
+    static_url_path='',
+)
 app.config.from_object(Config)
 _db_connector = DatabaseConnector(app.config.get('DATABASE_URL', ''))
 DEV_MODE = os.getenv("DEV_MODE", "false").strip().lower() == "true"
@@ -7659,11 +7668,10 @@ def _verify_two_factor_challenge_code(challenge_id, code, expected_user_id=None)
 
 
 @app.route("/")
-
 def marketing_home():
-
-    """Marketing landing page"""
-
+    """Serve React SPA if built, otherwise fall back to Flask marketing template."""
+    if _react_dist_exists:
+        return send_from_directory(_REACT_DIST, 'index.html')
     return render_template("marketing_home.html")
 
 
@@ -17026,6 +17034,10 @@ def not_found(error):
     if request.path.startswith('/api/'):
 
         return jsonify({'success': False, 'error': f'API endpoint not found: {request.path}', 'request_id': getattr(g, 'request_id', None)}), 404
+
+    # For all non-API 404s, serve React SPA so React Router handles the path
+    if _react_dist_exists:
+        return send_from_directory(_REACT_DIST, 'index.html'), 200
 
     return render_template('marketing_home.html'), 404
 
