@@ -2843,7 +2843,21 @@ def init_db():
 
 with app.app_context():
 
-    init_db()
+    try:
+
+        init_db()
+
+        app.logger.info('[clarion:startup] init_db() completed successfully')
+
+    except Exception as _init_db_exc:
+
+        import traceback as _tb
+
+        app.logger.error('[clarion:startup] FATAL: init_db() failed: %s', _init_db_exc)
+
+        app.logger.error('[clarion:startup] %s', _tb.format_exc())
+
+        raise
 
 
 
@@ -3022,8 +3036,14 @@ def _start_monthly_partner_brief_scheduler():
     app.logger.info('Monthly partner brief scheduler started day=%s timezone=%s', day, tz_name)
 
 
-_start_monthly_partner_brief_scheduler()
-start_weekly_scheduler()
+try:
+    _start_monthly_partner_brief_scheduler()
+    start_weekly_scheduler()
+    app.logger.info('[clarion:startup] schedulers started successfully')
+except Exception as _sched_exc:
+    import traceback as _tb2
+    app.logger.error('[clarion:startup] WARNING: scheduler startup failed (non-fatal): %s', _sched_exc)
+    app.logger.error('[clarion:startup] %s', _tb2.format_exc())
 # ===== USER CLASS FOR FLASK-LOGIN =====
 
 
