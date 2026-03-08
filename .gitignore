@@ -24,3 +24,26 @@ dist/
 Thumbs.db
 .vscode/
 .idea/
+
+# Python envs
+venv/
+.venv/
+backend/venv312/
+
+# Logs
+logs/
+*.log
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Temp/generated PDFs
+backend/tmp_pdf_checks/
+
+# Node
+node_modules/
+dist/
+build/
+.vite/
