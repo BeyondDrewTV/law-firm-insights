@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <body style="font-family:Arial,sans-serif;line-height:1.5;color:#111827;">
+    <h2 style="margin:0 0 12px;">Executive Report Pack</h2>
+    <p style="margin:0 0 12px;"><strong>{{ firm_name }}</strong></p>
+    <p style="margin:0 0 12px;">Your latest client feedback summary is ready.</p>
+    <ul style="margin:0 0 16px 18px;padding:0;">
+      <li>Active reports: {{ report_count }}</li>
+      <li>Total reviews analyzed: {{ total_reviews }}</li>
+      <li>Average rating: {{ avg_rating }}/5</li>
+      <li>Latest report date: {{ latest_report_date }}</li>
+    </ul>
+    <p style="margin:0 0 16px;">
+      <a href="{{ dashboard_url }}" style="background:#111827;color:#ffffff;padding:10px 14px;text-decoration:none;border-radius:6px;display:inline-block;">
+        Open Dashboard Reports
+      </a>
+    </p>
+    <p style="font-size:12px;color:#6b7280;margin:0;">Clarion</p>
+  </body>
+</html>
+

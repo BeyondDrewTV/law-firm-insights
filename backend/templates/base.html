@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Clarion â€” Client Feedback Governance{% endblock %}</title>
+  <meta name="description" content="Turn client feedback into a clear governance workflow for your firm. Upload CSV reviews, review recurring issues, and generate partner-ready reports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css', v=asset_version) }}">
+</head>
+<body>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TRUST BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div class="trust-bar">
+  <span class="trust-bar-item">HTTPS in Transit</span>
+  <span class="trust-bar-item">Session Cookie Protections</span>
+  <span class="trust-bar-item">Account-Scoped Data Access</span>
+  <span class="trust-bar-item">Built by Practicing Attorneys</span>
+  <span class="trust-bar-item">Cancel Anytime</span>
+</div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAV â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-brand">
+      <a href="{{ url_for('marketing_home') }}" class="logo-lockup">
+        <span class="logo-icon">âš–ï¸</span>
+        <span class="logo-text">Clarion</span>
+        <span class="logo-badge">New</span>
+      </a>
+    </div>
+
+    <div class="nav-menu" id="navMenu">
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('marketing_home') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}" class="nav-highlight">Dashboard</a>
+        <a href="{{ url_for('upload') }}">Upload Reviews</a>
+        <a href="{{ url_for('security') }}">Security</a>
+        <a href="{{ url_for('account') }}">Account</a>
+        <a href="{{ url_for('feedback_form') }}" class="nav-accent">Client Survey</a>
+        <form method="POST" action="{{ url_for('logout') }}" class="inline-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="nav-button">Log out</button>
+        </form>
+      {% else %}
+        <a href="{{ url_for('how_it_works') }}">How It Works</a>
+        <a href="{{ url_for('features') }}">Features</a>
+        <a href="{{ url_for('pricing') }}">Pricing</a>
+        <a href="{{ url_for('security') }}">Security</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary btn-sm">Log in</a>
+        <a href="{{ url_for('register') }}" class="nav-button">Start Free Trial</a>
+      {% endif %}
+    </div>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FLASH â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="container">
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            <span class="alert-icon">
+              {%- if category == 'success' -%}âœ“
+              {%- elif category == 'danger' -%}âœ•
+              {%- elif category == 'warning' -%}âš 
+              {%- else -%}â„¹{%- endif -%}
+            </span>
+            <span>{{ message }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CONTENT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<main>{% block content %}{% endblock %}</main>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <span style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.875rem">âš–ï¸</span>
+          <span style="font-family:'Instrument Serif',serif;font-size:1.0625rem;color:rgba(255,255,255,.85)">Clarion</span>
+        </div>
+        <p class="footer-tagline">Client feedback governance for law firms and professional services teams.</p>
+        <p class="footer-attorney-note">Built for teams that need a repeatable workflow from uploaded feedback to partner review.</p>
+        <div class="footer-compliance">
+          <span class="footer-compliance-badge">HTTPS</span>
+          <span class="footer-compliance-badge">Access Controls</span>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('features') }}">Features</a></li>
+          <li><a href="{{ url_for('pricing') }}">Pricing</a></li>
+          <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+          <li><a href="{{ url_for('case_studies') }}">Case Studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Account</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('register') }}">Start Free Trial</a></li>
+          <li><a href="{{ url_for('login') }}">Log In</a></li>
+          <li><a href="{{ url_for('feedback_form') }}">Client Survey Form</a></li>
+          {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="{{ url_for('privacy') }}">Privacy Policy</a></li>
+          <li><a href="{{ url_for('terms') }}">Terms of Service</a></li>
+          <li><a href="{{ url_for('security') }}">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Â© {{ current_year }} Clarion. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="{{ url_for('privacy') }}">Privacy</a>
+        <a href="{{ url_for('terms') }}">Terms</a>
+        <a href="{{ url_for('security') }}">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('mobileMenuToggle');
+  const menu   = document.getElementById('navMenu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('active'));
+  document.querySelectorAll('.nav-menu a, .nav-menu button').forEach(el => {
+    el.addEventListener('click', () => menu?.classList.remove('active'));
+  });
+
+  // Always open the next page at the top after in-app navigation.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  const scrollResetKey = 'Clarion:reset-scroll';
+  if (sessionStorage.getItem(scrollResetKey) === '1') {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    sessionStorage.removeItem(scrollResetKey);
+  }
+  window.addEventListener('pageshow', () => {
+    if (sessionStorage.getItem(scrollResetKey) === '1') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      sessionStorage.removeItem(scrollResetKey);
+    }
+  });
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (
+      !href ||
+      href.startsWith('#') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      link.hasAttribute('download') ||
+      (link.target && link.target !== '_self')
+    ) {
+      return;
+    }
+    sessionStorage.setItem(scrollResetKey, '1');
+  });
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+      sessionStorage.setItem(scrollResetKey, '1');
+    });
+  });
+
+  // Generic loading overlay for any form with data-loading
+  document.querySelectorAll('form[data-loading]').forEach(form => {
+    form.addEventListener('submit', () => {
+      const overlay = document.getElementById('loadingOverlay');
+      if (overlay) overlay.classList.add('active');
+    });
+  });
+
+  // Scroll-reveal for marketing and content sections.
+  const revealItems = Array.from(document.querySelectorAll('.reveal'));
+  if (revealItems.length) {
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('reveal--visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      revealItems.forEach(item => revealObserver.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('reveal--visible'));
+    }
+  }
+</script>
+</body>
+</html>
+
+

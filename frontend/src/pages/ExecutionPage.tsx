@@ -1,0 +1,560 @@
+import { useEffect, useMemo, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Activity, Zap } from "lucide-react";
+import { toast } from "sonner";
+
+import {
+  createReportAction,
+  getFirmActions,
+  getReports,
+  type ReportActionItem,
+  type ReportListItem,
+} from "@/api/authService";
+import ActionForm, { type ActionFormValues } from "@/components/actions/ActionForm";
+import ActionCard from "@/components/actions/ActionCard";
+import PageWrapper from "@/components/governance/PageWrapper";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { DISPLAY_LABELS } from "@/constants/displayLabels";
+
+type StatusFilter = "all" | "open" | "in_progress" | "blocked" | "done" | "overdue";
+
+const isOverdue = (action: ReportActionItem): boolean => {
+  if (!action.due_date) return false;
+  if (action.status === "done") return false;
+  const due = new Date(action.due_date).getTime();
+  return Number.isFinite(due) && due < Date.now();
+};
+
+const actionMatchesStatus = (action: ReportActionItem, status: StatusFilter) => {
+  if (status === "all") return true;
+  if (status === "overdue") return isOverdue(action);
+  if (status === "blocked") return action.status === "blocked";
+  if (status === "open") return action.status === "open" && !isOverdue(action);
+  return action.status === status;
+};
+
+const normalizeOwnerKey = (action: ReportActionItem): string => {
+  if (typeof action.owner_user_id === "number") return `user:${action.owner_user_id}`;
+  const owner = (action.owner || "").trim().toLowerCase();
+  return owner ? `name:${owner}` : "unassigned";
+};
+
+const ownerLabel = (action: ReportActionItem): string => {
+  const owner = (action.owner || "").trim();
+  return owner || "Unassigned";
+};
+
+const ExecutionPage = () => {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [actions, setActions] = useState<ReportActionItem[]>([]);
+  const [reports, setReports] = useState<ReportListItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [createModalOpen, setCreateModalOpen] = useState(false);
+  const [creatingAction, setCreatingAction] = useState(false);
+  const [createActionError, setCreateActionError] = useState("");
+  const [targetReportId, setTargetReportId] = useState<number | null>(null);
+
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [ownerFilter, setOwnerFilter] = useState<string>("all");
+  const [reportFilter, setReportFilter] = useState<string>("all");
+  const isOverdueOnlyFilter = searchParams.get("filter") === "overdue";
+  const readyReports = useMemo(
+    () => reports.filter((report) => report.status === "ready"),
+    [reports],
+  );
+  const hasReadyCycle = readyReports.length > 0;
+  const hasAnyCycle = reports.length > 0;
+
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      setLoading(true);
+      const [actionsResult, reportsResult] = await Promise.all([getFirmActions(), getReports(120)]);
+      if (!mounted) return;
+
+      if (!actionsResult.success || !actionsResult.actions) {
+        setError(actionsResult.error || "Unable to load actions.");
+        setActions([]);
+      } else {
+        setActions(actionsResult.actions);
+        setError("");
+      }
+
+      if (reportsResult.success && reportsResult.reports) {
+        setReports(reportsResult.reports);
+      } else {
+        setReports([]);
+      }
+
+      setLoading(false);
+    };
+
+    void load();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (targetReportId) return;
+    const ready = readyReports
+      .filter((report) => report.status === "ready")
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
+    const fallback = reports
+      .slice()
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
+    const preferred = ready || fallback;
+    setTargetReportId(preferred?.id ?? null);
+  }, [readyReports, reports, targetReportId]);
+
+  const ownerOptions = useMemo(() => {
+    const options = new Map<string, string>();
+    actions.forEach((action) => {
+      options.set(normalizeOwnerKey(action), ownerLabel(action));
+    });
+    return [...options.entries()]
+      .map(([value, label]) => ({ value, label }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+  }, [actions]);
+
+  const ownerSuggestions = useMemo(
+    () => ownerOptions.map((option) => option.label).filter((label) => label !== "Unassigned"),
+    [ownerOptions],
+  );
+
+  const reportOptions = useMemo(() => {
+    const byId = new Map<number, string>();
+    actions.forEach((action) => {
+      const reportId = Number(action.report_id || 0);
+      if (!reportId) return;
+      const reportName = action.report_name || reports.find((r) => r.id === reportId)?.name || `Report #${reportId}`;
+      byId.set(reportId, reportName);
+    });
+    return [...byId.entries()]
+      .map(([id, name]) => ({ id, name }))
+      .sort((a, b) => b.id - a.id);
+  }, [actions, reports]);
+
+  const filteredActions = useMemo(() => {
+    return actions.filter((action) => {
+      if (isOverdueOnlyFilter && !isOverdue(action)) return false;
+      if (!actionMatchesStatus(action, statusFilter)) return false;
+      if (ownerFilter !== "all" && normalizeOwnerKey(action) !== ownerFilter) return false;
+      if (reportFilter !== "all" && String(action.report_id || "") !== reportFilter) return false;
+      return true;
+    });
+  }, [actions, isOverdueOnlyFilter, ownerFilter, reportFilter, statusFilter]);
+
+  const grouped = useMemo(() => {
+    const open: ReportActionItem[] = [];
+    const inProgress: ReportActionItem[] = [];
+    const blocked: ReportActionItem[] = [];
+    const completed: ReportActionItem[] = [];
+    filteredActions.forEach((action) => {
+      if (action.status === "done") completed.push(action);
+      else if (action.status === "blocked") blocked.push(action);
+      else if (action.status === "in_progress") inProgress.push(action);
+      else open.push(action);
+    });
+    return { open, inProgress, blocked, completed };
+  }, [filteredActions]);
+
+  const summary = useMemo(
+    () => ({
+      total: filteredActions.length,
+      open: grouped.open.length,
+      overdue: filteredActions.filter((action) => isOverdue(action)).length,
+    }),
+    [filteredActions, grouped.open.length],
+  );
+
+  const resetFilters = () => {
+    setStatusFilter("all");
+    setOwnerFilter("all");
+    setReportFilter("all");
+  };
+
+  const hasActiveFilters =
+    statusFilter !== "all" ||
+    ownerFilter !== "all" ||
+    reportFilter !== "all" ||
+    isOverdueOnlyFilter;
+
+  const handleResetFilters = () => {
+    resetFilters();
+    if (isOverdueOnlyFilter) {
+      clearUrlFilter();
+    }
+  };
+
+  const clearUrlFilter = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("filter");
+    setSearchParams(next);
+  };
+
+  const openCreateActionModal = () => {
+    if (!hasReadyCycle || !targetReportId) {
+      toast.message("Create actions after the first report is ready.");
+      return;
+    }
+    setCreateActionError("");
+    setCreateModalOpen(true);
+  };
+
+  const closeCreateActionModal = () => {
+    setCreateActionError("");
+    setCreateModalOpen(false);
+  };
+
+  const createActionInitialValues: ActionFormValues = {
+    title: "",
+    owner: "",
+    owner_user_id: null,
+    due_date: "",
+    status: "open",
+    timeframe: "Days 1-30",
+    kpi: "",
+    notes: "",
+  };
+
+  const handleCreateAction = async (values: ActionFormValues) => {
+    if (!targetReportId) {
+      setCreateActionError("No governance brief is available yet. Generate a report first, then create actions.");
+      return;
+    }
+
+    setCreatingAction(true);
+    setCreateActionError("");
+    const result = await createReportAction(targetReportId, {
+      title: values.title,
+      owner: values.owner || undefined,
+      owner_user_id: values.owner_user_id,
+      status: values.status,
+      due_date: values.due_date || null,
+      timeframe: values.timeframe,
+      kpi: values.kpi,
+      notes: values.notes,
+    });
+    setCreatingAction(false);
+
+    if (!result.success || !result.action) {
+      setCreateActionError(result.error || "Unable to create action.");
+      return;
+    }
+
+    setActions((prev) => [result.action as ReportActionItem, ...prev]);
+    toast.success("Governance action created.");
+    closeCreateActionModal();
+  };
+
+  return (
+      <PageWrapper
+        eyebrow="Follow-through"
+        title="Action Workspace"
+        description="Track ownership and execution of governance responses."
+        contentClassName="stage-sequence"
+        actions={
+          <>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-[8px] border border-[#D1D5DB] bg-transparent px-4 py-2 text-sm font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-transparent"
+              onClick={handleResetFilters}
+              disabled={!hasActiveFilters}
+            >
+              Reset filters
+            </button>
+            <Link
+              className={[
+                "inline-flex items-center justify-center rounded-[8px] px-4 py-2 text-sm font-semibold transition-colors",
+                hasReadyCycle
+                  ? "bg-[#0D1B2A] text-white hover:bg-[#16263b]"
+                  : "cursor-not-allowed border border-[#D1D5DB] bg-white text-slate-400 hover:bg-white",
+              ].join(" ")}
+              to={hasReadyCycle ? "#" : "/dashboard"}
+              aria-disabled={!hasReadyCycle}
+              onClick={(event) => {
+                if (!hasReadyCycle) {
+                  event.preventDefault();
+                  return;
+                }
+                event.preventDefault();
+                openCreateActionModal();
+              }}
+            >
+              {hasReadyCycle ? "Create Action" : "Create Action After First Cycle"}
+            </Link>
+          </>
+        }
+      >
+        {!hasReadyCycle ? (
+          <section className="rounded-xl border border-blue-100 bg-blue-50/70 p-5 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Action Workspace</p>
+            <h2 className="mt-2 text-lg font-semibold text-slate-900">Actions open after a report is ready</h2>
+            <p className="mt-2 max-w-3xl text-sm text-slate-700">
+              Clarion uses this workspace for follow-through after the first governance cycle exists: upload feedback,
+              review recurring {DISPLAY_LABELS.clientIssuePlural.toLowerCase()}, then assign owners and due dates here.
+            </p>
+          </section>
+        ) : null}
+
+        <section className="rounded-[12px] border border-[#E3E8EF] bg-white px-6 py-5 shadow-sm">
+          <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Current queue</p>
+              <h2 className="mt-2 text-[20px] font-semibold text-[#0D1B2A]">Keep ownership visible, then narrow the list only when you need to.</h2>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-700">
+                This workspace is primarily for assigning and finishing follow-through. Filters are available, but the main job is keeping the current action queue clear and credible.
+              </p>
+              <div className="mt-4 workspace-inline-stats">
+                <div className="workspace-inline-stat">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Visible</p>
+                  <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.total}</p>
+                </div>
+                <div className="workspace-inline-stat">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Open</p>
+                  <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.open}</p>
+                </div>
+                <div className="workspace-inline-stat">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Overdue</p>
+                  <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.overdue}</p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Narrow the workspace</p>
+                  <p className="mt-1 text-sm text-slate-700">Use one filter pass when you need a cleaner execution list.</p>
+                </div>
+                {isOverdueOnlyFilter ? (
+                  <button type="button" className="gov-btn-secondary" onClick={clearUrlFilter}>
+                    Clear overdue view
+                  </button>
+                ) : null}
+              </div>
+              <div className="mt-4 grid gap-4 md:grid-cols-3">
+                <div>
+                  <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-gray-500">Status</label>
+                  <div className="relative">
+                    <select
+                      className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
+                      value={statusFilter}
+                      onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
+                    >
+                      <option value="all">All Statuses</option>
+                      <option value="open">Open</option>
+                      <option value="in_progress">In Progress</option>
+                      <option value="blocked">Blocked</option>
+                      <option value="done">Completed</option>
+                      <option value="overdue">Overdue</option>
+                    </select>
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-gray-500">Owner</label>
+                  <div className="relative">
+                    <select
+                      className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
+                      value={ownerFilter}
+                      onChange={(e) => setOwnerFilter(e.target.value)}
+                    >
+                      <option value="all">All Owners</option>
+                      {ownerOptions.map((owner) => (
+                        <option key={owner.value} value={owner.value}>
+                          {owner.label}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-gray-500">Report</label>
+                  <div className="relative">
+                    <select
+                      className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
+                      value={reportFilter}
+                      onChange={(e) => setReportFilter(e.target.value)}
+                    >
+                      <option value="all">All Reports</option>
+                      {reportOptions.map((report) => (
+                        <option key={report.id} value={String(report.id)}>
+                          {report.name}
+                        </option>
+                      ))}
+                    </select>
+                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {error ? (
+          <div className="rounded-xl border border-destructive/35 bg-destructive/10 p-6 text-sm text-destructive">{error}</div>
+        ) : null}
+
+        {loading ? (
+          <section className="grid gap-6 lg:grid-cols-4">
+            {Array.from({ length: 4 }).map((_, col) => (
+              <article key={`exec-skeleton-${col}`} className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm">
+                <div className="h-4 w-28 rounded bg-neutral-200" />
+                <div className="mt-4 space-y-3">
+                  {Array.from({ length: 3 }).map((__, idx) => (
+                    <div key={`exec-card-skeleton-${col}-${idx}`} className="rounded-lg border border-neutral-200 p-3">
+                      <div className="h-3 w-40 rounded bg-neutral-200" />
+                      <div className="mt-2 h-3 w-28 rounded bg-neutral-100" />
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </section>
+        ) : filteredActions.length === 0 ? (
+          <section className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm">
+            <div className="flex flex-col items-center justify-center px-8 py-16 text-center">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50">
+                <Zap className="text-blue-500" size={26} />
+              </div>
+              <h3 className="mb-2 text-lg font-semibold text-slate-800">No Governance Actions Yet</h3>
+              <p className="mb-6 max-w-sm text-sm text-slate-500">
+                {!hasAnyCycle
+                  ? "The first cycle starts with a CSV upload. Once the report is ready, review recurring client issues and then assign follow-through here."
+                  : !hasReadyCycle
+                    ? "Your first governance cycle is still being prepared. Actions become available once the report is ready for issue review."
+                    : `Actions are created after you review recurring ${DISPLAY_LABELS.clientIssuePlural.toLowerCase()}. Confirm what needs ownership, then assign due dates and follow-through here.`}
+              </p>
+              {!hasAnyCycle ? (
+                <div>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Link
+                      to="/upload"
+                      className="inline-flex items-center gap-2 rounded-[8px] bg-[#0D1B2A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16263b]"
+                    >
+                      <Activity size={16} />
+                      Upload your first CSV
+                    </Link>
+                    <Link to="/dashboard" className="gov-btn-secondary">
+                      Return to overview
+                    </Link>
+                    <Link to="/demo" className="gov-btn-secondary">
+                      Open read-only example cycle
+                    </Link>
+                  </div>
+                </div>
+              ) : !hasReadyCycle ? (
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <Link to="/dashboard/reports" className="inline-flex items-center gap-2 rounded-[8px] bg-[#0D1B2A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16263b]">
+                    <Activity size={16} />
+                    Check report status
+                  </Link>
+                  <Link to="/dashboard" className="gov-btn-secondary">
+                    Return to overview
+                  </Link>
+                  <Link to="/demo" className="gov-btn-secondary">
+                    Open read-only example cycle
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  <Link
+                    to="/dashboard/signals"
+                    className="inline-flex items-center gap-2 rounded-[8px] bg-[#0D1B2A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16263b]"
+                  >
+                    <Activity size={16} />
+                    Review Client Issues
+                  </Link>
+                  <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
+                    <Link to="/dashboard" className="gov-btn-secondary">
+                      Return to overview
+                    </Link>
+                    <button type="button" onClick={openCreateActionModal} className="gov-btn-secondary">
+                      Create action from this cycle
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          </section>
+        ) : (
+          <section className="space-y-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">By status</p>
+              <p className="mt-1 text-sm text-slate-700">Open work stays first. Completed items remain visible without competing with the active queue.</p>
+            </div>
+            <div className="grid gap-6 lg:grid-cols-4">
+              <div className="space-y-4">
+                <h2 className="text-lg font-medium text-neutral-900">Open Actions</h2>
+                {grouped.open.map((action) => (
+                  <ActionCard key={`open-${action.id}`} action={action} />
+                ))}
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-lg font-medium text-neutral-900">In Progress</h2>
+                {grouped.inProgress.map((action) => (
+                  <ActionCard key={`progress-${action.id}`} action={action} />
+                ))}
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-lg font-medium text-neutral-900">Blocked</h2>
+                {grouped.blocked.map((action) => (
+                  <ActionCard key={`blocked-${action.id}`} action={action} />
+                ))}
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-lg font-medium text-neutral-900">Completed</h2>
+                {grouped.completed.map((action) => (
+                  <ActionCard key={`done-${action.id}`} action={action} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <Dialog
+          open={createModalOpen}
+          onOpenChange={(open) => {
+            if (!open) {
+              closeCreateActionModal();
+              return;
+            }
+            setCreateModalOpen(true);
+          }}
+        >
+          <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>Create Governance Action</DialogTitle>
+              <DialogDescription>
+                Create an action with clear ownership, due date, and success metric.
+              </DialogDescription>
+            </DialogHeader>
+            <ActionForm
+              open={createModalOpen}
+              mode="create"
+              initialValues={createActionInitialValues}
+              ownerOptions={ownerSuggestions}
+              submitting={creatingAction}
+              submitLabel="Create Action"
+              submittingLabel="Creating..."
+              serverError={createActionError}
+              onCancel={closeCreateActionModal}
+              onSubmit={handleCreateAction}
+            />
+          </DialogContent>
+        </Dialog>
+      </PageWrapper>
+  );
+};
+
+export default ExecutionPage;

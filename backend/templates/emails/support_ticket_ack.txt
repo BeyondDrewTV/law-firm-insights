@@ -1,0 +1,11 @@
+Clarion support request received
+
+Your request has been logged under {{ ticket_ref }}.
+Status: {{ status }}
+Priority: {{ priority }}
+Category: {{ category }}
+
+{{ auto_response_template }}
+
+General support: {{ support_email }}
+Security issues: {{ security_email }}

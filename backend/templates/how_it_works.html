@@ -1,0 +1,132 @@
+﻿{% extends "base.html" %}
+
+{% block title %}How It Works - Clarion{% endblock %}
+
+{% block content %}
+<div class="info-page">
+  <section class="info-hero">
+    <div class="container">
+      <p class="info-kicker">How It Works</p>
+      <h1>Turn client feedback into clear insights and action plans for professional services firms.</h1>
+      <p class="info-subtitle">
+        Clarion follows one operating loop: Upload, Analyze, Act, then compare the next cycle against today.
+      </p>
+      <div class="hero-cta">
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload your first report</a>
+        {% else %}
+          <a href="{{ url_for('register') }}" class="btn btn-primary">Start Free</a>
+        {% endif %}
+        <a href="{{ url_for('pricing') }}" class="btn btn-outline">See plans</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="workflow-loop-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Reporting Loop</p>
+        <h2 class="section-title">Upload - Analyze - Act - Repeat</h2>
+      </div>
+      <div class="workflow-loop-grid">
+        <article class="workflow-step-card">
+          <h3>Upload</h3>
+          <p>Import CSV feedback with Review date, Rating (1-5), and Client comment.</p>
+          <ul>
+            <li>Automatic column mapping and validation</li>
+            <li>Friendly error messages if columns are missing</li>
+            <li>No API integration required</li>
+          </ul>
+        </article>
+        <article class="workflow-step-card">
+          <h3>Analyze</h3>
+          <p>Review satisfaction, sentiment, top themes, trend stability, and confidence.</p>
+          <ul>
+            <li>Dashboard for at-a-glance health</li>
+            <li>Report detail for deeper review</li>
+            <li>Current vs previous report comparisons</li>
+          </ul>
+        </article>
+        <article class="workflow-step-card">
+          <h3>Act</h3>
+          <p>Use a concrete 90-day plan with owners, timeframes, and success metrics.</p>
+          <ul>
+            <li>Prioritized next best actions</li>
+            <li>Partner-ready PDF output</li>
+            <li>Track completed actions over time</li>
+          </ul>
+        </article>
+      </div>
+      <p class="workflow-repeat-line">Upload -> Analyze -> Act -> Repeat</p>
+    </div>
+  </section>
+
+  <section class="product-views-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Product Views</p>
+        <h2 class="section-title">What this looks like in the app</h2>
+      </div>
+      <div class="product-view-grid">
+        <article class="product-view-card">
+          <h3>Dashboard workspace</h3>
+          <p>Highlights satisfaction trends, at-risk reports, and next actions for leadership review.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Report detail</h3>
+          <p>Shows representative comments, theme drivers, and cycle summary against previous reports.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Governance PDF</h3>
+          <p>Exports a clean executive report for partner meetings and operational follow-through.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="practice-timeline-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">How This Looks In Practice</p>
+        <h2 class="section-title">A single quarter in four moves</h2>
+      </div>
+      <div class="practice-timeline">
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p>Upload last quarter's client reviews.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p>After processing completes, review themes and at-risk signals in the dashboard.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p>Assign three high-priority actions with owners and success metrics.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-dot"></span>
+          <p>In the next cycle, compare results and adjust the plan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container reveal cta-strip-content">
+      <span class="cta-pill">Built for non-technical teams</span>
+      <h2>Start with one report. Build a repeatable feedback rhythm.</h2>
+      <p>Most firms can upload, review, and share a first report in under 30 minutes.</p>
+      <div class="hero-cta">
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('upload') }}" class="btn btn-primary">Upload your first report</a>
+        {% else %}
+          <a href="{{ url_for('register') }}" class="btn btn-primary">Start Free</a>
+        {% endif %}
+        <a href="{{ url_for('features') }}" class="btn btn-secondary">See features</a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,15 @@
+Executive Report Pack
+{{ firm_name }}
+
+Your latest client feedback summary is ready.
+
+- Active reports: {{ report_count }}
+- Total reviews analyzed: {{ total_reviews }}
+- Average rating: {{ avg_rating }}/5
+- Latest report date: {{ latest_report_date }}
+
+Open dashboard reports:
+{{ dashboard_url }}
+
+Clarion
+

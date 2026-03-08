@@ -1,0 +1,92 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Security - Clarion{% endblock %}
+
+{% block content %}
+<div class="info-page">
+  <section class="info-hero">
+    <div class="container">
+      <p class="info-kicker">Security</p>
+      <h1>Practical safeguards for client feedback data.</h1>
+      <p class="info-subtitle">
+        Security is built into the product workflow so partners and operations teams can use reporting confidently.
+      </p>
+    </div>
+  </section>
+
+  <section class="product-views-section">
+    <div class="container">
+      <div class="product-view-grid">
+        <article class="product-view-card">
+          <h3>Data protection</h3>
+          <p>HTTPS in transit, secured sessions, and account-scoped data separation.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Access and controls</h3>
+          <p>Authenticated login, password hashing, and rate-limited access endpoints.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Responsible use</h3>
+          <p>No ad resale and clear options to export or remove reports from your account.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="workflow-loop-section">
+    <div class="container">
+      <div class="workflow-loop-grid">
+        <article class="workflow-step-card">
+          <h3>Data protection</h3>
+          <ul>
+            <li>HTTPS protects data in transit in production.</li>
+            <li>Session cookies use HttpOnly and SameSite settings.</li>
+            <li>Secure cookie flag is enabled in production.</li>
+          </ul>
+        </article>
+        <article class="workflow-step-card">
+          <h3>Access and controls</h3>
+          <ul>
+            <li>Passwords are hashed and never stored in plain text.</li>
+            <li>Rate limits help reduce brute-force and abuse attempts.</li>
+            <li>Account access is scoped to the authenticated user context.</li>
+          </ul>
+        </article>
+        <article class="workflow-step-card">
+          <h3>Responsible use</h3>
+          <ul>
+            <li>Customer data is not sold for advertising.</li>
+            <li>Operational logs avoid sensitive values like passwords.</li>
+            <li>Users can remove uploaded reports from the app.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="practice-timeline-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Issue Reporting</p>
+        <h2 class="section-title">Need to report a security concern?</h2>
+      </div>
+      <div class="product-view-grid">
+        <article class="product-view-card">
+          <h3>Contact channel</h3>
+          <p>Email <a href="mailto:security@clarionhq.co">security@clarionhq.co</a> with details and reproduction steps.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Response handling</h3>
+          <p>Production errors return generic messages while internal details are reviewed server-side.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Scope note</h3>
+          <p>This page describes implemented controls and avoids unverified compliance claims.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+

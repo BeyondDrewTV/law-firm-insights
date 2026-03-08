@@ -1,0 +1,1 @@
+import React from "react"; /** * Accessible skip link for keyboard users. * Usage: Place at the top of the page layout, before nav/header. */ export function SkipToMainContent() { return ( <a href="#main-content" className="skip-link" tabIndex={0} > Skip to main content </a> ); } 

@@ -1,0 +1,14 @@
+New Clarion support ticket
+
+Ticket: {{ ticket.ticket_ref }}
+Requester: {{ ticket.requester_email }}
+Firm: {{ ticket.firm_name or "Not provided" }}
+Category: {{ ticket.category }}
+Urgency: {{ ticket.urgency }}
+Priority: {{ ticket.priority }}
+Status: {{ ticket.status }}
+Escalation: {{ ticket.escalation_level }}{% if ticket.escalation_reason %} - {{ ticket.escalation_reason }}{% endif %}
+Subject: {{ ticket.subject }}
+
+Message:
+{{ ticket.message }}

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Clarion Partner Brief</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f3f5f9;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #0f172a;
+      }
+
+      .wrapper {
+        width: 100%;
+        background: #f3f5f9;
+        padding: 24px 12px;
+      }
+
+      .container {
+        max-width: 680px;
+        margin: 0 auto;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .header {
+        background: #0f2d57;
+        color: #ffffff;
+        padding: 20px 24px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.88;
+      }
+
+      .title {
+        margin: 8px 0 0;
+        font-size: 24px;
+        line-height: 1.25;
+        font-weight: 700;
+      }
+
+      .meta {
+        margin: 8px 0 0;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #dbeafe;
+      }
+
+      .section {
+        padding: 20px 24px 0;
+      }
+
+      .section:last-of-type {
+        padding-bottom: 20px;
+      }
+
+      .section-label {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #64748b;
+      }
+
+      .metric-grid {
+        display: table;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 12px 0;
+        margin: 10px -12px 0;
+      }
+
+      .metric-card {
+        display: table-cell;
+        width: 50%;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 14px 12px;
+        vertical-align: top;
+      }
+
+      .metric-label {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #64748b;
+      }
+
+      .metric-value {
+        margin: 6px 0 0;
+        font-size: 24px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .issue-name {
+        margin: 8px 0 0;
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .issue-meta {
+        margin: 4px 0 0;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #475569;
+      }
+
+      .quote {
+        margin: 12px 0 0;
+        padding: 12px 14px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 3px solid #ef4444;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #0f172a;
+      }
+
+      .discussion {
+        margin: 10px 0 0;
+        padding: 12px 14px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 3px solid #0ea5c2;
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #0f172a;
+      }
+
+      .footer {
+        padding: 20px 24px 24px;
+      }
+
+      .cta {
+        display: inline-block;
+        background: #1d4ed8;
+        color: #ffffff !important;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 12px 16px;
+      }
+
+      .footnote {
+        margin: 12px 0 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #64748b;
+      }
+
+      @media screen and (max-width: 640px) {
+        .header,
+        .section,
+        .footer {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+        }
+
+        .title {
+          font-size: 22px;
+        }
+
+        .metric-grid {
+          display: block;
+          width: 100%;
+          margin: 10px 0 0;
+          border-spacing: 0;
+        }
+
+        .metric-card {
+          display: block;
+          width: 100%;
+          margin: 0 0 10px;
+        }
+
+        .metric-card:last-child {
+          margin-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="header">
+          <p class="eyebrow">Clarion Client Experience Brief</p>
+          <h1 class="title">Partner Briefing Summary</h1>
+          <p class="meta">
+            {{ firm_name or "Your Firm" }} &bull; {{ generated_at or "Current reporting period" }}
+          </p>
+        </div>
+
+        <div class="section">
+          <p class="section-label">Metrics</p>
+          <div class="metric-grid" role="presentation">
+            <div class="metric-card">
+              <p class="metric-label">Average Rating</p>
+              <p class="metric-value">{{ average_rating or "Not available" }}</p>
+            </div>
+            <div class="metric-card">
+              <p class="metric-label">Firm Risk Score</p>
+              <p class="metric-value">{{ firm_risk_score or "Not available" }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <p class="section-label">Top Client Issue</p>
+          <p class="issue-name">{{ top_issue_name or "No dominant issue identified" }}</p>
+          <p class="issue-meta">
+            {{ top_issue_percentage_label or "" }}
+          </p>
+          <div class="quote">"{{ example_quote or "No representative quote available." }}"</div>
+        </div>
+
+        <div class="section">
+          <p class="section-label">Recommended Discussion</p>
+          <div class="discussion">
+            {{ recommended_discussion or "Review this issue with partners and confirm clear action ownership and timeline." }}
+          </div>
+        </div>
+
+        <div class="footer">
+          <a class="cta" href="{{ dashboard_url or '#' }}">Open Full Dashboard</a>
+          <p class="footnote">
+            This brief summarizes the current reporting cycle to support partner meeting preparation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

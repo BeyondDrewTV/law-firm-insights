@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - Clarion{% endblock %}
+
+{% block content %}
+
+<section class="hero-section">
+
+  <div class="container" style="max-width:900px;">
+
+    <h1 class="hero-title">Privacy Policy</h1>
+
+    <p class="hero-subtitle">Effective date: March 6, 2026</p>
+
+    <h3>What we collect</h3>
+
+    <ul>
+
+      <li>Account data such as email address, firm name, authentication details, and team membership metadata.</li>
+
+      <li>Uploaded CSV data, including review dates, ratings, comments, and any other fields included in the file.</li>
+
+      <li>Billing metadata from Stripe (customer/subscription IDs).</li>
+
+      <li>Generated report records, action items, PDF exports, and operational/security logs.</li>
+
+    </ul>
+
+    <h3>How we use data</h3>
+
+    <ul>
+
+      <li>Provide upload validation, dashboard analytics, report generation, action tracking, and PDF export.</li>
+
+      <li>Authenticate users and secure accounts.</li>
+
+      <li>Process payments via Stripe.</li>
+
+      <li>Send transactional emails such as verification, password reset, billing, and configured partner-brief delivery.</li>
+
+    </ul>
+
+    <h3>Processors and service providers</h3>
+
+    <p>We use Stripe for billing and configured email providers for transactional delivery. Clarion currently uses deterministic analysis and workflow logic in customer-facing workflows rather than active LLM processing. We do not sell customer data.</p>
+
+    <h3>Retention</h3>
+
+    <p>Active reports stay in your workspace until deleted or until an account closure request is processed. Deleted reports move to Recently Deleted and are automatically purged after 30 days. Free workspaces do not have restore access unless paid restore access is added during that window; Team and Firm workspaces can restore deleted reports within current plan permissions and history limits. Billing records may be retained for compliance.</p>
+
+    <h3>Requests</h3>
+
+    <p>You can request export, deletion, or correction of personal data by contacting <a href="mailto:support@clarionhq.co">support@clarionhq.co</a>.</p>
+
+  </div>
+
+</section>
+
+{% endblock %}

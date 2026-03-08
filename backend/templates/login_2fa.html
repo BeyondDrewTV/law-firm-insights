@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Two-Factor Verification - Clarion{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-card-header">
+      <div class="auth-logo">⚖️</div>
+      <h1>Two-factor verification</h1>
+      <p>Enter the 6-digit code we sent to your email.</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('login_two_factor') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="form-group">
+        <label for="code" class="form-label">Verification code</label>
+        <input
+          type="text"
+          id="code"
+          name="code"
+          class="form-control"
+          required
+          maxlength="6"
+          autocomplete="one-time-code"
+          inputmode="numeric"
+          pattern="[0-9]{6}"
+          placeholder="123456">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Verify and continue
+        </button>
+      </div>
+    </form>
+
+    <div class="auth-footer" style="margin-top:var(--s6)">
+      <p>Need to restart?</p>
+      <a href="{{ url_for('login') }}" class="link-primary">Return to sign in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

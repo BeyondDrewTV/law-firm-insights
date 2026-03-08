@@ -1,0 +1,6 @@
+import { Link } from "react-router-dom"; type NextStepMode = "high" | "watchlist" | "baseline"; type NextStepPanelProps = { mode: NextStepMode; primaryLabel: string; rationale: string; onPrimaryAction: () => void;
+}; const modeLabel: Record<NextStepMode, string> = { high: "High Exposure", watchlist: "Watchlist", baseline: "Baseline",
+}; const modeAccent: Record<NextStepMode, string> = { high: "border-l-red-300", watchlist: "border-l-amber-300", baseline: "border-l-emerald-300",
+}; export default function NextStepPanel({ mode, primaryLabel, rationale, onPrimaryAction }: NextStepPanelProps) { return ( <section className={["mt-3 border border-neutral-400 bg-white px-5 py-5 shadow-sm border-l-2", modeAccent[mode]].join(" ")}> <div className="flex flex-wrap items-start justify-between gap-3"> <div className="min-w-0"> <p className="gov-eyebrow text-neutral-700">Next Step</p> <h2 className="mt-1 text-lg font-bold text-neutral-900">{modeLabel[mode]}</h2> <p className="mt-1 text-sm text-neutral-700">{rationale}</p> </div> <div className="flex shrink-0 items-center gap-2"> <button type="button" onClick={onPrimaryAction} className="gov-btn-primary"> {primaryLabel} </button> <Link to="/dashboard/actions" className="gov-text-link"> Open Actions workspace </Link> </div> </div> </section> );
+}
+

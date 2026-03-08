@@ -1,0 +1,121 @@
+review_id,firm_name,location,practice_area,source,review_date,rating,review_text,reviewer_role,case_type
+NOR-0001,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-01-23,2,Working with this firm was I didn’t feel heard Communication needs improvement.,Family Member,Document Review
+NOR-0002,North Star Family Law,"Chicago, IL",Family Law,Google,2025-07-27,5,Working with this firm was everyone was professional The team was respectful and efficient.,Former Client,Consultation
+NOR-0003,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-21,4,My experience here was the process stayed on track I’d use them again.,Unknown,Document Review
+NOR-0004,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-03,5,Working with this firm was billing was explained upfront The team was respectful and efficient.,Unknown,Consultation
+NOR-0005,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-06,5,I had a the outcome met expectations I’d use them again.,Family Member,Consultation
+NOR-0006,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-14,4,"Overall, it was a the process stayed on track and the outcome met expectations The team was respectful and efficient.",Business Owner,Document Review
+NOR-0007,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-31,4,I had a communication was clear I’d use them again.,Unknown,Appeal
+NOR-0008,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-05-13,2,My experience here was the outcome was disappointing I felt rushed and kept in the dark.,Family Member,Ongoing Matter
+NOR-0009,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-08,4,My experience here was billing was explained upfront and the process stayed on track They kept things moving.,Business Owner,Document Review
+NOR-0010,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-20,4,I’m grateful for the process stayed on track and they were patient and empathetic They were professional and straightforward.,Family Member,Document Review
+NOR-0011,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-13,5,I was disappointed with everyone was professional They kept things moving.,Unknown,Consultation
+NOR-0012,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-26,5,I had a everyone was professional The team was respectful and efficient.,Client,Ongoing Matter
+NOR-0013,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-27,4,I had a they were patient and empathetic and the outcome met expectations They kept things moving.,Family Member,Appeal
+NOR-0014,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-09,2,I had a the case dragged on longer than expected Communication needs improvement.,Business Owner,Document Review
+NOR-0015,North Star Family Law,"Chicago, IL",Family Law,Google,2026-03-03,4,I had a the outcome met expectations and billing was explained upfront I’d use them again.,Family Member,Ongoing Matter
+NOR-0016,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-06,5,I would recommend everyone was professional and they were patient and empathetic They were professional and straightforward.,Business Owner,Consultation
+NOR-0017,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-05,4,I wouldn’t recommend communication was clear They kept things moving.,Client,Consultation
+NOR-0018,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-25,4,My experience here was the outcome met expectations and communication was clear They were professional and straightforward.,Unknown,Appeal
+NOR-0019,North Star Family Law,"Chicago, IL",Family Law,Google,2025-03-13,5,I was disappointed with communication was clear and they were patient and empathetic The team was respectful and efficient.,Business Owner,Appeal
+NOR-0020,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-18,1,I was disappointed with staff interactions were inconsistent and the case dragged on longer than expected I expected more follow-through.,Client,Ongoing Matter
+NOR-0021,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-24,5,Working with this firm was the process stayed on track and communication was clear They kept things moving.,Family Member,Ongoing Matter
+NOR-0022,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-10-05,5,I was disappointed with the outcome met expectations I felt listened to.,Business Owner,Ongoing Matter
+NOR-0023,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-17,4,Working with this firm was they were patient and empathetic They kept things moving.,Family Member,Ongoing Matter
+NOR-0024,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-18,4,I was disappointed with responses were quick They were professional and straightforward.,Business Owner,Ongoing Matter
+NOR-0025,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-14,5,Working with this firm was the process stayed on track and billing was explained upfront They were professional and straightforward.,Business Owner,Ongoing Matter
+NOR-0026,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-12-14,3,I was disappointed with I didn’t feel heard Deadlines felt unpredictable.,Business Owner,Consultation
+NOR-0027,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-15,4,Working with this firm was the outcome met expectations The team was respectful and efficient.,Unknown,Document Review
+NOR-0028,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-03-10,5,I had a communication was clear They were professional and straightforward.,Unknown,Ongoing Matter
+NOR-0029,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-08-16,5,"Overall, it was a billing was explained upfront I felt listened to.",Unknown,Ongoing Matter
+NOR-0030,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-09,4,I had a the process stayed on track They kept things moving.,Unknown,Document Review
+NOR-0031,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-10-06,4,I had a the outcome met expectations I’d use them again.,Business Owner,Ongoing Matter
+NOR-0032,North Star Family Law,"Chicago, IL",Family Law,Google,2025-10-01,4,I had a everyone was professional I’d use them again.,Unknown,Consultation
+NOR-0033,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-10-25,4,My experience here was responses were quick I felt listened to.,Client,Consultation
+NOR-0034,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-23,4,I wouldn’t recommend the outcome met expectations and they were patient and empathetic I’d use them again.,Former Client,Completed Matter
+NOR-0035,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-01,4,"Overall, it was a the outcome met expectations and responses were quick The team was respectful and efficient.",Business Owner,Consultation
+NOR-0036,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-22,5,"Overall, it was a communication was clear and responses were quick They kept things moving.",Former Client,Completed Matter
+NOR-0037,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-14,5,I wouldn’t recommend the process stayed on track They were professional and straightforward.,Business Owner,Ongoing Matter
+NOR-0038,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-07,4,I would recommend everyone was professional and responses were quick They kept things moving.,Client,Completed Matter
+NOR-0039,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-04,5,I wouldn’t recommend everyone was professional They kept things moving.,Unknown,Completed Matter
+NOR-0040,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-02,4,My experience here was billing was explained upfront They kept things moving.,Former Client,Completed Matter
+NOR-0041,North Star Family Law,"Chicago, IL",Family Law,Google,2025-06-12,4,I would recommend the outcome met expectations I’d use them again.,Business Owner,Completed Matter
+NOR-0042,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-05,4,I had a communication was clear and billing was explained upfront They were professional and straightforward.,Family Member,Consultation
+NOR-0043,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-16,5,I wouldn’t recommend billing was explained upfront I’d use them again.,Family Member,Document Review
+NOR-0044,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-03,4,"Overall, it was a responses were quick They kept things moving.",Former Client,Ongoing Matter
+NOR-0045,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-08-05,4,I’m grateful for the outcome met expectations and the process stayed on track I felt listened to.,Family Member,Consultation
+NOR-0046,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-03-01,5,"Overall, it was a responses were quick and everyone was professional They were professional and straightforward.",Business Owner,Document Review
+NOR-0047,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-04-22,4,"Overall, it was a billing was explained upfront I felt listened to.",Business Owner,Completed Matter
+NOR-0048,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-17,5,My experience here was everyone was professional and responses were quick They were professional and straightforward.,Business Owner,Document Review
+NOR-0049,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-05,3,I’m grateful for staff interactions were inconsistent I felt rushed and kept in the dark.,Family Member,Appeal
+NOR-0050,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-20,5,I was disappointed with communication was clear They kept things moving.,Family Member,Ongoing Matter
+NOR-0051,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-21,4,I wouldn’t recommend the outcome met expectations and the process stayed on track I felt listened to.,Unknown,Consultation
+NOR-0052,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-20,4,I had a the outcome met expectations and communication was clear The team was respectful and efficient.,Family Member,Completed Matter
+NOR-0053,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-26,5,I had a they were patient and empathetic and billing was explained upfront The team was respectful and efficient.,Family Member,Document Review
+NOR-0054,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-28,4,I would recommend the outcome met expectations I’d use them again.,Client,Document Review
+NOR-0055,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-26,4,I had a communication was clear and everyone was professional The team was respectful and efficient.,Client,Consultation
+NOR-0056,North Star Family Law,"Chicago, IL",Family Law,Google,2026-03-03,1,I wouldn’t recommend the case dragged on longer than expected I expected more follow-through.,Client,Document Review
+NOR-0057,North Star Family Law,"Chicago, IL",Family Law,Google,2024-11-03,3,I’m grateful for I didn’t feel heard I felt rushed and kept in the dark.,Former Client,Ongoing Matter
+NOR-0058,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-14,5,My experience here was the process stayed on track and billing was explained upfront They were professional and straightforward.,Former Client,Consultation
+NOR-0059,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-10,4,I’m grateful for communication was clear The team was respectful and efficient.,Business Owner,Completed Matter
+NOR-0060,North Star Family Law,"Chicago, IL",Family Law,Google,2024-10-18,5,I’m grateful for everyone was professional and they were patient and empathetic The team was respectful and efficient.,Unknown,Ongoing Matter
+NOR-0061,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-11-04,5,Working with this firm was everyone was professional and communication was clear I’d use them again.,Family Member,Appeal
+NOR-0062,North Star Family Law,"Chicago, IL",Family Law,Google,2025-07-31,5,My experience here was responses were quick I’d use them again.,Family Member,Ongoing Matter
+NOR-0063,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-02-23,2,"Overall, it was a staff interactions were inconsistent and I didn’t feel heard I felt rushed and kept in the dark.",Client,Appeal
+NOR-0064,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-13,4,I would recommend everyone was professional and billing was explained upfront They were professional and straightforward.,Client,Completed Matter
+NOR-0065,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-11-01,5,"Overall, it was a the process stayed on track They kept things moving.",Family Member,Consultation
+NOR-0066,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-18,4,My experience here was everyone was professional and billing was explained upfront They were professional and straightforward.,Client,Consultation
+NOR-0067,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-10-02,5,"Overall, it was a everyone was professional and the outcome met expectations They kept things moving.",Family Member,Appeal
+NOR-0068,North Star Family Law,"Chicago, IL",Family Law,Google,2025-01-18,5,"Overall, it was a communication was clear The team was respectful and efficient.",Unknown,Ongoing Matter
+NOR-0069,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-23,5,I had a everyone was professional The team was respectful and efficient.,Family Member,Completed Matter
+NOR-0070,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-06-10,4,I would recommend billing was explained upfront The team was respectful and efficient.,Business Owner,Consultation
+NOR-0071,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-17,5,"Overall, it was a the outcome met expectations and responses were quick The team was respectful and efficient.",Business Owner,Appeal
+NOR-0072,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-31,3,My experience here was billing felt confusing Communication needs improvement.,Family Member,Ongoing Matter
+NOR-0073,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-21,4,"Overall, it was a the process stayed on track The team was respectful and efficient.",Business Owner,Document Review
+NOR-0074,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-19,4,Working with this firm was billing was explained upfront and the outcome met expectations They kept things moving.,Unknown,Document Review
+NOR-0075,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-31,5,I would recommend the process stayed on track and everyone was professional The team was respectful and efficient.,Client,Ongoing Matter
+NOR-0076,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-02,4,I wouldn’t recommend communication was clear The team was respectful and efficient.,Business Owner,Appeal
+NOR-0077,North Star Family Law,"Chicago, IL",Family Law,Google,2025-07-17,3,I had a the outcome was disappointing Deadlines felt unpredictable.,Client,Document Review
+NOR-0078,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-15,4,"Overall, it was a the process stayed on track They kept things moving.",Family Member,Document Review
+NOR-0079,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-11-09,4,My experience here was billing was explained upfront I’d use them again.,Former Client,Appeal
+NOR-0080,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-17,4,Working with this firm was the outcome met expectations They kept things moving.,Family Member,Completed Matter
+NOR-0081,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-01,3,"Overall, it was a staff interactions were inconsistent Communication needs improvement.",Client,Ongoing Matter
+NOR-0082,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-12-28,4,My experience here was responses were quick and the process stayed on track The team was respectful and efficient.,Former Client,Appeal
+NOR-0083,North Star Family Law,"Chicago, IL",Family Law,Google,2024-12-28,4,I was disappointed with responses were quick and communication was clear They kept things moving.,Client,Ongoing Matter
+NOR-0084,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-04-18,5,"Overall, it was a everyone was professional I felt listened to.",Family Member,Consultation
+NOR-0085,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-07-18,5,I wouldn’t recommend the process stayed on track and communication was clear I’d use them again.,Business Owner,Consultation
+NOR-0086,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-17,4,I had a communication was clear and the process stayed on track They were professional and straightforward.,Business Owner,Appeal
+NOR-0087,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-12,4,I had a responses were quick and they were patient and empathetic I’d use them again.,Client,Completed Matter
+NOR-0088,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-03-29,5,I wouldn’t recommend communication was clear They were professional and straightforward.,Family Member,Consultation
+NOR-0089,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-16,5,"Overall, it was a billing was explained upfront and they were patient and empathetic The team was respectful and efficient.",Client,Appeal
+NOR-0090,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-05,5,"Overall, it was a billing was explained upfront and the process stayed on track The team was respectful and efficient.",Business Owner,Ongoing Matter
+NOR-0091,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-27,5,I wouldn’t recommend they were patient and empathetic They were professional and straightforward.,Former Client,Consultation
+NOR-0092,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-20,5,Working with this firm was the process stayed on track and they were patient and empathetic They kept things moving.,Family Member,Consultation
+NOR-0093,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-02,2,My experience here was the case dragged on longer than expected and staff interactions were inconsistent Billing clarity was lacking.,Business Owner,Appeal
+NOR-0094,North Star Family Law,"Chicago, IL",Family Law,Google,2025-08-28,5,Working with this firm was they were patient and empathetic and the process stayed on track I felt listened to.,Former Client,Completed Matter
+NOR-0095,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-17,4,My experience here was everyone was professional I felt listened to.,Business Owner,Consultation
+NOR-0096,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-24,4,I was disappointed with everyone was professional They were professional and straightforward.,Family Member,Document Review
+NOR-0097,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-09,5,I wouldn’t recommend responses were quick and they were patient and empathetic I felt listened to.,Business Owner,Document Review
+NOR-0098,North Star Family Law,"Chicago, IL",Family Law,Google,2025-10-30,5,I’m grateful for billing was explained upfront and the outcome met expectations They kept things moving.,Family Member,Completed Matter
+NOR-0099,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-08,3,"Overall, it was a it was hard to reach anyone I expected more follow-through.",Former Client,Completed Matter
+NOR-0100,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-31,5,"Overall, it was a the process stayed on track The team was respectful and efficient.",Client,Consultation
+NOR-0101,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-07-10,2,I wouldn’t recommend updates were slow and billing felt confusing Communication needs improvement.,Client,Ongoing Matter
+NOR-0102,North Star Family Law,"Chicago, IL",Family Law,Google,2025-02-15,4,I had a the outcome met expectations and billing was explained upfront They were professional and straightforward.,Unknown,Document Review
+NOR-0103,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-01-15,5,I was disappointed with communication was clear I felt listened to.,Client,Document Review
+NOR-0104,North Star Family Law,"Chicago, IL",Family Law,Google,2025-04-02,4,I would recommend responses were quick and the outcome met expectations They kept things moving.,Former Client,Consultation
+NOR-0105,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-02-23,5,I would recommend they were patient and empathetic The team was respectful and efficient.,Former Client,Document Review
+NOR-0106,North Star Family Law,"Chicago, IL",Family Law,Google,2025-01-20,5,I’m grateful for billing was explained upfront and the process stayed on track They kept things moving.,Client,Completed Matter
+NOR-0107,North Star Family Law,"Chicago, IL",Family Law,Yelp,2026-03-01,5,I was disappointed with everyone was professional The team was respectful and efficient.,Client,Appeal
+NOR-0108,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-20,5,I would recommend everyone was professional and responses were quick I felt listened to.,Client,Document Review
+NOR-0109,North Star Family Law,"Chicago, IL",Family Law,Google,2025-01-21,1,My experience here was the case dragged on longer than expected and the outcome was disappointing I felt rushed and kept in the dark.,Family Member,Completed Matter
+NOR-0110,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-23,4,My experience here was everyone was professional and responses were quick They kept things moving.,Client,Appeal
+NOR-0111,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-12,4,I would recommend the process stayed on track I’d use them again.,Former Client,Document Review
+NOR-0112,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-08-15,2,I wouldn’t recommend the outcome was disappointing Communication needs improvement.,Business Owner,Document Review
+NOR-0113,North Star Family Law,"Chicago, IL",Family Law,Google,2026-02-16,4,I had a the process stayed on track I felt listened to.,Unknown,Consultation
+NOR-0114,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-12-17,5,I wouldn’t recommend the process stayed on track and everyone was professional They kept things moving.,Former Client,Appeal
+NOR-0115,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-12-01,5,I wouldn’t recommend communication was clear They were professional and straightforward.,Business Owner,Appeal
+NOR-0116,North Star Family Law,"Chicago, IL",Family Law,Google,2025-12-14,5,I wouldn’t recommend they were patient and empathetic The team was respectful and efficient.,Client,Consultation
+NOR-0117,North Star Family Law,"Chicago, IL",Family Law,Google,2026-01-16,3,My experience here was the outcome was disappointing and I didn’t feel heard Communication needs improvement.,Former Client,Consultation
+NOR-0118,North Star Family Law,"Chicago, IL",Family Law,Yelp,2024-09-26,4,My experience here was they were patient and empathetic I’d use them again.,Former Client,Consultation
+NOR-0119,North Star Family Law,"Chicago, IL",Family Law,Google,2025-11-11,5,"Overall, it was a everyone was professional They kept things moving.",Former Client,Consultation
+NOR-0120,North Star Family Law,"Chicago, IL",Family Law,Yelp,2025-06-18,3,I had a the outcome was disappointing and billing felt confusing I felt rushed and kept in the dark.,Family Member,Document Review

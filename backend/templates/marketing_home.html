@@ -1,0 +1,197 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Clarion - Client Feedback Reporting for Professional Services Firms{% endblock %}
+
+{% block content %}
+<div class="marketing-home">
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="hero-kicker">Client Feedback Governance</p>
+        <h1 class="hero-title">Finally, client feedback reports partners actually read.</h1>
+        <p class="hero-subtitle">
+          Upload your reviews once. Clarion surfaces themes, risk signals, and a 90-day action plan in one working session.
+        </p>
+        <div class="hero-cta">
+          {% if current_user.is_authenticated %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-hero">Go to Dashboard</a>
+          {% else %}
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-hero">Start Free</a>
+          {% endif %}
+          <a href="{{ url_for('how_it_works') }}" class="btn btn-outline btn-hero">See how it works</a>
+        </div>
+        <div class="hero-pill-row">
+          <span class="hero-pill">Managing partners</span>
+          <span class="hero-pill">Operations leaders</span>
+          <span class="hero-pill">Intake and marketing teams</span>
+        </div>
+        <p class="hero-trust">Built to turn scattered comments into clear operating priorities your team can execute.</p>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="workspace-shot">
+          <div class="workspace-shot-header">
+            <span>Dashboard workspace</span>
+            <span>Data through Feb 24</span>
+          </div>
+          <div class="workspace-kpi-grid">
+            <div class="workspace-kpi"><span>Reviews</span><strong>1,066</strong></div>
+            <div class="workspace-kpi"><span>Satisfaction</span><strong>4.18/5</strong></div>
+            <div class="workspace-kpi"><span>At-risk</span><strong>3</strong></div>
+          </div>
+          <div class="workspace-chart">
+            <div class="workspace-chart-title">Satisfaction over recent report snapshots</div>
+            <div class="workspace-chart-line"></div>
+          </div>
+          <div class="workspace-lanes">
+            <div class="workspace-lane">
+              <p class="workspace-lane-title">Theme watchlist</p>
+              <p>Communication - 20.5%</p>
+              <p>Case outcome - 24.5%</p>
+            </div>
+            <div class="workspace-lane">
+              <p class="workspace-lane-title">Next best actions</p>
+              <p>Assign owner for communication cadence.</p>
+              <p>Review at-risk report in partner meeting.</p>
+            </div>
+          </div>
+          <p class="workspace-caption">Actual product view: at-a-glance health, trend direction, at-risk matters, and execution priorities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="cred-strip reveal">
+        <div class="cred-item"><strong>What it is</strong> a report library and action workspace for client feedback</div>
+        <div class="cred-item"><strong>What you get</strong> dashboard views, report detail, and governance PDF output</div>
+        <div class="cred-item"><strong>Why firms use it</strong> improve retention, referrals, and service reliability</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-views-section">
+    <div class="container reveal">
+      <div class="section-head">
+        <p class="section-kicker">What You See In The Product</p>
+        <h2 class="section-title">A clear path from feedback to action</h2>
+      </div>
+      <div class="product-view-grid">
+        <article class="product-view-card">
+          <h3>Dashboard</h3>
+          <p>Track satisfaction, at-risk reports, and top themes without reading every comment.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Report detail</h3>
+          <p>Review theme breakdowns, representative comments, and comparisons versus previous reports.</p>
+        </article>
+        <article class="product-view-card">
+          <h3>Governance PDF</h3>
+          <p>Share a concise executive report with metrics, recurring issues, and a 90-day action plan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-section">
+    <div class="container reveal">
+      <div class="section-head">
+        <p class="section-kicker">Workflow</p>
+        <h2 class="section-title">Upload, Analyze, Act, Repeat</h2>
+      </div>
+      <div class="steps-grid-simple">
+        <article class="step-card">
+          <div class="step-number">1</div>
+          <h3>Upload feedback</h3>
+          <p>Import review CSV files with date, rating, and comment text.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">2</div>
+          <h3>Review insights</h3>
+          <p>See theme frequency, sentiment, trend stability, and confidence in one workspace.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-number">3</div>
+          <h3>Execute the plan</h3>
+          <p>Use the 90-day action plan to assign owners, timelines, and measurable outcomes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container reveal">
+      <div class="section-head">
+        <p class="section-kicker">Why It Matters</p>
+        <h2 class="section-title">Client expectations rise faster than most internal reporting rhythms</h2>
+      </div>
+      <div class="feature-rows">
+        <article class="feature-row">
+          <h3>For managing partners</h3>
+          <ul>
+            <li>See at-risk matters before clients disengage.</li>
+            <li>Align partner meetings around the same operating signals.</li>
+            <li>Track whether service improvements actually move scores.</li>
+          </ul>
+        </article>
+        <article class="feature-row">
+          <h3>For operations and admin</h3>
+          <ul>
+            <li>Standardize follow-up plans across practice groups.</li>
+            <li>Assign clear owners and timelines to recurring issues.</li>
+            <li>Reduce manual time spent compiling feedback summaries.</li>
+          </ul>
+        </article>
+        <article class="feature-row">
+          <h3>For intake and marketing</h3>
+          <ul>
+            <li>Understand what clients praise and what they question.</li>
+            <li>Use quote-level insights to improve intake messaging.</li>
+            <li>Protect referral flow by resolving friction early.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="safety-section">
+    <div class="container reveal">
+      <div class="section-head">
+        <p class="section-kicker">Security</p>
+        <h2 class="section-title">Built with practical controls for client feedback data</h2>
+      </div>
+      <div class="safety-grid">
+        <article class="safety-card">
+          <h3>Data protection</h3>
+          <p>HTTPS in transit, secured sessions, and account-scoped access to firm data.</p>
+        </article>
+        <article class="safety-card">
+          <h3>Access controls</h3>
+          <p>Authenticated access and rate-limited entry points for operational hardening.</p>
+        </article>
+        <article class="safety-card">
+          <h3>Responsible use</h3>
+          <p>No ad resale. You can remove reports and export data from your workspace.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container reveal cta-strip-content">
+      <span class="cta-pill">No credit card required</span>
+      <h2>Start your first client feedback cycle this week.</h2>
+      <p>Upload a CSV, review the dashboard, and share a governance report with next actions.</p>
+      <div class="hero-cta">
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+        {% else %}
+          <a href="{{ url_for('register') }}" class="btn btn-primary">Start Free</a>
+        {% endif %}
+        <a href="{{ url_for('pricing') }}" class="btn btn-secondary">View pricing</a>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+

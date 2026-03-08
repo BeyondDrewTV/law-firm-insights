@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}Features - Clarion{% endblock %}
+
+{% block content %}
+<section class="info-hero">
+    <div class="container">
+        <p class="info-kicker">Features</p>
+        <h1>Tools that turn client feedback into operating decisions.</h1>
+        <p class="info-subtitle">
+            From upload to report delivery, each feature is built for partners and firm leaders who need clear priorities, not raw data dumps.
+        </p>
+    </div>
+</section>
+
+<section class="product-views-section">
+    <div class="container">
+        <div class="product-view-grid">
+            <article class="product-view-card">
+                <h3>Dashboard workspace</h3>
+                <p>Track satisfaction direction, confidence, and at-risk matters at a glance.</p>
+            </article>
+            <article class="product-view-card">
+                <h3>Report detail</h3>
+                <p>Review themes, representative comments, and change vs previous report.</p>
+            </article>
+            <article class="product-view-card">
+                <h3>90-day action plan</h3>
+                <p>Assign owners, set timelines, and track completion status across cycles.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="features-detailed">
+    <div class="container">
+        <!-- Feature: Bulk Import -->
+        <div class="feature-detailed">
+            <div class="feature-icon-large">📤</div>
+            <div class="feature-content">
+                <h2>Bulk Historical Review Import</h2>
+                <p class="feature-description">
+                    Don't start from scratch. Upload years of feedback from Google Reviews, Avvo, internal surveys, 
+                    or any source. Generate a structured review snapshot from your historical client feedback.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>CSV Upload</strong>
+                        <p>Drag and drop any CSV with date, rating, and feedback text. We handle the rest.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Bulk Processing</strong>
+                        <p>Analyze 50, 100, 500+ reviews in under 2 minutes. No manual categorization needed.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Error Handling</strong>
+                        <p>Automatic validation catches formatting issues before import. Clear error messages guide fixes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: Theme Detection -->
+        <div class="feature-detailed reverse">
+            <div class="feature-icon-large">🔍</div>
+            <div class="feature-content">
+                <h2>Automated Theme Detection</h2>
+                <p class="feature-description">
+                    Stop reading reviews one by one. Our analysis engine identifies patterns across all feedback, 
+                    highlighting what clients care about most.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>8 Core Themes</strong>
+                        <p>Communication, Professionalism, Legal Expertise, Case Outcome, Cost/Value, Responsiveness, Staff Support, Compassion</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Frequency Analysis</strong>
+                        <p>See which themes appear most often. Prioritize improvements based on volume of mentions.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Sentiment Tagging</strong>
+                        <p>Each theme is tagged as positive, neutral, or negative to quickly identify problem areas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: PDF Reports -->
+        <div class="feature-detailed">
+            <div class="feature-icon-large">📄</div>
+            <div class="feature-content">
+                <h2>Partner-Ready PDF Reports</h2>
+                <p class="feature-description">
+                    Professional, consulting-grade reports you can confidently present in partner meetings, 
+                    share with practice group leads, or use in strategic planning.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>Executive Summary</strong>
+                        <p>Top-line metrics, key strengths, and primary improvement areas on page one.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Visual Analytics</strong>
+                        <p>Charts, graphs, and tables make data easy to digest. No spreadsheet interpretation needed.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Branded & Confidential</strong>
+                        <p>Each report is customized with your firm name and marked confidential on every page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: Action Plans -->
+        <div class="feature-detailed reverse highlight-feature">
+            <div class="feature-icon-large">📋</div>
+            <div class="feature-content">
+                <h2>90-Day Implementation Plans</h2>
+                <p class="feature-description">
+                    <span class="premium-badge">Paid Plans</span>
+                    Don't just collect data—fix problems. Get detailed action plans for your top 3-5 improvement areas.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>Week-by-Week Roadmap</strong>
+                        <p>Clear timeline: Week 1-2 quick wins, Week 3-4 process changes, Month 2-3 cultural improvements.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Assigned Owners</strong>
+                        <p>Each action has a recommended responsible party (managing partner, ops director, etc.).</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Success Metrics</strong>
+                        <p>KPIs for each initiative so you can measure progress objectively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: Dashboard -->
+        <div class="feature-detailed">
+            <div class="feature-icon-large">📊</div>
+            <div class="feature-content">
+                <h2>Interactive Analysis Dashboard</h2>
+                <p class="feature-description">
+                    View all feedback in one place. Filter by date range, rating, or theme. Export data for deeper analysis.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>Real-Time Stats</strong>
+                        <p>Total reviews, average rating, and theme breakdown refresh with each completed upload cycle.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Top Praise & Complaints</strong>
+                        <p>Quickly scan the best and worst feedback. Identify urgent issues and celebrate wins.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Secure Access</strong>
+                        <p>Password-protected admin area. Only authorized firm members can view sensitive feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: Client Feedback Form -->
+        <div class="feature-detailed reverse">
+            <div class="feature-icon-large">💬</div>
+            <div class="feature-content">
+                <h2>CSV Feedback Intake</h2>
+                <p class="feature-description">
+                    Bring new feedback into Clarion through CSV exports from your existing review, survey, or intake systems.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>Required CSV Structure</strong>
+                        <p>Uploads rely on review date, rating, and feedback text so the app can validate and process each row.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Existing Feedback Sources</strong>
+                        <p>Use exports from systems you already run instead of collecting feedback inside Clarion.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Validation Before Processing</strong>
+                        <p>Malformed rows and missing headers are flagged before the report workflow starts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: Quarterly Tracking -->
+        <div class="feature-detailed">
+            <div class="feature-icon-large">📈</div>
+            <div class="feature-content">
+                <h2>Progress Tracking & Re-Assessment</h2>
+                <p class="feature-description">
+                    Improvement isn't one-and-done. Upload new feedback quarterly to measure progress against baseline.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>Trend Analysis</strong>
+                        <p>See if average rating is improving, complaints are declining, or new issues are emerging.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Before & After</strong>
+                        <p>Compare current analysis to previous quarters. Prove ROI of improvement initiatives.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Stakeholder Updates</strong>
+                        <p>Share progress reports with partners to demonstrate strategic impact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature: Security -->
+        <div class="feature-detailed reverse">
+            <div class="feature-icon-large">🔒</div>
+            <div class="feature-content">
+                <h2>Confidential & Secure</h2>
+                <p class="feature-description">
+                    Client feedback is sensitive. We take data security and confidentiality seriously.
+                </p>
+                <div class="feature-benefits">
+                    <div class="benefit-item">
+                        <strong>Secure Transport</strong>
+                        <p>All product traffic is served over HTTPS to protect data in transit.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Account-Scoped Access</strong>
+                        <p>Each account can access only its own uploaded data and report snapshots.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <strong>Data Ownership</strong>
+                        <p>Your data is yours. Export reports anytime and remove uploaded reports from your account.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="feature-comparison">
+    <div class="container">
+        <h2 class="section-title">Free vs. Paid Features</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Free Trial</th>
+                    <th>Paid Plans</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CSV Bulk Upload</td>
+                    <td class="included">✓</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Theme Detection & Analysis</td>
+                    <td class="included">✓</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Dashboard Access</td>
+                    <td class="included">✓</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Basic PDF Report (5 pages)</td>
+                    <td class="included">✓</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Maximum Reviews</td>
+                    <td>50 reviews</td>
+                    <td class="included">Unlimited</td>
+                </tr>
+                <tr>
+                    <td>90-Day Implementation Plans</td>
+                    <td class="not-included">✗</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Week-by-Week Action Items</td>
+                    <td class="not-included">✗</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Quarterly Re-Assessment Reports</td>
+                    <td class="not-included">✗</td>
+                    <td class="included">✓</td>
+                </tr>
+                <tr>
+                    <td>Priority Support</td>
+                    <td class="not-included">✗</td>
+                    <td class="included">✓</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="cta-center">
+            <a href="{{ url_for('pricing') }}" class="btn btn-primary btn-large">See Pricing Details →</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

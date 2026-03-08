@@ -1,0 +1,245 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Clarion - Transform Client Feedback Into Strategic Growth{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Turn Client Feedback Into Your Firm's Competitive Advantage</h1>
+            <p class="hero-subtitle">
+                Stop losing clients to preventable issues. Clarion analyzes feedback to identify exactly
+                what's workingâ€”and what's costing you referrals, retention, and revenue.
+            </p>
+            <div class="hero-cta">
+                <a href="{{ url_for('pricing') }}" class="btn btn-primary btn-hero">See Pricing & Plans</a>
+                <a href="{{ url_for('how_it_works') }}" class="btn btn-secondary btn-hero">How It Works</a>
+            </div>
+            <p class="hero-trust">Trusted by small and mid-sized professional services firms nationwide</p>
+        </div>
+    </div>
+</section>
+
+<!-- Problem Statement -->
+<section class="problem-section">
+    <div class="container">
+        <h2 class="section-title">Most Firms Are Flying Blind on Client Satisfaction</h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-icon">ðŸ˜Ÿ</div>
+                <h3>Clients leave without telling you why</h3>
+                <p>You hear complaints too lateâ€”after they've already told 10 friends not to hire you.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">ðŸ“‰</div>
+                <h3>Referrals are declining</h3>
+                <p>Partners can't pinpoint which service gaps are costing you word-of-mouth growth.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">â°</div>
+                <h3>Issues fester for months</h3>
+                <p>Communication breakdowns, billing confusion, and responsiveness problems go unaddressed.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">ðŸ“Š</div>
+                <h3>No data for partner meetings</h3>
+                <p>Gut feelings and anecdotes replace hard numbers when discussing firm improvement.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solution Overview -->
+<section class="solution-section">
+  <div class="container">
+    <div class="solution-content"
+         style="display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start;">
+
+      <!-- Left: text + button -->
+      <div class="solution-text" style="flex:1 1 260px; min-width:260px;">
+        <h2>Finally: Client Intelligence That Partners Actually Use</h2>
+        <p class="lead">
+          Clarion automatically analyzes every piece of client feedbackâ€”reviews, surveys,
+          intake formsâ€”to show you exactly where to focus your improvement efforts.
+        </p>
+        <ul class="solution-benefits">
+          <li><strong>Automated theme detection</strong> across communication, expertise, cost, responsiveness, and more</li>
+          <li><strong>Partner-ready PDF reports</strong> you can bring to quarterly meetings</li>
+          <li><strong>Action plans with timelines</strong> so you're not just collecting dataâ€”you're fixing problems</li>
+          <li><strong>Track progress over time</strong> with quarterly re-assessments</li>
+        </ul>
+        <a href="{{ url_for('features') }}" class="btn btn-primary">Explore All Features â†’</a>
+      </div>
+
+      <!-- Right: stats card -->
+      <div class="solution-visual"
+           style="flex:0 0 320px; max-width:320px; margin-left:auto;">
+        <div style="width:100%; border:1px solid #e2e8f0; border-radius:12px; padding:16px; background:#ffffff;">
+          <div style="display:flex; gap:12px; margin-bottom:16px;">
+            <div style="flex:1; background:#f8fafc; border-radius:8px; padding:10px;">
+              <div style="font-size:1.4rem; font-weight:700; color:#1a365d;">127</div>
+              <div style="font-size:0.8rem; color:#4a5568;">Reviews Analyzed</div>
+            </div>
+            <div style="flex:1; background:#f8fafc; border-radius:8px; padding:10px;">
+              <div style="font-size:1.4rem; font-weight:700; color:#1a365d;">4.2</div>
+              <div style="font-size:0.8rem; color:#4a5568;">Average Rating</div>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid #e2e8f0; padding-top:12px;">
+            <div style="font-size:0.9rem; font-weight:600; color:#1a365d; margin-bottom:8px;">
+              Key Drivers
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#2c5282; margin-bottom:4px;">
+              <span>Communication</span><span style="font-weight:700; color:#2b6cb0;">42</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#2c5282; margin-bottom:4px;">
+              <span>Responsiveness</span><span style="font-weight:700; color:#2b6cb0;">31</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#2c5282;">
+              <span>Professionalism</span><span style="font-weight:700; color:#2b6cb0;">28</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- How It Works - Quick Version -->
+<section class="quick-how-section">
+    <div class="container">
+        <h2 class="section-title">Simple Enough for Any Practice</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Collect Feedback</h3>
+                <p>Upload historical reviews or share a simple form with clients. Works with Google Reviews, intake surveys, or manual entry.</p>
+            </div>
+            <div class="step-arrow">â†’</div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Auto-Analyze</h3>
+                <p>Our system identifies key themes, sentiment patterns, and specific problem areas across all your feedback.</p>
+            </div>
+            <div class="step-arrow">â†’</div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Get Action Plans</h3>
+                <p>Receive detailed reports with specific improvements ranked by impact. Know exactly what to fix first.</p>
+            </div>
+            <div class="step-arrow">â†’</div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Track Progress</h3>
+                <p>Re-run analysis quarterly to measure improvement and adjust strategy. Show stakeholders real progress.</p>
+            </div>
+        </div>
+        <div class="cta-center">
+            <a href="{{ url_for('how_it_works') }}" class="btn btn-secondary">See Detailed Walkthrough â†’</a>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases / Who It's For -->
+<section class="audience-section">
+    <div class="container">
+        <h2 class="section-title">Built for Firms That Take Client Experience Seriously</h2>
+        <div class="audience-grid">
+            <div class="audience-card">
+                <h3>Managing Partners</h3>
+                <p>
+                    <strong>Use feedback data in partner meetings</strong> to drive consensus on firm-wide improvements.
+                    Stop relying on anecdotesâ€”make data-driven decisions about hiring, training, and process changes.
+                </p>
+            </div>
+            <div class="audience-card">
+                <h3>Operations Directors</h3>
+                <p>
+                    <strong>Identify bottlenecks before they become crises.</strong> Spot communication gaps,
+                    billing confusion, or intake problems early. Get concrete action plans with timelines and KPIs.
+                </p>
+            </div>
+            <div class="audience-card">
+                <h3>Practice Group Leads</h3>
+                <p>
+                    <strong>Improve your team's client satisfaction scores.</strong> See how your group compares
+                    to firm averages. Address training gaps and celebrate wins with real numbers.
+                </p>
+            </div>
+            <div class="audience-card">
+                <h3>Marketing Teams</h3>
+                <p>
+                    <strong>Extract testimonials and identify referral drivers.</strong> Understand what clients
+                    love most to fuel case studies, website content, and referral partnership strategies.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof / Results -->
+<section class="results-section">
+    <div class="container">
+        <h2 class="section-title">Illustrative Firm Examples</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-quote">
+                    "We identified a pattern in billing complaints that was costing us referrals.
+                    Fixed it firm-wide in 30 days. Referral rate jumped 40% in Q2."
+                </div>
+                <div class="result-attribution">
+                    â€” Sarah Mitchell, Managing Partner<br>
+                    <span class="result-firm">Mitchell & Associates (7 attorneys)</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <div class="result-quote">
+                    "The implementation plans gave us a clear roadmap. We went from 'we should improve communication'
+                    to specific actions with owners and deadlines."
+                </div>
+                <div class="result-attribution">
+                    â€” David Park, Operations Director<br>
+                    <span class="result-firm">Park Legal Group (12 attorneys)</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <div class="result-quote">
+                    "Before Clarion, I was reading reviews one by one. Now I see patterns in one dashboard view.
+                    We're making better decisions about where to invest in training."
+                </div>
+                <div class="result-attribution">
+                    â€” Jennifer Torres, Partner<br>
+                    <span class="result-firm">Torres Family Law (4 attorneys)</span>
+                </div>
+            </div>
+        </div>
+        <div class="cta-center">
+            <a href="{{ url_for('case_studies') }}" class="btn btn-outline">Read Full Case Studies â†’</a>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta-section">
+    <div class="container">
+        <div class="final-cta-content">
+            <h2>Start Understanding Your Clients Betterâ€”This Week</h2>
+            <p>
+                No long implementation. No complex setup. Upload your reviews and work through the report in one session.
+            </p>
+            <div class="cta-buttons-large">
+                <a href="{{ url_for('pricing') }}" class="btn btn-primary btn-large">View Pricing & Start Today</a>
+                <a href="{{ url_for('feedback_form') }}" class="btn btn-outline btn-large">Try Client Feedback Form</a>
+            </div>
+            <p class="cta-guarantee">
+                âœ“ Cancel anytime Â· âœ“ 30-day money-back guarantee Â· âœ“ No credit card required for trial
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,11 @@
+<h2>New Clarion support ticket</h2>
+<p><strong>Ticket:</strong> {{ ticket.ticket_ref }}</p>
+<p><strong>Requester:</strong> {{ ticket.requester_email }}</p>
+<p><strong>Firm:</strong> {{ ticket.firm_name or "Not provided" }}</p>
+<p><strong>Category:</strong> {{ ticket.category }}</p>
+<p><strong>Urgency:</strong> {{ ticket.urgency }}</p>
+<p><strong>Priority:</strong> {{ ticket.priority }}</p>
+<p><strong>Status:</strong> {{ ticket.status }}</p>
+<p><strong>Escalation:</strong> {{ ticket.escalation_level }}{% if ticket.escalation_reason %} - {{ ticket.escalation_reason }}{% endif %}</p>
+<p><strong>Subject:</strong> {{ ticket.subject }}</p>
+<p><strong>Message:</strong><br>{{ ticket.message | replace('\n', '<br>') | safe }}</p>
