@@ -143,23 +143,28 @@ class CompatCursor:
 
         rewritten = self._rewrite_sql(sql)
 
-        # For INSERT statements on Postgres, append RETURNING id so lastrowid works.
-        is_insert = bool(re.match(r"^\s*INSERT\s+", rewritten, flags=re.IGNORECASE))
-        has_returning = bool(re.search(r"\bRETURNING\b", rewritten, flags=re.IGNORECASE))
-        if is_insert and not has_returning:
+        # For INSERT ... VALUES statements on Postgres, append RETURNING id so
+        # lastrowid works. Skip INSERT ... SELECT (no RETURNING on set-based inserts).
+        stripped_upper = rewritten.upper()
+        is_insert = stripped_upper.lstrip().startswith("INSERT ")
+        is_insert_select = bool(re.search(r"\bINSERT\b.+\bSELECT\b", rewritten, flags=re.IGNORECASE | re.DOTALL))
+        has_returning = "RETURNING" in stripped_upper
+        add_returning = is_insert and not is_insert_select and not has_returning
+
+        if add_returning:
             rewritten = rewritten.rstrip().rstrip(";") + " RETURNING id"
 
         self._cursor.execute(rewritten, params)
 
         # Capture the returned id from RETURNING id clause
-        if is_insert and not has_returning:
+        if add_returning:
             try:
                 row = self._cursor.fetchone()
                 self.lastrowid = int(row[0]) if row else None
             except Exception:
                 self.lastrowid = None
         else:
-            self._try_set_lastrowid(rewritten)
+            self.lastrowid = None
 
         return self
 
