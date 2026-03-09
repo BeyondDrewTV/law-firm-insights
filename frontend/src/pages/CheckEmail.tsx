@@ -178,10 +178,12 @@ const CheckEmail = () => {
                 </div>
               </div>
             ) : (
-              <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-                Open the inbox for <span className="font-semibold text-slate-900">{pendingEmail || "your address"}</span>,
-                click the verification link, then return here.
-              </div>
+              pendingEmail ? (
+                <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+                  Open the inbox for <span className="font-semibold text-slate-900">{pendingEmail}</span>,
+                  click the verification link, then return here.
+                </div>
+              ) : null
             )}
 
             {isVerified ? (
@@ -207,37 +209,52 @@ const CheckEmail = () => {
             )}
 
             {!isVerified ? (
-              <div className="rounded-lg border border-slate-200 bg-white px-4 py-4 text-sm text-slate-700">
-                <p>
-                  {deliveryUnavailable
-                    ? "If your team restores email delivery later, you can return here and request another verification email."
-                    : "If the verification link opens in another tab or browser, finish verification there. Then either return here, or go straight to sign in if this page does not update."}
-                </p>
-                <div className="mt-4 flex flex-wrap justify-center gap-2">
-                  <button
-                    type="button"
-                    className="gov-btn-secondary"
-                    onClick={() => void handleResend()}
-                    disabled={!pendingEmail || isResending || deliveryUnavailable || resendCooldown > 0}
-                  >
-                    {isResending
-                      ? "Resending…"
-                      : resendCooldown > 0
-                      ? `Resend again in ${resendCooldown}s`
-                      : "Resend verification email"}
-                  </button>
-                  <Link to="/login" className="gov-btn-secondary">
-                    Return to sign in
-                  </Link>
+              !pendingEmail ? (
+                <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-4 text-sm text-center text-amber-900">
+                  <p className="font-medium">No email address on file.</p>
+                  <p className="mt-1 text-amber-800">Please sign up first so we know where to send your verification link.</p>
+                  <div className="mt-4 flex flex-wrap justify-center gap-2">
+                    <Link to="/signup" className="gov-btn-primary">
+                      Go to sign up
+                    </Link>
+                    <Link to="/login" className="gov-btn-secondary">
+                      Return to sign in
+                    </Link>
+                  </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-slate-500">
-                  Used a different email?{" "}
-                  <Link to="/signup" className="underline underline-offset-2 hover:text-slate-700">
-                    Go back to sign up
-                  </Link>
-                </p>
-                {resendMessage ? <p className="mt-3 text-xs text-slate-600">{resendMessage}</p> : null}
-              </div>
+              ) : (
+                <div className="rounded-lg border border-slate-200 bg-white px-4 py-4 text-sm text-slate-700">
+                  <p>
+                    {deliveryUnavailable
+                      ? "If your team restores email delivery later, you can return here and request another verification email."
+                      : "If the verification link opens in another tab or browser, finish verification there. Then either return here, or go straight to sign in if this page does not update."}
+                  </p>
+                  <div className="mt-4 flex flex-wrap justify-center gap-2">
+                    <button
+                      type="button"
+                      className="gov-btn-secondary"
+                      onClick={() => void handleResend()}
+                      disabled={isResending || deliveryUnavailable || resendCooldown > 0}
+                    >
+                      {isResending
+                        ? "Resending…"
+                        : resendCooldown > 0
+                        ? `Resend again in ${resendCooldown}s`
+                        : "Resend verification email"}
+                    </button>
+                    <Link to="/login" className="gov-btn-secondary">
+                      Return to sign in
+                    </Link>
+                  </div>
+                  <p className="mt-3 text-center text-xs text-slate-500">
+                    Used a different email?{" "}
+                    <Link to="/signup" className="underline underline-offset-2 hover:text-slate-700">
+                      Go back to sign up
+                    </Link>
+                  </p>
+                  {resendMessage ? <p className="mt-3 text-xs text-slate-600">{resendMessage}</p> : null}
+                </div>
+              )
             ) : null}
           </div>
         </div>
