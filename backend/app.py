@@ -290,7 +290,16 @@ if DEV_MODE and os.getenv("FLASK_ENV") == "production":
 app.config["DEV_MODE"] = DEV_MODE
 app.config.setdefault('SESSION_COOKIE_HTTPONLY', True)
 app.config.setdefault('SESSION_COOKIE_SAMESITE', 'Lax')
-app.config.setdefault('SESSION_COOKIE_SECURE', not app.config.get('DEBUG', False))
+# Force Secure on Render (RENDER env var is set automatically) and any non-debug host.
+# Without this, ProxyFix may not resolve X-Forwarded-Proto in time for Flask's cookie
+# writer, causing the Secure flag to be omitted and modern browsers to drop the cookie
+# on HTTPS, which makes every session cookie silently invisible to the browser.
+_on_render = os.getenv('RENDER', '').strip().lower() in ('true', '1', 'yes')
+_force_secure_cookies = _on_render or not app.config.get('DEBUG', False)
+app.config.setdefault('SESSION_COOKIE_SECURE', _force_secure_cookies)
+app.config.setdefault('REMEMBER_COOKIE_SECURE', _force_secure_cookies)
+app.config.setdefault('REMEMBER_COOKIE_HTTPONLY', True)
+app.config.setdefault('REMEMBER_COOKIE_SAMESITE', 'Lax')
 app.permanent_session_lifetime = timedelta(
     seconds=app.config.get('PERMANENT_SESSION_LIFETIME_SECONDS', 60 * 60 * 12)
 )
@@ -11066,7 +11075,11 @@ def api_verify_email(token):
         conn.close()
         verified_user = load_user(str(token_data['user_id']))
         if verified_user:
-            login_user(verified_user, remember=False)
+            # remember=True mirrors the login endpoint: sets a persistent remember_token
+            # cookie in addition to the session cookie so the browser retains auth after
+            # the verify fetch response (session cookies can be dropped by SameSite=Lax
+            # on fetch-based verification flows).
+            login_user(verified_user, remember=True)
         return jsonify({
             'verified': True,
             'user': _user_response_payload(verified_user) if verified_user else None,
@@ -11129,7 +11142,7 @@ def api_onboarding_complete():
         conn.close()
         refreshed_user = load_user(str(current_user.id))
         if refreshed_user:
-            login_user(refreshed_user, remember=False)
+            login_user(refreshed_user, remember=True)
         return jsonify({
             'success': True,
             'user': _user_response_payload(refreshed_user) if refreshed_user else None,

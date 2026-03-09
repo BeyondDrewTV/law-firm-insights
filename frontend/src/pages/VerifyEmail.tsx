@@ -49,23 +49,60 @@ const VerifyEmail = () => {
         return;
       }
 
-      await refreshUser();
-      setView("verified");
+      // Mark verification timestamp so VerifyComplete can skip an extra /me call
       window.localStorage.setItem(VERIFICATION_COMPLETED_KEY, String(Date.now()));
-      transitionTimerRef.current = window.setTimeout(() => {
+
+      // Refresh the in-memory user so AuthContext reflects email_verified=true.
+      // On HTTPS production the browser will accept the new session cookie only if
+      // it carries the Secure flag — which is set correctly after the backend fix.
+      // We call refreshUser() first; if it resolves a logged-in user we go to
+      // /verify-complete (which re-checks /api/auth/me and routes to /onboarding).
+      // If no session was established (e.g. cookie was dropped for any reason),
+      // we redirect to /login with justVerified=true so the user gets a clear
+      // "Email verified — sign in to continue" banner instead of hitting 401s in
+      // the onboarding flow.
+      await refreshUser();
+
+      setView("verified");
+
+      transitionTimerRef.current = window.setTimeout(async () => {
         const email = window.sessionStorage.getItem(STORAGE_EMAIL_KEY) || "";
-        navigate("/verify-complete", {
+
+        // Re-read isLoggedIn from a fresh /api/auth/me rather than the stale
+        // closure value — refreshUser() may have just updated AuthContext.
+        // We do a lightweight check via the user object that refreshUser populated.
+        // If still no session, send to login with the verified banner.
+        try {
+          const meResp = await fetch("/api/auth/me", {
+            method: "GET",
+            credentials: "include",
+          });
+
+          if (meResp.ok) {
+            const meData = (await meResp.json()) as { user?: { email_verified?: boolean } };
+            if (meData.user) {
+              // Session is live — proceed to verify-complete which will route to /onboarding
+              navigate("/verify-complete", {
+                replace: true,
+                state: { justVerified: true, email },
+              });
+              return;
+            }
+          }
+        } catch {
+          // Network error during the check — fall through to login redirect
+        }
+
+        // No active session after verification: redirect to login with clear banner.
+        navigate("/login", {
           replace: true,
-          state: {
-            justVerified: true,
-            email,
-          },
+          state: { justVerified: true, email },
         });
       }, REDIRECT_DELAY_MS);
     };
 
     void run();
-  }, [navigate, token]);
+  }, [navigate, refreshUser, token]);
 
   return (
     <PageLayout>
