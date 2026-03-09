@@ -11031,37 +11031,6 @@ def api_verify_email(token):
         )
 
 
-@app.route('/api/admin/verify-all-users', methods=['GET'])
-@csrf.exempt
-def admin_verify_all_users():
-    """ONE-TIME: Force-verify all users. Protected by ADMIN_VERIFY_TOKEN env var."""
-    expected = (os.environ.get('ADMIN_VERIFY_TOKEN') or '').strip()
-    provided = (request.args.get('token') or '').strip()
-    if not expected or provided != expected:
-        return jsonify({'error': 'Forbidden'}), 403
-    try:
-        conn = db_connect()
-        c = conn.cursor()
-        now_iso = datetime.now(timezone.utc).isoformat()
-        c.execute('UPDATE users SET email_verified = 1, is_verified = 1')
-        updated = c.rowcount
-        # Also insert into user_email_verification for all users
-        c.execute('SELECT id FROM users')
-        user_ids = [row[0] for row in c.fetchall()]
-        for uid in user_ids:
-            c.execute(
-                '''INSERT INTO user_email_verification (user_id, verified_at)
-                   VALUES (?, ?)
-                   ON CONFLICT(user_id) DO UPDATE SET verified_at = excluded.verified_at''',
-                (uid, now_iso),
-            )
-        conn.commit()
-        conn.close()
-        return jsonify({'success': True, 'users_verified': updated}), 200
-    except Exception as exc:
-        return jsonify({'error': str(exc)}), 500
-
-
 @app.route('/api/onboarding/complete', methods=['POST'])
 @login_required
 def api_onboarding_complete():
