@@ -11031,6 +11031,46 @@ def api_verify_email(token):
         )
 
 
+@app.route('/api/admin/set-plan', methods=['GET'])
+@csrf.exempt
+def admin_set_plan():
+    """ONE-TIME testing helper: set plan for a user's firm. Remove after testing."""
+    expected = (os.environ.get('ADMIN_VERIFY_TOKEN') or '').strip()
+    provided = (request.args.get('token') or '').strip()
+    if not expected or provided != expected:
+        return jsonify({'error': 'Forbidden'}), 403
+    email = (request.args.get('email') or '').strip().lower()
+    plan = (request.args.get('plan') or '').strip().lower()
+    valid_plans = {'free', 'team', 'firm', 'professional', 'leadership', 'trial'}
+    if not email or plan not in valid_plans:
+        return jsonify({'error': f'Provide email and plan ({", ".join(sorted(valid_plans))})'}), 400
+    try:
+        conn = db_connect()
+        c = conn.cursor()
+        # Update the firm linked to this user
+        c.execute('SELECT id FROM users WHERE email = ?', (email,))
+        row = c.fetchone()
+        if not row:
+            conn.close()
+            return jsonify({'error': f'No user found with email {email}'}), 404
+        user_id = row[0]
+        # Update firms table via firm_users join
+        c.execute('''
+            UPDATE firms SET plan = ?
+            WHERE id IN (
+                SELECT firm_id FROM firm_users WHERE user_id = ?
+            )
+        ''', (plan, user_id))
+        firms_updated = c.rowcount
+        # Also update subscription_type on the user directly
+        c.execute('UPDATE users SET subscription_type = ? WHERE id = ?', (plan, user_id))
+        conn.commit()
+        conn.close()
+        return jsonify({'success': True, 'email': email, 'plan': plan, 'firms_updated': firms_updated}), 200
+    except Exception as exc:
+        return jsonify({'error': str(exc)}), 500
+
+
 @app.route('/api/onboarding/complete', methods=['POST'])
 @login_required
 def api_onboarding_complete():
