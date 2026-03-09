@@ -8,7 +8,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { pricingPlans, type PricingPlanId } from "@/data/pricingPlans";
 
 const validPlans: BillingPlan[] = ["team", "firm"];
-const legacyPlans = ["onetime", "monthly", "annual"] as const;
 const focusedPlanIds: PricingPlanId[] = ["team", "firm"];
 
 const Pricing = () => {

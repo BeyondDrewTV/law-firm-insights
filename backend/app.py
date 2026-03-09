@@ -8696,7 +8696,77 @@ def stripe_webhook():
 
 
 
-    if event_type in ('customer.subscription.deleted', 'customer.subscription.updated'):
+    def _price_id_to_plan(price_id, recurring_interval):
+        """Map a Stripe price ID (or interval fallback) to (subscription_type, firm_plan)."""
+        if price_id == app.config.get('STRIPE_PRICE_ID_FIRM_ANNUAL'):
+            return 'firm_annual', FIRM_PLAN_FIRM
+        if price_id == app.config.get('STRIPE_PRICE_ID_FIRM_MONTHLY'):
+            return 'firm_monthly', FIRM_PLAN_FIRM
+        if price_id == app.config.get('STRIPE_PRICE_ID_TEAM_ANNUAL'):
+            return 'team_annual', FIRM_PLAN_TEAM
+        if price_id == app.config.get('STRIPE_PRICE_ID_TEAM_MONTHLY'):
+            return 'team_monthly', FIRM_PLAN_TEAM
+        # Interval fallback (e.g. webhook fires before config is updated)
+        if recurring_interval == 'year':
+            return 'team_annual', FIRM_PLAN_TEAM
+        if recurring_interval == 'month':
+            return 'team_monthly', FIRM_PLAN_TEAM
+        return None, None
+
+    if event_type == 'checkout.session.completed':
+        # Primary plan activation — fires immediately when customer completes checkout.
+        customer_id = obj.get('customer')
+        subscription_id = obj.get('subscription')
+        meta = obj.get('metadata') or {}
+        user_id_meta = meta.get('user_id') or obj.get('client_reference_id')
+
+        if subscription_id and (customer_id or user_id_meta):
+            conn = db_connect()
+            c = conn.cursor()
+            if user_id_meta:
+                c.execute('SELECT id FROM users WHERE id = ?', (user_id_meta,))
+            else:
+                c.execute('SELECT id FROM users WHERE stripe_customer_id = ?', (customer_id,))
+            user_row = c.fetchone()
+
+            if user_row:
+                uid = int(user_row[0])
+                try:
+                    sub = stripe.Subscription.retrieve(subscription_id)
+                    price_id = (
+                        (sub.get('items', {}).get('data') or [{}])[0]
+                        .get('price', {}).get('id')
+                    )
+                    interval = (
+                        (sub.get('items', {}).get('data') or [{}])[0]
+                        .get('price', {}).get('recurring', {}).get('interval')
+                    )
+                    subscription_type, firm_plan = _price_id_to_plan(price_id, interval)
+                except Exception:
+                    app.logger.exception('checkout.session.completed: failed to retrieve subscription %s', subscription_id)
+                    subscription_type, firm_plan = None, None
+
+                if subscription_type and firm_plan:
+                    c.execute(
+                        '''
+                        UPDATE users
+                        SET subscription_status = 'active',
+                            subscription_type = ?,
+                            stripe_subscription_id = ?
+                        WHERE id = ?
+                        ''',
+                        (subscription_type, subscription_id, uid),
+                    )
+                    _set_firm_plan_for_user(c, uid, firm_plan)
+                    app.logger.info(
+                        'checkout.session.completed: activated %s -> %s for user %s',
+                        subscription_id, firm_plan, uid,
+                    )
+
+            conn.commit()
+            conn.close()
+
+    elif event_type in ('customer.subscription.deleted', 'customer.subscription.updated'):
 
         subscription_id = obj.get('id')
         status = obj.get('status')
@@ -8720,25 +8790,17 @@ def stripe_webhook():
                 for user_row in user_rows:
                     _set_firm_plan_for_user(c, int(user_row[0]), FIRM_PLAN_FREE)
             elif status == 'active':
-                recurring_interval = (
-                    ((obj.get('items') or {}).get('data') or [{}])[0]
-                    .get('price', {})
-                    .get('recurring', {})
-                    .get('interval')
-                )
                 stripe_price_id = (
                     ((obj.get('items') or {}).get('data') or [{}])[0]
-                    .get('price', {})
-                    .get('id')
+                    .get('price', {}).get('id')
                 )
-                if stripe_price_id == app.config.get('STRIPE_PRICE_ID_ANNUAL') or recurring_interval == 'year':
-                    subscription_type = 'annual'
-                elif stripe_price_id == app.config.get('STRIPE_PRICE_ID_MONTHLY') or recurring_interval == 'month':
-                    subscription_type = 'monthly'
-                else:
-                    subscription_type = None
+                recurring_interval = (
+                    ((obj.get('items') or {}).get('data') or [{}])[0]
+                    .get('price', {}).get('recurring', {}).get('interval')
+                )
+                subscription_type, firm_plan = _price_id_to_plan(stripe_price_id, recurring_interval)
 
-                if subscription_type:
+                if subscription_type and firm_plan:
                     c.execute(
                         '''
                         UPDATE users
@@ -8748,7 +8810,6 @@ def stripe_webhook():
                         ''',
                         (subscription_type, subscription_id),
                     )
-                    firm_plan = FIRM_PLAN_FIRM if subscription_type == 'annual' else FIRM_PLAN_TEAM
                     for user_row in user_rows:
                         _set_firm_plan_for_user(c, int(user_row[0]), firm_plan)
                 else:
@@ -8763,8 +8824,6 @@ def stripe_webhook():
 
             conn.commit()
             conn.close()
-
-
 
     return '', 200
 
@@ -10118,16 +10177,19 @@ def _ensure_stripe_customer_id():
 def _normalize_checkout_plan(raw_plan):
     requested_plan = str(raw_plan or '').strip().lower()
     plan_aliases = {
-        'team': 'monthly',
-        'firm': 'annual',
-        'professional': 'monthly',
-        'leadership': 'annual',
-        'pro_monthly': 'monthly',
-        'pro_annual': 'annual',
-        'onetime': 'onetime',
-        'one_time': 'onetime',
-        'monthly': 'monthly',
-        'annual': 'annual',
+        'team_monthly': 'team_monthly',
+        'team_annual': 'team_annual',
+        'firm_monthly': 'firm_monthly',
+        'firm_annual': 'firm_annual',
+        # Legacy aliases
+        'team': 'team_monthly',
+        'monthly': 'team_monthly',
+        'professional': 'team_monthly',
+        'pro_monthly': 'team_monthly',
+        'firm': 'firm_annual',
+        'annual': 'firm_annual',
+        'leadership': 'firm_annual',
+        'pro_annual': 'firm_annual',
     }
     return requested_plan, plan_aliases.get(requested_plan)
 
@@ -10143,28 +10205,19 @@ def api_billing_checkout():
 
     requested_plan, plan = _normalize_checkout_plan(payload.get('plan'))
 
-    if plan not in ('onetime', 'monthly', 'annual'):
+    if plan not in ('team_monthly', 'team_annual', 'firm_monthly', 'firm_annual'):
         return jsonify({'success': False, 'error': 'Invalid plan. Choose team or firm.'}), 400
 
-
-
     if not app.config.get('STRIPE_SECRET_KEY'):
-
         return jsonify({'success': False, 'error': 'Billing is not configured on this server.'}), 503
 
-
-
-    if plan == 'onetime':
-
-        price_id = app.config.get('STRIPE_PRICE_ID_ONETIME')
-
-    elif plan == 'annual':
-
-        price_id = app.config.get('STRIPE_PRICE_ID_ANNUAL')
-
-    else:
-
-        price_id = app.config.get('STRIPE_PRICE_ID_MONTHLY')
+    price_id_map = {
+        'team_monthly': app.config.get('STRIPE_PRICE_ID_TEAM_MONTHLY'),
+        'team_annual':  app.config.get('STRIPE_PRICE_ID_TEAM_ANNUAL'),
+        'firm_monthly': app.config.get('STRIPE_PRICE_ID_FIRM_MONTHLY'),
+        'firm_annual':  app.config.get('STRIPE_PRICE_ID_FIRM_ANNUAL'),
+    }
+    price_id = price_id_map.get(plan)
 
 
 
@@ -10200,7 +10253,7 @@ def api_billing_checkout():
 
             line_items=[{'price': price_id, 'quantity': 1}],
 
-            mode='payment' if plan == 'onetime' else 'subscription',
+            mode='subscription',
 
             success_url=success_url,
 
@@ -10241,7 +10294,7 @@ def api_billing_checkout_finalize():
     requested_plan, plan = _normalize_checkout_plan(payload.get('plan'))
 
 
-    if not session_id or plan not in ('onetime', 'monthly', 'annual'):
+    if not session_id or plan not in ('team_monthly', 'team_annual', 'firm_monthly', 'firm_annual'):
         return jsonify({'success': False, 'error': 'Missing session_id or invalid plan.'}), 400
 
 
@@ -10416,7 +10469,10 @@ def api_billing_checkout_finalize():
 
             )
             # Keep firm-level plan in sync immediately after checkout finalize.
-            target_firm_plan = FIRM_PLAN_FIRM if plan == 'annual' else FIRM_PLAN_TEAM
+            if plan in ('firm_monthly', 'firm_annual'):
+                target_firm_plan = FIRM_PLAN_FIRM
+            else:
+                target_firm_plan = FIRM_PLAN_TEAM
             _set_firm_plan_for_user(c, current_user.id, target_firm_plan)
 
 
@@ -10429,7 +10485,7 @@ def api_billing_checkout_finalize():
 
         )
 
-        response_plan = 'team' if plan == 'monthly' else 'firm' if plan == 'annual' else 'onetime'
+        response_plan = 'firm' if plan in ('firm_monthly', 'firm_annual') else 'team'
         return jsonify({'success': True, 'plan': response_plan}), 200
 
     except Exception:

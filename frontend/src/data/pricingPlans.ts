@@ -51,7 +51,7 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     id: "team",
-    planType: "pro_monthly",
+    planType: "team",
     name: "Team",
     audience: "Recurring governance for active small firms",
     price: "$179",
@@ -77,7 +77,7 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     id: "firm",
-    planType: "pro_annual",
+    planType: "firm",
     name: "Firm",
     audience: "Full-platform coverage across practice groups",
     price: "$449",

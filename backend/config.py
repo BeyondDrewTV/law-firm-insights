@@ -180,23 +180,17 @@ class Config:
 
 
     # Stripe Price IDs
-
-    STRIPE_PRICE_ID_ONETIME = os.environ.get('STRIPE_PRICE_ID_ONETIME')
-
-    STRIPE_PRICE_ID_MONTHLY = os.environ.get('STRIPE_PRICE_ID_MONTHLY')
-
-    STRIPE_PRICE_ID_ANNUAL = os.environ.get('STRIPE_PRICE_ID_ANNUAL')
-
-
+    STRIPE_PRICE_ID_TEAM_MONTHLY = os.environ.get('STRIPE_PRICE_ID_TEAM_MONTHLY')
+    STRIPE_PRICE_ID_TEAM_ANNUAL = os.environ.get('STRIPE_PRICE_ID_TEAM_ANNUAL')
+    STRIPE_PRICE_ID_FIRM_MONTHLY = os.environ.get('STRIPE_PRICE_ID_FIRM_MONTHLY')
+    STRIPE_PRICE_ID_FIRM_ANNUAL = os.environ.get('STRIPE_PRICE_ID_FIRM_ANNUAL')
 
     # Pricing
-
     FREE_TRIAL_LIMIT = int(os.environ.get('FREE_TRIAL_LIMIT', 1))
-    ONETIME_REPORT_PRICE = int(os.environ.get('ONETIME_REPORT_PRICE', 49))
-
-    MONTHLY_SUBSCRIPTION_PRICE = int(os.environ.get('MONTHLY_SUBSCRIPTION_PRICE', 129))
-
-    ANNUAL_SUBSCRIPTION_PRICE = int(os.environ.get('ANNUAL_SUBSCRIPTION_PRICE', 1290))
+    TEAM_MONTHLY_PRICE = int(os.environ.get('TEAM_MONTHLY_PRICE', 179))
+    TEAM_ANNUAL_PRICE = int(os.environ.get('TEAM_ANNUAL_PRICE', 1790))
+    FIRM_MONTHLY_PRICE = int(os.environ.get('FIRM_MONTHLY_PRICE', 449))
+    FIRM_ANNUAL_PRICE = int(os.environ.get('FIRM_ANNUAL_PRICE', 4490))
 
     # Mail configuration
 

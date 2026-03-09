@@ -171,28 +171,32 @@ function warnNetworkOnce(key: string, label: string, error: unknown): void {
 
 
 
-export type PlanType = "free" | "one_time" | "pro_monthly" | "pro_annual";
+export type PlanType = "free" | "team" | "firm";
 
 export type BillingPlan = "team" | "firm";
-export type LegacyBillingPlan = "onetime" | "monthly" | "annual";
 
 const normalizePlanType = (rawPlanType: string | null | undefined): PlanType => {
   const value = String(rawPlanType || "free").trim().toLowerCase();
-  if (value === "one_time" || value === "onetime") return "one_time";
-  if (value === "pro_monthly" || value === "monthly" || value === "team" || value === "professional") {
-    return "pro_monthly";
+  if (
+    value === "firm" || value === "firm_monthly" || value === "firm_annual" ||
+    value === "pro_annual" || value === "annual" || value === "leadership"
+  ) {
+    return "firm";
   }
-  if (value === "pro_annual" || value === "annual" || value === "firm" || value === "leadership") {
-    return "pro_annual";
+  if (
+    value === "team" || value === "team_monthly" || value === "team_annual" ||
+    value === "pro_monthly" || value === "monthly" || value === "professional"
+  ) {
+    return "team";
   }
   return "free";
 };
 
 const normalizePlanLabel = (rawLabel: string | null | undefined, planType?: string | null): string => {
   const normalizedType = normalizePlanType(planType || undefined);
-  if (normalizedType === "pro_annual") return "Firm";
-  if (normalizedType === "pro_monthly") return "Team";
-  if (normalizedType === "one_time" || normalizedType === "free") return "Free";
+  if (normalizedType === "firm") return "Firm";
+  if (normalizedType === "team") return "Team";
+  if (normalizedType === "free") return "Free";
 
   const label = String(rawLabel || "").trim().toLowerCase();
   if (!label) return "Free";
@@ -262,7 +266,7 @@ export interface User {
   has_firm_context?: boolean;
   firm_membership_disabled?: boolean;
   username?: string;
-  subscription_type: "trial" | "onetime" | "monthly" | "annual";
+  subscription_type: "trial" | "team_monthly" | "team_annual" | "firm_monthly" | "firm_annual";
 
   is_admin?: boolean;
 
