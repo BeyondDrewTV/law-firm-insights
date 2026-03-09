@@ -206,9 +206,12 @@ const Signup = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="password" className="mb-2 block text-sm font-medium text-slate-900">
+                    <label htmlFor="password" className="mb-1 block text-sm font-medium text-slate-900">
                       Password
                     </label>
+                    {!formData.password && (
+                      <p className="mb-2 text-xs text-slate-500">At least 8 characters — uppercase, lowercase, number, and special character recommended.</p>
+                    )}
                     <div className="relative">
                       <input
                         id="password"
@@ -258,8 +261,19 @@ const Signup = () => {
                     {errors.password && <p className="mt-1 text-xs text-destructive">{errors.password}</p>}
                   </div>
 
-                  <button type="submit" disabled={isSubmitting} className="gov-btn-primary w-full disabled:opacity-50">
-                    {isSubmitting ? "Creating Account..." : "Create Free Account"}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="gov-btn-primary w-full disabled:opacity-60 flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                        Creating your account…
+                      </>
+                    ) : (
+                      "Create Free Account"
+                    )}
                   </button>
                 </form>
 
@@ -294,10 +308,9 @@ const Signup = () => {
                   <button
                     type="button"
                     className="gov-btn-secondary"
-                    onClick={() => void handleResendVerification()}
-                    disabled={isResendingVerification}
+                    onClick={() => navigate("/check-email")}
                   >
-                    {isResendingVerification ? "Resending..." : "Resend Email"}
+                    Resend Email
                   </button>
                 </div>
 

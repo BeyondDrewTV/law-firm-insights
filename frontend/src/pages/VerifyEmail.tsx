@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2 } from "lucide-react";
 
 import PageLayout from "@/components/PageLayout";
 import { verifyEmailToken } from "@/api/authService";
@@ -12,6 +12,25 @@ const TRANSITION_MS = 220;
 const REDIRECT_DELAY_MS = 700;
 const STORAGE_EMAIL_KEY = "pending_verification_email";
 const VERIFICATION_COMPLETED_KEY = "clarion_verification_completed_at";
+
+/** Map raw API error strings → human-readable copy shown in the UI. */
+function humanVerifyError(raw: string): string {
+  const lower = raw.toLowerCase();
+  if (lower.includes("expired") || lower.includes("expir")) {
+    return "This verification link has expired. Links are valid for 24 hours after signup.";
+  }
+  if (lower.includes("already") || lower.includes("used") || lower.includes("already_verified")) {
+    return "This link has already been used. Your email may already be verified — try signing in.";
+  }
+  if (lower.includes("invalid") || lower.includes("not found") || lower.includes("no token")) {
+    return "This verification link is invalid or malformed. Please request a new one.";
+  }
+  if (lower.includes("network") || lower.includes("unable")) {
+    return "We couldn't reach the server to verify your link. Check your connection and try again.";
+  }
+  // Fallback — still friendlier than a raw API string
+  return "We couldn't verify this link. It may have expired or already been used.";
+}
 
 const VerifyEmail = () => {
   const navigate = useNavigate();
@@ -38,14 +57,14 @@ const VerifyEmail = () => {
     const run = async () => {
       if (!token) {
         setView("error");
-        setError("Invalid verification link.");
+        setError("This verification link is missing or incomplete. Please request a new one.");
         return;
       }
 
       const result = await verifyEmailToken(token);
       if (!result.verified) {
         setView("error");
-        setError(result.error || "This verification link is invalid or expired.");
+        setError(humanVerifyError(result.error || ""));
         return;
       }
 
@@ -124,17 +143,28 @@ const VerifyEmail = () => {
                 <p className="mt-2 text-sm text-muted-foreground">{verifiedNextStepLabel}</p>
               </div>
             ) : (
-              <div className="space-y-4 text-center animate-fade-in">
-                <h1 className="text-2xl font-semibold text-foreground">Verification failed</h1>
-                <p className="text-sm text-muted-foreground">{error}</p>
+              <div className="space-y-5 text-center animate-fade-in">
+                <div className="flex justify-center">
+                  <AlertTriangle className="h-10 w-10 text-amber-500" />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-semibold text-foreground">Verification failed</h1>
+                  <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">{error}</p>
+                </div>
                 <div className="flex flex-wrap justify-center gap-2">
-                  <Link to="/check-email" className="gov-btn-secondary">
-                    Return to check email
+                  <Link to="/check-email" className="gov-btn-primary">
+                    Resend verification email
                   </Link>
                   <Link to="/signup" className="gov-btn-secondary">
-                    Back to signup
+                    Start over
                   </Link>
                 </div>
+                <p className="text-xs text-muted-foreground">
+                  Still having trouble?{" "}
+                  <a href="mailto:support@clarionhq.co" className="underline underline-offset-2 hover:text-foreground">
+                    Contact support
+                  </a>
+                </p>
               </div>
             )}
           </div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AlertCircle, CheckCircle2, MailWarning } from "lucide-react";
+import { AlertCircle, CheckCircle2, MailWarning, Mail } from "lucide-react";
 
 import PageLayout from "@/components/PageLayout";
 import { resendVerificationEmail } from "@/api/authService";
@@ -37,6 +37,8 @@ const CheckEmail = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [isResending, setIsResending] = useState(false);
   const [resendMessage, setResendMessage] = useState("");
+  const [resendCooldown, setResendCooldown] = useState(0);
+  const cooldownTimerRef = useRef<number | null>(null);
   const redirectTimerRef = useRef<number | null>(null);
 
   const deliveryUnavailable = verificationStatus.verification_delivery_available === false;
@@ -74,11 +76,15 @@ const CheckEmail = () => {
         window.clearTimeout(redirectTimerRef.current);
         redirectTimerRef.current = null;
       }
+      if (cooldownTimerRef.current !== null) {
+        window.clearInterval(cooldownTimerRef.current);
+        cooldownTimerRef.current = null;
+      }
     };
   }, [navigate]);
 
   const handleResend = async () => {
-    if (!pendingEmail || isResending || deliveryUnavailable) return;
+    if (!pendingEmail || isResending || deliveryUnavailable || resendCooldown > 0) return;
     setIsResending(true);
     setResendMessage("");
     const result = await resendVerificationEmail(pendingEmail);
@@ -99,9 +105,23 @@ const CheckEmail = () => {
       result.success
         ? result.verification_delivery_available === false
           ? result.verification_delivery_error || `Email delivery is unavailable right now. Contact ${result.support_email || supportEmail}.`
-          : `Resend request received. Check ${pendingEmail} if delivery is available for this deployment.`
+          : `Verification email resent to ${pendingEmail}. Check your spam folder if it doesn't arrive within a minute.`
         : result.error || "Unable to resend verification email right now.",
     );
+
+    if (result.success) {
+      // Start 60-second cooldown to prevent rapid re-sends
+      setResendCooldown(60);
+      let remaining = 60;
+      cooldownTimerRef.current = window.setInterval(() => {
+        remaining -= 1;
+        setResendCooldown(remaining);
+        if (remaining <= 0 && cooldownTimerRef.current !== null) {
+          window.clearInterval(cooldownTimerRef.current);
+          cooldownTimerRef.current = null;
+        }
+      }, 1000);
+    }
   };
 
   return (
@@ -113,22 +133,32 @@ const CheckEmail = () => {
               <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-700">
                 Clarion Verification
               </span>
-              <h1 className="text-3xl font-semibold text-slate-900">Finish verifying your Clarion account.</h1>
+              <div className="flex justify-center">
+                <Mail className="h-10 w-10 text-slate-400" />
+              </div>
+              <h1 className="text-3xl font-semibold text-slate-900">Check your inbox.</h1>
               <p className="text-sm text-slate-700">
                 {deliveryUnavailable ? (
                   "Email verification is required, but delivery is currently unavailable in this deployment."
                 ) : verificationStatus.verification_sent && pendingEmail ? (
                   <>
-                    Verification link sent to <span className="font-semibold text-slate-900">{pendingEmail}</span>
+                    We sent a verification link to{" "}
+                    <span className="font-semibold text-slate-900">{pendingEmail}</span>.
                   </>
                 ) : pendingEmail ? (
                   <>
-                    Open the inbox for <span className="font-semibold text-slate-900">{pendingEmail}</span> and click the verification link to activate your workspace.
+                    Open the inbox for <span className="font-semibold text-slate-900">{pendingEmail}</span> and click
+                    the verification link to activate your workspace.
                   </>
                 ) : (
                   "Open your inbox and click the verification link to activate your workspace."
                 )}
               </p>
+              {!deliveryUnavailable && (
+                <p className="text-xs text-slate-500">
+                  The link expires in 24 hours. If you don't see it, check your spam or junk folder.
+                </p>
+              )}
             </div>
 
             {deliveryUnavailable ? (
@@ -188,14 +218,24 @@ const CheckEmail = () => {
                     type="button"
                     className="gov-btn-secondary"
                     onClick={() => void handleResend()}
-                    disabled={!pendingEmail || isResending || deliveryUnavailable}
+                    disabled={!pendingEmail || isResending || deliveryUnavailable || resendCooldown > 0}
                   >
-                    {isResending ? "Resending..." : "Resend verification email"}
+                    {isResending
+                      ? "Resending…"
+                      : resendCooldown > 0
+                      ? `Resend again in ${resendCooldown}s`
+                      : "Resend verification email"}
                   </button>
                   <Link to="/login" className="gov-btn-secondary">
                     Return to sign in
                   </Link>
                 </div>
+                <p className="mt-3 text-center text-xs text-slate-500">
+                  Used a different email?{" "}
+                  <Link to="/signup" className="underline underline-offset-2 hover:text-slate-700">
+                    Go back to sign up
+                  </Link>
+                </p>
                 {resendMessage ? <p className="mt-3 text-xs text-slate-600">{resendMessage}</p> : null}
               </div>
             ) : null}
