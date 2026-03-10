@@ -1,4 +1,4 @@
-"""
+﻿"""
 services/benchmark_phrase_miner.py
 
 Candidate phrase mining from benchmark disagreements.
@@ -74,7 +74,7 @@ def mine_phrase_candidates(
       ...
     ]
     """
-    # key → {count, evidence_span (first seen), source_types, snippets}
+    # key -> {count, evidence_span (first seen), source_types, snippets}
     grouped: Dict[tuple, Dict[str, Any]] = defaultdict(lambda: {
         "count": 0,
         "evidence_span": "",
