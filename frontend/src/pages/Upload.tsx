@@ -7,6 +7,8 @@ import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/contexts/AuthContext";
 import { formatFreshnessLine } from "@/utils/freshnessStamp";
 import { resolvePlanLimits } from "@/config/planLimits";
+import UploadUsageBar from "@/components/billing/UploadUsageBar";
+import { formatApiDate } from "@/lib/dateTime";
 
 type HeaderPreview = {
   detectedHeaders: string[];
@@ -140,6 +142,10 @@ const Upload = () => {
   const planLimits = resolvePlanLimits(currentPlan);
   const maxReviewsPerUpload = planLimits.maxReviewsPerUpload;
   const maxReportsPerMonth = planLimits.maxReportsPerMonth;
+  // Human-readable reset date for the usage bar, e.g. "April 1, 2026"
+  const resetLabel = credits?.next_reset
+    ? formatApiDate(credits.next_reset, { month: "long", day: "numeric", year: "numeric" }, "")
+    : "";
 
   const getFileKey = (file: File) => `${file.name}:${file.size}:${file.lastModified}`;
 
@@ -526,8 +532,6 @@ const Upload = () => {
     { label: "Rating (1-5)", value: headerPreview?.mapping.rating || "Not found" },
     { label: "Client comment", value: headerPreview?.mapping.review_text || "Not found" },
   ];
-  const currentPlanLabel = (currentPlan?.firmPlan || "free").toString().toUpperCase();
-
   const startAnotherUpload = () => {
     setSuccessMessage("");
     setReportId(null);
@@ -794,36 +798,22 @@ const Upload = () => {
                 <button type="button" onClick={downloadTemplate} className="gov-cta-secondary w-full">
                   Download CSV Template
                 </button>
-                <div className="grid gap-2 text-xs text-neutral-800">
-                  <div className="rounded border border-neutral-200 bg-white px-3 py-2">
-                    <span className="font-semibold text-neutral-900">Your Plan:</span> {currentPlanLabel}
-                  </div>
-                  <div className="rounded border border-neutral-200 bg-white px-3 py-2">
-                    <span className="font-semibold text-neutral-900">Upload Limit:</span> {maxReviewsPerUpload ?? "Unlimited"} reviews
-                  </div>
-                  <div className="rounded border border-neutral-200 bg-white px-3 py-2">
-                    <span className="font-semibold text-neutral-900">Reports This Month:</span> {reportsUsedThisMonth}/{maxReportsPerMonth ?? "Unlimited"}
-                  </div>
+
+                {/* ── Plan usage bar (replaces raw plan/limit text) ── */}
+                <UploadUsageBar
+                  firmPlan={currentPlan?.firmPlan}
+                  used={reportsUsedThisMonth}
+                  cap={maxReportsPerMonth}
+                  isSubscription={Boolean(credits?.has_active_subscription)}
+                  resetLabel={resetLabel}
+                  isLoading={creditsLoading}
+                />
+
+                {/* Upload limit line — kept as static reference */}
+                <div className="rounded border border-neutral-200 bg-white px-3 py-2 text-xs text-neutral-800">
+                  <span className="font-semibold text-neutral-900">Reviews per upload:</span>{" "}
+                  {maxReviewsPerUpload ?? "Unlimited"}
                 </div>
-                {!creditsLoading && credits && (
-                  <p className="text-xs text-neutral-700">
-                    Reports Remaining:{" "}
-                    {credits.has_active_subscription
-                      ? "Unlimited (subscription)"
-                      : `${credits.free_reports_remaining + credits.paid_reports_remaining} total`}
-                    {!credits.has_active_subscription && (
-                      <span className="block mt-1">
-                        Free Remaining This Month: {credits.free_reports_remaining} (resets {formatResetDate(credits.next_reset)})
-                      </span>
-                    )}
-                    <span className="block mt-1">
-                      Monthly Reports Used: {reportsUsedThisMonth}/{maxReportsPerMonth ?? "Unlimited"}
-                    </span>
-                    <span className="block mt-1">
-                      Review Upload Limit: {maxReviewsPerUpload ?? "Unlimited"} reviews per upload
-                    </span>
-                  </p>
-                )}
               </GovSectionCard>
 
               <CollapsibleCard title="Before you upload" summary="A quick checklist for a smoother first pass.">
