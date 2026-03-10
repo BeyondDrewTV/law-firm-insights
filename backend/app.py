@@ -17241,8 +17241,15 @@ def handle_csrf_error(error):
 # Mounted at /internal/benchmark/ — isolated from all production API contracts.
 # Protected by INTERNAL_BENCHMARK_SECRET env var (Bearer token).
 # Remove or disable after launch by unsetting INTERNAL_BENCHMARK_SECRET.
+#
+# CSRF exemption: these routes are called by non-browser clients using
+# Authorization: Bearer <INTERNAL_BENCHMARK_SECRET>. They are never submitted
+# via browser forms and must not be subject to Flask-WTF CSRF token checks.
+# The bearer-token gate in _is_authorised() is the sole access control.
+# All normal browser/form routes and CSRF behaviour are unaffected.
 from routes.internal_benchmark import benchmark_bp
 app.register_blueprint(benchmark_bp)
+csrf.exempt(benchmark_bp)
 
 # ===== APPLICATION ENTRY POINT =====
 
