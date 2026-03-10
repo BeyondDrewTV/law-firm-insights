@@ -7,6 +7,7 @@ import { ActionColumnSkeleton } from "@/components/governance/skeletons";
 
 import {
   createReportAction,
+  deleteReportAction,
   getFirmActions,
   getReports,
   type ReportActionItem,
@@ -303,6 +304,23 @@ const ExecutionPage = () => {
     closeCreateActionModal();
   };
 
+  const handleDeleteAction = async (actionId: number) => {
+    const target = actions.find((a) => a.id === actionId);
+    if (!target) return;
+    const reportId = Number(target.report_id || 0);
+    if (!reportId) {
+      toast.error("Unable to delete: action has no linked report.");
+      return;
+    }
+    const result = await deleteReportAction(reportId, actionId);
+    if (!result.success) {
+      toast.error(result.error || "Unable to delete action.");
+      return;
+    }
+    setActions((prev) => prev.filter((a) => a.id !== actionId));
+    toast.success("Action deleted.");
+  };
+
   return (
       <PageWrapper
         eyebrow="Follow-through"
@@ -543,25 +561,25 @@ const ExecutionPage = () => {
               <div className="space-y-4">
                 <h2 className="text-lg font-medium text-neutral-900">Open Actions</h2>
                 {tabGrouped.open.map((action) => (
-                  <ActionCard key={`open-${action.id}`} action={action} />
+                  <ActionCard key={`open-${action.id}`} action={action} onDelete={handleDeleteAction} />
                 ))}
               </div>
               <div className="space-y-4">
                 <h2 className="text-lg font-medium text-neutral-900">In Progress</h2>
                 {tabGrouped.inProgress.map((action) => (
-                  <ActionCard key={`progress-${action.id}`} action={action} />
+                  <ActionCard key={`progress-${action.id}`} action={action} onDelete={handleDeleteAction} />
                 ))}
               </div>
               <div className="space-y-4">
                 <h2 className="text-lg font-medium text-neutral-900">Blocked</h2>
                 {tabGrouped.blocked.map((action) => (
-                  <ActionCard key={`blocked-${action.id}`} action={action} />
+                  <ActionCard key={`blocked-${action.id}`} action={action} onDelete={handleDeleteAction} />
                 ))}
               </div>
               <div className="space-y-4">
                 <h2 className="text-lg font-medium text-neutral-900">Completed</h2>
                 {tabGrouped.completed.map((action) => (
-                  <ActionCard key={`done-${action.id}`} action={action} />
+                  <ActionCard key={`done-${action.id}`} action={action} onDelete={handleDeleteAction} />
                 ))}
               </div>
             </div>
