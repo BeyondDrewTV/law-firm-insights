@@ -50,6 +50,8 @@ from services.benchmark_engine import (
 )
 from services.benchmark_comparator import classify_disagreements
 from services.benchmark_report import generate_calibration_report
+from services.benchmark_exporter import export_benchmark_run
+from services.benchmark_phrase_miner import mine_phrase_candidates
 from data.benchmark_fixtures import BENCHMARK_FIXTURES
 
 logger = logging.getLogger("internal_benchmark")
@@ -187,10 +189,23 @@ def run_single():
         logger.exception("benchmark /single comparator error")
         disagreements = []
 
+    export_path = None
+    if body.get("export_report"):
+        try:
+            export_path = export_benchmark_run(
+                calibration_report={"single_run": True},
+                benchmark_results=[result],
+                disagreement_batches=[disagreements],
+                label=str(body.get("export_label") or "single"),
+            )
+        except Exception as exc:
+            logger.exception("benchmark /single export error")
+
     return jsonify({
         "success": True,
         "benchmark_result": result,
         "disagreements": disagreements,
+        "export_path": export_path,
     })
 
 
@@ -310,9 +325,24 @@ def run_batch():
         logger.exception("benchmark /batch report generation error")
         calibration_report = {"error": str(exc)}
 
+    export_path = None
+    if body.get("export_report"):
+        try:
+            phrase_candidates = mine_phrase_candidates(benchmark_results, disagreement_batches)
+            export_path = export_benchmark_run(
+                calibration_report=calibration_report,
+                benchmark_results=benchmark_results,
+                disagreement_batches=disagreement_batches,
+                phrase_candidates=phrase_candidates,
+                label=str(body.get("export_label") or "batch"),
+            )
+        except Exception as exc:
+            logger.exception("benchmark /batch export error")
+
     return jsonify({
         "success": True,
         "total_reviews": len(benchmark_results),
         "results": output_rows,
         "calibration_report": calibration_report,
+        "export_path": export_path,  # None unless export_report=true was requested
     })
