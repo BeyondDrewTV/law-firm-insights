@@ -38,6 +38,8 @@ import logging
 from collections import Counter, defaultdict
 from typing import Any, Dict, List
 
+from services.benchmark_phrase_miner import mine_phrase_candidates
+
 logger = logging.getLogger("benchmark_report")
 
 
@@ -71,6 +73,19 @@ def generate_calibration_report(
         r.get("ai_benchmark") and
         not r["ai_benchmark"].get("skipped") and
         not r["ai_benchmark"].get("error")
+    )
+
+    ai_invalid_count = sum(
+        1 for r in benchmark_results
+        if r.get("ai_benchmark") and (
+            r["ai_benchmark"].get("invalid_schema") or
+            r["ai_benchmark"].get("parse_error") or
+            r["ai_benchmark"].get("provider_error")
+        )
+    )
+    ai_item_invalid_total = sum(
+        (r.get("ai_benchmark") or {}).get("ai_item_invalid_count", 0)
+        for r in benchmark_results
     )
 
     # Flatten all disagreement records with their review index attached
@@ -264,6 +279,55 @@ def generate_calibration_report(
         if total_reviews > 0 else 0.0
     )
 
+    # ----------------------------------------------------------------
+    # Top disagreements by priority (6b)
+    # ----------------------------------------------------------------
+    top_disagreements_by_priority = sorted(
+        [
+            {
+                "review_idx": rec["_review_idx"],
+                "priority": rec.get("disagreement_priority", 1),
+                "disagreement_type": rec["disagreement_type"],
+                "theme": rec["theme"],
+                "deterministic_polarity": rec.get("deterministic_polarity"),
+                "ai_polarity": rec.get("ai_polarity"),
+                "deterministic_phrase": rec.get("deterministic_phrase"),
+                "ai_evidence_span": rec.get("ai_evidence_span"),
+                "detail": rec.get("detail", ""),
+                "severity_flag": rec.get("severity_flag", False),
+                "review_snippet": (
+                    benchmark_results[rec["_review_idx"]].get("review_text") or ""
+                )[:150],
+            }
+            for rec in all_records
+        ],
+        key=lambda x: (-x["priority"], x["review_idx"]),
+    )[:50]  # cap at 50 to keep payload reasonable
+
+    # ----------------------------------------------------------------
+    # Manual review queue — priority ≥ 3 (6c)
+    # ----------------------------------------------------------------
+    manual_review_queue = [
+        rec for rec in top_disagreements_by_priority
+        if rec["priority"] >= 3
+    ]
+
+    # ----------------------------------------------------------------
+    # Phrase mining candidates (6d)
+    # ----------------------------------------------------------------
+    phrase_mining_candidates = mine_phrase_candidates(benchmark_results, disagreement_batches)
+
+    # ----------------------------------------------------------------
+    # Theme disagreement rates (6e)
+    # ----------------------------------------------------------------
+    theme_disagreement_rates = {
+        theme: {
+            "disagreement_count": count,
+            "rate": round(count / ai_run_count, 4) if ai_run_count > 0 else 0.0,
+        }
+        for theme, count in by_theme.most_common()
+    }
+
     return {
         "summary": {
             "total_reviews": total_reviews,
@@ -272,6 +336,8 @@ def generate_calibration_report(
             "total_disagreements": total_disagreements,
             "zero_disagreement_reviews": zero_disagreement_count,
             "agreement_rate": agreement_rate,
+            "ai_invalid_response_count": ai_invalid_count,
+            "ai_item_invalid_total": ai_item_invalid_total,
         },
         "disagreement_by_type": dict(by_type.most_common()),
         "disagreement_by_theme": dict(by_theme.most_common()),
@@ -282,4 +348,8 @@ def generate_calibration_report(
         "candidate_phrase_additions": candidate_phrase_additions,
         "candidate_negation_guards": candidate_negation_guards,
         "reviews_needing_inspection": needs_inspection,
+        "top_disagreements_by_priority": top_disagreements_by_priority,
+        "manual_review_queue": manual_review_queue,
+        "phrase_mining_candidates": phrase_mining_candidates,
+        "theme_disagreement_rates": theme_disagreement_rates,
     }
