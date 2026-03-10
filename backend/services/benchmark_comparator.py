@@ -74,6 +74,55 @@ def _ai_themes_by_id(ai_benchmark: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
     return out
 
 
+def _score_priority(
+    disagreement_type: str,
+    det_polarity: Optional[str],
+    ai_polarity: Optional[str],
+    ai_confidence: Optional[str],
+    severity_flag: bool,
+) -> int:
+    """
+    Assign a calibration priority level (1–4) to a disagreement record.
+
+    Priority meaning:
+      4 = severe production-risk (missed severe phrase, severe false positive,
+          high-confidence contradiction)
+      3 = important calibration issue (wrong theme, wrong severity,
+          likely context guard failure)
+      2 = moderate disagreement (polarity mismatch, mixed-sentiment ambiguity)
+      1 = minor / low-confidence edge case
+
+    This is purely rule-based and deterministic.
+    """
+    # Priority 4: severe production risk
+    if disagreement_type == "missed_severe_phrase":
+        return 4
+    if severity_flag and ai_confidence == "high":
+        return 4
+    if (
+        disagreement_type == "wrong_polarity" and
+        "severe_negative" in (det_polarity or "", ai_polarity or "")
+    ):
+        return 4
+
+    # Priority 3: important calibration
+    if disagreement_type in ("likely_context_guard_failure", "wrong_severity"):
+        return 3
+    if disagreement_type == "missing_theme" and (ai_polarity or "") in ("negative", "severe_negative"):
+        return 3
+    if severity_flag:
+        return 3
+
+    # Priority 2: moderate
+    if disagreement_type in ("wrong_polarity", "ambiguity_or_mixed_sentiment"):
+        return 2
+    if disagreement_type in ("extra_theme", "likely_false_positive"):
+        return 2
+
+    # Priority 1: minor / low-confidence edge case
+    return 1
+
+
 def _make_record(
     disagreement_type: str,
     theme: str,
@@ -84,6 +133,7 @@ def _make_record(
     ai_evidence: Optional[str] = None,
     detail: str = "",
     severity_flag: bool = False,
+    priority: int = 1,
 ) -> Dict[str, Any]:
     return {
         "disagreement_type": disagreement_type,
@@ -94,6 +144,7 @@ def _make_record(
         "ai_evidence_span": ai_evidence,
         "detail": detail,
         "severity_flag": severity_flag,
+        "disagreement_priority": priority,
     }
 
 
@@ -118,6 +169,14 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
     if ai_benchmark.get("error"):
         logger.debug("benchmark_comparator: skipping comparison — AI error: %s", ai_benchmark["error"])
         return []
+    if ai_benchmark.get("invalid_schema") or ai_benchmark.get("parse_error") or ai_benchmark.get("provider_error"):
+        logger.debug(
+            "benchmark_comparator: skipping comparison — AI flags: invalid_schema=%s parse_error=%s provider_error=%s",
+            ai_benchmark.get("invalid_schema"),
+            ai_benchmark.get("parse_error"),
+            ai_benchmark.get("provider_error"),
+        )
+        return []
 
     rating_prior = deterministic.get("rating_prior", "neutral")
 
@@ -135,6 +194,7 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
         # Case 1: AI found it, deterministic did not
         # ----------------------------------------------------------------
         if det_hit is None and ai_hit is not None:
+            sf = ai_hit.get("polarity") == "severe_negative"
             records.append(_make_record(
                 "missing_theme",
                 theme,
@@ -146,7 +206,14 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
                     f"(confidence={ai_hit.get('confidence')}); "
                     "no deterministic phrase matched."
                 ),
-                severity_flag=ai_hit.get("polarity") == "severe_negative",
+                severity_flag=sf,
+                priority=_score_priority(
+                    "missing_theme",
+                    det_polarity=None,
+                    ai_polarity=ai_hit.get("polarity"),
+                    ai_confidence=ai_hit.get("confidence"),
+                    severity_flag=sf,
+                ),
             ))
             continue
 
@@ -186,6 +253,7 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
                     "AI did not tag this theme."
                 )
 
+            sf2 = det_polarity == "severe_negative"
             records.append(_make_record(
                 rec_type,
                 theme,
@@ -193,7 +261,14 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
                 ai_polarity=None,
                 det_phrase=det_hit.get("matched_phrase"),
                 detail=detail,
-                severity_flag=det_polarity == "severe_negative",
+                severity_flag=sf2,
+                priority=_score_priority(
+                    rec_type,
+                    det_polarity=det_polarity,
+                    ai_polarity=None,
+                    ai_confidence=None,
+                    severity_flag=sf2,
+                ),
             ))
             continue
 
@@ -244,6 +319,13 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
                     ai_evidence=ai_hit.get("evidence_span"),
                     detail=detail,
                     severity_flag=severity_flag,
+                    priority=_score_priority(
+                        rec_type,
+                        det_polarity=det_polarity,
+                        ai_polarity=ai_polarity,
+                        ai_confidence=ai_hit.get("confidence"),
+                        severity_flag=severity_flag,
+                    ),
                 ))
 
             elif (
@@ -278,6 +360,7 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
                         f"AI evidence: '{ai_hit.get('evidence_span')}'"
                     )
 
+                sf3 = "severe_negative" in (det_polarity, ai_polarity)
                 records.append(_make_record(
                     rec_type,
                     theme,
@@ -286,8 +369,13 @@ def classify_disagreements(benchmark_result: Dict[str, Any]) -> List[Dict[str, A
                     det_phrase=det_hit.get("matched_phrase"),
                     ai_evidence=ai_hit.get("evidence_span"),
                     detail=detail,
-                    severity_flag=(
-                        "severe_negative" in (det_polarity, ai_polarity)
+                    severity_flag=sf3,
+                    priority=_score_priority(
+                        rec_type,
+                        det_polarity=det_polarity,
+                        ai_polarity=ai_polarity,
+                        ai_confidence=ai_hit.get("confidence"),
+                        severity_flag=sf3,
                     ),
                 ))
 

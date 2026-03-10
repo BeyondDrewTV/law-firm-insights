@@ -493,6 +493,19 @@ def _tokenize(text: str) -> List[str]:
     return re.findall(r"[a-z']+", text.lower())
 
 
+def _split_sentences(text: str) -> List[str]:
+    """
+    Split review text into sentences/clauses for per-sentence context guarding.
+
+    Splits on: . ! ? followed by whitespace, and on semicolons.
+    Keeps each sentence non-empty. This is intentionally lightweight — we do
+    not need NLP-quality splitting; we need clause-level negation/contrast
+    isolation so guards do not bleed across unrelated clauses.
+    """
+    parts = re.split(r'(?<=[.!?])\s+|;\s*', text)
+    return [p.strip() for p in parts if p.strip()]
+
+
 def _check_negation(tokens: List[str], phrase_start_idx: int) -> bool:
     """Return True if a negation token appears within NEGATION_WINDOW tokens before phrase_start_idx."""
     window_start = max(0, phrase_start_idx - NEGATION_WINDOW)
@@ -536,6 +549,12 @@ def score_review_deterministic(
     """
     Run the deterministic theme tagger over a single review.
 
+    # Sentence/clause segmentation:
+    # The review is split into sentences before phrase matching so that negation
+    # and contrast guards are evaluated against the local clause, not the full
+    # review. This prevents a negation in one clause from incorrectly suppressing
+    # a phrase hit in an unrelated clause.
+
     Returns:
     {
       "themes": [
@@ -559,86 +578,96 @@ def score_review_deterministic(
       "review_text_length":     int,
     }
     """
-    text_lower = review_text.lower()
-    tokens = _tokenize(review_text)
     rating_prior = RATING_POLARITY_MAP.get(int(rating or 3), "neutral")
     matched_themes: Dict[str, Any] = {}  # theme_id -> best hit dict
+
+    sentences = _split_sentences(review_text)
 
     for theme_id, polarity_buckets in THEME_PHRASES.items():
         for phrase_family, phrase_list in polarity_buckets.items():
             for phrase, base_weight in phrase_list:
-                # Find phrase in lowercased text
-                idx = text_lower.find(phrase)
-                if idx == -1:
-                    continue
 
-                # Find approximate token position for negation/contrast window
-                pre_text = text_lower[:idx]
-                phrase_token_start = len(pre_text.split())
+                # Search each sentence independently so negation/contrast
+                # guards are scoped to the clause containing the phrase.
+                for sentence in sentences:
+                    sentence_lower = sentence.lower()
+                    if phrase not in sentence_lower:
+                        continue
 
-                negation_applied = _check_negation(tokens, phrase_token_start)
-                contrast_applied = _check_contrast(tokens, phrase_token_start)
+                    sentence_tokens = _tokenize(sentence)
 
-                # Determine actual polarity after guards
-                base_polarity = phrase_family
-                if negation_applied:
-                    # Flip positive ↔ negative; severe_negative becomes negative
-                    if phrase_family == "positive":
-                        actual_polarity = "negative"
-                    elif phrase_family in ("negative", "severe_negative"):
-                        actual_polarity = "positive"
+                    # Find phrase token start within this sentence
+                    idx_in_sentence = sentence_lower.find(phrase)
+                    pre_text = sentence_lower[:idx_in_sentence]
+                    phrase_token_start = len(pre_text.split())
+
+                    negation_applied = _check_negation(sentence_tokens, phrase_token_start)
+                    contrast_applied = _check_contrast(sentence_tokens, phrase_token_start)
+
+                    # Determine actual polarity after guards
+                    base_polarity = phrase_family
+                    if negation_applied:
+                        # Flip positive ↔ negative; severe_negative becomes negative
+                        if phrase_family == "positive":
+                            actual_polarity = "negative"
+                        elif phrase_family in ("negative", "severe_negative"):
+                            actual_polarity = "positive"
+                        else:
+                            actual_polarity = phrase_family
                     else:
                         actual_polarity = phrase_family
-                else:
-                    actual_polarity = phrase_family
 
-                # Multiplier: contrast on a positive match downgrades it
-                multiplier = 1.0
-                if contrast_applied and actual_polarity == "positive":
-                    multiplier = 0.6
+                    # Multiplier: contrast on a positive match downgrades it
+                    multiplier = 1.0
+                    if contrast_applied and actual_polarity == "positive":
+                        multiplier = 0.6
 
-                # Rating-prior agreement boosts confidence
-                if actual_polarity in ("negative", "severe_negative") and rating_prior == "negative":
-                    multiplier *= 1.2
-                elif actual_polarity == "positive" and rating_prior == "positive":
-                    multiplier *= 1.2
+                    # Rating-prior agreement boosts confidence
+                    if actual_polarity in ("negative", "severe_negative") and rating_prior == "negative":
+                        multiplier *= 1.2
+                    elif actual_polarity == "positive" and rating_prior == "positive":
+                        multiplier *= 1.2
 
-                final_impact = round(base_weight * multiplier, 3)
+                    final_impact = round(base_weight * multiplier, 3)
 
-                # Confidence: driven by severity + rating alignment
-                if actual_polarity == "severe_negative":
-                    confidence = "high"
-                elif (actual_polarity in ("positive", "negative")) and (
-                    (actual_polarity == "positive" and rating_prior == "positive") or
-                    (actual_polarity == "negative" and rating_prior == "negative")
-                ):
-                    confidence = "high" if base_weight >= 1.5 else "medium"
-                elif negation_applied or contrast_applied:
-                    confidence = "low"
-                else:
-                    confidence = "medium"
+                    # Confidence: driven by severity + rating alignment
+                    if actual_polarity == "severe_negative":
+                        confidence = "high"
+                    elif (actual_polarity in ("positive", "negative")) and (
+                        (actual_polarity == "positive" and rating_prior == "positive") or
+                        (actual_polarity == "negative" and rating_prior == "negative")
+                    ):
+                        confidence = "high" if base_weight >= 1.5 else "medium"
+                    elif negation_applied or contrast_applied:
+                        confidence = "low"
+                    else:
+                        confidence = "medium"
 
-                snippet = _extract_sentence_snippet(review_text, idx)
+                    # Snippet from the sentence itself (trim to 200 chars)
+                    snippet = sentence[:200].strip()
 
-                hit = {
-                    "theme": theme_id,
-                    "polarity": actual_polarity,
-                    "base_polarity": base_polarity,
-                    "matched_phrase": phrase,
-                    "phrase_family": phrase_family,
-                    "sentence_snippet": snippet,
-                    "negation_applied": negation_applied,
-                    "contrast_applied": contrast_applied,
-                    "base_weight": base_weight,
-                    "multiplier": round(multiplier, 3),
-                    "final_impact": final_impact,
-                    "confidence": confidence,
-                }
+                    hit = {
+                        "theme": theme_id,
+                        "polarity": actual_polarity,
+                        "base_polarity": base_polarity,
+                        "matched_phrase": phrase,
+                        "phrase_family": phrase_family,
+                        "sentence_snippet": snippet,
+                        "negation_applied": negation_applied,
+                        "contrast_applied": contrast_applied,
+                        "base_weight": base_weight,
+                        "multiplier": round(multiplier, 3),
+                        "final_impact": final_impact,
+                        "confidence": confidence,
+                    }
 
-                # Keep best hit per theme (highest final_impact)
-                existing = matched_themes.get(theme_id)
-                if existing is None or final_impact > existing["final_impact"]:
-                    matched_themes[theme_id] = hit
+                    # Keep best hit per theme (highest final_impact)
+                    existing = matched_themes.get(theme_id)
+                    if existing is None or final_impact > existing["final_impact"]:
+                        matched_themes[theme_id] = hit
+
+                    # First sentence match wins for this phrase; move on.
+                    break
 
     return {
         "themes": list(matched_themes.values()),
@@ -661,14 +690,19 @@ def _call_openrouter(
     review_date: str,
     model: str,
     timeout: int,
-) -> Tuple[Optional[List[Dict[str, Any]]], Optional[str]]:
+) -> Tuple[Optional[List[Dict[str, Any]]], Optional[str], int, str]:
     """
-    Call OpenRouter with the review. Returns (themes_list, error_str).
-    themes_list is None on failure.
+    Call OpenRouter with the review.
+
+    Returns (themes_list, error_str, invalid_item_count, error_category).
+      themes_list       — validated theme dicts, or None on failure
+      error_str         — human-readable error message, or None on success
+      invalid_item_count — count of per-item validation rejections
+      error_category    — "none" | "provider_error" | "parse_error" | "invalid_schema"
     """
     api_key = _get_openrouter_key()
     if not api_key:
-        return None, "OPENROUTER_API_KEY not set"
+        return None, "OPENROUTER_API_KEY not set", 0, "provider_error"
 
     user_content = OPENROUTER_USER_TEMPLATE.format(
         rating=rating,
@@ -702,15 +736,15 @@ def _call_openrouter(
         )
         resp.raise_for_status()
     except requests.exceptions.Timeout:
-        return None, f"OpenRouter timeout after {timeout}s"
+        return None, f"OpenRouter timeout after {timeout}s", 0, "provider_error"
     except requests.exceptions.RequestException as exc:
-        return None, f"OpenRouter request error: {exc}"
+        return None, f"OpenRouter request error: {exc}", 0, "provider_error"
 
     try:
         data = resp.json()
         raw_text = data["choices"][0]["message"]["content"].strip()
     except (KeyError, IndexError, ValueError) as exc:
-        return None, f"OpenRouter response parse error: {exc}"
+        return None, f"OpenRouter response parse error: {exc}", 0, "parse_error"
 
     # Strip any accidental markdown fences
     if raw_text.startswith("```"):
@@ -721,19 +755,21 @@ def _call_openrouter(
     try:
         parsed = json.loads(raw_text)
     except json.JSONDecodeError as exc:
-        return None, f"OpenRouter JSON decode error: {exc} | raw: {raw_text[:200]}"
+        return None, f"OpenRouter JSON decode error: {exc} | raw: {raw_text[:200]}", 0, "parse_error"
 
     themes = parsed.get("themes")
     if not isinstance(themes, list):
-        return None, f"OpenRouter response missing 'themes' list: {raw_text[:200]}"
+        return None, f"OpenRouter response missing 'themes' list: {raw_text[:200]}", 0, "invalid_schema"
 
     # Validate and normalise each theme entry
     valid_themes = []
+    invalid_item_count = 0
     allowed_polarities = {"positive", "negative", "severe_negative"}
     allowed_confidences = {"high", "medium", "low"}
 
     for item in themes:
         if not isinstance(item, dict):
+            invalid_item_count += 1
             continue
         theme = (item.get("theme") or "").strip()
         polarity = (item.get("polarity") or "").strip()
@@ -742,9 +778,15 @@ def _call_openrouter(
 
         if theme not in BENCHMARK_THEMES:
             logger.debug("benchmark_engine: AI returned unknown theme %r — skipped", theme)
+            invalid_item_count += 1
             continue
         if polarity not in allowed_polarities:
             logger.debug("benchmark_engine: AI returned unknown polarity %r — skipped", polarity)
+            invalid_item_count += 1
+            continue
+        if not evidence_span:
+            logger.debug("benchmark_engine: AI item missing evidence_span for theme %r — skipped", theme)
+            invalid_item_count += 1
             continue
         if confidence not in allowed_confidences:
             confidence = "medium"
@@ -756,7 +798,7 @@ def _call_openrouter(
             "confidence": confidence,
         })
 
-    return valid_themes, None
+    return valid_themes, None, invalid_item_count, "none"
 
 
 def score_review_ai(
@@ -769,10 +811,15 @@ def score_review_ai(
 
     Returns:
     {
-      "themes":  [ {theme, polarity, evidence_span, confidence}, ... ],
-      "error":   str | None,
-      "model":   str,
-      "skipped": bool,   # True when AI pass was not attempted (no key or disabled)
+      "themes":               [ {theme, polarity, evidence_span, confidence}, ... ],
+      "error":                str | None,
+      "model":                str | None,
+      "skipped":              bool,   # True = AI not attempted (no key or enable_ai=False)
+      "invalid_schema":       bool,   # True = JSON parsed but schema was malformed/'themes' missing
+      "parse_error":          bool,   # True = JSON decode failed
+      "provider_error":       bool,   # True = HTTP/timeout/request error from OpenRouter
+      "ai_item_invalid_count": int,   # count of per-item validation rejections
+      "elapsed_s":            float | None,
     }
     """
     api_key = _get_openrouter_key()
@@ -782,14 +829,25 @@ def score_review_ai(
             "error": None,
             "model": None,
             "skipped": True,
+            "invalid_schema": False,
+            "parse_error": False,
+            "provider_error": False,
+            "ai_item_invalid_count": 0,
+            "elapsed_s": None,
         }
 
     model = (os.environ.get("OPENROUTER_MODEL") or DEFAULT_OPENROUTER_MODEL).strip()
     timeout = int(os.environ.get("OPENROUTER_TIMEOUT") or DEFAULT_OPENROUTER_TIMEOUT)
 
     start = time.perf_counter()
-    themes, error = _call_openrouter(review_text, rating, review_date, model, timeout)
+    themes, error, invalid_item_count, error_category = _call_openrouter(
+        review_text, rating, review_date, model, timeout
+    )
     elapsed = round(time.perf_counter() - start, 3)
+
+    provider_error = error_category == "provider_error"
+    parse_error = error_category == "parse_error"
+    invalid_schema = error_category == "invalid_schema"
 
     if error:
         logger.warning("benchmark_engine: AI pass failed in %.3fs: %s", elapsed, error)
@@ -798,6 +856,10 @@ def score_review_ai(
             "error": error,
             "model": model,
             "skipped": False,
+            "invalid_schema": invalid_schema,
+            "parse_error": parse_error,
+            "provider_error": provider_error,
+            "ai_item_invalid_count": invalid_item_count,
             "elapsed_s": elapsed,
         }
 
@@ -809,6 +871,10 @@ def score_review_ai(
         "error": None,
         "model": model,
         "skipped": False,
+        "invalid_schema": False,
+        "parse_error": False,
+        "provider_error": False,
+        "ai_item_invalid_count": invalid_item_count,
         "elapsed_s": elapsed,
     }
 
