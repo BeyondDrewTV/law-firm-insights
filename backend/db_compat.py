@@ -60,7 +60,33 @@ class CompatCursor:
             flags=re.IGNORECASE,
         )
         # General datetime(expr) → CAST(expr AS timestamp)
-        rewritten = re.sub(r"\bdatetime\(([^)]+)\)", r"CAST(\1 AS timestamp)", rewritten, flags=re.IGNORECASE)
+        # Uses a paren-counting replacer so nested calls like
+        # datetime(COALESCE(a, b)) → CAST(COALESCE(a, b) AS timestamp)
+        # rather than the broken CAST(COALESCE(a, b AS timestamp)) that the
+        # simple [^)]+ regex produces.
+        def _replace_datetime(sql_str):
+            result = []
+            i = 0
+            pattern = re.compile(r'\bdatetime\s*\(', re.IGNORECASE)
+            while i < len(sql_str):
+                m = pattern.search(sql_str, i)
+                if not m:
+                    result.append(sql_str[i:])
+                    break
+                result.append(sql_str[i:m.start()])
+                depth = 1
+                j = m.end()
+                while j < len(sql_str) and depth > 0:
+                    if sql_str[j] == '(':
+                        depth += 1
+                    elif sql_str[j] == ')':
+                        depth -= 1
+                    j += 1
+                inner = sql_str[m.end():j - 1]
+                result.append(f"CAST({inner} AS timestamp)")
+                i = j
+            return ''.join(result)
+        rewritten = _replace_datetime(rewritten)
 
         # SQLite BLOB type → Postgres BYTEA
         rewritten = re.sub(r"\bBLOB\b", "BYTEA", rewritten, flags=re.IGNORECASE)
@@ -145,11 +171,14 @@ class CompatCursor:
 
         # For INSERT ... VALUES statements on Postgres, append RETURNING id so
         # lastrowid works. Skip INSERT ... SELECT (no RETURNING on set-based inserts).
+        # Also skip INSERT OR IGNORE rewrites (ON CONFLICT DO NOTHING) — those tables
+        # may not have an id column and lastrowid is not needed for them.
         stripped_upper = rewritten.upper()
         is_insert = stripped_upper.lstrip().startswith("INSERT ")
         is_insert_select = bool(re.search(r"\bINSERT\b.+\bSELECT\b", rewritten, flags=re.IGNORECASE | re.DOTALL))
         has_returning = "RETURNING" in stripped_upper
-        add_returning = is_insert and not is_insert_select and not has_returning
+        is_conflict_nothing = "ON CONFLICT DO NOTHING" in stripped_upper
+        add_returning = is_insert and not is_insert_select and not has_returning and not is_conflict_nothing
 
         if add_returning:
             rewritten = rewritten.rstrip().rstrip(";") + " RETURNING id"
