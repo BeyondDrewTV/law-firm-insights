@@ -9003,7 +9003,7 @@ def clear_reviews():
 
     try:
 
-        conn.execute('BEGIN IMMEDIATE')
+        conn.execute('BEGIN')
 
         # Collect the next CHUNK review_ids owned by this user.
 
@@ -9260,7 +9260,7 @@ def upload():
 
             try:
 
-                conn.execute('BEGIN IMMEDIATE')
+                conn.execute('BEGIN')
 
 
 
@@ -10368,9 +10368,9 @@ def api_billing_checkout_finalize():
 
     try:
 
-        # PR3b: explicit BEGIN IMMEDIATE so INSERT + UPDATE are one atomic transaction
+        # PR3b: explicit BEGIN so INSERT + UPDATE are one atomic transaction
 
-        conn.execute('BEGIN IMMEDIATE')
+        conn.execute('BEGIN')
 
         if plan == 'onetime':
 
@@ -16935,7 +16935,7 @@ def _ingest_rows_into_report(valid_rows, access_type, parse_meta=None, channel='
     snapshot_report_id = None
     count = 0
     try:
-        conn.execute('BEGIN IMMEDIATE')
+        conn.execute('BEGIN')
         _insert_user_reviews_tx(c, current_user.id, valid_rows)
         count = len(valid_rows)
 
