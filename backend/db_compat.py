@@ -171,14 +171,16 @@ class CompatCursor:
 
         # For INSERT ... VALUES statements on Postgres, append RETURNING id so
         # lastrowid works. Skip INSERT ... SELECT (no RETURNING on set-based inserts).
-        # Also skip INSERT OR IGNORE rewrites (ON CONFLICT DO NOTHING) — those tables
-        # may not have an id column and lastrowid is not needed for them.
+        # Also skip INSERT OR IGNORE rewrites (ON CONFLICT DO NOTHING) and upserts
+        # (ON CONFLICT ... DO UPDATE) — those tables may not have an id column and
+        # lastrowid is not meaningful for upserts anyway.
         stripped_upper = rewritten.upper()
         is_insert = stripped_upper.lstrip().startswith("INSERT ")
         is_insert_select = bool(re.search(r"\bINSERT\b.+\bSELECT\b", rewritten, flags=re.IGNORECASE | re.DOTALL))
         has_returning = "RETURNING" in stripped_upper
         is_conflict_nothing = "ON CONFLICT DO NOTHING" in stripped_upper
-        add_returning = is_insert and not is_insert_select and not has_returning and not is_conflict_nothing
+        is_conflict_update = bool(re.search(r"\bON\s+CONFLICT\b.+\bDO\s+UPDATE\b", stripped_upper, re.DOTALL))
+        add_returning = is_insert and not is_insert_select and not has_returning and not is_conflict_nothing and not is_conflict_update
 
         if add_returning:
             rewritten = rewritten.rstrip().rstrip(";") + " RETURNING id"
