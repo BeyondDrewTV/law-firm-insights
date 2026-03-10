@@ -765,9 +765,39 @@ const Upload = () => {
                   {reportId && <p className="mt-1 text-xs text-neutral-700">Report snapshot ID: #{reportId}</p>}
                   {usageMessage && <p className="mt-1 text-xs text-neutral-700">{usageMessage}</p>}
                   {wasTruncatedForPlan && (
-                    <p className="mt-1 text-xs text-neutral-700">
-                      Your current plan analyzed up to {maxReviewsPerUpload ?? "the allowed"} valid reviews from this upload.
-                    </p>
+                    <div className="mt-3 rounded border border-amber-200 bg-amber-50 px-4 py-3">
+                      <div className="flex items-start gap-2.5">
+                        {/* amber indicator dot */}
+                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-400" />
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-amber-900">
+                            Some reviews were skipped.
+                          </p>
+                          <p className="mt-1 text-sm text-amber-800">
+                            This file had more reviews than your{" "}
+                            {currentPlan?.firmPlan === "team" || currentPlan?.firmPlan === "professional"
+                              ? "Team"
+                              : currentPlan?.firmPlan === "firm" || currentPlan?.firmPlan === "leadership"
+                              ? "Firm"
+                              : "Free"}{" "}
+                            plan allows. Clarion analyzed the first{" "}
+                            <span className="font-semibold">
+                              {maxReviewsPerUpload ?? "allowed"}
+                            </span>{" "}
+                            reviews — the rest were not included. Upgrade to Team (250/upload) or
+                            Firm (1,000/upload) to process larger exports.
+                          </p>
+                          <div className="mt-3">
+                            <Link
+                              to="/pricing"
+                              className="inline-flex items-center rounded border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-800 hover:bg-amber-100 transition-colors"
+                            >
+                              View upgrade options →
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   )}
                   <div className="mt-4 rounded-md border border-neutral-200 bg-white px-4 py-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-neutral-700">What to do next</p>
