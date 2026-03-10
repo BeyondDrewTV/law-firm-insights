@@ -10,13 +10,10 @@ import {
 } from "@/api/authService";
 import GovPageHeader from "@/components/governance/GovPageHeader";
 import GovSectionCard from "@/components/governance/GovSectionCard";
-import GovStatCard from "@/components/governance/GovStatCard";
+import PlanCurrentBanner from "@/components/billing/PlanCurrentBanner";
 import { useAuth } from "@/contexts/AuthContext";
-import { formatApiDateTime } from "@/lib/dateTime";
+import { resolvePlanLimits } from "@/config/planLimits";
 
-const formatDateTimeLabel = (value: string | null | undefined) => {
-  return formatApiDateTime(value, undefined, "Not scheduled");
-};
 
 const DashboardBilling = () => {
   const { currentPlan } = useAuth();
@@ -107,6 +104,7 @@ const DashboardBilling = () => {
   const nextUpgradePlan = currentPlan?.planType === "pro_annual" ? null : currentPlan?.planType === "pro_monthly" ? "firm" : "team";
   const nextUpgradeLabel = nextUpgradePlan === "firm" ? "Firm" : "Team";
   const focusedUpgradePath = nextUpgradePlan ? `/pricing?intent=${nextUpgradePlan}` : "/pricing";
+  const planLimits = resolvePlanLimits(currentPlan);
 
   return (
       <section className="gov-page space-y-6">
@@ -122,23 +120,15 @@ const DashboardBilling = () => {
 
         {error && <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">{error}</div>}
 
-        <div className="grid gap-4 md:grid-cols-3">
-          <GovStatCard label="Current Plan" value={isLoading ? "..." : planLabel} />
-          <GovStatCard
-            label={isPaidSubscription ? "Included Reports" : "Reports Remaining This Month"}
-            value={
-              isLoading
-                ? "..."
-                : isPaidSubscription
-                  ? "Unlimited"
-                  : (credits?.free_reports_remaining ?? 0) + (credits?.paid_reports_remaining ?? 0)
-            }
-          />
-          <GovStatCard
-            label={isPaidSubscription ? "Next Billing Reset" : "Next Reset"}
-            value={isLoading ? "..." : formatDateTimeLabel(credits?.next_reset)}
-          />
-        </div>
+        <PlanCurrentBanner
+          firmPlan={currentPlan?.firmPlan}
+          planLabel={planLabel}
+          isPaidSubscription={isPaidSubscription}
+          planLimits={planLimits}
+          nextReset={credits?.next_reset}
+          nextUpgradePath={focusedUpgradePath}
+          isLoading={isLoading}
+        />
 
         <GovSectionCard accent="watch" padding="lg">
           <h2 className="gov-h2 mb-2">Upgrade Plan</h2>
