@@ -17153,6 +17153,20 @@ def rate_limited(error):
 
 
 
+# ---------------------------------------------------------------------------
+# Internal benchmark harness (calibration only — not active in production)
+# Registered only when BENCH_ENABLED=1 is set in the environment.
+# ---------------------------------------------------------------------------
+if os.environ.get('BENCH_ENABLED', '').strip() == '1':
+    try:
+        from routes.bench_routes import bench_bp
+        app.register_blueprint(bench_bp)
+        app.logger.info('bench: calibration harness registered at /internal/bench')
+    except Exception as _bench_import_err:
+        app.logger.warning('bench: failed to register bench routes: %s', _bench_import_err)
+# ---------------------------------------------------------------------------
+
+
 @app.errorhandler(404)
 
 def not_found(error):
@@ -17222,6 +17236,13 @@ def handle_csrf_error(error):
     return redirect(request.referrer or url_for('marketing_home'))
 
 
+
+# ===== INTERNAL BENCHMARK HARNESS (pre-launch calibration only) =====
+# Mounted at /internal/benchmark/ — isolated from all production API contracts.
+# Protected by INTERNAL_BENCHMARK_SECRET env var (Bearer token).
+# Remove or disable after launch by unsetting INTERNAL_BENCHMARK_SECRET.
+from routes.internal_benchmark import benchmark_bp
+app.register_blueprint(benchmark_bp)
 
 # ===== APPLICATION ENTRY POINT =====
 
