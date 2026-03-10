@@ -1,9 +1,9 @@
-"""
+﻿"""
 data/benchmark_fixtures.py
 
 Seed dataset for the Clarion benchmark harness.
 
-Contains 20 representative law-firm client reviews spanning all 10 governance
+Contains 28 representative law-firm client reviews spanning all 10 governance
 themes, multiple polarity combinations, edge cases (negation, contrast, mixed
 sentiment), and severity gradients.
 
@@ -12,11 +12,11 @@ These fixtures are used by:
   - Unit tests in tests/test_benchmark*.py
 
 Each fixture is a dict with keys:
-  id          — short identifier
-  review_text — raw review text as a client would write it
-  rating      — integer 1–5
-  date        — ISO date string
-  notes       — human-readable note about why this fixture is interesting
+  id          -- short identifier
+  review_text -- raw review text as a client would write it
+  rating      -- integer 1-5
+  date        -- ISO date string
+  notes       -- human-readable note about why this fixture is interesting
 """
 
 BENCHMARK_FIXTURES = [
@@ -36,7 +36,7 @@ BENCHMARK_FIXTURES = [
         "review_text": (
             "I never heard back after leaving three voicemails. "
             "Weeks went by without any contact. "
-            "The fees were also a surprise — nobody explained the billing upfront."
+            "The fees were also a surprise -- nobody explained the billing upfront."
         ),
         "rating": 1,
         "date": "2025-01-12",
@@ -47,7 +47,7 @@ BENCHMARK_FIXTURES = [
         "review_text": (
             "The attorney was professional and trustworthy. "
             "However, the office staff was rude when I called to check in. "
-            "The case outcome was disappointing — I expected a better settlement."
+            "The case outcome was disappointing -- I expected a better settlement."
         ),
         "rating": 3,
         "date": "2025-01-15",
@@ -66,7 +66,7 @@ BENCHMARK_FIXTURES = [
     {
         "id": "F05",
         "review_text": (
-            "They were not rude — actually quite polite. "
+            "They were not rude -- actually quite polite. "
             "The billing was not hidden at all; they were very upfront about fees. "
             "I was very happy with the result."
         ),
@@ -89,7 +89,7 @@ BENCHMARK_FIXTURES = [
         "id": "F07",
         "review_text": (
             "The case took forever. There were unnecessary delays and I was never told why. "
-            "I felt like just a number — no empathy, no communication."
+            "I felt like just a number -- no empathy, no communication."
         ),
         "rating": 2,
         "date": "2025-01-25",
@@ -197,7 +197,7 @@ BENCHMARK_FIXTURES = [
     {
         "id": "F17",
         "review_text": (
-            "Very fast turnaround — they handled my case in record time. "
+            "Very fast turnaround -- they handled my case in record time. "
             "The whole team was professional and my outcome was favorable. "
             "Billing was clear and no hidden fees."
         ),
@@ -237,5 +237,105 @@ BENCHMARK_FIXTURES = [
         "rating": 2,
         "date": "2025-02-26",
         "notes": "communication_responsiveness negative, billing_transparency negative, fee_value negative.",
+    },
+    {
+        "id": "F21",
+        "review_text": (
+            "They kept me in the dark the entire time. "
+            "I had no idea what was happening with my case for months."
+        ),
+        "rating": 2,
+        "date": "2025-03-01",
+        "notes": (
+            "communication_clarity negative primary signal: 'kept me in the dark'. "
+            "Intentional ambiguity case -- AI may reasonably tag communication_responsiveness as well "
+            "since 'no idea what was happening for months' implies responsiveness failure. "
+            "Useful for calibrating theme boundary between clarity and responsiveness. "
+            "Expect and log AI/deterministic disagreement here; do not treat as a failure."
+        ),
+    },
+    {
+        "id": "F22",
+        "review_text": (
+            "I felt completely nickel and dimed every single step. "
+            "Every phone call, every email -- there was a charge I wasn't warned about."
+        ),
+        "rating": 2,
+        "date": "2025-03-03",
+        "notes": "billing_transparency negative: 'nickel and dimed' idiom -- tests phrase-mining since it's not in THEME_PHRASES yet.",
+    },
+    {
+        "id": "F23",
+        "review_text": (
+            "The whole process felt rushed. "
+            "Important decisions were made without enough time for me to think. "
+            "I was never given a chance to ask questions."
+        ),
+        "rating": 2,
+        "date": "2025-03-05",
+        "notes": "timeliness_progress / expectation_setting: 'felt rushed' idiom -- phrase mining candidate.",
+    },
+    {
+        "id": "F24",
+        "review_text": (
+            "They dragged their feet for three months. "
+            "Simple paperwork sat on someone's desk for weeks with no explanation."
+        ),
+        "rating": 2,
+        "date": "2025-03-07",
+        "notes": "timeliness_progress negative: 'dragged their feet' idiom -- phrase mining candidate.",
+    },
+    {
+        "id": "F25",
+        "review_text": (
+            "After the initial consultation I was completely ghosted. "
+            "No calls, no emails, nothing for six weeks."
+        ),
+        "rating": 1,
+        "date": "2025-03-09",
+        "notes": "communication_responsiveness severe_negative: 'ghosted' idiom -- phrase mining candidate.",
+    },
+    {
+        "id": "F26",
+        "review_text": (
+            "Expensive, yes -- but absolutely worth it. "
+            "The result exceeded my expectations and I would pay twice as much again."
+        ),
+        "rating": 5,
+        "date": "2025-03-11",
+        "notes": (
+            "Mixed sentiment: fee_value contrast -- 'expensive' (negative signal) followed by 'worth it' "
+            "(positive). Tests contrast guard + deduplication between negative and positive in same theme."
+        ),
+    },
+    {
+        "id": "F27",
+        "review_text": (
+            "My case moved quickly and was resolved ahead of schedule. "
+            "The only frustration was that I had to chase updates constantly -- "
+            "no one reached out to me proactively."
+        ),
+        "rating": 3,
+        "date": "2025-03-13",
+        "notes": (
+            "timeliness_progress positive + communication_responsiveness negative co-occurring. "
+            "Tests theme independence: both themes should fire independently. "
+            "Validates that a positive timeliness hit is not suppressed by a co-present communication failure."
+        ),
+    },
+    {
+        "id": "F28",
+        "review_text": (
+            "I never heard anything unless I called first. "
+            "Communication was non-existent. "
+            "However, once things moved they moved fast and the outcome was great."
+        ),
+        "rating": 3,
+        "date": "2025-03-15",
+        "notes": (
+            "communication_responsiveness negative + timeliness_progress positive + outcome_satisfaction positive. "
+            "Communication failure WITHOUT timing failure as the dominant signal. "
+            "Tests that communication_responsiveness negative does not bleed into timeliness_progress scoring."
+        ),
     },
 ]
