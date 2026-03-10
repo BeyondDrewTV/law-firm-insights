@@ -15,6 +15,7 @@
  *   selectionMode  → when true the card shows the checkbox affordance
  */
 
+import type React from "react";
 import { Link } from "react-router-dom";
 import GovernanceCard, { type GovernanceCardAccent } from "./GovernanceCard";
 import GovStatusChip, { type GovStatusChipVariant } from "./GovStatusChip";
@@ -78,7 +79,7 @@ export default function SignalCard({
   ].filter(Boolean);
   const summary = summaryParts.join(" · ");
 
-  const handleToggle = (e: React.MouseEvent | React.ChangeEvent) => {
+  const handleToggle = (e: React.MouseEvent | React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
     onToggleSelect?.(id);
   };

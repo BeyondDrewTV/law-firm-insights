@@ -3,7 +3,9 @@ import SeverityBadge from "@/components/ui/SeverityBadge";
 import { useNavigate } from "react-router-dom";
 import { DashboardCard } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
 import { DISPLAY_LABELS } from "@/constants/displayLabels";
+import { RadioTower } from "lucide-react";
 
 type ExposureSignalsProps = {
   signals: GovernanceSignal[];
@@ -44,8 +46,15 @@ const ExposureSignals = ({ signals, isLoading, onCreateAction }: ExposureSignals
           ))}
         </div>
       ) : signals.length === 0 ? (
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
-          <p className="body-text">No {DISPLAY_LABELS.clientIssuePlural.toLowerCase()} are available yet.</p>
+        <div className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+          <GovernanceEmptyState
+            size="md"
+            icon={<RadioTower size={18} />}
+            title="No client issues surfaced yet"
+            description="Upload a feedback CSV to start the first review cycle. Clarion will identify recurring issues and surface them here."
+            primaryAction={{ label: "Upload feedback CSV", href: "/upload" }}
+            secondaryAction={{ label: "Open example cycle", href: "/demo" }}
+          />
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

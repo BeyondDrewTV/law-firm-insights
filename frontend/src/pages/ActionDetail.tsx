@@ -281,7 +281,7 @@ const ActionDetail = () => {
                       Overdue
                     </span>
                   ) : null}
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">
+                  <span className="gov-type-eyebrow">
                     Governance Action
                   </span>
                 </div>
@@ -316,7 +316,7 @@ const ActionDetail = () => {
             {/* Inline edit form */}
             {showEditForm ? (
               <div className="mt-5 rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
-                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="mb-3 gov-type-eyebrow">
                   Edit action
                 </p>
                 <ActionForm
@@ -347,13 +347,13 @@ const ActionDetail = () => {
 
               {/* Action details: KPI + notes */}
               <section className="rounded-[12px] border border-[#E5E7EB] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Action Details
                 </p>
 
                 {action.kpi ? (
                   <div className="mt-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">
+                    <p className="gov-type-eyebrow">
                       Success Measure
                     </p>
                     <p className="mt-1 text-[14px] leading-relaxed text-[#0D1B2A]">{action.kpi}</p>
@@ -362,7 +362,7 @@ const ActionDetail = () => {
 
                 {action.notes ? (
                   <div className="mt-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">
+                    <p className="gov-type-eyebrow">
                       Notes
                     </p>
                     <p className="mt-1 text-[14px] leading-relaxed text-[#374151] whitespace-pre-wrap">{action.notes}</p>
@@ -376,7 +376,7 @@ const ActionDetail = () => {
 
               {/* Originating signal context */}
               <section className="rounded-[12px] border border-[#E5E7EB] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Context
                 </p>
                 <h2 className="mt-1 text-[16px] font-semibold text-[#0D1B2A]">
@@ -407,7 +407,7 @@ const ActionDetail = () => {
                 {/* Evidence excerpts */}
                 {evidenceExcerpts.length > 0 ? (
                   <div className="mt-4 space-y-2">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">
+                    <p className="gov-type-eyebrow">
                       Representative client feedback
                     </p>
                     {evidenceExcerpts.map((excerpt) => (
@@ -435,14 +435,14 @@ const ActionDetail = () => {
 
               {/* Accountability panel — owner, due date, status */}
               <aside className="rounded-[12px] border border-[#E5E7EB] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Accountability
                 </p>
                 <dl className="mt-3 space-y-4">
 
                   {/* Owner */}
                   <div>
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">Owner</dt>
+                    <dt className="gov-type-eyebrow">Owner</dt>
                     <dd className="mt-1 flex items-center gap-2">
                       {action.owner ? (
                         <>
@@ -459,7 +459,7 @@ const ActionDetail = () => {
 
                   {/* Due date */}
                   <div>
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">Due date</dt>
+                    <dt className="gov-type-eyebrow">Due date</dt>
                     <dd className="mt-1">
                       {action.due_date ? (
                         <span
@@ -479,7 +479,7 @@ const ActionDetail = () => {
 
                   {/* Status */}
                   <div>
-                    <dt className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">Status</dt>
+                    <dt className="gov-type-eyebrow">Status</dt>
                     <dd className="mt-1">
                       <GovStatusChip
                         label={statusLabel}
@@ -491,7 +491,7 @@ const ActionDetail = () => {
                   {/* Timeframe */}
                   {action.timeframe ? (
                     <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">Timeframe</dt>
+                      <dt className="gov-type-eyebrow">Timeframe</dt>
                       <dd className="mt-1 text-[13px] text-[#374151]">{action.timeframe}</dd>
                     </div>
                   ) : null}
@@ -502,7 +502,7 @@ const ActionDetail = () => {
               {/* Linked governance brief */}
               {reportId ? (
                 <aside className="order-3 rounded-[12px] border border-[#E5E7EB] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] lg:order-none">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  <p className="gov-type-eyebrow">
                     Governance Brief
                   </p>
                   <Link
@@ -524,7 +524,7 @@ const ActionDetail = () => {
 
               {/* Activity timeline */}
               <aside className="order-4 rounded-[12px] border border-[#E5E7EB] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] lg:order-none">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Activity Timeline
                 </p>
                 {activityLog.length > 0 ? (

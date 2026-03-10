@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FileText } from "lucide-react";
+import { FileText, BookOpen } from "lucide-react";
 import { toast } from "sonner";
 
 import { getLatestExposure, getReports, type ReportListItem } from "@/api/authService";
 import PageWrapper from "@/components/governance/PageWrapper";
 import GovernanceBriefCard from "@/components/governance/GovernanceBriefCard";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
+import { BriefCardSkeleton } from "@/components/governance/skeletons";
 import { PageTabs } from "@/components/governance/PageTabs";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
@@ -190,26 +192,26 @@ const ReportsPage = () => {
         <section className="rounded-[12px] border border-[#E5E7EB] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
           <div className="grid gap-5 xl:grid-cols-[1.15fr_0.85fr] xl:items-start">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Current brief library</p>
-              <h2 className="mt-2 text-[22px] font-semibold text-[#0D1B2A]">
+              <p className="gov-label">Current brief library</p>
+              <h2 className="gov-section-intro mt-2">
                 Review the latest governance brief first, then keep older cycles in reserve.
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-700">
+              <p className="gov-body mt-3 max-w-2xl">
                 This workspace is for final leadership-facing output. Open the current brief, make any presentation-only PDF adjustments, and use older cycles as reference rather than as equal next steps.
               </p>
             </div>
             <div className="space-y-4">
               <div className="workspace-inline-stats">
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Briefs</p>
+                  <p className="gov-label">Briefs</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.totalBriefs}</p>
                 </div>
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Escalations</p>
+                  <p className="gov-label">Escalations</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.escalationCount}</p>
                 </div>
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">This month</p>
+                  <p className="gov-label">This month</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">
                     {loading ? "..." : summary.reportsThisMonth}
                     <span className="ml-1 text-sm font-medium text-slate-500">/ {maxReportsPerMonth ?? "Unlimited"}</span>
@@ -242,14 +244,9 @@ const ReportsPage = () => {
         ) : null}
 
         {loading ? (
-          <section className="space-y-4">
+          <section aria-label="Loading governance briefs" className="space-y-4">
             {Array.from({ length: 4 }).map((_, index) => (
-              <article key={`brief-skeleton-${index}`} className="animate-soft-scale rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm">
-                <div className="h-4 w-36 rounded bg-neutral-200" />
-                <div className="mt-3 h-3 w-48 rounded bg-neutral-100" />
-                <div className="mt-2 h-3 w-32 rounded bg-neutral-100" />
-                <div className="mt-6 h-8 w-28 rounded bg-neutral-200" />
-              </article>
+              <BriefCardSkeleton key={`brief-skeleton-${index}`} />
             ))}
           </section>
         ) : rows.length === 0 ? (
@@ -303,7 +300,7 @@ const ReportsPage = () => {
             {briefsTab === "upcoming" ? (
               latestRow ? (
                 <div>
-                  <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  <p className="mb-3 gov-type-eyebrow">
                     {latestRow.escalationRequired ? "Next meeting · escalation required" : "Prepared for next meeting"}
                   </p>
                   <GovernanceBriefCard
@@ -323,12 +320,21 @@ const ReportsPage = () => {
                   />
                 </div>
               ) : (
-                <p className="text-sm text-slate-500">No brief is available for the upcoming meeting yet.</p>
+                <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+                  <GovernanceEmptyState
+                    size="md"
+                    icon={<FileText size={20} />}
+                    title="No brief prepared for the upcoming meeting"
+                    description="Create your first governance brief once you have reviewed your top signals and confirmed the issues that need leadership attention."
+                    primaryAction={{ label: "Review client issues", href: "/dashboard/signals" }}
+                    secondaryAction={{ label: "Upload feedback CSV", href: "/upload" }}
+                  />
+                </section>
               )
             ) : (
               archivedRows.length > 0 ? (
                 <div>
-                  <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                  <p className="mb-3 gov-type-eyebrow">
                     Prior meeting cycles — reference only
                   </p>
                   <div className="space-y-3">
@@ -351,7 +357,15 @@ const ReportsPage = () => {
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-slate-500">Past briefs will appear here after more than one governance cycle has been completed.</p>
+                <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+                  <GovernanceEmptyState
+                    size="md"
+                    icon={<BookOpen size={20} />}
+                    title="No past briefs yet"
+                    description="Prior governance cycles will appear here as a reference archive once more than one brief has been completed. Use them to track issue trends across meetings."
+                    primaryAction={{ label: "View upcoming brief", onClick: () => setBriefsTab("upcoming") }}
+                  />
+                </section>
               )
             )}
           </div>

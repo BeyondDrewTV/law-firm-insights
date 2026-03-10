@@ -91,7 +91,7 @@ export default function FirmGovernanceStatus({
                   onClick={onOpenSignals}
                   className="rounded-[10px] border border-[#E5E7EB] border-l-[3px] border-l-transparent bg-white px-6 py-5 text-left shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition hover:border-neutral-300"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6B7280]">{DISPLAY_LABELS.clientIssuePlural}</p>
+                  <p className="gov-type-eyebrow">{DISPLAY_LABELS.clientIssuePlural}</p>
                   <p className="mt-1 text-[36px] font-bold leading-none text-[#0D1B2A]">{loading ? "..." : signalsCount}</p>
                 </button>
               </TooltipTrigger>
@@ -111,7 +111,7 @@ export default function FirmGovernanceStatus({
                     metrics.newSignals > 0 ? "border-l-[#F59E0B]" : "border-l-transparent",
                   ].join(" ")}
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6B7280]">New</p>
+                  <p className="gov-type-eyebrow">New</p>
                   <p className="mt-1 text-[36px] font-bold leading-none text-[#0D1B2A]">{loading ? "..." : newCount}</p>
                 </button>
               </TooltipTrigger>
@@ -127,7 +127,7 @@ export default function FirmGovernanceStatus({
                   onClick={onOpenOpenActions}
                   className="rounded-[10px] border border-[#E5E7EB] border-l-[3px] border-l-transparent bg-white px-6 py-5 text-left shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition hover:border-neutral-300"
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6B7280]">Open</p>
+                  <p className="gov-type-eyebrow">Open</p>
                   <p className="mt-1 text-[36px] font-bold leading-none text-[#0D1B2A]">{loading ? "..." : openCount}</p>
                 </button>
               </TooltipTrigger>
@@ -146,7 +146,7 @@ export default function FirmGovernanceStatus({
                     metrics.overdueActions > 0 ? "border-l-[#EF4444]" : "border-l-transparent",
                   ].join(" ")}
                 >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#6B7280]">Overdue</p>
+                  <p className="gov-type-eyebrow">Overdue</p>
                   <p className="mt-1 text-[36px] font-bold leading-none text-[#0D1B2A]">{loading ? "..." : overdueCount}</p>
                 </button>
               </TooltipTrigger>

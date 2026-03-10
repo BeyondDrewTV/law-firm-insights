@@ -11,28 +11,22 @@
  *   │ [actions]  [action buttons]                             │  ← Action zone
  *   └──────────────────────────────────────────────────────────┘
  *
+ * Typography classes used (see index.css gov-type-* block):
+ *   title   → gov-type-h3      (15px / 600 / #0D1B2A)
+ *   summary → gov-type-body    (14px / 400 / #334155)  ← via gov-body-sm alias
+ *   meta    → gov-type-meta    (12px / 400 / #9CA3AF)
+ *
  * Design rules:
  *   - Severity/status accent expressed as left border color only
  *   - No background color changes for severity — border only
- *   - All text stays in the muted neutral palette
- *   - Action row uses text links and small buttons only (no primary CTA weight)
+ *   - Action row: text links and small buttons only (no primary CTA weight)
  *   - Use GovStatusChip for all status/severity chips
  *
- * Accent variants map to severity/urgency:
+ * Accent variants:
  *   "risk"    → red left border    (High severity, Overdue, Blocked)
  *   "warn"    → amber left border  (Medium severity, Escalation)
  *   "success" → green left border  (Low severity, Ready)
  *   "neutral" → slate left border  (default)
- *
- * Usage:
- *   <GovernanceCard
- *     title="Communication Delays"
- *     chip={<GovStatusChip label="High" variant="risk" />}
- *     summary="Detected in 12 reviews — recurring theme in post-hearing feedback."
- *     meta={["Unassigned", "Created Mar 4", "Due Mar 18"]}
- *     accent="risk"
- *     actions={<>...</>}
- *   />
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
@@ -85,7 +79,7 @@ export default function GovernanceCard({
   return (
     <article
       className={[
-        "rounded-[10px] border border-[#E5E7EB] bg-white px-5 py-[18px] shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
+        "gov-card-surface rounded-[10px] border border-[#E5E7EB] bg-white px-5 py-[18px] shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
         accentBorder[accent],
         className,
       ].join(" ")}
@@ -95,19 +89,19 @@ export default function GovernanceCard({
         {titleHref ? (
           <Link
             to={titleHref}
-            className="min-w-0 flex-1 text-[15px] font-semibold leading-snug text-[#0D1B2A] underline-offset-2 hover:underline"
+            className="gov-type-h3 min-w-0 flex-1 underline-offset-2 transition-colors duration-[150ms] hover:text-[#0D1B2A] hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0EA5C2] focus-visible:outline-offset-1"
           >
             {title}
           </Link>
         ) : (
-          <h3 className="min-w-0 flex-1 text-[15px] font-semibold leading-snug text-[#0D1B2A]">{title}</h3>
+          <h3 className="gov-type-h3 min-w-0 flex-1">{title}</h3>
         )}
         {chip ? <div className="shrink-0">{chip}</div> : null}
       </div>
 
       {/* ── Summary line ── */}
       {summary ? (
-        <p className="mt-2 text-[13px] leading-relaxed text-[#6B7280]">{summary}</p>
+        <p className="gov-type-body mt-2">{summary}</p>
       ) : null}
 
       {/* ── Meta row ── */}
@@ -116,7 +110,7 @@ export default function GovernanceCard({
           {metaItems.map((item, index) => (
             <span key={`${item}-${index}`} className="flex items-center gap-2">
               {index > 0 ? <span className="text-[#D1D5DB]" aria-hidden>·</span> : null}
-              <span className="text-[12px] text-[#9CA3AF]">{item}</span>
+              <span className="gov-type-meta">{item}</span>
             </span>
           ))}
         </div>

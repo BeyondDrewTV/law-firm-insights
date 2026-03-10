@@ -64,17 +64,19 @@ export function PageTabs({ value, onValueChange, tabs, className = "" }: PageTab
               "group relative flex items-center gap-2 px-4 pb-3 pt-1",
               // Typography
               "text-[13px] font-medium leading-none whitespace-nowrap",
-              // Default (inactive) state
-              "text-slate-500 transition-colors duration-150",
-              // Hover
-              "hover:text-slate-800",
-              // Active state — text + bottom border indicator
+              // Default (inactive) state — smooth color + opacity transition
+              "text-slate-400 transition-[color,opacity] duration-[150ms] ease-[cubic-bezier(0.2,0,0.2,1)]",
+              // Hover — darkens text to near-active weight without committing to active
+              "hover:text-slate-700",
+              // Active state — full ink weight
               "data-[state=active]:text-[#0D1B2A]",
-              // Active bottom border via pseudo-element approach using outline trick
-              "data-[state=active]:after:absolute data-[state=active]:after:bottom-[-1px] data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-[2px] data-[state=active]:after:bg-[#0EA5C2] data-[state=active]:after:rounded-t-[1px]",
-              // Focus ring
+              // Active bottom border — slide-in via scaleX so it feels intentional
+              "after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-[2px] after:rounded-t-[1px] after:bg-[#0EA5C2]",
+              "after:origin-left after:transition-[transform,opacity] after:duration-[150ms] after:ease-[cubic-bezier(0.2,0,0.2,1)]",
+              "after:scale-x-0 after:opacity-0",
+              "data-[state=active]:after:scale-x-100 data-[state=active]:after:opacity-100",
+              // Focus ring — teal, only on keyboard nav
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0EA5C2] focus-visible:ring-offset-1 rounded-sm",
-              // No default Radix outline
               "outline-none",
             ].join(" ")}
           >

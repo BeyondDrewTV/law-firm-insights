@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Info, CheckSquare, Square, X, Layers } from "lucide-react";
+import { Info, CheckSquare, Square, X, Layers, RadioTower } from "lucide-react";
 import { toast } from "sonner";
 import { PageTabs } from "@/components/governance/PageTabs";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
+import { SignalCardSkeleton } from "@/components/governance/skeletons";
 
 import {
   createReportAction,
@@ -15,6 +17,7 @@ import {
 } from "@/api/authService";
 import ActionForm, { type ActionFormValues } from "@/components/actions/ActionForm";
 import PageWrapper from "@/components/governance/PageWrapper";
+import PromoteToActionPanel from "@/components/governance/PromoteToActionPanel";
 import SignalCard from "@/components/governance/SignalCard";
 import {
   Dialog,
@@ -454,38 +457,7 @@ const SignalsPage = () => {
     [tabFilteredSignals, selectedIds],
   );
 
-  // Build a consolidated bulk action from all selected signals
-  const bulkActionPrefill = useMemo<import("@/components/actions/ActionForm").ActionFormValues>(() => {
-    if (selectedSignals.length === 0) {
-      return { title: "", owner: "", owner_user_id: null, due_date: "", status: "open", timeframe: "Days 1-30", kpi: "", notes: "" };
-    }
-    if (selectedSignals.length === 1) {
-      const s = selectedSignals[0];
-      return {
-        title: `Review ${s.category}`,
-        owner: "",
-        owner_user_id: null,
-        due_date: "",
-        status: "open",
-        timeframe: "Days 1-30",
-        kpi: "Owner assigned and remediation plan approved.",
-        notes: s.description,
-      };
-    }
-    const titles = selectedSignals.map((s) => `• ${s.title}`).join("\n");
-    return {
-      title: `Governance review — ${selectedSignals.length} client issues`,
-      owner: "",
-      owner_user_id: null,
-      due_date: "",
-      status: "open",
-      timeframe: "Days 1-30",
-      kpi: "All selected issues reviewed and assigned.",
-      notes: `Covers the following ${selectedSignals.length} client issues:\n${titles}`,
-    };
-  }, [selectedSignals]);
-
-  const handleBulkCreateSignal = async (values: import("@/components/actions/ActionForm").ActionFormValues) => {
+  const handleBulkCreateSignal = async (values: ActionFormValues) => {
     if (!latestReport?.id) {
       setBulkError("No report available for action creation.");
       return;
@@ -509,7 +481,7 @@ const SignalsPage = () => {
     }
     toast.success(
       selectedSignals.length === 1
-        ? "Governance action created from signal."
+        ? "Governance action created."
         : `Governance action created from ${selectedSignals.length} signals.`,
     );
     exitSelectionMode();
@@ -591,25 +563,25 @@ const SignalsPage = () => {
           <section className="rounded-[12px] border border-[#E5E7EB] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
             <div className="grid gap-5 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Current issue set</p>
-                <h2 className="mt-2 text-[20px] font-semibold text-[#0D1B2A]">
+                <p className="gov-label">Current issue set</p>
+                <h2 className="gov-section-intro mt-2">
                   Start with the recurring themes from {latestReportDateLabel || "the latest ready cycle"}.
                 </h2>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-700">
+                <p className="gov-body mt-3 max-w-2xl">
                   Review the patterns that now deserve attention, then open a single issue for details or action creation. Use the filtered view only when you specifically need what is newly introduced.
                 </p>
               </div>
               <div className="workspace-inline-stats">
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Visible issues</p>
+                  <p className="gov-label">Visible issues</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{filteredSignals.length}</p>
                 </div>
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">New vs prior cycle</p>
+                  <p className="gov-label">New vs prior cycle</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{newSignalsCount}</p>
                 </div>
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Cycle date</p>
+                  <p className="gov-label">Cycle date</p>
                   <p className="mt-1 text-[16px] font-semibold text-slate-900">{latestReportDateLabel || "Not available"}</p>
                 </div>
               </div>
@@ -621,7 +593,11 @@ const SignalsPage = () => {
         {!loading && latestReport ? (
           <PageTabs
             value={signalsTab}
-            onValueChange={(v) => setSignalsTab(v as typeof signalsTab)}
+            onValueChange={(v) => {
+              setSignalsTab(v as typeof signalsTab);
+              // Clear selection when switching tabs — avoids stale cross-tab selections
+              setSelectedIds(new Set());
+            }}
             tabs={[
               {
                 value: "triage",
@@ -640,61 +616,59 @@ const SignalsPage = () => {
         ) : null}
 
         {loading ? (
-          <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <section aria-label="Loading client issues" className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, index) => (
-              <article key={`signal-skeleton-${index}`} className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm">
-                <div className="h-4 w-40 rounded bg-neutral-200" />
-                <div className="mt-3 h-3 w-20 rounded bg-neutral-100" />
-                <div className="mt-4 h-7 w-16 rounded bg-neutral-200" />
-              </article>
+              <SignalCardSkeleton key={`signal-skeleton-${index}`} />
             ))}
           </section>
         ) : filteredSignals.length === 0 ? (
-          <section className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm text-center">
-            <h2 className="text-lg font-medium text-neutral-900">
-              {isNewOnlyFilter ? "No new client issues in the latest cycle" : "No client issues yet"}
-            </h2>
-            <p className="mt-1 text-sm text-neutral-700">
-              {isNewOnlyFilter
-                ? "The latest ready report does not introduce any client issue categories that were absent from the previous review cycle."
-                : "The first cycle starts with a CSV upload. Clarion will surface recurring client issues here once that review period is processed."}
-            </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              {!isNewOnlyFilter ? (
-                <Link to="/upload" className="gov-btn-primary">Upload feedback CSV</Link>
-              ) : null}
-              <Link to="/dashboard" className="gov-btn-secondary">Return to overview</Link>
-            </div>
-            <div className="mt-3">
-              <Link to="/demo" className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700">
-                Open read-only example cycle
-              </Link>
-            </div>
+          <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+            <GovernanceEmptyState
+              size="lg"
+              icon={<RadioTower size={20} />}
+              title={isNewOnlyFilter ? "No new client issues in this cycle" : "No client issues yet"}
+              description={
+                isNewOnlyFilter
+                  ? "The latest review cycle does not introduce any issue categories that were absent from the previous period."
+                  : "The first governance cycle starts with a CSV upload. Clarion will surface recurring client issues here once that review period is processed."
+              }
+              primaryAction={!isNewOnlyFilter ? { label: "Upload feedback CSV", href: "/upload" } : undefined}
+              secondaryAction={{ label: "Return to dashboard", href: "/dashboard" }}
+              footer={
+                <Link to="/demo" className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700">
+                  Open read-only example cycle
+                </Link>
+              }
+            />
           </section>
         ) : tabFilteredSignals.length === 0 ? (
-          <section className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm text-center">
-            <h2 className="text-lg font-medium text-neutral-900">
-              {signalsTab === "triage"
-                ? "No high-severity signals in this cycle"
-                : "No recurring signals from prior cycles"}
-            </h2>
-            <p className="mt-1 text-sm text-neutral-700">
-              {signalsTab === "triage"
-                ? "All current signals are medium or low severity. Review the All Signals tab for the full issue set."
-                : "Signals with prior-cycle history will appear here once more than one governance cycle has been processed."}
-            </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              <button type="button" className="gov-btn-secondary" onClick={() => setSignalsTab("all")}>
-                View all signals
-              </button>
-            </div>
+          <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+            <GovernanceEmptyState
+              size="md"
+              icon={<RadioTower size={20} />}
+              title={
+                signalsTab === "triage"
+                  ? "No high-risk signals to triage"
+                  : signalsTab === "in-briefs"
+                    ? "No signals included in a governance brief yet"
+                    : "No signals match the current filter"
+              }
+              description={
+                signalsTab === "triage"
+                  ? "All current signals are medium or low severity. Review 'All Signals' for the full issue set and emerging patterns."
+                  : signalsTab === "in-briefs"
+                    ? "Signals are added to a brief when you prepare a governance packet. Return after completing your first brief cycle."
+                    : "Adjust the active filter or return to all signals to see the full issue queue."
+              }
+              primaryAction={{ label: "View all signals", onClick: () => setSignalsTab("all") }}
+            />
           </section>
         ) : (
           <section className="space-y-4">
             {/* ── Section label row + select-all ─────────────────────── */}
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   {signalsTab === "triage" ? "High-severity signals" : signalsTab === "in-briefs" ? "Recurring signals in briefs" : "Issue queue"}
                 </p>
                 <p className="mt-1 text-sm text-slate-700">
@@ -767,7 +741,7 @@ const SignalsPage = () => {
                           className="inline-flex items-center gap-1.5 rounded-[7px] bg-[#0D1B2A] px-4 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-[#16263b]"
                         >
                           <Layers size={13} />
-                          Create Signal from {selectedIds.size > 1 ? `${selectedIds.size} selected` : "selected"}
+                          Create Governance Action{selectedIds.size > 1 ? ` (${selectedIds.size} issues)` : ""}
                         </button>
                       </>
                     ) : null}
@@ -839,52 +813,18 @@ const SignalsPage = () => {
           </DialogContent>
         </Dialog>
 
-        {/* ── Bulk "Create Signal from selected" dialog (Phase 6) ──────── */}
-        <Dialog
+        {/* ── Promote-to-Action side panel (Phase 6.2) ─────────────────── */}
+        <PromoteToActionPanel
           open={bulkModalOpen}
           onOpenChange={(open) => {
             if (!open) { setBulkModalOpen(false); setBulkError(""); return; }
             setBulkModalOpen(true);
           }}
-        >
-          <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>Create Signal from Selected Issues</DialogTitle>
-              <DialogDescription>
-                {selectedSignals.length === 1
-                  ? `Creating a governance action for: ${selectedSignals[0].title}`
-                  : `Creating one consolidated governance action for ${selectedSignals.length} selected client issues.`}
-              </DialogDescription>
-            </DialogHeader>
-            {selectedSignals.length > 1 ? (
-              <div className="mb-2 rounded-[8px] border border-[#E5E7EB] bg-[#FAFBFC] px-3 py-2.5">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                  Selected issues ({selectedSignals.length})
-                </p>
-                <ul className="mt-1.5 space-y-0.5">
-                  {selectedSignals.map((s) => (
-                    <li key={s.id} className="flex items-center gap-1.5 text-[13px] text-slate-700">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[#0EA5C2] shrink-0" />
-                      {s.title}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            <ActionForm
-              open={bulkModalOpen && selectedSignals.length > 0}
-              mode="create"
-              initialValues={bulkActionPrefill}
-              ownerOptions={[]}
-              submitting={bulkSubmitting}
-              submitLabel="Create Governance Action"
-              submittingLabel="Creating..."
-              serverError={bulkError}
-              onCancel={() => { setBulkModalOpen(false); setBulkError(""); }}
-              onSubmit={handleBulkCreateSignal}
-            />
-          </DialogContent>
-        </Dialog>
+          selectedSignals={selectedSignals}
+          onSubmit={handleBulkCreateSignal}
+          submitting={bulkSubmitting}
+          submitError={bulkError}
+        />
 
         {latestReport ? (
           <p className="text-xs text-neutral-600">

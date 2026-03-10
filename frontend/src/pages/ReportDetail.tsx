@@ -202,7 +202,7 @@ function PacketSection({ eyebrow, title, presentMode, children, className = "" }
         className,
       ].join(" ")}
     >
-      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+      <p className="gov-type-eyebrow">
         {eyebrow}
       </p>
       <h2 className="mt-1 text-[17px] font-semibold text-[#0D1B2A]">{title}</h2>
@@ -924,7 +924,7 @@ const ReportDetail = () => {
               key={sig.label}
               className="rounded-[8px] border border-[#E5E7EB] bg-[#F8FAFC] px-4 py-3"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+              <p className="gov-type-eyebrow">
                 {sig.label}
               </p>
               <p className="mt-1 text-[17px] font-semibold text-[#0D1B2A]">{sig.value}</p>
@@ -936,7 +936,7 @@ const ReportDetail = () => {
       {/* Theme breakdown */}
       {report.themes.length > 0 ? (
         <div className="mt-5">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+          <p className="mb-3 gov-type-eyebrow">
             Issue themes
           </p>
           <div className="space-y-2">
@@ -959,7 +959,7 @@ const ReportDetail = () => {
       {/* Trend comparison */}
       {trendRows.length > 0 ? (
         <div className="mt-5">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+          <p className="mb-3 gov-type-eyebrow">
             Trend vs. prior period
           </p>
           <div className="space-y-2">
@@ -1179,7 +1179,7 @@ const ReportDetail = () => {
       )}
       {report.top_praise.length > 0 && !presentMode ? (
         <div className="mt-5">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+          <p className="mb-3 gov-type-eyebrow">
             Positive feedback
           </p>
           <div className="space-y-3">
@@ -1239,7 +1239,7 @@ const ReportDetail = () => {
       {/* Executive summary items (shown in normal mode as expandable addendum) */}
       {!presentMode && report.executive_summary.length > 0 ? (
         <div className="mt-4">
-          <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+          <p className="mb-2 gov-type-eyebrow">
             Executive summary
           </p>
           <ul className="space-y-1">
@@ -1484,7 +1484,7 @@ const ReportDetail = () => {
               aria-expanded={evidenceOpen}
             >
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Supplementary
                 </p>
                 <p className="mt-0.5 text-[15px] font-semibold text-[#0D1B2A]">
@@ -1515,7 +1515,7 @@ const ReportDetail = () => {
                     : []
                   ).map((section) => (
                     <article key={section.title}>
-                      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                      <p className="mb-3 gov-type-eyebrow">
                         {section.title}
                       </p>
                       <div className="space-y-3">
@@ -1533,7 +1533,7 @@ const ReportDetail = () => {
                   ))}
                   {report.recommended_changes.length > 0 ? (
                     <article>
-                      <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                      <p className="mb-3 gov-type-eyebrow">
                         All recommended changes
                       </p>
                       <ul className="space-y-2">

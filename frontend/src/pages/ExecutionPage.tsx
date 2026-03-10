@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Activity, Zap } from "lucide-react";
+import { Activity, Zap, ClipboardList } from "lucide-react";
 import { toast } from "sonner";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
+import { ActionColumnSkeleton } from "@/components/governance/skeletons";
 
 import {
   createReportAction,
@@ -342,9 +344,9 @@ const ExecutionPage = () => {
       >
         {!hasReadyCycle ? (
           <section className="rounded-xl border border-blue-100 bg-blue-50/70 p-5 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Action Workspace</p>
-            <h2 className="mt-2 text-lg font-semibold text-slate-900">Actions open after a report is ready</h2>
-            <p className="mt-2 max-w-3xl text-sm text-slate-700">
+            <p className="gov-label text-blue-700">Action Workspace</p>
+            <h2 className="gov-section-intro mt-2">Actions open after a report is ready</h2>
+            <p className="gov-body mt-2 max-w-3xl">
               Clarion uses this workspace for follow-through after the first governance cycle exists: upload feedback,
               review recurring {DISPLAY_LABELS.clientIssuePlural.toLowerCase()}, then assign owners and due dates here.
             </p>
@@ -354,22 +356,22 @@ const ExecutionPage = () => {
         <section className="rounded-[12px] border border-[#E3E8EF] bg-white px-6 py-5 shadow-sm">
           <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Current queue</p>
-              <h2 className="mt-2 text-[20px] font-semibold text-[#0D1B2A]">Keep ownership visible, then narrow the list only when you need to.</h2>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-slate-700">
+              <p className="gov-label">Current queue</p>
+              <h2 className="gov-section-intro mt-2">Keep ownership visible, then narrow the list only when you need to.</h2>
+              <p className="gov-body mt-3 max-w-xl">
                 This workspace is primarily for assigning and finishing follow-through. Filters are available, but the main job is keeping the current action queue clear and credible.
               </p>
               <div className="mt-4 workspace-inline-stats">
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Visible</p>
+                  <p className="gov-label">Visible</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.total}</p>
                 </div>
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Open</p>
+                  <p className="gov-label">Open</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.open}</p>
                 </div>
                 <div className="workspace-inline-stat">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Overdue</p>
+                  <p className="gov-label">Overdue</p>
                   <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.overdue}</p>
                 </div>
               </div>
@@ -377,8 +379,8 @@ const ExecutionPage = () => {
             <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Narrow the workspace</p>
-                  <p className="mt-1 text-sm text-slate-700">Use one filter pass when you need a cleaner execution list.</p>
+                  <p className="gov-label">Narrow the workspace</p>
+                  <p className="gov-body-sm mt-1">Use one filter pass when you need a cleaner execution list.</p>
                 </div>
                 {isOverdueOnlyFilter ? (
                   <button type="button" className="gov-btn-secondary" onClick={clearUrlFilter}>
@@ -388,7 +390,7 @@ const ExecutionPage = () => {
               </div>
               <div className="mt-4 grid gap-4 md:grid-cols-3">
                 <div>
-                  <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-gray-500">Status</label>
+                  <label className="gov-label mb-1 block">Status</label>
                   <div className="relative">
                     <select
                       className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
@@ -406,7 +408,7 @@ const ExecutionPage = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-gray-500">Owner</label>
+                  <label className="gov-label mb-1 block">Owner</label>
                   <div className="relative">
                     <select
                       className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
@@ -424,7 +426,7 @@ const ExecutionPage = () => {
                   </div>
                 </div>
                 <div>
-                  <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.08em] text-gray-500">Report</label>
+                  <label className="gov-label mb-1 block">Report</label>
                   <div className="relative">
                     <select
                       className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
@@ -468,107 +470,64 @@ const ExecutionPage = () => {
         ) : null}
 
         {loading ? (
-          <section className="grid gap-6 lg:grid-cols-4">
+          <section aria-label="Loading governance actions" className="grid gap-6 lg:grid-cols-4">
             {Array.from({ length: 4 }).map((_, col) => (
-              <article key={`exec-skeleton-${col}`} className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm">
-                <div className="h-4 w-28 rounded bg-neutral-200" />
-                <div className="mt-4 space-y-3">
-                  {Array.from({ length: 3 }).map((__, idx) => (
-                    <div key={`exec-card-skeleton-${col}-${idx}`} className="rounded-lg border border-neutral-200 p-3">
-                      <div className="h-3 w-40 rounded bg-neutral-200" />
-                      <div className="mt-2 h-3 w-28 rounded bg-neutral-100" />
-                    </div>
-                  ))}
-                </div>
-              </article>
+              <ActionColumnSkeleton key={`exec-skeleton-${col}`} />
             ))}
           </section>
         ) : filteredActions.length === 0 ? (
-          <section className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm">
-            <div className="flex flex-col items-center justify-center px-8 py-16 text-center">
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50">
-                <Zap className="text-blue-500" size={26} />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-slate-800">No Governance Actions Yet</h3>
-              <p className="mb-6 max-w-sm text-sm text-slate-500">
-                {!hasAnyCycle
-                  ? "The first cycle starts with a CSV upload. Once the report is ready, review recurring client issues and then assign follow-through here."
+          <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+            <GovernanceEmptyState
+              size="lg"
+              icon={<ClipboardList size={20} />}
+              title="No governance actions yet"
+              description={
+                !hasAnyCycle
+                  ? "The first cycle starts with a CSV upload. Once the report is ready, review client issues and assign ownership here."
                   : !hasReadyCycle
                     ? "Your first governance cycle is still being prepared. Actions become available once the report is ready for issue review."
-                    : `Actions are created after you review recurring ${DISPLAY_LABELS.clientIssuePlural.toLowerCase()}. Confirm what needs ownership, then assign due dates and follow-through here.`}
-              </p>
-              {!hasAnyCycle ? (
-                <div>
-                  <div className="flex flex-wrap items-center justify-center gap-3">
-                    <Link
-                      to="/upload"
-                      className="inline-flex items-center gap-2 rounded-[8px] bg-[#0D1B2A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16263b]"
-                    >
-                      <Activity size={16} />
-                      Upload your first CSV
-                    </Link>
-                    <Link to="/dashboard" className="gov-btn-secondary">
-                      Return to overview
-                    </Link>
-                    <Link to="/demo" className="gov-btn-secondary">
-                      Open read-only example cycle
-                    </Link>
-                  </div>
-                </div>
-              ) : !hasReadyCycle ? (
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <Link to="/dashboard/reports" className="inline-flex items-center gap-2 rounded-[8px] bg-[#0D1B2A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16263b]">
-                    <Activity size={16} />
-                    Check report status
-                  </Link>
-                  <Link to="/dashboard" className="gov-btn-secondary">
-                    Return to overview
-                  </Link>
-                  <Link to="/demo" className="gov-btn-secondary">
-                    Open read-only example cycle
-                  </Link>
-                </div>
-              ) : (
-                <>
-                  <Link
-                    to="/dashboard/signals"
-                    className="inline-flex items-center gap-2 rounded-[8px] bg-[#0D1B2A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#16263b]"
-                  >
-                    <Activity size={16} />
-                    Review Client Issues
-                  </Link>
-                  <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-                    <Link to="/dashboard" className="gov-btn-secondary">
-                      Return to overview
-                    </Link>
-                    <button type="button" onClick={openCreateActionModal} className="gov-btn-secondary">
-                      Create action from this cycle
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
-          </section>
+                    : `Actions are created after reviewing client issues. Confirm what needs ownership, then assign due dates and partners here.`
+              }
+              primaryAction={
+                !hasAnyCycle
+                  ? { label: "Upload feedback CSV", href: "/upload" }
+                  : !hasReadyCycle
+                    ? { label: "Check report status", href: "/dashboard/reports" }
+                    : { label: "Review client issues", href: "/dashboard/signals" }
+              }
+              secondaryAction={
+                hasReadyCycle && !(!hasAnyCycle) && !(!hasReadyCycle)
+                  ? { label: "Create action manually", onClick: openCreateActionModal }
+                  : { label: "Return to dashboard", href: "/dashboard" }
+              }
+              footer={
+                <Link to="/demo" className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700">
+                  Open read-only example cycle
+                </Link>
+              }
+            />
         ) : tabActions.length === 0 && actionsTab !== "firm-wide" ? (
-          <section className="rounded-xl border border-[#E3E8EF] bg-white p-6 shadow-sm text-center">
-            <h2 className="text-lg font-medium text-neutral-900">
-              {actionsTab === "my-actions" ? "No actions assigned to you" : "No overdue actions"}
-            </h2>
-            <p className="mt-1 text-sm text-neutral-700">
-              {actionsTab === "my-actions"
-                ? "Actions assigned to your name or email will appear here."
-                : "All actions are within their due dates. Good standing."}
-            </p>
-            <div className="mt-4">
-              <button type="button" className="gov-btn-secondary" onClick={() => setActionsTab("firm-wide")}>
-                View firm-wide actions
-              </button>
-            </div>
+          <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+            <GovernanceEmptyState
+              size="md"
+              icon={<ClipboardList size={20} />}
+              title={
+                actionsTab === "my-actions"
+                  ? "No governance actions assigned to you"
+                  : "No overdue actions — all within due dates"
+              }
+              description={
+                actionsTab === "my-actions"
+                  ? "Review firm-wide actions to see where ownership is missing and assign yourself to any that need a named partner."
+                  : "All current actions are within their due dates. Good standing — review firm-wide actions to stay ahead of upcoming deadlines."
+              }
+              primaryAction={{ label: "View firm-wide actions", onClick: () => setActionsTab("firm-wide") }}
+            />
           </section>
         ) : (
           <section className="space-y-4">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+              <p className="gov-type-eyebrow">
                 {actionsTab === "overdue" ? "Overdue actions" : actionsTab === "my-actions" ? "My assigned actions" : "By status"}
               </p>
               <p className="mt-1 text-sm text-slate-700">

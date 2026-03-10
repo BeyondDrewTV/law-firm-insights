@@ -431,7 +431,7 @@ const SignalDetail = () => {
                     label={severityLabel(signal.severity)}
                     variant={resolveChipVariantForSeverity(signal.severity)}
                   />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400">
+                  <span className="gov-type-eyebrow">
                     Client Issue
                   </span>
                 </div>
@@ -476,7 +476,7 @@ const SignalDetail = () => {
               {excerpts.length > 0 ? (
                 <section className="rounded-[12px] border border-[#E5E7EB] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                   <div className="mb-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                    <p className="gov-type-eyebrow">
                       Representative Feedback
                     </p>
                     <h2 className="mt-1 text-[16px] font-semibold text-[#0D1B2A]">
@@ -504,7 +504,7 @@ const SignalDetail = () => {
               <section className="rounded-[12px] border border-[#E5E7EB] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                    <p className="gov-type-eyebrow">
                       Linked Actions
                     </p>
                     <h2 className="mt-1 text-[16px] font-semibold text-[#0D1B2A]">
@@ -576,7 +576,7 @@ const SignalDetail = () => {
 
                 {showActionForm ? (
                   <div className="mt-5 rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
-                    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                    <p className="mb-3 gov-type-eyebrow">
                       New action
                     </p>
                     <ActionForm
@@ -610,7 +610,7 @@ const SignalDetail = () => {
 
               {/* Risk summary panel */}
               <aside className="rounded-[12px] border border-[#E5E7EB] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Signal Summary
                 </p>
 
@@ -673,7 +673,7 @@ const SignalDetail = () => {
 
               {/* Governance Briefs panel */}
               <aside className="order-3 rounded-[12px] border border-[#E5E7EB] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] lg:order-none">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   In Governance Briefs
                 </p>
                 {briefsForSignal.length > 0 ? (
@@ -702,7 +702,7 @@ const SignalDetail = () => {
 
               {/* Timeline */}
               <aside className="order-4 rounded-[12px] border border-[#E5E7EB] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.06)] lg:order-none">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                <p className="gov-type-eyebrow">
                   Activity Timeline
                 </p>
                 {timeline.length > 0 ? (

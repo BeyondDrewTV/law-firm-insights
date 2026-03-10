@@ -571,17 +571,17 @@ const Upload = () => {
               </div>
               <div className="mt-4 grid gap-3 rounded-md border border-neutral-200 bg-white px-4 py-4 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Step 1</p>
+                  <p className="gov-type-eyebrow">Step 1</p>
                   <p className="mt-1 text-sm font-medium text-neutral-900">Choose one clean export.</p>
                   <p className="mt-1 text-xs leading-5 text-neutral-700">Start with one CSV from the current review period rather than several files at once.</p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Step 2</p>
+                  <p className="gov-type-eyebrow">Step 2</p>
                   <p className="mt-1 text-sm font-medium text-neutral-900">Confirm the header check.</p>
                   <p className="mt-1 text-xs leading-5 text-neutral-700">Clarion reads the header row first so you can catch structure issues before processing.</p>
                 </div>
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Step 3</p>
+                  <p className="gov-type-eyebrow">Step 3</p>
                   <p className="mt-1 text-sm font-medium text-neutral-900">Open the first report.</p>
                   <p className="mt-1 text-xs leading-5 text-neutral-700">The upload turns into your first live report, action list, and governance brief flow.</p>
                 </div>
@@ -621,7 +621,7 @@ const Upload = () => {
               <div ref={fileChooserCardRef} className="rounded-md border border-neutral-200 bg-white px-4 py-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Primary intake</p>
+                    <p className="gov-type-eyebrow">Primary intake</p>
                     <p className="mt-1 text-sm font-semibold text-neutral-900">Choose the review export for this cycle</p>
                     <p className="mt-1 text-xs leading-5 text-neutral-700">
                       Clarion automatically detects common header names and checks the required fields before full analysis. Manual column mapping is not available in this version.
@@ -698,7 +698,7 @@ const Upload = () => {
                 <div className="rounded-md border border-neutral-200 bg-neutral-50 px-4 py-4">
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Pre-upload check</p>
+                      <p className="gov-type-eyebrow">Pre-upload check</p>
                       <p className="mt-1 text-sm font-semibold text-neutral-900">
                         {headerPreview.isCompatible ? "File structure looks ready" : "Review the file structure before analysis"}
                       </p>
@@ -756,7 +756,7 @@ const Upload = () => {
 
               {successMessage ? (
                 <div className="rounded-md border border-neutral-200 bg-neutral-50 px-4 py-4 text-sm text-neutral-800">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Upload complete</p>
+                  <p className="gov-type-eyebrow">Upload complete</p>
                   <p className="mt-1 font-semibold text-neutral-900">The first report is ready.</p>
                   <p className="mt-1">{successMessage}</p>
                   <p className="mt-1 text-xs text-neutral-700">

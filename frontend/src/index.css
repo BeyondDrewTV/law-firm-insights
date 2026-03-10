@@ -75,6 +75,132 @@
     --motion-slow: 320ms;
     --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
+    /* ── Interaction tokens ────────────────────────────────────────────
+       Canonical values for hover/focus/active states.
+       All microinteraction durations and shadows reference these.
+    ───────────────────────────────────────────────────────────────── */
+    /* Focus ring — Clarion teal, used on cards, buttons, tabs */
+    --gov-ring-color: #0EA5C2;
+    --gov-ring-shadow: 0 0 0 3px rgba(14, 165, 194, 0.18);
+
+    /* Card hover — subtle lift + shadow deepening */
+    --gov-card-shadow-rest:  0 1px 3px rgba(0, 0, 0, 0.06);
+    --gov-card-shadow-hover: 0 6px 18px -8px rgba(13, 27, 42, 0.14);
+    --gov-card-border-rest:  #E5E7EB;
+    --gov-card-border-hover: #C8D0DA;
+
+    /* ── Skeleton / loading ────────────────────────────────────────────
+       Two-stop gradient used by all gov-skel blocks.
+       Matches the page's cool-white background so skeletons feel
+       part of the layout rather than floating grey boxes.
+    ───────────────────────────────────────────────────────────────── */
+    --gov-skeleton-base:      #E8ECF1;
+    --gov-skeleton-highlight: #F1F5F9;
+
+    /* Button transitions */
+    --gov-btn-duration: 150ms;
+    --gov-btn-ease: cubic-bezier(0.2, 0, 0.2, 1);
+
+    /* ── Spacing scale (8-pt grid) ─────────────────────────────────────
+       Definitive layout tokens. Use these everywhere instead of
+       raw px values or ad-hoc Tailwind margin/padding classes.
+
+       Quick reference:
+         Page chrome (px / py)   → --space-page-x / --space-page-y
+         Card inner padding      → --space-card-x / --space-card-y
+         Between cards/sections  → --space-section
+         Grid / card-list gap    → --space-grid
+         Content rows in a card  → --space-content
+         Inline stat cell        → --space-stat
+         Dashboard tier gap      → --dash-tier-gap
+         Dashboard section gap   → --dash-section-gap
+    ─────────────────────────────────────────────────────────────────── */
+
+    /* Page chrome — applied by PageWrapper and Dashboard root <section> */
+    --space-page-x: 2.5rem;     /* 40px — horizontal page padding            */
+    --space-page-y: 2.5rem;     /* 40px — vertical page padding              */
+
+    /* Card inner padding */
+    --space-card-x:    1.75rem; /* 28px — standard card horizontal padding   */
+    --space-card-y:    1.5rem;  /* 24px — standard card vertical padding     */
+    --space-card-x-lg: 2rem;    /* 32px — large cards (detail / brief pages) */
+    --space-card-y-lg: 1.75rem; /* 28px                                      */
+
+    /* Section / grid gaps */
+    --space-section: 2rem;      /* 32px — gap between sibling cards/sections */
+    --space-grid:    1.5rem;    /* 24px — grid and card-list gap             */
+    --space-content: 1rem;      /* 16px — rows inside a card                 */
+
+    /* Inline stat strip cell padding (shorthand: top/bottom left/right) */
+    --space-stat: 0.875rem 1rem;
+
+    /* Dashboard tier rhythm */
+    --dash-tier-gap:     3rem;  /* 48px — between Tier 1→2, Tier 2→3        */
+    --dash-section-gap:  2rem;  /* 32px — between cards within the same tier */
+
+    /* Max readable content width */
+    --content-max-w: 1200px;
+
+    /* ── Typography scale ───────────────────────────────────────────────
+       Manrope, weight 400–700. One token per role; no ad-hoc px values.
+
+       Hierarchy (largest → smallest):
+         page-title      Page h1 rendered by PageWrapper            24px / 700
+         section-intro   Section h2 opener inside a page card       20px / 600
+         card-title      h3 on GovernanceCard, DashboardCard        15px / 600
+         subsection      DashSectionHeader, filter labels           13px / 600
+         body            Body prose, card descriptions              14px / 400
+         body-sm         Secondary body, sub-descriptions           13px / 400
+         meta            Meta row items, dates, owners              12px / 400
+         label           ALL-CAPS eyebrow / stat label              11px / 700 + 0.08em
+
+       Color roles (use consistently):
+         --type-ink       Headings, titles                  #0D1B2A
+         --type-body      Body prose                        #334155
+         --type-muted     Secondary / meta                  #6B7280
+         --type-faint     Disabled / placeholder            #9CA3AF
+         --type-label     Eyebrow / label uppercase         #64748B
+    ─────────────────────────────────────────────────────────────────── */
+
+    /* Color roles */
+    --type-ink:   #0D1B2A;
+    --type-body:  #334155;
+    --type-muted: #6B7280;
+    --type-faint: #9CA3AF;
+    --type-label: #64748B;
+
+    /* Size / weight / line-height pairs */
+    --type-page-size:    1.5rem;    /* 24px */
+    --type-page-weight:  700;
+    --type-page-lh:      1.2;
+
+    --type-intro-size:   1.25rem;   /* 20px */
+    --type-intro-weight: 600;
+    --type-intro-lh:     1.3;
+
+    --type-card-size:    0.9375rem; /* 15px */
+    --type-card-weight:  600;
+    --type-card-lh:      1.35;
+
+    --type-sub-size:     0.8125rem; /* 13px */
+    --type-sub-weight:   600;
+    --type-sub-lh:       1.3;
+
+    --type-body-size:    0.875rem;  /* 14px */
+    --type-body-weight:  400;
+    --type-body-lh:      1.6;
+
+    --type-body-sm-size: 0.8125rem; /* 13px */
+    --type-body-sm-lh:   1.55;
+
+    --type-meta-size:    0.75rem;   /* 12px */
+    --type-meta-weight:  400;
+    --type-meta-lh:      1.4;
+
+    --type-label-size:   0.6875rem; /* 11px */
+    --type-label-weight: 700;
+    --type-label-ls:     0.08em;
+
     --gov-canvas: 214 22% 88%;
     --background: 214 32% 95%;
     --foreground: 223 34% 14%;
@@ -197,10 +323,52 @@
       transform: none;
       transition: none;
     }
+    .gov-card-interactive,
+    .gov-card-surface {
+      transition: none;
+    }
+    .gov-card-interactive:hover,
+    .gov-card-surface:hover {
+      transform: none;
+    }
   }
 }
 
 @layer components {
+  /* ── Skeleton loading blocks ─────────────────────────────────────────
+     Single source of truth for all shimmer placeholders.
+     Use .gov-skel on any rounded div that stands in for real content.
+     Pair with animate-pulse (already in Tailwind base) on the wrapper.
+     Respects prefers-reduced-motion — falls back to static grey.
+  ─────────────────────────────────────────────────────────────────── */
+  .gov-skel {
+    background-color: var(--gov-skeleton-base);
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .gov-skel-shimmer {
+      background: linear-gradient(
+        90deg,
+        var(--gov-skeleton-base)   0%,
+        var(--gov-skeleton-highlight) 50%,
+        var(--gov-skeleton-base)   100%
+      );
+      background-size: 200% 100%;
+      animation: gov-shimmer 1.6s ease-in-out infinite;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gov-skel-shimmer {
+      background-color: var(--gov-skeleton-base);
+    }
+  }
+
+  @keyframes gov-shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
   .marketing-hero {
     @apply section-padding border-b border-white/10;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
@@ -330,6 +498,45 @@
   }
 
 
+
+  /* ── gov-card-interactive ─────────────────────────────────────────────
+     Standard hover / focus treatment for ALL governance cards.
+     Apply to GovernanceCard <article>, DashboardCard <section>, and the
+     base Card component. Uses canonical --gov-* interaction tokens.
+  ────────────────────────────────────────────────────────────────────── */
+  .gov-card-interactive {
+    transition:
+      box-shadow var(--gov-med) var(--gov-ease),
+      border-color var(--gov-med) var(--gov-ease),
+      transform var(--gov-med) var(--gov-ease);
+  }
+  .gov-card-interactive:hover {
+    border-color: var(--gov-card-border-hover);
+    box-shadow: var(--gov-card-shadow-hover);
+    transform: translateY(-1px);
+  }
+  .gov-card-interactive:focus-visible {
+    outline: 2px solid var(--gov-ring-color);
+    outline-offset: 2px;
+    box-shadow: var(--gov-ring-shadow);
+  }
+  .gov-card-interactive:active {
+    transform: translateY(0);
+    box-shadow: var(--gov-card-shadow-rest);
+  }
+
+  /* Non-clickable card — hover lift only, no pointer cursor */
+  .gov-card-surface {
+    transition:
+      box-shadow var(--gov-med) var(--gov-ease),
+      border-color var(--gov-med) var(--gov-ease),
+      transform var(--gov-med) var(--gov-ease);
+  }
+  .gov-card-surface:hover {
+    border-color: var(--gov-card-border-hover);
+    box-shadow: var(--gov-card-shadow-hover);
+    transform: translateY(-1px);
+  }
 
   .gov-clickable-row {
     @apply relative cursor-pointer transition-all duration-150;
@@ -1327,8 +1534,14 @@
     height: var(--dash-tier-gap);
   }
 
+  /* section-title — used by DashboardCard via titleClassName default.
+     Consolidated to match gov-card-title (15px/600/#0D1B2A).
+     Previously conflicted: text-xl in @layer base vs. 19px/700 in plain CSS. */
   .section-title {
-    @apply text-xl font-semibold text-neutral-900;
+    font-size: var(--type-card-size);
+    font-weight: var(--type-card-weight);
+    line-height: var(--type-card-lh);
+    color: var(--type-ink);
   }
 
   .section-subtitle {
@@ -1417,14 +1630,9 @@
   --sidebar-active-border: rgba(255, 255, 255, 0.2);
   --text-primary: #0F172A;
   --text-secondary: #475569;
-  --space-section: 32px;
-  --space-grid: 24px;
-  --space-card: 24px;
-  --space-content: 16px;
-
-  /* Dashboard tier spacing — use these for layout, not ad-hoc mb-8 */
-  --dash-tier-gap: 48px;   /* between Tier 1→2 and Tier 2→3 */
-  --dash-section-gap: 32px; /* between cards/sections within the same tier */
+  /* Spacing tokens are defined in the canonical :root block above.
+     --space-page-x/y, --space-card-x/y, --space-section, --space-grid,
+     --space-content, --dash-tier-gap, --dash-section-gap, --content-max-w */
 }
 
 body {
@@ -1450,11 +1658,11 @@ body {
 }
 
 .gov-level-1 {
-  padding: 28px;
+  padding: var(--space-card-y-lg) var(--space-card-x-lg); /* 28px 32px */
 }
 
 .gov-level-2 {
-  padding: 24px;
+  padding: var(--space-card-y) var(--space-card-x); /* 24px 28px */
 }
 
 .gov-h1 {
@@ -1476,6 +1684,90 @@ body {
 .gov-module-title-soft {
   color: var(--text-secondary);
 }
+
+/* ── Governance typography utilities ────────────────────────────────────
+   Apply these classes instead of ad-hoc Tailwind text-[Npx] combos.
+   See :root --type-* tokens for the full scale rationale.
+─────────────────────────────────────────────────────────────────────── */
+
+/* Page h1 — rendered by PageWrapper's <h1> */
+.gov-page-title {
+  font-size: var(--type-page-size);
+  font-weight: var(--type-page-weight);
+  line-height: var(--type-page-lh);
+  color: var(--type-ink);
+}
+
+/* Section intro h2 — the large h2 inside page header cards */
+.gov-section-intro {
+  font-size: var(--type-intro-size);
+  font-weight: var(--type-intro-weight);
+  line-height: var(--type-intro-lh);
+  color: var(--type-ink);
+}
+
+/* Card title h3 — GovernanceCard, DashboardCard */
+.gov-card-title {
+  font-size: var(--type-card-size);
+  font-weight: var(--type-card-weight);
+  line-height: var(--type-card-lh);
+  color: var(--type-ink);
+}
+
+/* Subsection label — DashSectionHeader, filter group labels */
+.gov-subsection {
+  font-size: var(--type-sub-size);
+  font-weight: var(--type-sub-weight);
+  line-height: var(--type-sub-lh);
+  color: var(--type-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Body prose */
+.gov-body {
+  font-size: var(--type-body-size);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-lh);
+  color: var(--type-body);
+}
+
+/* Smaller body — card summaries, sub-descriptions */
+.gov-body-sm {
+  font-size: var(--type-body-sm-size);
+  line-height: var(--type-body-sm-lh);
+  color: var(--type-muted);
+}
+
+/* Meta row — dates, owners, pipe-separated items */
+.gov-meta {
+  font-size: var(--type-meta-size);
+  font-weight: var(--type-meta-weight);
+  line-height: var(--type-meta-lh);
+  color: var(--type-faint);
+}
+
+/* Eyebrow / stat label — ALL CAPS, replaces the verbatim
+   text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500
+   pattern that appears 12+ times across pages */
+.gov-label {
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  line-height: 1;
+  letter-spacing: var(--type-label-ls);
+  text-transform: uppercase;
+  color: var(--type-label);
+}
+
+/* ── gov-type-* canonical aliases ───────────────────────────────────────
+   Preferred class names for JSX. Same values as the gov-* primitives above.
+─────────────────────────────────────────────────────────────────────── */
+.gov-type-h1      { font-size: var(--type-page-size);   font-weight: var(--type-page-weight);  line-height: var(--type-page-lh);  color: var(--type-ink); }
+.gov-type-h2      { font-size: var(--type-intro-size);  font-weight: var(--type-intro-weight); line-height: var(--type-intro-lh); color: var(--type-ink); }
+.gov-type-h3      { font-size: var(--type-card-size);   font-weight: var(--type-card-weight);  line-height: var(--type-card-lh);  color: var(--type-ink); }
+.gov-type-body    { font-size: var(--type-body-size);   font-weight: var(--type-body-weight);  line-height: var(--type-body-lh);  color: var(--type-body); }
+.gov-type-meta    { font-size: var(--type-meta-size);   font-weight: var(--type-meta-weight);  line-height: var(--type-meta-lh);  color: var(--type-faint); }
+.gov-type-eyebrow { font-size: var(--type-label-size);  font-weight: var(--type-label-weight); line-height: 1; letter-spacing: var(--type-label-ls); text-transform: uppercase; color: var(--type-label); }
 
 .gov-btn-primary {
   border-radius: 0.5rem;
@@ -1926,6 +2218,29 @@ body {
   animation: none;
 }
 
+/* ── Stage-sequence spacing ─────────────────────────────────────────────
+   .stage-sequence is used as the contentClassName on every PageWrapper
+   and on the Dashboard root div. Its direct children are the discrete
+   "stage" sections. We give them the canonical --space-section gap so
+   spacing is consistent and controlled from a single token.
+
+   The CSS display:flex+gap approach replaces the space-y-8 / mb-8 pattern
+   that was scattered across Dashboard and PageWrapper.
+──────────────────────────────────────────────────────────────────────── */
+.stage-sequence {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+}
+
+/* Override Dashboard's .stage-sequence because it wraps the entire page body
+   (including the header) — the header already controls its own bottom gap,
+   so we do NOT want gap applied there. Dashboard uses its own tier rhythm via
+   .dash-tier and .dash-tier-gap helpers instead. */
+.stage-sequence.dash-override {
+  display: block; /* fall back to block layout for dashboard tier system */
+}
+
 .workspace-shell-header {
   position: relative;
 }
@@ -1935,23 +2250,25 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -20px;
+  bottom: calc(var(--space-section) * -0.5); /* sits midway in the header→content gap */
   height: 1px;
   background: linear-gradient(90deg, rgba(203, 213, 225, 0.95) 0%, rgba(203, 213, 225, 0.42) 58%, rgba(203, 213, 225, 0) 100%);
 }
 
 .workspace-shell-eyebrow {
   margin-bottom: 10px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: 0.14em; /* slightly wider than card labels — page-level eyebrow */
   text-transform: uppercase;
-  color: #64748b;
+  color: var(--type-label);
 }
 
 .workspace-shell-description {
   max-width: 46rem;
-  line-height: 1.65;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-lh);
+  color: var(--type-body);
 }
 
 .workspace-inline-stats {
@@ -1963,7 +2280,7 @@ body {
 }
 
 .workspace-inline-stat {
-  padding: 14px 16px;
+  padding: var(--space-stat); /* 14px 16px — consistent via token */
 }
 
 .workspace-inline-stat + .workspace-inline-stat {

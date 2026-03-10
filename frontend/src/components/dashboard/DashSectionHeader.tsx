@@ -6,12 +6,11 @@ type DashSectionHeaderProps = {
 
 /**
  * DashSectionHeader
- * Consistent heading component for major content sections within a dashboard tier.
- * Replaces ad-hoc <h2> blocks scattered across Dashboard.tsx.
+ * Consistent heading for major content sections inside a dashboard tier.
  *
- * Typography scale:
- *   title   — 15px semibold, #0D1B2A (govDSM gov-h3 level)
- *   subtitle — 12px, #6B7280
+ * Typography:
+ *   title    → gov-type-eyebrow  (11px / 700 / uppercase / #64748B)
+ *   subtitle → gov-type-meta     (12px / 400 / #9CA3AF)
  *
  * Usage:
  *   <DashSectionHeader title="Priority follow-through" subtitle="Actions without clear ownership" />
@@ -19,11 +18,9 @@ type DashSectionHeaderProps = {
 export default function DashSectionHeader({ title, subtitle }: DashSectionHeaderProps) {
   return (
     <div className="mb-3">
-      <h2 className="text-[15px] font-semibold uppercase tracking-[0.06em] text-[#4B5563]">
-        {title}
-      </h2>
+      <h2 className="gov-type-eyebrow">{title}</h2>
       {subtitle ? (
-        <p className="mt-0.5 text-[12px] text-[#9CA3AF]">{subtitle}</p>
+        <p className="gov-type-meta mt-0.5">{subtitle}</p>
       ) : null}
     </div>
   );

@@ -79,14 +79,14 @@ const DemoWorkspace = () => {
 
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             <article className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Step 1</p>
+              <p className="gov-type-eyebrow">Step 1</p>
               <h3 className="mt-2 text-base font-semibold text-slate-900">Overview posture</h3>
               <p className="mt-2 text-sm text-slate-600">
                 See how one review cycle is summarized once feedback has been processed.
               </p>
             </article>
             <article className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Step 2</p>
+              <p className="gov-type-eyebrow">Step 2</p>
               <h3 className="mt-2 text-base font-semibold text-slate-900">Issue and action detail</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Open the example report to inspect recurring client issues, movement over time, and assigned follow-through.
@@ -99,7 +99,7 @@ const DemoWorkspace = () => {
               </Link>
             </article>
             <article className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Step 3</p>
+              <p className="gov-type-eyebrow">Step 3</p>
               <h3 className="mt-2 text-base font-semibold text-slate-900">Leadership brief output</h3>
               <p className="mt-2 text-sm text-slate-600">
                 Open the example governance brief to see the partner-ready output produced from that cycle.

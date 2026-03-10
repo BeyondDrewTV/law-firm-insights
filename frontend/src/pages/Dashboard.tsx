@@ -1,7 +1,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ChevronRight, AlertTriangle, Info, Loader2, X } from "lucide-react";
+import { ChevronRight, AlertTriangle, Info, Loader2, X, ClipboardList, ShieldAlert } from "lucide-react";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
 import { toast } from "sonner";
 import {
   emitPlanLimitError,
@@ -568,9 +569,20 @@ const Dashboard = () => {
   };
 
   return (
-      <section className="bg-[#F0F2F5] px-8 py-8">
-        <div className="stage-sequence mx-auto w-full max-w-[1200px]">
-          <header className="mb-8 flex flex-wrap items-center justify-between gap-3">
+      <section
+        className="bg-[#F0F2F5]"
+        style={{
+          padding: "var(--space-page-y) var(--space-page-x)",
+        }}
+      >
+        <div
+          className="stage-sequence dash-override mx-auto w-full"
+          style={{ maxWidth: "var(--content-max-w)" }}
+        >
+          <header
+            className="flex flex-wrap items-center justify-between gap-3"
+            style={{ marginBottom: "var(--space-section)" }}
+          >
             <div className="max-w-3xl">
               <p className="text-xs uppercase tracking-wide text-neutral-500">
                 {isFirstRunWorkspace ? "First governance cycle" : "Governance command surface"}
@@ -668,26 +680,26 @@ const Dashboard = () => {
 
                     <div className="mt-5 rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC]">
                       <div className="border-b border-[#E5E7EB] px-5 py-4">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">What happens next</p>
+                        <p className="gov-type-eyebrow">What happens next</p>
                         <p className="mt-1 text-sm text-neutral-700">The first upload creates the structure the rest of the workspace depends on.</p>
                       </div>
                       <div className="divide-y divide-[#E5E7EB]">
                         <div className="flex gap-4 px-5 py-4">
-                          <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">01</div>
+                          <div className="gov-type-eyebrow">01</div>
                           <div>
                             <h3 className="text-[15px] font-semibold text-[#0D1B2A]">Upload feedback</h3>
                             <p className="mt-1 text-sm text-neutral-700">Use one CSV from the current review period to establish the first live cycle.</p>
                           </div>
                         </div>
                         <div className="flex gap-4 px-5 py-4">
-                          <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">02</div>
+                          <div className="gov-type-eyebrow">02</div>
                           <div>
                             <h3 className="text-[15px] font-semibold text-[#0D1B2A]">Review the recurring client issues</h3>
                             <p className="mt-1 text-sm text-neutral-700">Clarion groups the feedback into patterns leadership can review in one pass.</p>
                           </div>
                         </div>
                         <div className="flex gap-4 px-5 py-4">
-                          <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">03</div>
+                          <div className="gov-type-eyebrow">03</div>
                           <div>
                             <h3 className="text-[15px] font-semibold text-[#0D1B2A]">Assign follow-through and prepare the brief</h3>
                             <p className="mt-1 text-sm text-neutral-700">Turn the highest-priority issues into owned actions and a leadership-ready governance brief.</p>
@@ -708,19 +720,19 @@ const Dashboard = () => {
 
                   <aside className="space-y-4">
                     <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">What you need</p>
+                      <p className="gov-type-eyebrow">What you need</p>
                       <p className="mt-2 text-sm text-neutral-700">
                         One CSV export from the current review period. Clarion checks structure first, then runs full upload validation.
                       </p>
                     </div>
                     <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Why this comes first</p>
+                      <p className="gov-type-eyebrow">Why this comes first</p>
                       <p className="mt-2 text-sm text-neutral-700">
                         Reports, actions, and governance briefs appear only after the first upload. Until then, the workspace stays intentionally quiet.
                       </p>
                     </div>
                     <div className="rounded-[10px] border border-[#E5E7EB] bg-white p-4">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Reference only</p>
+                      <p className="gov-type-eyebrow">Reference only</p>
                       <p className="mt-2 text-sm text-neutral-700">
                         The example cycle uses sample law-firm data and stays read-only. Your live workspace remains unchanged until you upload your own feedback.
                       </p>
@@ -914,22 +926,44 @@ const Dashboard = () => {
                 <div className="workspace-inline-stats">
                   <div className="workspace-inline-stat">
                     <p className="text-xs uppercase tracking-wide text-neutral-500">Open</p>
-                    <p className="mt-2 text-3xl font-semibold text-neutral-900">{openActions.length}</p>
+                    <p className="mt-2 text-3xl font-semibold text-neutral-900">
+                      {loading ? <span className="inline-block h-8 w-10 rounded gov-skel-shimmer" /> : openActions.length}
+                    </p>
                   </div>
                   <div className="workspace-inline-stat">
                     <p className="text-xs uppercase tracking-wide text-neutral-500">In Progress</p>
-                    <p className="mt-2 text-3xl font-semibold text-neutral-900">{inProgressActions.length}</p>
+                    <p className="mt-2 text-3xl font-semibold text-neutral-900">
+                      {loading ? <span className="inline-block h-8 w-10 rounded gov-skel-shimmer" /> : inProgressActions.length}
+                    </p>
                   </div>
                   <div className="workspace-inline-stat">
                     <p className="text-xs uppercase tracking-wide text-neutral-500">Overdue</p>
-                    <p className="mt-2 text-3xl font-semibold text-neutral-900">{overdueActions.length}</p>
+                    <p className="mt-2 text-3xl font-semibold text-neutral-900">
+                      {loading ? <span className="inline-block h-8 w-10 rounded gov-skel-shimmer" /> : overdueActions.length}
+                    </p>
                   </div>
                 </div>
               </DashboardCard>
 
               <DashboardCard title="Recent Governance Actions" subtitle="Last issue, action taken, and current status">
-                {recentGovernanceActions.length === 0 ? (
-                  <p className="text-sm text-neutral-700">No recent governance actions yet.</p>
+                {loading ? (
+                  <ul aria-label="Loading recent actions" className="space-y-3">
+                    {(["w-44", "w-56", "w-36"] as const).map((wCls, i) => (
+                      <li key={`recent-action-skel-${i}`} className="rounded-[10px] border border-[#E5E7EB] bg-white p-4">
+                        <div className={`gov-skel-shimmer h-3 rounded ${wCls}`} />
+                        <div className="mt-2 gov-skel-shimmer h-3 w-52 rounded" />
+                        <div className="mt-1.5 gov-skel-shimmer h-2.5 w-36 rounded" />
+                      </li>
+                    ))}
+                  </ul>
+                ) : recentGovernanceActions.length === 0 ? (
+                  <GovernanceEmptyState
+                    size="sm"
+                    icon={<ClipboardList size={18} />}
+                    title="No governance actions assigned yet"
+                    description="Actions are created after reviewing client issues. Assign ownership and due dates — they will appear here."
+                    primaryAction={{ label: "Review client issues", href: "/dashboard/signals" }}
+                  />
                 ) : (
                   <ul className="space-y-3">
                     {recentGovernanceActions.map((item) => (
@@ -999,7 +1033,12 @@ const Dashboard = () => {
 
               <DashboardCard title="Escalations and watchpoints" subtitle="Client issues that intensified or need leadership attention.">
                 {alerts.length === 0 ? (
-                  <p className="text-sm text-neutral-700">No active escalations or watchpoints in this cycle.</p>
+                  <GovernanceEmptyState
+                    size="sm"
+                    icon={<ShieldAlert size={18} />}
+                    title="No active escalations this cycle"
+                    description="Issues that intensify across review periods or require partner escalation will be flagged here."
+                  />
                 ) : (
                   <ul className="space-y-3">
                     {alerts.map((alert) => (

@@ -1,4 +1,6 @@
 import { DashboardCard } from "@/components/ui/card";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
+import { ClipboardList } from "lucide-react";
 
 export type ActionTrackingItem = {
   id: string;
@@ -25,7 +27,13 @@ const ActionTracking = ({ actions }: ActionTrackingProps) => {
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {actions.length === 0 ? (
         <DashboardCard title="Action Tracking" subtitle="Assigned partner actions" subtitleClassName="section-subtitle">
-          <p className="body-text">No actions are currently available.</p>
+          <GovernanceEmptyState
+            size="sm"
+            icon={<ClipboardList size={18} />}
+            title="No governance actions yet"
+            description="Actions are created after reviewing client issues. Confirm ownership, assign due dates, and they will appear here."
+            primaryAction={{ label: "Review client issues", href: "/dashboard/signals" }}
+          />
         </DashboardCard>
       ) : (
         actions.map((action) => (

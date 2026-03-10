@@ -4,12 +4,13 @@
  * Refactored to use the shared GovernanceBriefCard pattern.
  */
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import type { ReportListItem } from "@/api/authService";
 import { DashboardCard } from "@/components/ui/card";
 import GovernanceBriefCard from "@/components/governance/GovernanceBriefCard";
+import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
 import { formatApiDate } from "@/lib/dateTime";
 
 type RecentGovernanceBriefsProps = {
@@ -40,7 +41,14 @@ export default function RecentGovernanceBriefs({
       subtitle="Recent leadership-ready outputs from completed review cycles."
     >
       {briefs.length === 0 ? (
-        <p className="text-sm text-neutral-700">No governance briefs generated yet. Upload feedback to begin.</p>
+        <GovernanceEmptyState
+          size="sm"
+          icon={<FileText size={18} />}
+          title="No governance briefs yet"
+          description="Create your first brief once you've completed a review cycle and confirmed your top signals."
+          primaryAction={{ label: "Upload feedback CSV", href: "/upload" }}
+          secondaryAction={{ label: "View briefs library", href: "/dashboard/reports" }}
+        />
       ) : (
         <div className="space-y-3">
           {briefs.map((brief) => {
