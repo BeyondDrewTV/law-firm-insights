@@ -134,15 +134,17 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("corrected quickly", 1.0),
             ("more frequent check-ins would have been nice", 0.8),
             ("best way to reach them", 0.8),
+            # --- calibration: full_batch_20260311 ---
+            ("responses were quick", 1.5),
         ],
         "negative": [
             # --- original ---
-            ("couldn\'t reach", 1.0),
+            ("couldn't reach", 1.0),
             ("could not reach", 1.0),
-            ("didn\'t respond", 1.0),
+            ("didn't respond", 1.0),
             ("did not respond", 1.0),
             ("did not return", 1.0),
-            ("didn\'t return", 1.0),
+            ("didn't return", 1.0),
             ("hard to reach", 1.0),
             ("ignored my calls", 1.5),
             ("ignored my emails", 1.5),
@@ -159,7 +161,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("went silent", 1.5),
             # --- new: safe_import_now ---
             ("calls went unanswered", 1.5),
-            ("couldn\'t get a reply", 1.0),
+            ("couldn't get a reply", 1.0),
             ("days without a response", 1.5),
             ("delayed responses", 1.0),
             ("difficult to get in touch", 1.0),
@@ -177,7 +179,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("no updates for weeks", 1.5),
             ("not communicating", 1.0),
             ("phone calls ignored", 1.5),
-            ("poor communication", 1.0),       # [CG] broad; verify sentence polarity
+            ("poor communication", 1.0),
             ("rarely responded", 1.5),
             ("response took weeks", 1.5),
             ("takes days to respond", 1.5),
@@ -256,25 +258,27 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("explained each step of the custody process", 1.5),
             ("direct communication style", 1.0),
             ("asked for a summary they provided it", 1.0),
+            # --- calibration: full_batch_20260311 ---
+            ("communication was clear", 1.5),
         ],
         "negative": [
             # --- original ---
             ("confusing", 1.0),
-            ("didn\'t explain", 1.0),
-            ("didn\'t keep me informed", 1.0),
+            ("didn't explain", 1.0),
+            ("didn't keep me informed", 1.0),
             ("hard to understand", 1.0),
-            ("jargon", 0.8),                  # [CG] very common; needs sentence context
+            ("jargon", 0.8),
             ("kept in the dark", 1.5),
-            ("legalese", 0.8),                # [CG] low weight; ambiguous without qualifier
+            ("legalese", 0.8),
             ("never explained", 1.5),
             ("no explanation", 1.0),
             ("unclear", 1.0),
             # --- new: safe_import_now ---
             ("confusing communication", 1.0),
             ("confused about the process", 1.0),
-            ("didn\'t communicate clearly", 1.5),
-            ("didn\'t inform me", 1.0),
-            ("didn\'t keep me updated", 1.0),
+            ("didn't communicate clearly", 1.5),
+            ("didn't inform me", 1.0),
+            ("didn't keep me updated", 1.0),
             ("gave contradictory information", 1.5),
             ("gave me no information", 1.5),
             ("hard to follow", 1.0),
@@ -368,11 +372,13 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("remembered details about my schedule", 1.0),
             ("gave me scripts for how to talk to my co-parent", 1.0),
             ("checked on my emotional wellbeing", 1.5),
+            # --- calibration: full_batch_20260311 ---
+            ("i felt listened to", 1.5),
         ],
         "negative": [
             # --- original ---
             ("cold", 1.0),
-            ("didn\'t care", 1.0),
+            ("didn't care", 1.0),
             ("dismissed", 1.0),
             ("dismissive", 1.5),
             ("felt like a number", 1.5),
@@ -384,8 +390,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("acted like it was just a job", 1.0),
             ("cold and detached", 1.5),
             ("cold and impersonal", 1.5),
-            ("didn\'t acknowledge my feelings", 1.0),
-            ("didn\'t seem to care", 1.0),
+            ("didn't acknowledge my feelings", 1.0),
+            ("didn't seem to care", 1.0),
             ("felt ignored", 1.0),
             ("felt unimportant", 1.0),
             ("felt unheard", 1.0),
@@ -406,7 +412,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             # --- original ---
             ("completely dismissive", 2.0),
             ("felt abandoned", 2.0),
-            ("treated me like i didn\'t matter", 2.0),
+            ("treated me like i didn't matter", 2.0),
             # --- new: safe_import_now ---
             ("callous disregard", 2.0),
             ("cruel and dismissive", 2.0),
@@ -490,7 +496,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("treated me rudely", 1.5),
             ("very unprofessional", 1.5),
             ("was condescending", 1.5),
-            ("wasn\'t honest with me", 1.5),
+            ("wasn't honest with me", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -510,7 +516,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("flagrant misconduct", 2.0),
             ("gross misconduct", 2.0),
             ("lied to my face", 2.0),
-            ("misconduct", 1.5),              # [CG] broad; weight reduced pending context guard
+            ("misconduct", 1.5),
             ("professional misconduct", 2.0),
             ("stole my money", 2.0),
             ("submitted false documents", 2.0),
@@ -528,7 +534,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("gave me realistic expectations", 1.5),
             ("no surprises", 1.0),
             ("set clear expectations", 1.5),
-            ("upfront about", 1.0),           # [CG] very short; needs following noun context
+            ("upfront about", 1.0),
             ("walked me through the process", 1.0),
             # --- new: safe_import_now ---
             ("always kept me grounded", 1.0),
@@ -554,14 +560,14 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
         ],
         "negative": [
             # --- original ---
-            ("didn\'t warn me", 1.0),
+            ("didn't warn me", 1.0),
             ("expected a different outcome", 1.0),
             ("false promises", 2.0),
             ("misleading promises", 2.0),
             ("not what i expected", 1.0),
             ("overpromised", 1.5),
-            ("surprised by", 1.0),            # [CG] check that surprise is negative in context
-            ("unexpected", 1.0),              # [CG] very common; use with rating context
+            ("surprised by", 1.0),
+            ("unexpected", 1.0),
             # --- new: safe_import_now ---
             ("gave false hope", 1.5),
             ("gave me unrealistic expectations", 1.5),
@@ -576,12 +582,14 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("set unrealistic expectations", 1.5),
             ("told me what i wanted to hear", 1.5),
             ("unrealistic promises", 1.5),
-            ("wasn\'t honest about the odds", 1.5),
-            ("wasn\'t upfront about costs", 1.5),
-            ("wasn\'t upfront about risks", 1.5),
+            ("wasn't honest about the odds", 1.5),
+            ("wasn't upfront about costs", 1.5),
+            ("wasn't upfront about risks", 1.5),
             # --- calibration: sample2 ---
             ("more clarity on realistic outcomes", 1.2),
             ("case was one of many, not a priority", 1.2),
+            # --- calibration: full_batch_20260311 ---
+            ("deadlines felt unpredictable", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -590,8 +598,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("promised outcomes", 2.0),
             # --- new: safe_import_now ---
             ("flat out lied about outcomes", 2.0),
-            ("guaranteed results they couldn\'t deliver", 2.0),
-            ("made promises they couldn\'t keep", 2.0),
+            ("guaranteed results they couldn't deliver", 2.0),
+            ("made promises they couldn't keep", 2.0),
             ("promised a specific outcome", 2.0),
             ("promised success", 2.0),
         ],
@@ -638,6 +646,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("warned me when a motion would be more expensive", 1.0),
             ("respected my budget", 1.5),
             ("suggested options to minimize court time", 1.0),
+            # --- calibration: full_batch_20260311 ---
+            ("billing was explained upfront", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -736,7 +746,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
         ],
         "negative": [
             # --- original ---
-            ("expensive", 1.0),               # [CG] very common; use rating context
+            ("expensive", 1.0),
             ("exorbitant", 1.5),
             ("fees are too high", 1.5),
             ("not worth it", 1.5),
@@ -784,13 +794,15 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
 
     # =========================================================================
     # THEME: timeliness_progress
+    # NOTE: "efficient" removed from positive list - AI consistently maps it to
+    #       professionalism_trust when appearing in "respectful and efficient".
+    #       Replaced with more specific timeliness phrases.
     # =========================================================================
     "timeliness_progress": {
         "positive": [
-            # --- original ---
+            # --- original ("efficient" removed - see note above) ---
             ("ahead of schedule", 1.5),
             ("completed on time", 1.0),
-            ("efficient", 1.0),
             ("fast turnaround", 1.0),
             ("handled quickly", 1.0),
             ("moved quickly", 1.0),
@@ -825,6 +837,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("always knew when the next court date was", 1.5),
             ("helped me get a protective order quickly", 1.5),
             ("took a day to get updates after court", 0.8),
+            # --- calibration: full_batch_20260311 ---
+            ("they kept things moving", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -833,7 +847,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("delays", 1.0),
             ("everything took too long", 1.5),
             ("missed deadlines", 1.5),
-            ("slow", 1.0),                    # [CG] very common; use rating context
+            ("slow", 1.0),
             ("took forever", 1.5),
             ("took too long", 1.5),
             ("unnecessary delays", 1.5),
@@ -891,8 +905,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("receptionist was kind", 1.0),
             ("staff was friendly", 1.0),
             ("staff was helpful", 1.0),
-            ("support staff", 1.0),           # [CG] confirm positive sentiment in context
-            ("the whole team", 1.0),          # [CG] confirm positive sentiment in context
+            ("support staff", 1.0),
+            ("the whole team", 1.0),
             # --- new: safe_import_now ---
             ("admin staff was excellent", 1.5),
             ("assistant was knowledgeable", 1.0),
@@ -984,7 +998,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
         "positive": [
             # --- original ---
             ("achieved great results", 1.5),
-            ("case was dismissed", 1.5),      # [CG] dismissal can be negative for plaintiff; check context
+            ("case was dismissed", 1.5),
             ("excellent outcome", 1.5),
             ("favorable outcome", 1.5),
             ("favorable settlement", 1.5),
@@ -1005,7 +1019,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("case was a success", 1.5),
             ("case was resolved successfully", 1.5),
             ("charges were dropped", 1.5),
-            ("couldn\'t be happier with the result", 2.0),
+            ("couldn't be happier with the result", 2.0),
             ("excellent results", 1.5),
             ("exceptional outcome", 2.0),
             ("extremely happy with the outcome", 1.5),
@@ -1026,13 +1040,15 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("successful resolution", 1.5),
             ("very pleased with the outcome", 1.5),
             ("very pleased with the result", 1.5),
-            ("victory", 1.5),                 # [CG] check for "no victory" / "not a victory"
+            ("victory", 1.5),
             ("won a great settlement", 1.5),
             ("won the case", 1.5),
             # --- calibration: sample2 ---
             ("mediation preparation was excellent", 1.5),
             ("helped me focus on long-term outcomes", 1.5),
             ("not just winning every argument", 1.0),
+            # --- calibration: full_batch_20260311 ---
+            ("the outcome met expectations", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -1067,7 +1083,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("failed to achieve a good outcome", 1.5),
             ("lost the case", 1.5),
             ("matter was not resolved", 1.5),
-            ("no resolution", 1.0),           # [CG] may refer to billing or process; check context
+            ("no resolution", 1.0),
             ("not the outcome i wanted", 1.0),
             ("outcome was not good", 1.5),
             ("poor results", 1.5),
@@ -1104,10 +1120,10 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
 # NEGATION GUARDS
 # ---------------------------------------------------------------------------
 NEGATION_TOKENS = {
-    "not", "never", "no", "didn\'t", "did not", "doesn\'t", "does not",
-    "wasn\'t", "was not", "weren\'t", "were not", "wouldn\'t", "would not",
-    "couldn\'t", "could not", "haven\'t", "have not", "hadn\'t", "had not",
-    "isn\'t", "is not", "aren\'t", "are not", "hardly", "barely", "scarcely",
+    "not", "never", "no", "didn't", "did not", "doesn't", "does not",
+    "wasn't", "was not", "weren't", "were not", "wouldn't", "would not",
+    "couldn't", "could not", "haven't", "have not", "hadn't", "had not",
+    "isn't", "is not", "aren't", "are not", "hardly", "barely", "scarcely",
 }
 NEGATION_WINDOW = 6
 
@@ -1177,7 +1193,7 @@ REVIEW (rating {rating}/5, date {date}):
 
 def _tokenize(text: str) -> List[str]:
     """Lowercase word-token list, punctuation stripped."""
-    return re.findall(r"[a-z\']+", text.lower())
+    return re.findall(r"[a-z']+", text.lower())
 
 
 def _check_negation(tokens: List[str], phrase_start_idx: int) -> bool:
@@ -1314,7 +1330,7 @@ def score_review_deterministic(
                 }
 
                 # --- calibration: sample2 context guards ---
-                # GUARD 1: "confusing" in billing context → redirect to billing_transparency
+                # GUARD 1: "confusing" in billing context -> redirect to billing_transparency
                 if (
                     phrase == "confusing"
                     and theme_id == "communication_clarity"
@@ -1323,7 +1339,7 @@ def score_review_deterministic(
                     theme_id = "billing_transparency"
                     hit["theme"] = "billing_transparency"
 
-                # GUARD 2: "expensive" praised in cost-warning context → suppress fee_value negative hit
+                # GUARD 2: "expensive" praised in cost-warning context -> suppress fee_value negative hit
                 elif (
                     phrase == "expensive"
                     and theme_id == "fee_value"
@@ -1333,7 +1349,7 @@ def score_review_deterministic(
                 ):
                     continue
 
-                # GUARD 3: "honest" with contrast + low rating → re-route to expectation_setting
+                # GUARD 3: "honest" with contrast + low rating -> re-route to expectation_setting
                 elif (
                     phrase == "honest"
                     and theme_id == "professionalism_trust"
@@ -1431,7 +1447,7 @@ def _call_openrouter(
 
     themes = parsed.get("themes")
     if not isinstance(themes, list):
-        return None, f"OpenRouter response missing \'themes\' list: {raw_text[:200]}"
+        return None, f"OpenRouter response missing 'themes' list: {raw_text[:200]}"
 
     valid_themes = []
     allowed_polarities = {"positive", "negative", "severe_negative"}
