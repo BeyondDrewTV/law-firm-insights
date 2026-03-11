@@ -1,1 +1,6 @@
 ticket_id,account_id,created_date,resolved_date,category,priority,resolution_minutes,repeat_issue
+TKT-001,ACC-002,2026-01-20,2026-01-20,data_upload,low,28,false
+TKT-002,ACC-001,2026-01-28,2026-01-28,report_question,low,14,false
+TKT-003,ACC-004,2026-02-09,2026-02-10,account_setup,medium,312,false
+TKT-004,ACC-003,2026-02-18,2026-02-18,billing,low,22,false
+TKT-005,ACC-005,2026-03-03,2026-03-03,report_question,low,19,false

@@ -1,1 +1,8 @@
 submission_id,account_id,submitted_date,review_count,file_format,encoding,ingestion_status,error_code
+SUB-001,ACC-001,2026-01-12,47,csv,utf-8,success,
+SUB-002,ACC-002,2026-01-19,23,csv,windows-1252,error,ERR-001
+SUB-003,ACC-002,2026-01-19,23,csv,utf-8,success,
+SUB-004,ACC-003,2026-01-26,83,csv,utf-8,partial,edge_case_exclusions
+SUB-005,ACC-004,2026-02-11,16,csv,utf-8,error,ERR-002
+SUB-006,ACC-004,2026-02-11,16,csv,utf-8,success,
+SUB-007,ACC-005,2026-02-23,58,csv,utf-8,success,

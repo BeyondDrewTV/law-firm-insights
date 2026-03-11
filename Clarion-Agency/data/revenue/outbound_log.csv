@@ -1,1 +1,6 @@
 activity_date,rep_id,activity_type,outreach_count,replies,reply_rate_pct,sequence_name
+2026-03-03,sdr_01,linkedin_connection_request,42,9,21.4,law_firm_icp_v2
+2026-03-04,sdr_01,linkedin_message,18,4,22.2,law_firm_icp_v2
+2026-03-04,sdr_01,email_outreach,31,3,9.7,cold_intro_v3
+2026-03-05,sdr_01,linkedin_followup,12,2,16.7,law_firm_icp_v2
+2026-03-06,ceo,referral_ask,5,3,60.0,founder_network

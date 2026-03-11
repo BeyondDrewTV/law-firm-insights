@@ -1,1 +1,4 @@
 role_id,function,role_title,opened_date,days_open,status,hiring_priority
+OPEN-001,engineering,Backend Engineer,2026-02-15,24,sourcing,high
+OPEN-002,revenue,Account Executive,2026-03-01,10,sourcing,high
+OPEN-003,marketing,Content / SEO Lead,2026-03-01,10,planned_q2,medium

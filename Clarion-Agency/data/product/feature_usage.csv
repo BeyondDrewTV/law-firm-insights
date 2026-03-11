@@ -1,1 +1,6 @@
 account_id,week_ending,feature_name,usage_count,unique_users,first_use_date
+ACC-001,2026-03-07,theme_scoring_report,4,2,2026-01-13
+ACC-001,2026-03-07,benchmark_comparison,2,1,2026-01-20
+ACC-003,2026-03-07,theme_scoring_report,6,3,2026-01-27
+ACC-003,2026-03-07,review_trend_chart,3,2,2026-02-03
+ACC-005,2026-03-07,theme_scoring_report,4,2,2026-02-25

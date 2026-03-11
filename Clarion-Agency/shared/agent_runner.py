@@ -142,23 +142,36 @@ def run_agent(
     prompt_path = BASE_DIR / prompt_rel_path
     system_prompt = _load_file(prompt_path, "system prompt")
 
-    # Grounding context injected into every agent:
-    #   1. product_truth.md — what Clarion is and does
-    #   2. standing_orders.md — founder directives all agents must honor
-    product_truth    = _load_memory_file("product_truth.md",    full=False)
-    standing_orders  = _load_memory_file("standing_orders.md",  full=True)
+    # --- Grounding context ---
+    # All agents receive product_truth + standing_orders.
+    # Chief of Staff additionally receives decision_log + office_learning_log
+    # so it can surface conflicts and carry-forward proposals correctly.
+    product_truth   = _load_memory_file("product_truth.md",   full=False)
+    standing_orders = _load_memory_file("standing_orders.md", full=True)
 
-    user_message = (
+    grounding = (
         f"## Grounding Context\n\n"
         f"{product_truth}\n\n"
         f"{standing_orders}\n\n"
+    )
+
+    if agent_key == "chief_of_staff":
+        decision_log       = _load_memory_file("decision_log.md",        full=True)
+        office_learning    = _load_memory_file("office_learning_log.md", full=False)
+        grounding += (
+            f"{decision_log}\n\n"
+            f"{office_learning}\n\n"
+        )
+
+    user_message = (
+        f"{grounding}"
         f"## Input Data\n\n{data_context}\n\n"
         f"## Task\n\n"
         f"Run your report for the period ending {date_str}.\n"
         f"Output the full report in the exact format specified in your prompt.\n"
         f"Do not fabricate data. If a file is unavailable, note it in INPUTS USED.\n"
-        f"If any finding in your report would contradict a directive in standing_orders.md, "
-        f"flag it explicitly rather than suppressing it.\n"
+        f"If any finding in your report would contradict a directive in "
+        f"standing_orders.md, flag it explicitly rather than suppressing it.\n"
         f"Today's date: {date_str}\n"
     )
 

@@ -1,1 +1,4 @@
 error_id,submission_id,account_id,error_date,error_type,error_detail,resolved
+ERR-001,SUB-002,ACC-002,2026-01-19,encoding_error,File submitted in Windows-1252 encoding instead of UTF-8,true
+ERR-002,SUB-007,ACC-004,2026-02-11,missing_required_field,Column review_date absent from uploaded CSV,true
+ERR-003,SUB-010,ACC-001,2026-02-28,file_size_exceeded,Submission was 12MB; limit is 10MB,true

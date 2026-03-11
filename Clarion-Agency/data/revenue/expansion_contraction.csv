@@ -1,1 +1,2 @@
 account_id,event_type,event_date,plan_from,plan_to,mrr_delta,reason_code,tenure_months
+ACC-003,upgrade,2026-03-01,growth,growth_annual,0,annual_discount_locked_in,2

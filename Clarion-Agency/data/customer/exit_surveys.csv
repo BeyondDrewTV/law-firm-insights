@@ -1,1 +1,2 @@
 response_id,account_id,churn_date,exit_reason_primary,exit_reason_secondary,verbatim,would_return
+EXIT-001,ACC-006,2026-02-28,price,missing_feature,Loved the concept but couldnt justify the cost for our small team,yes_at_lower_price

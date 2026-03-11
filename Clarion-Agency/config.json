@@ -3,7 +3,7 @@
 
     "chief_of_staff": {
       "model": "anthropic/claude-3-5-sonnet",
-      "max_output_tokens": 1000,
+      "max_output_tokens": 2000,
       "temperature": 0.2,
       "cadence": "weekly",
       "output_path": "reports/ceo_brief"

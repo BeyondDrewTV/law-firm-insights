@@ -1,1 +1,6 @@
 batch_id,account_id,processed_date,review_count,theme_assignments,avg_score_by_theme,processing_ms
+BATCH-001,ACC-001,2026-01-12,47,"{communication:47,responsiveness:47,outcome_satisfaction:47,professionalism:47,value_for_cost:47}","{communication:7.4,responsiveness:7.1,outcome_satisfaction:8.2,professionalism:8.4,value_for_cost:6.8}",2180
+BATCH-002,ACC-002,2026-01-19,23,"{communication:23,responsiveness:23,outcome_satisfaction:23,professionalism:23,value_for_cost:23}","{communication:6.9,responsiveness:4.2,outcome_satisfaction:7.1,professionalism:7.5,value_for_cost:6.0}",1240
+BATCH-003,ACC-003,2026-01-26,81,"{communication:81,responsiveness:81,outcome_satisfaction:81,professionalism:81,value_for_cost:81}","{communication:7.8,responsiveness:7.6,outcome_satisfaction:8.5,professionalism:8.9,value_for_cost:7.2}",3890
+BATCH-004,ACC-004,2026-02-11,16,"{communication:16,responsiveness:16,outcome_satisfaction:16,professionalism:16,value_for_cost:16}","{communication:3.8,responsiveness:6.2,outcome_satisfaction:6.8,professionalism:7.1,value_for_cost:5.5}",910
+BATCH-005,ACC-005,2026-02-23,58,"{communication:58,responsiveness:58,outcome_satisfaction:58,professionalism:58,value_for_cost:58}","{communication:7.5,responsiveness:7.3,outcome_satisfaction:8.0,professionalism:8.3,value_for_cost:6.6}",2640

@@ -1,1 +1,6 @@
 deal_id,firm_name_anonymized,firm_size_attorneys,practice_area,geography,plan_tier,deal_value_mrr,stage,days_in_stage,last_activity_date,assigned_rep
+PIPE-001,Firm_A,7,family_law,Midwest,growth,199,demo_scheduled,3,2026-03-08,sdr_01
+PIPE-002,Firm_B,11,estate_planning,West,growth,199,trial_active,9,2026-03-06,ceo
+PIPE-003,Firm_C,5,criminal_defense,South,starter,79,qualified,6,2026-03-05,sdr_01
+PIPE-004,Firm_D,22,employment,Northeast,growth,199,negotiation,6,2026-03-07,ceo
+PIPE-005,Firm_E,3,immigration,Southwest,starter,79,qualified,14,2026-02-22,sdr_01

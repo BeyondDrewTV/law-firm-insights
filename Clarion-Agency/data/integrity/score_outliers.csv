@@ -1,1 +1,4 @@
 account_id,batch_id,processed_date,theme,score,baseline_score,delta,flagged_reason
+ACC-002,BATCH-002,2026-01-19,responsiveness,4.2,6.9,-2.7,score_2sd_below_baseline
+ACC-004,BATCH-004,2026-02-11,communication,3.8,7.2,-3.4,score_2sd_below_baseline
+ACC-001,BATCH-001,2026-01-12,outcome_satisfaction,9.9,7.8,2.1,score_2sd_above_baseline

@@ -1,1 +1,6 @@
 survey_date,function,respondent_count,avg_engagement_score,avg_workload_score,avg_morale_score,top_concern_theme
+2026-02-28,engineering,1,8.0,6.5,8.0,sprint_scope_creep
+2026-02-28,product,1,8.5,7.0,8.5,roadmap_prioritization
+2026-02-28,customer_success,1,9.0,7.5,9.0,tooling_and_documentation
+2026-02-28,executive,1,8.0,8.5,8.0,hiring_timeline
+2026-02-28,revenue,1,7.5,7.0,7.5,lead_volume

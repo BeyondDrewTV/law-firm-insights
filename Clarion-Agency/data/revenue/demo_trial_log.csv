@@ -1,1 +1,6 @@
 account_id,event_type,event_date,demo_rep,outcome,days_to_next_stage,notes
+DEMO-001,demo,2025-12-23,ceo,trial_started,4,Strong fit — PI firm 12 attorneys
+DEMO-002,demo,2026-01-08,ceo,no_show,,Rescheduled for following week
+DEMO-003,demo,2026-01-09,ceo,closed_won,1,Office manager — quick decision
+DEMO-004,trial,2026-01-18,ceo,closed_won,6,Employment firm — benchmark feature sealed it
+DEMO-005,demo,2026-02-03,ceo,trial_started,12,Immigration firm — cautious buyer

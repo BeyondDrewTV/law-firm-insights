@@ -1,1 +1,4 @@
 deal_id,firm_size_attorneys,practice_area,geography,plan_tier,deal_value_mrr,close_date,loss_reason,loss_reason_detail,competitor_chosen
+CL-001,2,general_practice,Midwest,starter,79,2026-03-04,price,Solo firm — no budget for software,none_doing_nothing
+CL-002,8,family_law,South,growth,199,2026-02-20,missing_feature,Required Clio integration at launch,reviewrail
+CL-003,5,criminal_defense,West,starter,79,2026-01-31,trust,Too new — wanted to wait until more established,none_wait_and_see
