@@ -56,6 +56,19 @@ Urgency: [Low | Medium] — Learning proposals are never urgent. If something is
 
 A single report may include at most one LEARNING PROPOSAL block. If you have multiple proposals, pick the highest-value one. The rest are discarded.
 
+The DECISION PROPOSAL block is optional. Include it only when an agent has identified a choice that requires a CEO-level call and would benefit from becoming a standing decision.
+
+```
+DECISION PROPOSAL          (omit this block if nothing to propose)
+Issue: [One sentence. What situation or recurring question requires a standing decision.]
+Recommendation: [What the agent recommends the CEO decide.]
+Tradeoffs: [Two to four bullet points. Costs and benefits of the recommendation vs. alternatives.]
+Suggested default: [The specific default behavior agents should apply if the decision is approved.]
+Needs CEO approval: Yes
+```
+
+A single report may include at most one DECISION PROPOSAL block. Decision proposals are never urgent. If it feels urgent, it is an escalation, not a proposal.
+
 ---
 
 ## 2. Escalation Conditions
@@ -99,7 +112,29 @@ Agents may observe patterns over time that suggest improvements to how the offic
 
 ---
 
-## 4. Weekly Reporting Pipeline
+## 4. Decision Proposal Rules
+
+Agents may encounter recurring situations where a standing CEO preference would improve the consistency of their recommendations. The DECISION PROPOSAL mechanism gives agents a sanctioned path to surface those situations.
+
+**An agent may file a decision proposal when:**
+- A recurring operational or strategic question has no documented standing answer.
+- A finding creates a conflict with existing recommendations that a CEO default would resolve.
+- The agent has made the same judgment call in two or more consecutive runs without documented authority to do so.
+
+**An agent may never:**
+- Write to `memory/decision_log.md` directly.
+- Treat an unapproved proposal as if it were already a decision.
+- Reference a proposal from a previous run as evidence of a standing decision.
+- File more than one DECISION PROPOSAL per report.
+
+**After a decision is approved and logged:**
+- Agents that read `decision_log.md` must apply the logged decision in future runs.
+- If a finding conflicts with a logged decision, note the conflict explicitly — do not silently override it.
+- A logged decision is not a guardrail — it is a preference. If evidence suggests a logged decision should be revisited, file a new DECISION PROPOSAL.
+
+---
+
+## 5. Weekly Reporting Pipeline
 
 ```
 Monday - Friday
@@ -119,7 +154,7 @@ Report retention: Keep the last 90 days. Archive older files. Do not delete.
 
 ---
 
-## 5. Cost Control Rules
+## 6. Cost Control Rules
 
 - Every agent prompt includes only: its system role, relevant grounding files, and current input data.
 - Do not pass prior report history into a prompt unless the task explicitly requires trend analysis.

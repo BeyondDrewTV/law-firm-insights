@@ -96,4 +96,13 @@ Target file: [memory/filename.md | comms_protocol.md | agent_prompt_template.md]
 Proposal: [One paragraph. What should change and exactly what the new text should say.]
 Evidence: [The specific finding or repeated pattern from this run that supports the proposal.]
 Urgency: [Low | Medium]
+
+DECISION PROPOSAL          (omit this block entirely if nothing to propose)
+Issue: [One sentence. What recurring question requires a standing CEO decision.]
+Recommendation: [What the agent recommends the CEO decide.]
+Tradeoffs:
+  - [Option A: benefit / cost]
+  - [Option B: benefit / cost]
+Suggested default: [The specific default behavior agents should apply if approved.]
+Needs CEO approval: Yes
 ```
