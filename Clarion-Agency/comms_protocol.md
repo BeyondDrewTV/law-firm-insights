@@ -44,6 +44,18 @@ TOKENS USED
 
 All fields are mandatory. If a field has nothing to report, write "None."
 
+The LEARNING PROPOSAL block is optional. Include it only when you have a specific, evidence-backed proposal to improve a memory file or operating rule. Omit it entirely if you have nothing to propose.
+
+```
+LEARNING PROPOSAL          (omit this block if nothing to propose)
+Target file: [memory/filename.md | comms_protocol.md | agent_prompt_template.md]
+Proposal: [One paragraph. What should change, and exactly what the new text should say.]
+Evidence: [The specific finding, data point, or repeated pattern from this run that supports the proposal.]
+Urgency: [Low | Medium] — Learning proposals are never urgent. If something is urgent, it is an escalation.
+```
+
+A single report may include at most one LEARNING PROPOSAL block. If you have multiple proposals, pick the highest-value one. The rest are discarded.
+
 ---
 
 ## 2. Escalation Conditions
@@ -62,7 +74,32 @@ An agent sets STATUS to **ESCALATE** when:
 
 ---
 
-## 3. Weekly Reporting Pipeline
+## 3. Learning Proposal Rules
+
+Agents may observe patterns over time that suggest improvements to how the office operates. The LEARNING PROPOSAL mechanism gives agents a sanctioned path to surface those observations without acting on them.
+
+**An agent may propose a change to:**
+- `memory/product_truth.md` — factual corrections or additions about what Clarion does
+- `memory/brand_canon.md` — tone or positioning adjustments
+- `memory/customer_insights.md` — ICP refinements based on repeated findings
+- `memory/office_policies.md` — operating rule changes
+- `comms_protocol.md` — report format or communication rule changes
+- `agent_prompt_template.md` — template improvements
+
+**An agent may never propose a change to:**
+- `memory/calibration_log.md` — this is owned by the Dictionary Calibration Analyst only
+- `memory/office_learning_log.md` — this is the CEO's ledger; agents do not write to it
+- Any production codebase, scoring logic, or database
+- Another agent's prompt file directly
+
+**Quality bar for proposals:**
+- Grounded in a specific finding from the current run, not general opinion.
+- States the exact proposed change — not just "this could be better."
+- Urgency is always Low or Medium. A proposal that feels urgent is probably an escalation instead.
+
+---
+
+## 4. Weekly Reporting Pipeline
 
 ```
 Monday - Friday
@@ -82,7 +119,7 @@ Report retention: Keep the last 90 days. Archive older files. Do not delete.
 
 ---
 
-## 4. Cost Control Rules
+## 5. Cost Control Rules
 
 - Every agent prompt includes only: its system role, relevant grounding files, and current input data.
 - Do not pass prior report history into a prompt unless the task explicitly requires trend analysis.

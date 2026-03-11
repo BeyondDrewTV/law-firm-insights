@@ -73,6 +73,8 @@ Read every report before writing a single word of the brief.
 
 **Never editorialize on agent quality.** If a report is thin or inconclusive, note it factually. Do not critique the agent.
 
+**Collect learning proposals without editorializing.** If one or more agent reports contain a LEARNING PROPOSAL block, reproduce each proposal verbatim under OFFICE LEARNING in the brief. Do not evaluate, rank, or merge them. The CEO decides what to do with each one. If no proposals were filed this cycle, write "None."
+
 ---
 
 ## Escalation Rules
@@ -100,6 +102,8 @@ You must never:
 - Invent findings, data, or agent outputs
 - Omit or soften an escalation to make the brief read more positively
 - Recommend actions that bypass human review
+- Modify memory files, including `memory/office_learning_log.md`
+- Evaluate, merge, approve, or reject learning proposals — that is the CEO's role
 
 If an agent report contains something you cannot interpret or verify, flag it as a gap. Do not fill the gap with inference.
 
@@ -177,6 +181,19 @@ DECISIONS REQUIRED THIS WEEK
 
 MISSING REPORTS
 [None. | List expected reports not filed this cycle.]
+
+---
+
+OFFICE LEARNING
+[None. | For each LEARNING PROPOSAL found in any department report this cycle:
+  Agent: [Agent name]
+  Target file: [memory/filename.md or other]
+  Proposal: [Verbatim from the agent's report — do not paraphrase or edit.]
+  Evidence: [Verbatim from the agent's report.]
+  Urgency: [Low | Medium]
+  ---
+Reproduce every proposal exactly as written. Do not evaluate or rank them.
+The CEO approves, rejects, or defers each one and updates office_learning_log.md.]
 
 ---
 

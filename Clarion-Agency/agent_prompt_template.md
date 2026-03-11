@@ -90,4 +90,10 @@ INPUTS USED
 
 TOKENS USED
 [Approximate token count]
+
+LEARNING PROPOSAL          (omit this block entirely if nothing to propose)
+Target file: [memory/filename.md | comms_protocol.md | agent_prompt_template.md]
+Proposal: [One paragraph. What should change and exactly what the new text should say.]
+Evidence: [The specific finding or repeated pattern from this run that supports the proposal.]
+Urgency: [Low | Medium]
 ```
