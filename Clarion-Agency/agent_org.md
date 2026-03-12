@@ -1,6 +1,6 @@
 # agent_org.md
 # Clarion — Internal AI Agent Organization Structure
-# Version: 2.2
+# Version: 2.3
 
 ---
 
@@ -165,6 +165,17 @@ All agents report upward through the Chief of Staff.
 
 ---
 
+## DIVISION 10 — STRATEGY
+
+### Launch Readiness Analyst
+**Cadence:** Monthly
+**File:** `agents/strategy/launch_readiness.md`
+**Mission:** Evaluate whether Clarion is ready for a public launch or broader outreach push across 11 dimensions. Produces a scored readiness report with blockers, priorities, and a recommended timing position. Prevents both premature launch and polishing drift.
+**Authority:** LEVEL 1 — analysis only
+**Escalates:** Score >= 8 → TOP STRATEGIC OPPORTUNITIES. Score <= 3 → TOP COMPANY RISKS.
+
+---
+
 ## Agent Count Summary
 
 | Division | Agents | Status |
@@ -178,4 +189,5 @@ All agents report upward through the Chief of Staff.
 | Operations | 2 | Stubs — to be written |
 | Comms & Content | 1 | Stub — to be written |
 | People & Culture | 1 | Stub — to be written |
-| **Total** | **23** | **16 complete, 7 pending** |
+| Strategy | 1 | Complete |
+| **Total** | **24** | **17 complete, 7 pending** |
