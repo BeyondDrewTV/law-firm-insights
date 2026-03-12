@@ -72,6 +72,13 @@ def _ensure_data_files() -> None:
             "plan_tier,deal_value_mrr,stage,days_in_stage,last_activity_date,assigned_rep\n"
             "# AUTO-CREATED PLACEHOLDER — populate with pipeline data\n",
         ),
+        (
+            DATA / "reviews" / "google_reviews_seed.csv",
+            # Minimal placeholder only — the real seed file is committed to the repo.
+            # This guard fires only if the file is deleted accidentally.
+            "review_text,rating,owner_response\n"
+            "# SEED PLACEHOLDER — see data/reviews/google_reviews_seed.csv for full dataset\n",
+        ),
     ]
     for path, placeholder in required:
         if not path.exists():

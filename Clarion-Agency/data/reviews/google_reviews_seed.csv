@@ -1,0 +1,71 @@
+# SEED DATA — NOT REAL CLIENT REVIEWS
+# Purpose : Demo/pre-launch input for Clarion Agent Office theme analysis
+# Columns : review_text, rating, owner_response
+# Themes  : communication, responsiveness, billing/fees, staff experience,
+#           timeliness, professionalism/empathy, outcome satisfaction
+# Usage   : Read by Market Intelligence / Customer Discovery agents as
+#           representative review corpus for pattern analysis.
+#           Do NOT upload directly to the Clarion SaaS backend without
+#           removing this header block and converting to date,rating,review_text
+#           format expected by /upload.
+# Generated: 2026-03-12 | Version: seed-v1
+review_text,rating,owner_response
+"Our attorney handled our estate planning with exceptional care. Every document was explained clearly and we never felt rushed.",5,"Thank you for trusting us with such an important matter. We're glad the process felt clear and manageable."
+"Responsive, knowledgeable, and genuinely compassionate. We felt supported throughout our entire case.",5,
+"The firm resolved our contract dispute faster than we expected. Communication was excellent from day one.",5,"We appreciate your kind words and are pleased we could resolve this efficiently."
+"Outstanding representation. Our attorney kept us informed at every stage and the outcome exceeded our expectations.",5,
+"From the initial consultation to the final settlement, the team was professional and thorough. Highly recommend.",5,"It was a pleasure working with you. Thank you for the kind review."
+"Our immigration case was handled with precision and empathy. We always knew where things stood.",5,
+"Billing was transparent and fair. No surprise charges. The team delivered exactly what they promised.",5,"Transparency in billing is something we take seriously. Thank you for noticing."
+"The staff was warm and attentive. Even during a stressful divorce proceeding, we felt genuinely cared for.",5,
+"Exceptional attention to detail on our business acquisition documents. Everything closed on time.",5,"Congratulations on the acquisition. It was a privilege to support the transaction."
+"My personal injury case settled well above what I expected. The attorneys fought hard for a fair outcome.",5,
+"Very satisfied with the estate administration process. The team was patient with our family throughout.",4,"We understand estate matters can be emotional. Thank you for letting us guide your family through it."
+"Good experience overall. The attorney was knowledgeable and responsive, though scheduling took a little longer than expected.",4,
+"Solid representation in my employment dispute. The legal strategy was sound and the outcome was fair.",4,"Thank you for sharing your experience. We're glad the outcome met your expectations."
+"The team was professional and prepared. I would have liked slightly more proactive updates between hearings.",4,
+"The attorneys were thorough and clearly experienced. Minor delays in document turnaround, but nothing that affected the outcome.",4,
+"Helpful consultation and clear advice. Engaged them for ongoing corporate compliance work based on the experience.",4,"We look forward to continuing to support your business. Thank you."
+"Competent and professional. Communication was good, though responses to emails sometimes took two to three days.",4,
+"The case was handled well. I appreciated the plain-language explanations of what each filing meant.",4,
+"Good firm, knowledgeable attorneys. The billing statement could be more itemized to make it easier to follow.",3,"We appreciate this feedback. We are reviewing our billing summary format to improve clarity."
+"Adequate service. The outcome was acceptable but I felt I had to follow up more than I should have to get status updates.",3,
+"The attorney was clearly competent but felt stretched thin. Response times were inconsistent over the four-month engagement.",3,"We hear you. We are actively reviewing workload distribution to ensure consistent responsiveness."
+"Mixed experience. Strong legal work but the intake process was slow and the onboarding felt disorganized.",3,
+"The case resolved, which is what matters. I would have appreciated more explanation of the billing line items along the way.",3,
+"Mediocre communication throughout. I had to call the office twice to get basic status updates that should have been proactive.",3,"We apologize for the gaps in communication. This has been raised with the team."
+"The legal advice was sound but the initial consultation felt rushed. Would appreciate more time with the attorney upfront.",3,
+"Expected more regular updates given the complexity of the matter. The final outcome was acceptable.",3,
+"Service was average. Some billing entries were unclear and I had to request a corrected invoice.",2,"We sincerely apologize for the billing confusion and have corrected the invoice. Thank you for flagging it."
+"Disappointed with the lack of responsiveness. Multiple emails went unanswered for over a week during a critical phase.",2,
+"The attorney did not seem fully prepared for the mediation session. We had to provide reminders about key facts in our file.",2,"We take preparation standards seriously and this has been addressed internally. We apologize for the experience."
+"Fees were significantly higher than the initial estimate with no explanation provided. I felt blindsided at invoicing.",2,
+"Communication completely broke down in the final month of our engagement. We learned about key developments from the other party.",2,"We sincerely apologize. This is not the standard we hold ourselves to and we are investigating what occurred."
+"The outcome was poor and I do not feel the representation was adequate for the complexity of the matter.",2,
+"Slow, expensive, and difficult to reach. We expected more given the firm's reputation.",2,
+"Staff at the front desk were dismissive during our initial visit. It set a poor tone for the entire engagement.",2,"We apologize for this experience. Front-of-house conduct is being reviewed and addressed."
+"The case took three months longer than projected with no explanation. The delay caused real hardship for our family.",1,
+"I was overbilled by a significant amount and the firm was not forthcoming about correcting it until I escalated.",1,"We have issued a corrected invoice and a partial credit. We are sorry for the distress this caused."
+"My calls were not returned for two weeks. When I finally reached someone, they had no familiarity with my file.",1,
+"The attorney we engaged left the firm mid-case and we were given no warning and no transition plan.",1,"We apologize for the disruption. A transition protocol has since been put in place to prevent this outcome."
+"Billing disputes were handled rudely. I felt like a burden rather than a client when I raised legitimate questions.",1,
+"Missed a filing deadline that set our case back by months. The firm offered no explanation and no reduced fee.",1,"We sincerely apologize for this failure. Steps have been taken to prevent recurrence and we have discussed remediation."
+"Zero empathy from the lead attorney. My questions were dismissed and I felt talked down to throughout the process.",1,
+"The settlement offer was accepted without our explicit approval. We only found out after the fact.",1,
+"I was billed for a consultation that I was told would be complimentary. The discrepancy was never adequately explained.",1,
+"Our files were lost during an office move and the firm showed little urgency in reconstructing them.",1,"We deeply apologize. File integrity is a fundamental obligation and we failed you. This has been escalated internally."
+"Our family trust was drafted with an error that we only discovered independently. The firm showed no urgency to correct it.",1,
+"Responsive and thorough during our commercial lease negotiation. Would engage the firm again without hesitation.",5,
+"The team understood the nuances of our industry-specific compliance issue immediately. Saved us significant time.",5,"Thank you. We enjoy working on complex matters with clients who are deeply engaged in the details."
+"Handled our landlord-tenant matter efficiently and with clear advice at each step.",4,
+"Our personal injury claim moved faster than expected. The attorney explained every decision before acting.",4,
+"The firm was straightforward about what our case was and was not worth pursuing. I appreciated the honesty.",4,"We believe honest counsel serves our clients best even when it is not what they hoped to hear."
+"Reasonable fees and good communication throughout our employment contract review.",4,
+"Needed help with a time-sensitive NDG and the team turned it around within 24 hours. Exactly what we needed.",5,"Time-sensitive matters are something our team takes seriously. Glad we could help."
+"Good overall experience with our business formation. Would appreciate a follow-up checklist of annual compliance items.",4,
+"The firm navigated a complex multi-party dispute with calm and clear strategy. All parties reached agreement.",5,
+"Follow-up after our case closed was appreciated. It showed the firm cared about more than just the billable hours.",5,"Staying connected with clients after a matter closes matters to us. Thank you for noticing."
+"Staff went out of their way to accommodate our schedule during a demanding period. Small thing but it meant a lot.",5,
+"Legal fees were reasonable and fully explained upfront. No surprises on the final invoice.",5,"Transparent billing is a core commitment. Thank you for highlighting it."
+"The partner assigned to our acquisition was accessible and decisive. Exactly what the transaction required.",5,
+"Minor miscommunication early in the engagement was resolved quickly. Good recovery and strong finish.",4,"We appreciate you noting that. How a team responds to early bumps matters as much as the start."
