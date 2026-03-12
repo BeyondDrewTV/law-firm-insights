@@ -1,6 +1,6 @@
 # agent_org.md
 # Clarion — Internal AI Agent Organization Structure
-# Version: 2.0
+# Version: 2.1
 
 ---
 
@@ -92,13 +92,18 @@ All agents report upward through the Chief of Staff.
 
 ### Product Usage Analyst
 **Cadence:** Weekly
-**File:** `agents/product_insight/usage_analyst.md` *(to be written)*
+**File:** `agents/product_insight/usage_analyst.md`
 **Mission:** Monitor how customers are using Clarion, which features are adopted, which are ignored, and where usage patterns predict expansion or churn.
 
 ### Release Impact Analyst
 **Cadence:** Event-driven (triggered after each product release)
-**File:** `agents/product_insight/release_impact.md` *(to be written)*
+**File:** `agents/product_insight/release_impact.md`
 **Mission:** Assess the impact of each product release on adoption, support volume, and customer behavior.
+
+### Product Insights Agent
+**Cadence:** Weekly
+**File:** `agents/product_insight/product_insights.md`
+**Mission:** Read pre-launch prospect feedback from `memory/product_feedback.md`, identify recurring capability gaps and feature requests, surface Tier 1 patterns to the CEO, and recommend prioritization before launch.
 
 ---
 
@@ -161,9 +166,9 @@ All agents report upward through the Chief of Staff.
 | Revenue | 4 | Complete |
 | Market Intelligence | 4 | Complete |
 | Customer Intelligence | 3 | Complete |
-| Product Insight | 2 | Stubs — to be written |
+| Product Insight | 3 | Complete |
 | Product Integrity | 3 | Stubs — to be written |
 | Operations | 2 | Stubs — to be written |
 | Comms & Content | 1 | Stub — to be written |
 | People & Culture | 1 | Stub — to be written |
-| **Total** | **21** | **12 complete, 9 pending** |
+| **Total** | **22** | **15 complete, 7 pending** |
