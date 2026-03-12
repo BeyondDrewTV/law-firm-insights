@@ -121,6 +121,23 @@ On each run, assess whether any of the following logs have grown large enough to
 
 If no log meets the threshold this run, write `None this cycle.` in the HISTORICAL SUMMARIZATION section of the CEO brief.
 
+
+**H. Social Health Check**
+Read the WORK COMPLETED THIS RUN sections of Content & SEO and Head of Growth reports.
+Check any post drafts or scheduling proposals against `memory/social_posting_cadence.md`.
+
+Flag in the CEO brief under SOCIAL HEALTH if any of the following are detected:
+
+| Pattern | Flag when |
+|---|---|
+| Overly regular cadence | Same posting days or times proposed 3+ weeks running |
+| Overly frequent | LinkedIn >5 posts/week or Twitter >8 posts/week sustained |
+| Repetitive structure | Same sentence opening or format in 3+ consecutive post drafts |
+| Volume over quality | Multiple posts proposed for one day with thin substance |
+| Promotional drift | 3+ consecutive drafts with no educational value |
+
+If none of these patterns are present, write `None detected.` in the SOCIAL HEALTH section.
+
 **E. Operational Risk Level**
 Assign one of: Low | Moderate | High
 
@@ -337,6 +354,15 @@ Also list open questions from agent findings requiring a CEO-level call, attribu
 ---
 MISSING REPORTS
 [None. | Each expected report not filed this cycle, one per line.]
+
+---
+SOCIAL HEALTH
+[None detected. | For each flagged pattern:
+  Agent: [Content & SEO | Head of Growth | Both]
+  Pattern: [Overly regular | Overly frequent | Repetitive structure | Volume over quality | Promotional drift]
+  Detail: [One sentence describing what was observed]
+  Recommendation: [One sentence -- vary cadence / revise drafts / reduce volume]
+  ---]
 
 ---
 HISTORICAL SUMMARIZATION
