@@ -2,6 +2,22 @@
 # Clarion — Office Health Log
 # Append-only. Do not overwrite or delete entries.
 # Chief of Staff appends one entry per weekly run after the CEO brief is generated.
+#
+# ORCHESTRATION FIELDS (added v2.0 — 2026-03-12)
+# The resident shell and trigger detection layer also write to this file.
+# Fields used by the orchestration layer:
+#   last_trigger_check  — ISO datetime of last event trigger scan
+#   deferred_triggers   — list of trigger IDs deferred due to cooldown
+#   daily_llm_count     — running count of LLM invocations today (resets at midnight)
+#   cost_cap_hit        — true/false — whether the daily soft cap was reached
+
+---
+
+# ORCHESTRATION STATE (updated by runner each cycle)
+last_trigger_check:  null
+deferred_triggers:   []
+daily_llm_count:     0
+cost_cap_hit:        false
 
 ---
 
