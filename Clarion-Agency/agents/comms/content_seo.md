@@ -29,6 +29,7 @@ Surface the best content opportunity each week, grounded in customer pain langua
 - `reports/market/competitive_intelligence_YYYY-MM-DD.md` — latest
 - `data/comms/seo_keywords.csv`
 - `data/comms/content_log.csv`
+- `data/comms/discovered_conversations.md` — latest discovery signals (read-only; do not post)
 - `memory/brand_canon.md` — full (required)
 - `memory/product_truth.md` — summary only
 - `memory/projects.md` — read; update relevant entries
@@ -192,6 +193,63 @@ FINDINGS
 - SEO keyword opportunity: [Keyword or intent — rationale]
 - Content performance signal: [Piece gaining traction — or None.]
 - Non-compliant brand signals: [None. | Named proposal flagged]
+
+COMMUNICATION FOUNDATION REPORT
+(Foundation Mode only — no accounts created, no posts published, no outreach sent)
+Recommended Platforms:
+  [Platform 1]: [One sentence on why — audience fit and content type]
+  [Platform 2]: [One sentence on why — audience fit and content type]
+  [Additional platforms if warranted — omit if not applicable]
+
+Profile Bio Drafts:
+  --- DRAFT — REQUIRES CEO APPROVAL BEFORE PUBLISHING ---
+  Platform: [LinkedIn / Twitter/X / etc.]
+  Bio:      [Draft bio copy — max 300 characters for Twitter, 2200 for LinkedIn]
+  --- END DRAFT ---
+  (omit if no bio work completed this run)
+
+First Content Pipeline:
+  [Topic 1] — [Format] — [Audience] — [Why now]
+  [Topic 2] — [Format] — [Audience] — [Why now]
+  [Topic 3] — [Format] — [Audience] — [Why now]
+  (list 3–5 initial pieces that would anchor the channel; omit if no pipeline drafted)
+
+Community Discovery:
+  [Community / forum / group name] — [Platform] — [Why relevant to Clarion's ICP]
+  (list 2–5 communities where Clarion should participate as a helpful presence; omit if none identified)
+
+Foundation Mode Status: [Active — no external actions taken this cycle]
+
+DISCOVERED CONVERSATIONS
+(Source: data/comms/discovered_conversations.md — read-only discovery; no posting)
+[If no signals were found, write: "No relevant conversations detected during this cycle."]
+[If signals are present, list up to 10 using the format below:]
+
+  DISCOVERY SIGNAL [N]
+  Platform:   [Platform — e.g. Reddit r/lawfirm]
+  Topic Area: [Problem area — e.g. Client Reviews & Feedback]
+  Posted:     [YYYY-MM-DD]
+  Link:       [URL]
+  Summary:    [1-2 sentences describing the discussion]
+  Why It Matters: [One sentence — connection to Clarion's value prop]
+  Suggested Participation Angle: [One sentence — educational, non-promotional]
+
+PARTICIPATION DRAFTS  (omit if no discovery signals this run)
+(For each signal the Comms agent selects for participation — max 3)
+Review discovered signals above. Select only those where a genuinely useful,
+educational contribution is possible. Do NOT draft if the only angle is promotional.
+All drafts require CEO approval before any external interaction.
+
+  --- DRAFT — REQUIRES CEO APPROVAL BEFORE ANY EXTERNAL INTERACTION ---
+  Signal Ref:  [DISCOVERY SIGNAL N]
+  Platform:    [Where this would be posted]
+  Context:     [One sentence — what the discussion is about]
+  Draft Reply:
+    [Short reply — max 150 words — educational, non-promotional, no Clarion mention
+     unless it arises naturally and is directly relevant to the question asked.
+     Tone: knowledgeable practitioner, not vendor.
+     Must comply with memory/brand_voice.md and memory/external_interaction_policy.md]
+  --- END DRAFT ---
 
 PRIORITY CONTENT PROPOSAL
 Topic:     [Specific topic]
