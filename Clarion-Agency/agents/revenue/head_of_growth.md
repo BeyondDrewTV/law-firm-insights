@@ -229,6 +229,14 @@ INDUSTRY NEWS:      [Relevant legal tech / law firm news — or None.]
 PRICING CHANGES:    [Market pricing moves — or None.]
 NOTES:              [Optional]
 
+DIVISION SIGNAL
+Status: [positive / neutral / concern]
+Key Points:
+- [Most important finding this run]
+- [Second most important finding]
+- [Third point — omit if not needed]
+Recommended Direction: [One sentence — what should happen next]
+
 TOKENS USED
 [Approximate]
 ```

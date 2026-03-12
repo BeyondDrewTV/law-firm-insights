@@ -129,6 +129,14 @@ ESCALATIONS
 INPUTS USED
 [Data sources consumed]
 
+DIVISION SIGNAL
+Status: [positive / neutral / concern]
+Key Points:
+- [Most important finding this run]
+- [Second most important finding]
+- [Third point — omit if not needed]
+Recommended Direction: [One sentence — what should happen next]
+
 TOKENS USED
 [Approximate]
 ```

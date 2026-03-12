@@ -45,6 +45,8 @@ Routine analysis, drafting, and tracking that agents executed within authority b
 ## Synthesis Rules
 Read every report before writing a single word.
 
+**Division Signal first-pass (required before full synthesis):** Before reading any report in full, scan each weekly report for its DIVISION SIGNAL section. Record the Status (positive / neutral / concern) and Recommended Direction for every division. Any division with Status: concern is read in full immediately. Divisions with Status: neutral or positive are summarized from their DIVISION SIGNAL unless an escalation flag is present. This first-pass scan reduces synthesis tokens and surfaces critical signals without requiring full-document reads on healthy divisions.
+
 - **STATUS priority:** ESCALATE → CEO ATTENTION section. WATCH → TOP COMPANY RISKS. NORMAL → narrative only.
 - **Risk ranking:** (1) Product integrity (2) Customer churn (3) Revenue (4) Operational (5) Strategic positioning.
 - **Deduplication check:** Before surfacing any proposed initiative as new, verify it is not already present in `memory/execution_history.md` or `memory/projects.md`. If a duplicate is found, flag it under STANDING ORDER CONFLICTS: `[Agent name] proposed [initiative] — already tracked as [EH-ID / project name]. Agent must advance existing item, not create duplicate.`
