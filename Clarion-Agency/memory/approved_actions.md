@@ -38,25 +38,30 @@ _When the CEO approves an action from the weekly brief, add it here using the fo
 
 ## Format
 
+Each action block is delimited by `---` on its own line.
+The runner reads Status: approved and executes automatically on next run.
+
 ```
 ---
 Action ID:   ACT-[NNN]
 Action:      [What is approved — one sentence, specific and unambiguous]
 Approved By: [CEO | Chief of Staff]
 Date:        [YYYY-MM-DD]
-Owner:       [Role responsible for execution]
-Status:      [staged | approved | rejected | in-progress | completed | cancelled]
-Notes:       [Optional — any constraints or conditions on execution]
+Owner:       [Content & SEO Agent | Competitive Intelligence | Usage Analyst | Chief of Staff | Customer Discovery]
+Status:      [staged | approved | in_progress | completed | blocked]
+Notes:       [Optional — constraints, context, or execution output path]
 ---
 ```
 
 Status definitions:
-- `staged`     — package prepared by agent; awaiting review
-- `approved`   — approved by named authority; agent may execute
-- `rejected`   — not approved; agent must not execute; may revise and resubmit
-- `in-progress` — execution underway
-- `completed`  — executed; execution log entry appended to Notes
-- `cancelled`  — withdrawn before execution
+- `staged`      — package prepared by agent; awaiting CEO review
+- `approved`    — approved; runner will execute next cycle
+- `in_progress` — execution underway this run
+- `completed`   — executed; execution_log.md entry appended
+- `blocked`     — execution failed or action type not permitted autonomously
+
+Owner must match exactly one of the routed values above.
+Blocked execution types (never auto-executed): post, publish, send, create account, sign up, register, email, tweet, submit.
 
 Approval authority:
 - Chief of Staff may approve: sensitive public responses, large product discussion

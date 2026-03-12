@@ -45,6 +45,10 @@ sys.path.insert(0, str(BASE_DIR))
 from shared.agent_runner import run_agent, _load_file
 from shared.conversation_discovery import run as run_conversation_discovery
 from workflows.chief_of_staff_runner import build_data_context as cos_data_context
+from shared.approved_actions_reader import (
+    load_approved_actions, route_action, is_safe_execution,
+    update_action_status, append_execution_log, log_no_actions,
+)
 
 REPORTS = BASE_DIR / "reports"
 DATA    = BASE_DIR / "data"
@@ -170,6 +174,20 @@ def _ensure_data_files() -> None:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(placeholder, encoding="utf-8")
             print(f"  [DATA] Created placeholder: {path.relative_to(BASE_DIR)}")
+
+
+# ── Execution helper ──────────────────────────────────────────────────────────
+
+_AGENT_SUBDIR = {
+    "content_seo":             "comms",
+    "competitive_intelligence":"market",
+    "usage_analyst":           "product_insight",
+    "chief_of_staff":          "ceo_brief",
+    "customer_discovery":      "market",
+}
+
+def _subdir_for_agent(agent_key: str) -> str:
+    return _AGENT_SUBDIR.get(agent_key, agent_key)
 
 
 # ── Run wrapper ────────────────────────────────────────────────────────────────
@@ -371,6 +389,118 @@ def main():
         ["Revenue division disabled for pre-launch cycle"],
         ["Enable when real MRR/ARR reporting from paying customers begins"],
     )
+
+    # ── STAGE 5.5: Execute Approved Actions ───────────────────────────────────
+    banner("STAGE 5.5 — Execute Approved Actions")
+    approved = load_approved_actions()
+
+    if not approved:
+        print("  No approved actions found — nothing to execute this cycle.")
+        log_no_actions()
+    else:
+        print(f"  Found {len(approved)} approved action(s).")
+        exec_reports = BASE_DIR / "reports" / "execution"
+        exec_reports.mkdir(parents=True, exist_ok=True)
+
+        for action in approved:
+            act_id   = action.get("action_id", "UNKNOWN")
+            act_text = action.get("action", "")
+            owner    = action.get("owner", "")
+            notes    = action.get("notes", "")
+
+            print(f"\n  → {act_id}: {act_text[:70]}...")
+
+            # Safety gate
+            if not is_safe_execution(action):
+                reason = "Action contains a blocked execution type (post/publish/send/etc). Must be executed manually."
+                print(f"    [BLOCKED] {reason}")
+                update_action_status(act_id, "blocked", reason)
+                append_execution_log(
+                    action_id        = act_id,
+                    action_text      = act_text,
+                    owner            = owner,
+                    status_result    = "blocked",
+                    what_was_done    = "Not executed — blocked execution type detected.",
+                    next_step        = "CEO must execute manually or revise action to a bounded internal deliverable.",
+                    ceo_review_needed= True,
+                )
+                continue
+
+            # Route to owning division
+            route = route_action(action)
+            if not route:
+                reason = f"Owner '{owner}' is not mapped to a division agent."
+                print(f"    [BLOCKED] {reason}")
+                update_action_status(act_id, "blocked", reason)
+                append_execution_log(
+                    action_id        = act_id,
+                    action_text      = act_text,
+                    owner            = owner,
+                    status_result    = "blocked",
+                    what_was_done    = "Not executed — owner not routable.",
+                    next_step        = "Update Owner field to a known division (see approved_actions_reader.py OWNER_ROUTE).",
+                    ceo_review_needed= False,
+                )
+                continue
+
+            agent_key, prompt_rel, report_subdir = route
+
+            # Build execution prompt — wraps the original agent with the specific action
+            exec_context = (
+                f"## EXECUTION TASK\n\n"
+                f"Action ID: {act_id}\n"
+                f"Approved Action: {act_text}\n"
+                f"Notes: {notes}\n\n"
+                f"You are executing this specific approved action as a bounded internal deliverable.\n"
+                f"Produce the requested output now. Be concrete and complete.\n"
+                f"Do not propose — execute. Output the actual deliverable.\n\n"
+                f"## CONTEXT FROM LATEST DIVISION DATA\n\n"
+            )
+
+            # Attach latest relevant report as context
+            latest_dir = BASE_DIR / "reports" / report_subdir.replace("execution", _subdir_for_agent(agent_key))
+            latest_reports = sorted(latest_dir.glob("*.md"), reverse=True)[:1] if latest_dir.exists() else []
+            for lr in latest_reports:
+                exec_context += f"### Latest {agent_key} Report\n"
+                exec_context += lr.read_text(encoding="utf-8", errors="replace")[:2000]
+                exec_context += "\n\n"
+
+            update_action_status(act_id, "in_progress")
+
+            try:
+                out_path = run_agent(
+                    agent_key       = agent_key,
+                    prompt_rel_path = prompt_rel,
+                    report_subdir   = "execution",
+                    data_context    = exec_context,
+                    agent_title     = f"Clarion Execution — {act_id}",
+                )
+                print(f"    ✓ Executed → {out_path.name}")
+                update_action_status(act_id, "completed",
+                    f"Execution output: reports/execution/{out_path.name}")
+                append_execution_log(
+                    action_id        = act_id,
+                    action_text      = act_text,
+                    owner            = owner,
+                    status_result    = "completed",
+                    what_was_done    = f"Agent produced deliverable: reports/execution/{out_path.name}",
+                    next_step        = "CEO reviews output and decides whether to stage, publish, or archive.",
+                    ceo_review_needed= True,
+                )
+            except Exception as e:
+                err_str = str(e)[:120]
+                print(f"    ✗ Execution FAILED: {err_str}")
+                traceback.print_exc()
+                update_action_status(act_id, "blocked", f"Execution error: {err_str}")
+                append_execution_log(
+                    action_id        = act_id,
+                    action_text      = act_text,
+                    owner            = owner,
+                    status_result    = "blocked",
+                    what_was_done    = f"LLM execution failed: {err_str}",
+                    next_step        = "Check console output. Retry next run or revise action.",
+                    ceo_review_needed= False,
+                )
 
     # ── STAGE 6: Executive Synthesis ──────────────────────────────────────────
     banner("STAGE 6 — Executive Synthesis (Chief of Staff)")
