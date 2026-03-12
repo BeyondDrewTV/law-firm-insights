@@ -77,6 +77,14 @@ Detect when divisions recommend incompatible actions. Examples:
 - Content recommends publishing while Integrity flags a reputational signal
 - Revenue calls for new channel investment while Operations flags budget pressure
 
+**When a conflict is detected, Chief of Staff must resolve it before presenting to the CEO:**
+1. **Identify the conflict** — Name the two divisions and the specific incompatible recommendations.
+2. **Evaluate operational risk** — Assess the downstream consequence of acting on either recommendation unchecked.
+3. **Recommend a single direction** — State which recommendation to follow and why, based on current company posture, capacity signals, and risk ranking.
+4. **Escalate to CEO only if** the decision materially affects company strategy (e.g., pricing model, market positioning, hiring plan, launch timing). Operational conflicts that fall within existing authority must be resolved at the Chief of Staff level — do not escalate routine tensions.
+
+This evaluation is reported in the **CONFLICT RESOLUTION REVIEW** section of the CEO brief.
+
 **D. Department Activity**
 For each division, assess overall activity level:
 - Active — meaningful work completed, report substantive
@@ -232,6 +240,17 @@ People & Comms
 ---
 CROSS-DEPARTMENT SIGNALS
 [None. | Name the agents, name the pattern, state why it matters.]
+
+---
+CONFLICT RESOLUTION REVIEW
+[None. | For each detected cross-department conflict:
+  Conflict: [Division A] vs [Division B]
+  Division A recommendation: [One sentence verbatim or paraphrased]
+  Division B recommendation: [One sentence verbatim or paraphrased]
+  Operational risk if unresolved: [One sentence — what breaks or degrades]
+  Chief of Staff direction: [The single recommended path forward and rationale]
+  Escalate to CEO: [Yes — reason] / [No — resolved at CoS level]
+  ---]
 
 ---
 PROPOSED ACTIONS
