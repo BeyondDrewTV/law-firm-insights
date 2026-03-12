@@ -115,4 +115,10 @@ Tradeoffs:
   - [Option B: benefit / cost]
 Suggested default: [The specific default behavior agents should apply if approved.]
 Needs CEO approval: Yes
+
+PROPOSED EXPERIMENT          (omit this block entirely if nothing to propose)
+Hypothesis:       [One sentence. What you believe to be true.]
+Test:             [Specific, bounded action that would confirm or disprove it.]
+Success Metric:   [Measurable outcome — what does "it worked" look like?]
+Expected Learning:[What Clarion will know after running this experiment that it does not know now.]
 ```

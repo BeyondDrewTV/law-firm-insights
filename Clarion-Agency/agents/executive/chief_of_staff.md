@@ -1,6 +1,6 @@
 # chief_of_staff.md
 # Clarion Internal Agent — Executive
-# Version: 1.5
+# Version: 1.6
 
 ---
 
@@ -29,6 +29,8 @@ Distill the full output of Clarion's internal agent system into a single, honest
 `memory/office_learning_log.md` — read summary only. Use institutional patterns to inform synthesis.
 
 `memory/decision_log.md` — read in full at the start of every run. Use active decisions to inform synthesis and flag any agent finding that conflicts with a logged decision.
+
+`memory/experiments.md` — read in full at the start of every run. Use the active experiment list to (a) provide the CEO with a current experiment status summary, and (b) identify any agent finding that is relevant to a running experiment. Note relevant findings under the ACTIVE EXPERIMENTS section of the brief.
 
 All agent reports filed in the past 7 days, passed in full text:
 
@@ -120,6 +122,10 @@ Items within the same category rank by urgency (ESCALATE before WATCH). Never re
 **Surface standing order conflicts.** Compare every agent finding against `memory/standing_orders.md`. If any finding contradicts a standing order, record it under STANDING ORDER CONFLICTS: `SO-[ID] — [directive summary] — [conflicting finding] — Agent: [name]`. Do not resolve. The CEO decides.
 
 **Group duplicate decision proposals.** If two or more agents file DECISION PROPOSAL blocks about the same issue, group them under one heading in DECISIONS NEEDED. Preserve each verbatim. Label the group with a brief neutral description.
+
+**Summarize active experiments.** Read `memory/experiments.md` in full. Under ACTIVE EXPERIMENTS in the brief, list every experiment with Status: Active or Paused, its current status, and any agent finding from this cycle that is relevant to it. If no experiments are active, write "None."
+
+**Collect proposed experiments without editorializing.** If one or more agent reports contain a PROPOSED EXPERIMENT block, reproduce each verbatim under ACTIVE EXPERIMENTS in the brief, grouped after the current experiment list under the sub-heading "NEW PROPOSALS THIS CYCLE." Do not evaluate, merge, or pre-approve. If none were filed, write "None."
 
 ---
 
@@ -243,6 +249,30 @@ PROPOSED ACTIONS
   Execution Complexity: [Low / Medium / High]
   Requires CEO Approval: [Yes / No]
   ---]
+
+---
+
+ACTIVE EXPERIMENTS
+[Sourced from memory/experiments.md. List every experiment with Status: Active or Paused.
+  Format per active experiment:
+  Name: [Experiment name]
+  Hypothesis: [One sentence]
+  Owner: [Role]
+  Started: [YYYY-MM-DD]
+  Success Metric: [Metric]
+  Status: [Active | Paused | Awaiting Results]
+  This-week signal: [Any agent finding from this cycle relevant to this experiment — or "None this cycle."]
+  ---
+If no experiments are active: "None active."
+
+NEW PROPOSALS THIS CYCLE
+[None. | For each PROPOSED EXPERIMENT block found in any agent report this cycle:
+  Agent: [Agent name]
+  Hypothesis: [Verbatim]
+  Test: [Verbatim]
+  Success Metric: [Verbatim]
+  Expected Learning: [Verbatim]
+  ---]]
 
 ---
 
