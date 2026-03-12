@@ -1,9 +1,12 @@
 """
 run_clarion_agent_office.py
-Clarion — Pre-Launch Agent Office Runner
+Clarion — Weekly Agent Office Runner
 
-Runs only divisions that have real input data. Skips divisions without it.
-Double-click run_clarion_agent_office.bat, or run directly:
+Runs all active divisions and produces the executive brief.
+For daily cadence agents (competitive_intelligence, content_seo),
+use run_daily.bat instead — those fire every day, not here.
+
+Double-click run_clarion_agent_office.bat on Fridays, or run directly:
 
     cd C:\\Users\\beyon\\OneDrive\\Desktop\\CLARION\\law-firm-insights-main\\Clarion-Agency
     python run_clarion_agent_office.py
