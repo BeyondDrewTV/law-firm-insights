@@ -16917,6 +16917,14 @@ def handle_csrf_error(error):
 # All normal browser/form routes and CSRF behaviour are unaffected.
 from routes.internal_benchmark import benchmark_bp
 app.register_blueprint(benchmark_bp)
+
+# Approval Queue — founder control surface for staged agent work
+try:
+    from routes.approval_queue import approval_queue_bp
+    app.register_blueprint(approval_queue_bp)
+    app.logger.info('approval_queue: registered at /api/approval-queue')
+except Exception as _aq_err:
+    app.logger.warning('approval_queue: failed to register: %s', _aq_err)
 csrf.exempt(benchmark_bp)
 
 # ===== APPLICATION ENTRY POINT =====

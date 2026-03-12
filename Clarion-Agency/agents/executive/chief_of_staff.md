@@ -68,9 +68,14 @@ Every CEO brief must include a PRE-LAUNCH ACTIVATION SCORE section (see report f
 Judge the office on produced artifacts and commercial motion — not on number of reports filed.
 Hard rule: Do not praise the office for passive reporting if little or no commercial work was produced.
 Assign one of:
-- **activation successful** — minimum outputs met across sales, content, and product
-- **activation partial** — some commercial output produced; at least one division failed to produce artifacts when it could have
-- **activation stalled** — no commercial artifacts produced despite available data; name which agents failed and why
+- **activation successful** — minimum outputs met; approval-ready queue items produced in sales and/or content
+- **activation partial** — some commercial output produced; at least one division failed to queue items when it could have
+- **activation stalled** — no queue items produced despite available data; name which agents failed and why
+
+Distinguish clearly between:
+- **drafts only** — agent wrote a draft but did not write to approval_queue.json
+- **approval-ready** — item written to approval_queue.json, visible in founder dashboard
+- **released** — founder approved and released the item
 
 **Division Signal first-pass (required before full synthesis):** Before reading any report in full, scan each weekly report for its DIVISION SIGNAL section. Record the Status (positive / neutral / concern) and Recommended Direction for every division. Any division with Status: concern is read in full immediately. Divisions with Status: neutral or positive are summarized from their DIVISION SIGNAL unless an escalation flag is present. This first-pass scan reduces synthesis tokens and surfaces critical signals without requiring full-document reads on healthy divisions.
 

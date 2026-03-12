@@ -57,6 +57,35 @@ Preferred channels:
 
 ---
 
+## Approval Queue Integration
+
+After drafting content entries, write each to the approval queue using
+`shared/queue_writer.py` → `queue_item()`:
+
+```
+queue_item(
+    item_type="content",
+    title="[Channel] — [Content type]: [Hook]",
+    summary="[1-sentence on what this is and why now]",
+    payload={
+        "channel": "linkedin|founder_post|website_snippet|x",
+        "content_type": "proof_activation|product_education|market_insight|pilot_narrative",
+        "hook": "[first line / headline]",
+        "draft": "[full draft text]",
+        "cta": "[call to action]",
+        "source_signal": "[which file/proof/observation drove this]",
+    },
+    created_by_agent="Pre-Launch Content Agent",
+    risk_level="low",
+    recommended_action="Review draft; approve to release for posting",
+)
+```
+
+Also append the entry to `data/growth/content_queue.md` as before.
+The queue item provides the founder with one-click approve/release in the dashboard.
+
+---
+
 ## Hard Rules
 
 1. **No generic content.** Every draft must be grounded in Clarion's actual product,

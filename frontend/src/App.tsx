@@ -49,6 +49,7 @@ import DemoPdfPreview from "./pages/DemoPdfPreview";
 import DashboardTeam from "./pages/DashboardTeam";
 import InviteAccept from "./pages/InviteAccept";
 import ActionDetail from "./pages/ActionDetail";
+import ApprovalQueuePage from "./pages/ApprovalQueuePage";
 
 const queryClient = new QueryClient();
 
@@ -112,6 +113,7 @@ const AppRoutes = ({ location }: { location: Location }) => (
       <Route path="/dashboard/account" element={<DashboardAccount />} />
       <Route path="/dashboard/team" element={<DashboardTeam />} />
       <Route path="/dashboard/brief-customization" element={<DashboardPdfPreview />} />
+      <Route path="/dashboard/approval-queue" element={<ApprovalQueuePage />} />
       <Route
         path="/upload"
         element={<Upload />}

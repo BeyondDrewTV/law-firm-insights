@@ -16,7 +16,7 @@ Total signals found: 10 (ranked by relevance)
 Platform:   Reddit — r/Epstein
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-27
-Engagement: 2409 upvotes · 573 comments
+Engagement: 2406 upvotes · 573 comments
 Link:       https://www.reddit.com/r/Epstein/comments/1rfy0tj/the_overlords_who_was_jeffrey_epstein_really/
 
 **Summary:**
@@ -36,7 +36,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/gundealsFU
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-03
-Engagement: 13 upvotes · 7 comments
+Engagement: 12 upvotes · 7 comments
 Link:       https://www.reddit.com/r/gundealsFU/comments/1rk1pot/review_negative_sierra_defense_sierradefenseus/
 
 **Summary:**
@@ -76,7 +76,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/LocalLLM
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-02
-Engagement: 4 upvotes · 45 comments
+Engagement: 3 upvotes · 45 comments
 Link:       https://www.reddit.com/r/LocalLLM/comments/1rj4hkj/small_law_firm_considering_local_llm_setup_for/
 
 **Summary:**
@@ -96,7 +96,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/linux
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-06
-Engagement: 1791 upvotes · 232 comments
+Engagement: 1790 upvotes · 232 comments
 Link:       https://www.reddit.com/r/linux/comments/1rmhxk1/i_pulled_the_actual_bill_text_from_5_state_age/
 
 **Summary:**
@@ -116,7 +116,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/BigEasyWeightLoss
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-09
-Engagement: 271 upvotes · 69 comments
+Engagement: 274 upvotes · 69 comments
 Link:       https://www.reddit.com/r/BigEasyWeightLoss/comments/1r07k8a/how_we_advertise_and_market_because_reddit/
 
 **Summary:**
@@ -136,7 +136,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/pwnhub
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-11
-Engagement: 148 upvotes · 33 comments
+Engagement: 146 upvotes · 33 comments
 Link:       https://www.reddit.com/r/pwnhub/comments/1r23pu0/law_firms_turn_to_ai_resulting_in_mass_layoffs/
 
 **Summary:**
@@ -156,7 +156,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/VAClaims
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-16
-Engagement: 80 upvotes · 149 comments
+Engagement: 78 upvotes · 149 comments
 Link:       https://www.reddit.com/r/VAClaims/comments/1r67dc6/ingraham_v_collins_is_going_to_hose_a_lot_of/
 
 **Summary:**
@@ -176,7 +176,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/ValueInvesting
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-07
-Engagement: 53 upvotes · 55 comments
+Engagement: 54 upvotes · 55 comments
 Link:       https://www.reddit.com/r/ValueInvesting/comments/1rnje9v/im_attempting_to_find_that_one_saas_gem_that_we/
 
 **Summary:**
@@ -196,7 +196,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/legal
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-14
-Engagement: 44 upvotes · 100 comments
+Engagement: 46 upvotes · 100 comments
 Link:       https://www.reddit.com/r/legal/comments/1r46vrz/target_civil_demand_letter_from_pra_law_firm_for/
 
 **Summary:**

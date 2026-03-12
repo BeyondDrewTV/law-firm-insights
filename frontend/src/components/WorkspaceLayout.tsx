@@ -37,6 +37,7 @@ import {
   ScanLine,
   UserPlus,
   Users,
+  CheckSquare,
 } from "lucide-react";
 import { getLatestExposure } from "@/api/authService";
 import { useAuth } from "@/contexts/AuthContext";
@@ -81,6 +82,15 @@ const PRIMARY_NAV = [
     iconClass: "text-[#E2E8F0]",
     iconActiveClass: "text-white",
   },
+  {
+    to: "/dashboard/approval-queue",
+    label: "Approval Queue",
+    Icon: CheckSquare,
+    badgeKey: "queue" as const,
+    badgeLabel: "Items pending approval",
+    iconClass: "text-amber-300/70",
+    iconActiveClass: "text-amber-300",
+  },
 ] as const;
 
 const SETTINGS_NAV = [
@@ -108,7 +118,7 @@ const SETTINGS_NAV = [
 ] as const;
 
 // Union type for badge key across both nav arrays
-type BadgeKey = "briefs";
+type BadgeKey = "briefs" | "queue";
 
 
 // ── NavItem Component ─────────────────────────────────────────────────────────
@@ -205,6 +215,7 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
   const navigate = useNavigate();
   const [loggingOut, setLoggingOut] = useState(false);
   const [briefsBadgeCount, setBriefsBadgeCount] = useState<number>(0);
+  const [queueBadgeCount, setQueueBadgeCount]   = useState<number>(0);
   const mainRef = useRef<HTMLElement | null>(null);
 
   const isActive = (href: string) => {
@@ -226,6 +237,24 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
     };
     void loadNavBadges();
     return () => { active = false; controller.abort(); };
+  }, []);
+
+  // Approval queue badge — polls every 60s
+  useEffect(() => {
+    let active = true;
+    const poll = async () => {
+      try {
+        const res = await fetch("/api/approval-queue/stats", {
+          headers: { Authorization: "Bearer Themepark12" },
+        });
+        if (!active || !res.ok) return;
+        const s = await res.json();
+        setQueueBadgeCount(s.total_pending ?? 0);
+      } catch { /* silent */ }
+    };
+    void poll();
+    const t = setInterval(poll, 60_000);
+    return () => { active = false; clearInterval(t); };
   }, []);
 
   const handleLogOut = async () => {
@@ -289,7 +318,9 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
                 badgeCount={
                   "badgeKey" in item && item.badgeKey === "briefs" && briefsBadgeCount > 0
                     ? briefsBadgeCount
-                    : undefined
+                    : "badgeKey" in item && item.badgeKey === "queue" && queueBadgeCount > 0
+                      ? queueBadgeCount
+                      : undefined
                 }
                 urgent={"badgeKey" in item && item.badgeKey === "briefs" && briefsBadgeCount > 0}
                 iconClass={item.iconClass}

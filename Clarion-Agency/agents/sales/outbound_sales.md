@@ -231,6 +231,36 @@ Escalate IMMEDIATELY in FOUNDER ESCALATIONS when:
 - Enterprise or high-value interest appears
 - Legal or security concerns appear
 
+## Approval Queue Integration
+
+When outreach drafts are ready (PHASE 4), write each draft to the approval queue
+using `shared/queue_writer.py` → `queue_item()`:
+
+```
+queue_item(
+    item_type="outreach",
+    title="Cold email — [Firm name/ID] ([practice area])",
+    summary="[1-sentence rationale and personalization hook]",
+    payload={
+        "channel": "email",
+        "prospect_id": "[leads_pipeline.csv row ID or firm name]",
+        "template_used": "[template name]",
+        "draft": "[full message text]",
+        "sequence_step": 1,
+        "personalization_basis": "[what signal this is based on]",
+    },
+    created_by_agent="Outbound Sales Agent",
+    risk_level="low",
+    recommended_action="Review draft, approve to send via your email client",
+)
+```
+
+This replaces the "mark status: outreach_drafted and stop" behavior.
+The item appears in the founder Approval Queue dashboard at /dashboard/approval-queue.
+The draft still requires founder release before any external send occurs.
+
+---
+
 ## Pre-Launch Activation Guardrail
 
 Read `memory/prelaunch_activation_mode.md` before every run.
