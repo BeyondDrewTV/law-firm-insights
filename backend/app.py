@@ -6809,11 +6809,47 @@ def _build_top_complaint_signal_candidates(analysis):
     return rows
 
 
-def _persist_governance_insights_tx(c, report_id, insights):
-    """Persist generated governance insights for a report (same transaction).
+# Categories that trigger a Slack alert when a high-severity governance signal fires.
+# Key = substring matched against the lowercased signal title; value = display label.
+_GOVERNANCE_ALERT_CATEGORIES = {
+    'communication': 'Communication',
+    'professionalism': 'Professionalism',
+    'case outcome': 'Case outcome',
+}
+_GOVERNANCE_ALERT_MIN_PERCENT = 20
 
-    Returns a list of pending Slack alert messages; callers must fire them
-    *after* committing so the network call doesn't hold the DB write lock.
+
+def _build_governance_slack_alert(signal_title: str, signal_description: str, signal_severity: str):
+    """Return a Slack alert string for a high-severity signal, or None if criteria not met."""
+    if signal_severity != 'high':
+        return None
+    normalized = signal_title.lower()
+    matched_label = next(
+        (label for key, label in _GOVERNANCE_ALERT_CATEGORIES.items() if key in normalized),
+        None,
+    )
+    if not matched_label:
+        return None
+    percent_match = re.search(r'(\d+)%', signal_description or '')
+    if not percent_match:
+        return None
+    percent = int(percent_match.group(1))
+    if percent < _GOVERNANCE_ALERT_MIN_PERCENT:
+        return None
+    return (
+        f'Clarion Client Experience Alert\n'
+        f'{matched_label} complaints increasing.\n'
+        f'{percent}% of reviews mention {matched_label.lower()} issues.\n'
+        f'Review recommended before next partner meeting.'
+    )
+
+
+def _persist_governance_insights_tx(c, report_id, insights):
+    """Persist generated governance insights inside the caller's transaction.
+
+    Returns a list of pending Slack alert strings that must be fired
+    *after* the transaction commits so the network call does not hold
+    the DB write lock.
     """
     now_iso = datetime.now(timezone.utc).isoformat()
     c.execute('DELETE FROM governance_signals WHERE report_id = ?', (report_id,))
@@ -6821,56 +6857,29 @@ def _persist_governance_insights_tx(c, report_id, insights):
 
     pending_alerts = []
 
-    for signal in insights.get('exposure_signals', []) or []:
-        signal_title = str(signal.get('title') or '').strip() or 'Governance Signal'
-        signal_description = str(signal.get('description') or '').strip()
-        signal_severity = str(signal.get('severity') or 'low').strip().lower() or 'low'
+    for signal in insights.get('exposure_signals') or []:
+        title = str(signal.get('title') or '').strip() or 'Governance Signal'
+        description = str(signal.get('description') or '').strip()
+        severity = str(signal.get('severity') or 'low').strip().lower() or 'low'
         c.execute(
-            '''
-            INSERT INTO governance_signals (report_id, title, description, severity, created_at)
-            VALUES (?, ?, ?, ?, ?)
-            ''',
-            (
-                report_id,
-                signal_title,
-                signal_description,
-                signal_severity,
-                now_iso,
-            ),
+            'INSERT INTO governance_signals (report_id, title, description, severity, created_at)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (report_id, title, description, severity, now_iso),
         )
-        if signal_severity == 'high':
-            normalized_title = signal_title.lower()
-            tracked_categories = {
-                'communication': 'Communication',
-                'professionalism': 'Professionalism',
-                'case outcome': 'Case outcome',
-            }
-            matched_category = next(
-                (label for key, label in tracked_categories.items() if key in normalized_title),
-                None,
-            )
-            if matched_category:
-                percent_match = re.search(r'(\d+)%', signal_description or '')
-                percent = int(percent_match.group(1)) if percent_match else None
-                if percent is not None and percent >= 20:
-                    pending_alerts.append(
-                        f'Clarion Client Experience Alert\n'
-                        f'{matched_category} complaints increasing.\n'
-                        f'{percent}% of reviews mention {matched_category.lower()} issues.\n'
-                        f'Review recommended before next partner meeting.'
-                    )
+        alert = _build_governance_slack_alert(title, description, severity)
+        if alert:
+            pending_alerts.append(alert)
 
-    for recommendation in insights.get('recommended_actions', []) or []:
+    for rec in insights.get('recommended_actions') or []:
         c.execute(
-            '''
-            INSERT INTO governance_recommendations (report_id, title, priority, suggested_owner, created_at)
-            VALUES (?, ?, ?, ?, ?)
-            ''',
+            'INSERT INTO governance_recommendations'
+            ' (report_id, title, priority, suggested_owner, created_at)'
+            ' VALUES (?, ?, ?, ?, ?)',
             (
                 report_id,
-                str(recommendation.get('title') or '').strip() or 'Recommended Action',
-                str(recommendation.get('priority') or 'low').strip().lower() or 'low',
-                str(recommendation.get('suggested_owner') or '').strip(),
+                str(rec.get('title') or '').strip() or 'Recommended Action',
+                str(rec.get('priority') or 'low').strip().lower() or 'low',
+                str(rec.get('suggested_owner') or '').strip(),
                 now_iso,
             ),
         )
@@ -6878,99 +6887,11 @@ def _persist_governance_insights_tx(c, report_id, insights):
     return pending_alerts
 
 
-
-
-def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
-
-    """
-
-    Insert the report snapshot using the caller's cursor (no commit).
-
-    Calls _analyze_reviews_tx so analysis reads the uncommitted reviews
-
-    inserted earlier in the same transaction.
-
-    Returns (report_id, pending_slack_alerts), where report_id is None if there are
-    no analyzable reviews or no active firm. pending_slack_alerts is always a list.
-
-    """
-
-    analysis = _analyze_reviews_tx(c, user_id)
-
-    if analysis['total_reviews'] == 0:
-
-        return None, []
-
-
-
-    firm_id = _resolve_user_active_firm_id(c, user_id)
-
-    if firm_id is None:
-
-        return None, []
-
-
-
-    c.execute(
-
-        '''
-
-        INSERT INTO reports (
-
-            user_id,
-
-            firm_id,
-
-            created_by_user_id,
-
-            total_reviews,
-
-            avg_rating,
-
-            themes,
-
-            top_praise,
-
-            top_complaints,
-
-            subscription_type_at_creation,
-
-            report_hash
-
-        )
-
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-
-        ''',
-
-        (
-
-            user_id,
-
-            firm_id,
-
-            user_id,
-
-            analysis['total_reviews'],
-
-            analysis['avg_rating'],
-
-            _serialize_report_data(analysis['themes']),
-
-            _serialize_report_data(analysis['top_praise']),
-
-            _serialize_report_data(analysis['top_complaints']),
-
-            subscription_type,
-
-            report_hash,
-        ),
-    )
-    report_id = c.lastrowid
-
+def _build_governance_insights_payload(analysis, subscription_type):
+    """Assemble the input dict for generate_governance_insights from a report analysis."""
     ordered_themes = sorted(
-        [{'name': name, 'mentions': int(mentions)} for name, mentions in (analysis.get('themes') or {}).items()],
-        key=lambda item: item['mentions'],
+        [{'name': k, 'mentions': int(v)} for k, v in (analysis.get('themes') or {}).items()],
+        key=lambda t: t['mentions'],
         reverse=True,
     )
     access_context = _report_access_context(subscription_type or 'trial')
@@ -6980,20 +6901,96 @@ def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
     )
     all_reviews = analysis.get('all_reviews') or []
     total_reviews = max(1, int(analysis.get('total_reviews') or 0))
-    negative_count = sum(1 for review in all_reviews if int(review.get('rating') or 0) <= 2)
-    report_for_insights = {
+    negative_share = sum(1 for r in all_reviews if int(r.get('rating') or 0) <= 2) / total_reviews
+    return {
         'top_complaints': _build_top_complaint_signal_candidates(analysis),
-        'sentiment_summary': {
-            'negative_share': negative_count / total_reviews,
-        },
+        'sentiment_summary': {'negative_share': negative_share},
         'implementation_roadmap': implementation_roadmap,
     }
-    insights = generate_governance_insights(report_for_insights)
+
+
+def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
+    """Insert the report snapshot using the caller's cursor (no commit).
+
+    Reads uncommitted reviews inserted earlier in the same transaction.
+    Returns (report_id, pending_slack_alerts); report_id is None when there
+    are no analyzable reviews or no active firm.  pending_slack_alerts is
+    always a list that callers must fire *after* the transaction commits.
+    """
+    analysis = _analyze_reviews_tx(c, user_id)
+    if analysis['total_reviews'] == 0:
+        return None, []
+
+    firm_id = _resolve_user_active_firm_id(c, user_id)
+    if firm_id is None:
+        return None, []
+
+    c.execute(
+        '''
+        INSERT INTO reports (
+            user_id, firm_id, created_by_user_id,
+            total_reviews, avg_rating,
+            themes, top_praise, top_complaints,
+            subscription_type_at_creation, report_hash
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''',
+        (
+            user_id, firm_id, user_id,
+            analysis['total_reviews'], analysis['avg_rating'],
+            _serialize_report_data(analysis['themes']),
+            _serialize_report_data(analysis['top_praise']),
+            _serialize_report_data(analysis['top_complaints']),
+            subscription_type, report_hash,
+        ),
+    )
+    report_id = c.lastrowid
+
+    insights_payload = _build_governance_insights_payload(analysis, subscription_type)
+    insights = generate_governance_insights(insights_payload)
     pending_alerts = _persist_governance_insights_tx(c, report_id, insights)
 
     return report_id, pending_alerts
 
 
+def _fire_pending_slack_alerts(pending_alerts):
+    """Fire Slack alerts accumulated during a transaction, swallowing individual failures."""
+    for msg in pending_alerts or []:
+        try:
+            send_slack_alert(msg)
+        except Exception:
+            app.logger.exception('Failed to send post-commit Slack governance alert')
+
+
+def _update_usage_credit_tx(c, user_id, access_type, trial_usage_count=None):
+    """Increment the appropriate usage counter inside the caller's transaction."""
+    if access_type == 'onetime':
+        c.execute(
+            'UPDATE users SET one_time_reports_used = one_time_reports_used + 1 WHERE id = ?',
+            (user_id,),
+        )
+    elif access_type == 'trial':
+        if trial_usage_count is not None:
+            # API caller: use max() guard to handle concurrent uploads safely.
+            updated = max(trial_usage_count + 1, _get_trial_report_snapshot_count(user_id))
+            c.execute(
+                'UPDATE users SET trial_reviews_used = ? WHERE id = ?',
+                (updated, user_id),
+            )
+        else:
+            # Web caller: atomic increment avoids TOCTOU race.
+            c.execute(
+                'UPDATE users SET trial_reviews_used = trial_reviews_used + 1 WHERE id = ?',
+                (user_id,),
+            )
+
+
+def _maybe_raise_upload_fail_hook():
+    """Raise RuntimeError in dev/test when UPLOAD_FAIL_AFTER_REVIEWS=1 (rollback test hook)."""
+    if (
+        os.environ.get('UPLOAD_FAIL_AFTER_REVIEWS') == '1'
+        and (app.config.get('DEBUG') or app.config.get('TESTING'))
+    ):
+        raise RuntimeError('PR5 test: forced failure after review inserts')
 
 
 # -- end PR5 helpers -----------------------------------------------------------
@@ -9272,84 +9269,27 @@ def upload():
 
 
                 # F8 test hook: set UPLOAD_FAIL_AFTER_REVIEWS=1 to prove rollback.
-
-                # PR5b: only active in dev/test � ignored in production.
-
-                if (
-
-                    os.environ.get('UPLOAD_FAIL_AFTER_REVIEWS') == '1'
-
-                    and (app.config.get('DEBUG') or app.config.get('TESTING'))
-
-                ):
-
-                    raise RuntimeError('PR5 test: forced failure after review inserts')
-
-
+                _maybe_raise_upload_fail_hook()
 
                 snapshot_report_id, _pending_slack_alerts = _save_report_snapshot_tx(
-
                     c,
-
                     current_user.id,
-
                     subscription_type=access_type,
-
                     report_hash=report_hash,
-
                 )
 
-
-
-                # Credit update AFTER snapshot exists � same transaction.
-
-                if access_type == 'onetime':
-
-                    c.execute(
-
-                        '''
-
-                        UPDATE users
-
-                        SET one_time_reports_used = one_time_reports_used + 1
-
-                        WHERE id = ?
-
-                        ''',
-
-                        (current_user.id,),
-
-                    )
-
-                elif access_type == 'trial':
-                    # Atomic increment avoids a TOCTOU race where two concurrent
-                    # uploads both read the same count and the second write wins.
-                    c.execute(
-                        'UPDATE users SET trial_reviews_used = trial_reviews_used + 1 WHERE id = ?',
-                        (current_user.id,),
-                    )
-
-
+                # Credit update AFTER snapshot exists — same transaction.
+                _update_usage_credit_tx(c, current_user.id, access_type)
 
                 conn.commit()
 
             except Exception:
-
                 conn.rollback()
-
                 raise
-
             finally:
-
                 conn.close()
 
-            # Fire Slack alerts after the transaction commits so the network
-            # call does not hold the DB write lock.
-            for _alert_msg in (_pending_slack_alerts or []):
-                try:
-                    send_slack_alert(_alert_msg)
-                except Exception:
-                    app.logger.exception('Failed to send post-commit Slack governance alert')
+            _fire_pending_slack_alerts(_pending_slack_alerts)
 
             if not snapshot_report_id:
 
@@ -16891,11 +16831,7 @@ def _ingest_rows_into_report(valid_rows, access_type, parse_meta=None, channel='
         _insert_user_reviews_tx(c, current_user.id, valid_rows)
         count = len(valid_rows)
 
-        if (
-            os.environ.get('UPLOAD_FAIL_AFTER_REVIEWS') == '1'
-            and (app.config.get('DEBUG') or app.config.get('TESTING'))
-        ):
-            raise RuntimeError('PR5 test: forced failure after review inserts')
+        _maybe_raise_upload_fail_hook()
 
         snapshot_report_id, _pending_slack_alerts = _save_report_snapshot_tx(
             c,
@@ -16904,28 +16840,8 @@ def _ingest_rows_into_report(valid_rows, access_type, parse_meta=None, channel='
             report_hash=report_hash,
         )
 
-        if access_type == 'onetime':
-            c.execute(
-                '''
-                UPDATE users
-                SET one_time_reports_used = one_time_reports_used + 1
-                WHERE id = ?
-                ''',
-                (current_user.id,),
-            )
-        elif access_type == 'trial':
-            updated_free_usage = max(
-                trial_usage_count + 1,
-                _get_trial_report_snapshot_count(current_user.id),
-            )
-            c.execute(
-                '''
-                UPDATE users
-                SET trial_reviews_used = ?
-                WHERE id = ?
-                ''',
-                (updated_free_usage, current_user.id),
-            )
+        # Credit update AFTER snapshot exists — same transaction.
+        _update_usage_credit_tx(c, current_user.id, access_type, trial_usage_count=trial_usage_count)
 
         conn.commit()
     except Exception:
@@ -16934,13 +16850,7 @@ def _ingest_rows_into_report(valid_rows, access_type, parse_meta=None, channel='
     finally:
         conn.close()
 
-    # Fire Slack alerts after the transaction commits so the network
-    # call does not hold the DB write lock.
-    for _alert_msg in (_pending_slack_alerts or []):
-        try:
-            send_slack_alert(_alert_msg)
-        except Exception:
-            app.logger.exception('Failed to send post-commit Slack governance alert')
+    _fire_pending_slack_alerts(_pending_slack_alerts)
 
     if snapshot_report_id:
         try:
