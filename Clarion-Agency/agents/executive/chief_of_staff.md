@@ -19,6 +19,7 @@ From `memory/` (provided in grounding context):
 - `office_health_log.md` — last entry only (for comparison to detect stalling).
 - `office_learning_log.md` — summary only.
 - `experiments.md` — full.
+- `market_refresh_log.md` — last entry per agent. Check date against current run date.
 
 All department agent reports filed in the past 7 days (see REPORT INVENTORY in input data).
 
@@ -90,6 +91,14 @@ For each division, assess overall activity level:
 - Active — meaningful work completed, report substantive
 - Low Activity — report filed but minimal findings, no work completed
 - Stalled — report missing or empty two or more consecutive runs
+
+**F. Market Freshness Check**
+Read `memory/market_refresh_log.md`. For each of the four market-facing agents (Competitive Intelligence, Customer Discovery, Head of Growth, Content & SEO), find their most recent log entry date.
+
+- If the most recent entry for any agent is **older than 30 days** from the current run date: flag that agent as **Market Intelligence Stale**.
+- In the CEO brief under OFFICE HEALTH REPORT, list each agent's last refresh date.
+- For any stale agent, include a standing instruction in STANDING ORDER CONFLICTS: `[Agent name] — market_refresh_log.md entry is older than 30 days. Division must refresh market intelligence this cycle.`
+- If `market_refresh_log.md` has no entry at all for an agent, treat it as stale immediately.
 
 **E. Operational Risk Level**
 Assign one of: Low | Moderate | High
@@ -204,6 +213,13 @@ Project Health:
 
 Conflicting Outputs:
   [None. | Division A vs Division B — conflict description — implication]
+
+Market Freshness:
+  Competitive Intelligence: Last refresh [YYYY-MM-DD] | [Current | Stale]
+  Customer Discovery:       Last refresh [YYYY-MM-DD] | [Current | Stale]
+  Head of Growth:           Last refresh [YYYY-MM-DD] | [Current | Stale]
+  Content & SEO:            Last refresh [YYYY-MM-DD] | [Current | Stale]
+  (Stale = no entry, or last entry older than 30 days. Stale agents receive a STANDING ORDER CONFLICT.)
 
 Operational Risk Level: [Low | Moderate | High]
 Risk Rationale: [One sentence.]

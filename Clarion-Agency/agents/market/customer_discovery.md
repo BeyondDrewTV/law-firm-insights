@@ -53,6 +53,16 @@ site:reddit.com "legal marketing" "client feedback" challenge
 ## No Live Web Access — Fallback
 Do not fabricate. File a minimal gap report: STATUS: WATCH · no signals found · recommend manual query run.
 
+## Market Freshness Rule
+You are a market-facing agent. You must refresh your external market understanding at least every 4 weeks.
+At the end of every run, append one entry to `memory/market_refresh_log.md` logging:
+- Market signals discovered this run
+- Competitor changes observed
+- Industry news relevant to Clarion
+- Pricing changes detected in the market
+
+If no new signals were found, log the run with `None.` values. Never skip the entry.
+
 ## Hard Rules
 Never invent signals · never draft live outreach messages (angles only) · never execute outreach without an approved action · never identify PII beyond public role · quote exactly.
 
@@ -110,6 +120,16 @@ ESCALATIONS
 
 INPUTS USED
 [Sources searched]
+
+MARKET FRESHNESS LOG ENTRY
+(Append to memory/market_refresh_log.md — required every run)
+DATE:               [YYYY-MM-DD]
+AGENT:              Customer Discovery
+MARKET SIGNALS:     [Summary — or None.]
+COMPETITOR CHANGES: [Moves, features, messaging — or None.]
+INDUSTRY NEWS:      [Relevant legal tech / law firm news — or None.]
+PRICING CHANGES:    [Market pricing moves — or None.]
+NOTES:              [Optional]
 
 TOKENS USED
 [Approximate]
