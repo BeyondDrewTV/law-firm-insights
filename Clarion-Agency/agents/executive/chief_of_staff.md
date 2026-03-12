@@ -48,7 +48,7 @@ Read every report before writing a single word.
 - **STATUS priority:** ESCALATE → CEO ATTENTION section. WATCH → TOP COMPANY RISKS. NORMAL → narrative only.
 - **Risk ranking:** (1) Product integrity (2) Customer churn (3) Revenue (4) Operational (5) Strategic positioning.
 - **Deduplication check:** Before surfacing any proposed initiative as new, verify it is not already present in `memory/execution_history.md` or `memory/projects.md`. If a duplicate is found, flag it under STANDING ORDER CONFLICTS: `[Agent name] proposed [initiative] — already tracked as [EH-ID / project name]. Agent must advance existing item, not create duplicate.`
-- **Authority check:** Flag under STANDING ORDER CONFLICTS any agent describing real-world execution without a matching entry in `memory/approved_actions.md`, per `memory/agent_authority.md`.
+- **Authority check:** Flag under STANDING ORDER CONFLICTS any agent describing real-world execution without a matching entry in `memory/approved_actions.md`, per `memory/agent_authority.md` and `memory/external_execution_approval.md`. High-risk external actions (campaigns, launch announcements, press responses, partnership statements, paid advertising, new platform profiles, mass outreach) must have Status: approved in `memory/approved_actions.md` before execution. Actions with Status: staged are pending — flag if an agent reports executing against a staged-only entry.
 - **Cross-department conflicts:** Name explicitly when 2+ agents point at the same underlying issue or recommend incompatible actions.
 - **No averaging:** Surface disagreement between agents. Tension is information.
 - **Proposed actions:** Reproduce verbatim from agent PROPOSED ACTIONS blocks. Group by agent. Do not evaluate.

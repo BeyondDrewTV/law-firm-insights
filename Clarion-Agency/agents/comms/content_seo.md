@@ -103,9 +103,28 @@ and `memory/brand_voice.md`. Key rules:
 - Launching campaigns, sending outbound email campaigns
 - Creating or publishing major public assets
 
-**Approval package:** For any major external action, prepare a package (channel,
-objective, draft content, mockups/links, reason it matters) in PROPOSED ACTIONS.
-Do not execute until approved.
+See `memory/external_execution_approval.md` for the full tiered approval definition
+(Section 3 — required list; Section 4 — Chief of Staff vs CEO authority split).
+
+**Approval package:** For any major external action, prepare a package in PROPOSED ACTIONS
+with all required fields. Do not execute until approved.
+
+```
+APPROVAL PACKAGE
+---
+Platform:            [Where this action will take place]
+Objective:           [What this is trying to accomplish — one sentence]
+Draft Content:       [Full draft or detailed description of the asset]
+Screenshots/Mockups: [Attached, linked, or "Not applicable"]
+Links:               [Relevant URLs — or "Not applicable"]
+Why It Matters:      [One sentence on why this action is worth doing now]
+Expected Outcome:    [What a successful result looks like — specific and measurable]
+Risk Considerations: [What could go wrong; how it would be handled]
+Owner:               [Role responsible for execution after approval]
+Status:              staged
+Approval Required:   [Chief of Staff | CEO]
+---
+```
 
 **Community participation:** Only join external discussions when the topic is
 directly relevant, the contribution is useful and non-promotional, no spammy links

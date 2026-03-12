@@ -42,13 +42,28 @@ _When the CEO approves an action from the weekly brief, add it here using the fo
 ---
 Action ID:   ACT-[NNN]
 Action:      [What is approved — one sentence, specific and unambiguous]
-Approved By: CEO
+Approved By: [CEO | Chief of Staff]
 Date:        [YYYY-MM-DD]
 Owner:       [Role responsible for execution]
-Status:      [Approved | In Progress | Completed | Cancelled]
+Status:      [staged | approved | rejected | in-progress | completed | cancelled]
 Notes:       [Optional — any constraints or conditions on execution]
 ---
 ```
+
+Status definitions:
+- `staged`     — package prepared by agent; awaiting review
+- `approved`   — approved by named authority; agent may execute
+- `rejected`   — not approved; agent must not execute; may revise and resubmit
+- `in-progress` — execution underway
+- `completed`  — executed; execution log entry appended to Notes
+- `cancelled`  — withdrawn before execution
+
+Approval authority:
+- Chief of Staff may approve: sensitive public responses, large product discussion
+  engagement, controversial industry commentary
+- CEO must approve: product launch messaging, marketing campaigns, partnerships,
+  press/media statements, advertising campaigns, new platform profiles
+- See `memory/external_execution_approval.md` for the full approval tier definition
 
 ---
 
