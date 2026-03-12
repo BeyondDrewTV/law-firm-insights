@@ -79,7 +79,7 @@ class Config:
 
         "base-uri 'self'; frame-ancestors 'self'; object-src 'none'; "
 
-        "script-src 'self' 'unsafe-inline' https:; "
+        "script-src 'self' https:; "
 
         "style-src 'self' 'unsafe-inline' https:; "
 
@@ -191,6 +191,7 @@ class Config:
     TEAM_ANNUAL_PRICE = int(os.environ.get('TEAM_ANNUAL_PRICE', 1790))
     FIRM_MONTHLY_PRICE = int(os.environ.get('FIRM_MONTHLY_PRICE', 449))
     FIRM_ANNUAL_PRICE = int(os.environ.get('FIRM_ANNUAL_PRICE', 4490))
+    ONETIME_REPORT_PRICE = int(os.environ.get('ONETIME_REPORT_PRICE', 49))
 
     # Mail configuration
 

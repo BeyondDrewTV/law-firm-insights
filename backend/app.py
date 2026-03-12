@@ -322,7 +322,7 @@ _resend_verification_attempts_by_ip = {}
 
 def inject_current_year():
 
-    return {"current_year": datetime.utcnow().year, "asset_version": app.config.get("ASSET_VERSION", int(time()))}
+    return {"current_year": datetime.now(timezone.utc).year, "asset_version": app.config.get("ASSET_VERSION", int(time()))}
 
 
 
@@ -1331,12 +1331,12 @@ login_manager = LoginManager()
 def load_user(user_id):
 
     conn = db_connect()
+    try:
+        c = conn.cursor()
 
-    c = conn.cursor()
+        c.execute(
 
-    c.execute(
-
-        '''
+            '''
 
         SELECT
 
@@ -1376,55 +1376,56 @@ def load_user(user_id):
         FROM users
         WHERE id = ?
         ''',
-        (user_id,),
+            (user_id,),
 
-    )
+        )
 
-    user_data = c.fetchone()
+        user_data = c.fetchone()
 
-    conn.close()
-
-
-
-    if user_data:
+        if user_data is None:
+            return None
 
         return User(
 
-            id=user_data[0],
+            id=user_data['id'],
 
-            username=user_data[1],
+            username=user_data['username'],
 
-            email=user_data[2],
+            email=user_data['email'],
 
-            firm_name=user_data[3],
+            firm_name=user_data['firm_name'],
 
-            is_admin=user_data[4],
+            is_admin=user_data['is_admin'],
 
-            stripe_customer_id=user_data[5],
+            stripe_customer_id=user_data['stripe_customer_id'],
 
-            stripe_subscription_id=user_data[6],
+            stripe_subscription_id=user_data['stripe_subscription_id'],
 
-            subscription_status=user_data[7],
+            subscription_status=user_data['subscription_status'],
 
-            trial_reviews_used=user_data[8],
+            trial_reviews_used=user_data['trial_reviews_used'],
 
-            trial_limit=user_data[9],
+            trial_limit=user_data['trial_limit'],
 
-            one_time_reports_purchased=user_data[10],
+            one_time_reports_purchased=user_data['one_time_reports_purchased'],
 
-            one_time_reports_used=user_data[11],
+            one_time_reports_used=user_data['one_time_reports_used'],
 
-            subscription_type=user_data[12],
+            subscription_type=user_data['subscription_type'],
 
-            trial_month=user_data[13],
+            trial_month=user_data['trial_month'],
 
-            trial_review_limit_per_report=user_data[14],
-            two_factor_enabled=user_data[15],
-            two_factor_method=user_data[16],
-            email_verified=user_data[17],
-            onboarding_complete=user_data[18],
+            trial_review_limit_per_report=user_data['trial_review_limit_per_report'],
+            two_factor_enabled=user_data['two_factor_enabled'],
+            two_factor_method=user_data['two_factor_method'],
+            email_verified=user_data['email_verified'],
+            onboarding_complete=user_data['onboarding_complete'],
         )
-    return None
+    except Exception:
+        app.logger.exception('load_user failed for id=%s', user_id)
+        return None
+    finally:
+        conn.close()
 
 
 
@@ -2655,7 +2656,7 @@ def init_db():
 
                 password_hash,
 
-                datetime.utcnow().isoformat(),
+                datetime.now(timezone.utc).isoformat(),
 
             ),
 
@@ -2948,7 +2949,7 @@ def _build_monthly_partner_brief_payload(c, firm_id, firm_name):
         'top_issue': top_issue,
         'example_quote': example_quote or 'No client quote available yet.',
         'recommended_discussion': recommended_discussion,
-        'generated_at': datetime.utcnow().strftime('%b %d, %Y %H:%M UTC'),
+        'generated_at': datetime.now(timezone.utc).strftime('%b %d, %Y %H:%M UTC'),
         'dashboard_url': dashboard_url,
     }
 
@@ -4582,7 +4583,7 @@ def _save_account_branding(user_id, accent_theme=None, logo_filename=None, remov
 
     next_logo = None if remove_logo else (logo_filename or old_logo)
 
-    now_iso = datetime.utcnow().isoformat()
+    now_iso = datetime.now(timezone.utc).isoformat()
 
 
 
@@ -5208,7 +5209,7 @@ def _compute_exposure_snapshot(avg_rating, themes, trend_points, implementation_
 
 
 
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
 
     open_actions = 0
 
@@ -6809,10 +6810,16 @@ def _build_top_complaint_signal_candidates(analysis):
 
 
 def _persist_governance_insights_tx(c, report_id, insights):
-    """Persist generated governance insights for a report (same transaction)."""
+    """Persist generated governance insights for a report (same transaction).
+
+    Returns a list of pending Slack alert messages; callers must fire them
+    *after* committing so the network call doesn't hold the DB write lock.
+    """
     now_iso = datetime.now(timezone.utc).isoformat()
     c.execute('DELETE FROM governance_signals WHERE report_id = ?', (report_id,))
     c.execute('DELETE FROM governance_recommendations WHERE report_id = ?', (report_id,))
+
+    pending_alerts = []
 
     for signal in insights.get('exposure_signals', []) or []:
         signal_title = str(signal.get('title') or '').strip() or 'Governance Signal'
@@ -6846,21 +6853,12 @@ def _persist_governance_insights_tx(c, report_id, insights):
                 percent_match = re.search(r'(\d+)%', signal_description or '')
                 percent = int(percent_match.group(1)) if percent_match else None
                 if percent is not None and percent >= 20:
-                    try:
-                        send_slack_alert(
-                            (
-                                f'Clarion Client Experience Alert\n'
-                                f'{matched_category} complaints increasing.\n'
-                                f'{percent}% of reviews mention {matched_category.lower()} issues.\n'
-                                f'Review recommended before next partner meeting.'
-                            )
-                        )
-                    except Exception:
-                        app.logger.exception(
-                            'Slack alert dispatch failed for report_id=%s signal=%s',
-                            report_id,
-                            signal_title,
-                        )
+                    pending_alerts.append(
+                        f'Clarion Client Experience Alert\n'
+                        f'{matched_category} complaints increasing.\n'
+                        f'{percent}% of reviews mention {matched_category.lower()} issues.\n'
+                        f'Review recommended before next partner meeting.'
+                    )
 
     for recommendation in insights.get('recommended_actions', []) or []:
         c.execute(
@@ -6877,6 +6875,8 @@ def _persist_governance_insights_tx(c, report_id, insights):
             ),
         )
 
+    return pending_alerts
+
 
 
 
@@ -6890,7 +6890,8 @@ def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
 
     inserted earlier in the same transaction.
 
-    Returns report_id, or None if there are no analyzable reviews.
+    Returns (report_id, pending_slack_alerts), where report_id is None if there are
+    no analyzable reviews or no active firm. pending_slack_alerts is always a list.
 
     """
 
@@ -6898,7 +6899,7 @@ def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
 
     if analysis['total_reviews'] == 0:
 
-        return None
+        return None, []
 
 
 
@@ -6906,7 +6907,7 @@ def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
 
     if firm_id is None:
 
-        return None
+        return None, []
 
 
 
@@ -6988,9 +6989,9 @@ def _save_report_snapshot_tx(c, user_id, subscription_type, report_hash):
         'implementation_roadmap': implementation_roadmap,
     }
     insights = generate_governance_insights(report_for_insights)
-    _persist_governance_insights_tx(c, report_id, insights)
+    pending_alerts = _persist_governance_insights_tx(c, report_id, insights)
 
-    return report_id
+    return report_id, pending_alerts
 
 
 
@@ -8034,7 +8035,7 @@ def register():
 
         from datetime import datetime
 
-        created_at = datetime.utcnow().isoformat()
+        created_at = datetime.now(timezone.utc).isoformat()
 
 
 
@@ -9286,7 +9287,7 @@ def upload():
 
 
 
-                snapshot_report_id = _save_report_snapshot_tx(
+                snapshot_report_id, _pending_slack_alerts = _save_report_snapshot_tx(
 
                     c,
 
@@ -9321,29 +9322,11 @@ def upload():
                     )
 
                 elif access_type == 'trial':
-
-                    updated_free_usage = max(
-
-                        trial_usage_count + 1,
-
-                        _get_trial_report_snapshot_count(current_user.id),
-
-                    )
-
+                    # Atomic increment avoids a TOCTOU race where two concurrent
+                    # uploads both read the same count and the second write wins.
                     c.execute(
-
-                        '''
-
-                        UPDATE users
-
-                        SET trial_reviews_used = ?
-
-                        WHERE id = ?
-
-                        ''',
-
-                        (updated_free_usage, current_user.id),
-
+                        'UPDATE users SET trial_reviews_used = trial_reviews_used + 1 WHERE id = ?',
+                        (current_user.id,),
                     )
 
 
@@ -9360,7 +9343,13 @@ def upload():
 
                 conn.close()
 
-
+            # Fire Slack alerts after the transaction commits so the network
+            # call does not hold the DB write lock.
+            for _alert_msg in (_pending_slack_alerts or []):
+                try:
+                    send_slack_alert(_alert_msg)
+                except Exception:
+                    app.logger.exception('Failed to send post-commit Slack governance alert')
 
             if not snapshot_report_id:
 
@@ -9443,7 +9432,7 @@ def _truthy_query_param(name: str) -> bool:
 
 def _store_report_pdf_artifact(user_id: int, report_id: int, pdf_bytes: bytes, generated_at: Optional[str] = None) -> None:
 
-    timestamp = generated_at or datetime.utcnow().isoformat()
+    timestamp = generated_at or datetime.now(timezone.utc).isoformat()
 
     conn = db_connect()
 
@@ -9660,7 +9649,7 @@ def download_pdf():
 
         report_title='Client Feedback Report',
 
-        report_created_at=datetime.utcnow().isoformat(),
+        report_created_at=datetime.now(timezone.utc).isoformat(),
 
         trend_points=trend_points,
 
@@ -9837,7 +9826,7 @@ def download_report(report_id):
     )
 
 
-    brief_date = datetime.utcnow().strftime("%Y%m%d")
+    brief_date = datetime.now(timezone.utc).strftime("%Y%m%d")
 
     return _pdf_inline_response(pdf_buffer, brief_date)
 
@@ -11091,44 +11080,7 @@ def api_verify_email(token):
         )
 
 
-@app.route('/api/admin/set-plan', methods=['GET'])
-@csrf.exempt
-def admin_set_plan():
-    """ONE-TIME testing helper: set plan for a user's firm. Remove after testing."""
-    expected = (os.environ.get('ADMIN_VERIFY_TOKEN') or '').strip()
-    provided = (request.args.get('token') or '').strip()
-    if not expected or provided != expected:
-        return jsonify({'error': 'Forbidden'}), 403
-    email = (request.args.get('email') or '').strip().lower()
-    plan = (request.args.get('plan') or '').strip().lower()
-    valid_plans = {'free', 'team', 'firm', 'professional', 'leadership', 'trial'}
-    if not email or plan not in valid_plans:
-        return jsonify({'error': f'Provide email and plan ({", ".join(sorted(valid_plans))})'}), 400
-    try:
-        conn = db_connect()
-        c = conn.cursor()
-        # Update the firm linked to this user
-        c.execute('SELECT id FROM users WHERE email = ?', (email,))
-        row = c.fetchone()
-        if not row:
-            conn.close()
-            return jsonify({'error': f'No user found with email {email}'}), 404
-        user_id = row[0]
-        # Update firms table via firm_users join
-        c.execute('''
-            UPDATE firms SET plan = ?
-            WHERE id IN (
-                SELECT firm_id FROM firm_users WHERE user_id = ?
-            )
-        ''', (plan, user_id))
-        firms_updated = c.rowcount
-        # Also update subscription_type on the user directly
-        c.execute('UPDATE users SET subscription_type = ? WHERE id = ?', (plan, user_id))
-        conn.commit()
-        conn.close()
-        return jsonify({'success': True, 'email': email, 'plan': plan, 'firms_updated': firms_updated}), 200
-    except Exception as exc:
-        return jsonify({'error': str(exc)}), 500
+# /api/admin/set-plan was removed before V1 launch (unauthenticated testing helper).
 
 
 @app.route('/api/onboarding/complete', methods=['POST'])
@@ -16292,7 +16244,7 @@ def api_report_pdf(report_id):
     artifact_bytes = None if force_refresh else _load_report_pdf_artifact(report_id)
     if artifact_bytes is not None and not force_refresh:
 
-        brief_date = datetime.utcnow().strftime("%Y%m%d")
+        brief_date = datetime.now(timezone.utc).strftime("%Y%m%d")
 
         return _pdf_inline_response(artifact_bytes, brief_date)
 
@@ -16388,7 +16340,7 @@ def api_report_pdf(report_id):
     )
     pdf_bytes = pdf_buffer.getvalue()
 
-    _store_report_pdf_artifact(current_user.id, report_id, pdf_bytes, generated_at=datetime.utcnow().isoformat())
+    _store_report_pdf_artifact(current_user.id, report_id, pdf_bytes, generated_at=datetime.now(timezone.utc).isoformat())
 
     # Send partner brief email after fresh governance brief generation.
     # Never block report delivery if email provider fails.
@@ -16431,7 +16383,7 @@ def api_report_pdf(report_id):
                     'top_issue': top_issue,
                     'example_quote': example_quote or 'No client quote available yet.',
                     'recommended_discussion': recommended_discussion,
-                    'generated_at': datetime.utcnow().strftime('%b %d, %Y %H:%M UTC'),
+                    'generated_at': datetime.now(timezone.utc).strftime('%b %d, %Y %H:%M UTC'),
                     'dashboard_url': dashboard_url,
                 }
             )
@@ -16576,7 +16528,7 @@ def api_report_pdf(report_id):
 
 
 
-    brief_date = datetime.utcnow().strftime("%Y%m%d")
+    brief_date = datetime.now(timezone.utc).strftime("%Y%m%d")
 
     return _pdf_inline_response(pdf_bytes, brief_date)
 
@@ -16665,7 +16617,7 @@ def _send_partner_brief_email_response():
         'top_issue': top_issue,
         'example_quote': example_quote or 'No client quote available yet.',
         'recommended_discussion': recommended_discussion,
-        'generated_at': datetime.utcnow().strftime('%b %d, %Y %H:%M UTC'),
+        'generated_at': datetime.now(timezone.utc).strftime('%b %d, %Y %H:%M UTC'),
         'dashboard_url': dashboard_url,
     }
     html = build_partner_brief_html(brief_payload)
@@ -16722,7 +16674,7 @@ def _send_partner_brief_email_response():
             'recipient_count': len(recipients),
             'recipients': recipients,
             'from_email': from_email,
-            'timestamp': datetime.utcnow().isoformat() + 'Z',
+            'timestamp': datetime.now(timezone.utc).isoformat() + 'Z',
         }
     ), 200
 
@@ -16945,7 +16897,7 @@ def _ingest_rows_into_report(valid_rows, access_type, parse_meta=None, channel='
         ):
             raise RuntimeError('PR5 test: forced failure after review inserts')
 
-        snapshot_report_id = _save_report_snapshot_tx(
+        snapshot_report_id, _pending_slack_alerts = _save_report_snapshot_tx(
             c,
             current_user.id,
             subscription_type=access_type,
@@ -16981,6 +16933,14 @@ def _ingest_rows_into_report(valid_rows, access_type, parse_meta=None, channel='
         raise
     finally:
         conn.close()
+
+    # Fire Slack alerts after the transaction commits so the network
+    # call does not hold the DB write lock.
+    for _alert_msg in (_pending_slack_alerts or []):
+        try:
+            send_slack_alert(_alert_msg)
+        except Exception:
+            app.logger.exception('Failed to send post-commit Slack governance alert')
 
     if snapshot_report_id:
         try:
