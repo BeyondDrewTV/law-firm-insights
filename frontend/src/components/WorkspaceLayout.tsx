@@ -189,6 +189,7 @@ function NavItem({
 const resolvePageLabel = (pathname: string): string => {
   // Detail routes first (more specific)
   if (pathname.startsWith("/dashboard/brief-customization")) return "Brief Customization";
+  if (pathname.startsWith("/dashboard/approval-queue"))     return "Approval Queue";
   if (pathname.startsWith("/dashboard/signals/"))             return "Signal Detail";
   if (pathname.startsWith("/dashboard/reports/"))             return "Governance Brief";
 
@@ -245,7 +246,7 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
     const poll = async () => {
       try {
         const res = await fetch("/api/approval-queue/stats", {
-          headers: { Authorization: "Bearer Themepark12" },
+          credentials: "include",
         });
         if (!active || !res.ok) return;
         const s = await res.json();

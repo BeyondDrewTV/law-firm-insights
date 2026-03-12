@@ -1,9 +1,9 @@
 /**
  * approvalQueueService.ts
- * Frontend API client for the Clarion Approval Queue.
+ * Clarion — Approval Queue API client.
+ * Auth: session cookie (Flask-Login) — same as all other API calls in this app.
+ * No custom bearer token needed or used.
  */
-
-import { getAuthHeaders } from "./authService";
 
 const BASE = "/api/approval-queue";
 
@@ -38,8 +38,9 @@ export interface QueueStats {
 
 async function _fetch<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(path, {
+    credentials: "include",
     ...init,
-    headers: { "Content-Type": "application/json", ...getAuthHeaders(), ...(init?.headers ?? {}) },
+    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
   });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
   return res.json();
