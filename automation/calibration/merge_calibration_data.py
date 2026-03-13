@@ -6,7 +6,7 @@ Merges real reviews (CSV) with synthetic reviews (JSON) into a single
 validated JSON file ready for run_calibration_batch.py
 
 Usage:
-    python scripts/merge_calibration_data.py \
+    python automation/calibration/merge_calibration_data.py \
         --csv path/to/real_reviews.csv \
         --json path/to/synthetic_reviews.json \
         --output data/calibration_merged.json
@@ -191,10 +191,10 @@ def main():
     if real_count < 75:
         print(f"  ⚠️  Only {real_count} real reviews in merged set.")
         print(f"     Recommended: collect {75 - real_count} more real reviews before running calibration.")
-        print(f"     Run: python scripts/calibration_gap_report.py --csv {args.csv}")
+        print(f"     Run: python automation/calibration/calibration_gap_report.py --csv {args.csv}")
     else:
         print(f"  ✅ {real_count} real reviews — ready to run calibration batch!")
-        print(f"     Next: python scripts/run_calibration_batch.py --csv {args.csv} --json {args.output}")
+        print(f"     Next: python automation/calibration/run_calibration_batch.py --csv {args.csv} --json {args.output}")
 
 
 if __name__ == "__main__":

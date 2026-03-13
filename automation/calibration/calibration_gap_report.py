@@ -6,7 +6,7 @@ Analyzes your current real review CSV and reports exactly how many
 reviews you still need by star rating to hit calibration thresholds.
 
 Usage:
-    python scripts/calibration_gap_report.py --csv path/to/real_reviews.csv
+    python automation/calibration/calibration_gap_report.py --csv path/to/real_reviews.csv
 
 Optional:
     --target 75       (minimum real reviews before first calibration pass, default 75)

@@ -12,7 +12,7 @@ Runs the full calibration pipeline in a single command:
   7. Write final_summary.json + final_summary.md
 
 Usage (from repo root):
-    python scripts/run_calibration_workflow.py --csv "path/to/reviews.csv"
+    python automation/calibration/run_calibration_workflow.py --csv "path/to/reviews.csv"
 
 Optional flags:
     --server  http://localhost:5000   Flask server URL
@@ -46,10 +46,10 @@ except ImportError:
     sys.exit("❌ Missing dependency: pip install requests")
 
 # ── Repo-root-safe paths ──────────────────────────────────────────────────────
-REPO_ROOT   = Path(__file__).resolve().parent.parent
-SCRIPTS_DIR = REPO_ROOT / "scripts"
-DATA_DIR    = SCRIPTS_DIR / "data"
-RUNS_DIR    = DATA_DIR / "calibration_runs"
+# Script is now at automation/calibration/ — two levels from repo root
+REPO_ROOT   = Path(__file__).resolve().parent.parent.parent
+DATA_DIR    = REPO_ROOT / "data" / "calibration"
+RUNS_DIR    = DATA_DIR / "runs"
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 DEFAULT_SERVER   = "http://localhost:5000"

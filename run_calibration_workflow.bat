@@ -31,13 +31,13 @@ echo Running workflow with:
 echo   CSV: %CSV_PATH%
 echo.
 
-python scripts\run_calibration_workflow.py --csv "%CSV_PATH%"
+python automation\calibration\run_calibration_workflow.py --csv "%CSV_PATH%"
 
 echo.
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Workflow failed. See output above.
 ) else (
-    echo Workflow complete. Results are in scripts\data\calibration_runs\
+    echo Workflow complete. Results are in data\calibration\runs\
 )
 
 echo.

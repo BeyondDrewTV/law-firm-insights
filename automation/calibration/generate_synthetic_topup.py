@@ -7,12 +7,12 @@ and themes that are thin in your current dataset. Output is a JSON file
 that can be merged with merge_calibration_data.py.
 
 Usage:
-    python scripts/generate_synthetic_topup.py \
+    python automation/calibration/generate_synthetic_topup.py \
         --star 2 --count 20 --theme billing \
         --output data/synthetic_topup.json
 
     # Generate multiple star ratings at once:
-    python scripts/generate_synthetic_topup.py \
+    python automation/calibration/generate_synthetic_topup.py \
         --batch "2:15,3:20,4:15" \
         --output data/synthetic_topup.json
 
@@ -244,7 +244,7 @@ def main():
         json.dump(all_reviews, f, indent=2, ensure_ascii=False)
 
     print(f"\n✅ {len(all_reviews)} synthetic reviews written → {output_path}")
-    print(f"   Merge with: python scripts/merge_calibration_data.py --csv <real.csv> --json {output_path}")
+    print(f"   Merge with: python automation/calibration/merge_calibration_data.py --csv <real.csv> --json {output_path}")
 
 
 if __name__ == "__main__":

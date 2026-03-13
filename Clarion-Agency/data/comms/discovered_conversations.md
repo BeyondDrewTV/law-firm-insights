@@ -16,7 +16,7 @@ Total signals found: 10 (ranked by relevance)
 Platform:   Reddit — r/Epstein
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-27
-Engagement: 2406 upvotes · 573 comments
+Engagement: 2413 upvotes · 573 comments
 Link:       https://www.reddit.com/r/Epstein/comments/1rfy0tj/the_overlords_who_was_jeffrey_epstein_really/
 
 **Summary:**
@@ -76,7 +76,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/LocalLLM
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-02
-Engagement: 3 upvotes · 45 comments
+Engagement: 4 upvotes · 45 comments
 Link:       https://www.reddit.com/r/LocalLLM/comments/1rj4hkj/small_law_firm_considering_local_llm_setup_for/
 
 **Summary:**
@@ -96,7 +96,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/linux
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-06
-Engagement: 1790 upvotes · 232 comments
+Engagement: 1798 upvotes · 233 comments
 Link:       https://www.reddit.com/r/linux/comments/1rmhxk1/i_pulled_the_actual_bill_text_from_5_state_age/
 
 **Summary:**
@@ -113,30 +113,10 @@ Share insight on identifying recurring patterns in client complaints rather than
 ---
 
 ### DISCOVERY SIGNAL 6
-Platform:   Reddit — r/BigEasyWeightLoss
-Topic Area: Client Reviews & Feedback
-Posted:     2026-02-09
-Engagement: 274 upvotes · 69 comments
-Link:       https://www.reddit.com/r/BigEasyWeightLoss/comments/1r07k8a/how_we_advertise_and_market_because_reddit/
-
-**Summary:**
-How we advertise and market - Because Reddit started early this Monday 😂 — Ok, Reddit is starting early this morning with an 'ah-ha' post questioning why we get promoted, saying that we pay for play, so I thought I'd post my comment from that thread here in the interest of t...
-
-**Why It Matters:**
-Directly related to Clarion's core value: surfacing patterns in client reviews law firms currently manage manually.
-
-**Suggested Participation Angle:**
-Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
-
-*Query used: `law firm negative reviews`*
-
----
-
-### DISCOVERY SIGNAL 7
 Platform:   Reddit — r/pwnhub
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-11
-Engagement: 146 upvotes · 33 comments
+Engagement: 142 upvotes · 33 comments
 Link:       https://www.reddit.com/r/pwnhub/comments/1r23pu0/law_firms_turn_to_ai_resulting_in_mass_layoffs/
 
 **Summary:**
@@ -152,7 +132,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 
 ---
 
-### DISCOVERY SIGNAL 8
+### DISCOVERY SIGNAL 7
 Platform:   Reddit — r/VAClaims
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-16
@@ -172,11 +152,11 @@ Share insight on identifying recurring patterns in client complaints rather than
 
 ---
 
-### DISCOVERY SIGNAL 9
+### DISCOVERY SIGNAL 8
 Platform:   Reddit — r/ValueInvesting
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-07
-Engagement: 54 upvotes · 55 comments
+Engagement: 52 upvotes · 56 comments
 Link:       https://www.reddit.com/r/ValueInvesting/comments/1rnje9v/im_attempting_to_find_that_one_saas_gem_that_we/
 
 **Summary:**
@@ -192,11 +172,11 @@ Share insight on identifying recurring patterns in client complaints rather than
 
 ---
 
-### DISCOVERY SIGNAL 10
+### DISCOVERY SIGNAL 9
 Platform:   Reddit — r/legal
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-14
-Engagement: 46 upvotes · 100 comments
+Engagement: 48 upvotes · 100 comments
 Link:       https://www.reddit.com/r/legal/comments/1r46vrz/target_civil_demand_letter_from_pra_law_firm_for/
 
 **Summary:**
@@ -209,6 +189,26 @@ Directly related to Clarion's core value: surfacing patterns in client reviews l
 Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
 
 *Query used: `law firm client reviews`*
+
+---
+
+### DISCOVERY SIGNAL 10
+Platform:   Reddit — r/neoliberal
+Topic Area: Client Reviews & Feedback
+Posted:     2026-02-26
+Engagement: 47 upvotes · 43 comments
+Link:       https://www.reddit.com/r/neoliberal/comments/1rfno18/the_case_against_a_wealth_tax/
+
+**Summary:**
+The case against a wealth tax — *Originally posted on my substack blog:* [*https://drthad.substack.com/p/the-case-against-a-wealth-tax*](https://drthad.substack.com/p/the-case-against-a-wealth-tax)  Every so often, the idea of taxin...
+
+**Why It Matters:**
+Directly related to Clarion's core value: surfacing patterns in client reviews law firms currently manage manually.
+
+**Suggested Participation Angle:**
+Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
+
+*Query used: `law firm negative reviews`*
 
 ---
 

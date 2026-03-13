@@ -16918,6 +16918,192 @@ def handle_csrf_error(error):
 from routes.internal_benchmark import benchmark_bp
 app.register_blueprint(benchmark_bp)
 
+# ===== DEMO ANALYSIS ROUTE =====
+# Runs demo_reviews.csv through the real pipeline without authentication.
+# No DB writes. No user context. Safe to expose publicly.
+
+@app.route('/api/demo/analyze', methods=['GET'])
+@limiter.limit('30 per hour')
+def demo_analyze():
+    """
+    Run the Clarion demo dataset through the real analysis pipeline.
+    Returns themes, governance signals, recommended actions, and a partner brief.
+    No authentication required. No database writes.
+    """
+    import csv as _csv
+
+    demo_csv_path = os.path.join(os.path.dirname(__file__), 'data', 'demo_reviews.csv')
+    if not os.path.isfile(demo_csv_path):
+        return jsonify({'success': False, 'error': 'Demo dataset not found.'}), 404
+
+    # --- Load reviews ---
+    reviews = []
+    try:
+        with open(demo_csv_path, newline='', encoding='utf-8-sig') as f:
+            reader = _csv.DictReader(f)
+            for row in reader:
+                try:
+                    rating = float(row.get('rating', 0))
+                    text = (row.get('review_text') or '').strip()
+                    date = (row.get('date') or '').strip()
+                    if text:
+                        reviews.append({'rating': rating, 'review_text': text, 'date': date})
+                except (ValueError, KeyError):
+                    continue
+    except Exception as exc:
+        app.logger.exception('demo_analyze: failed to load CSV: %s', exc)
+        return jsonify({'success': False, 'error': 'Failed to load demo dataset.'}), 500
+
+    if not reviews:
+        return jsonify({'success': False, 'error': 'Demo dataset is empty.'}), 500
+
+    # --- Real theme detection (mirrors analyze_reviews keyword logic) ---
+    theme_keywords = {
+        'Communication': ['communication', 'communicated', 'update', 'updates', 'informed', 'unclear',
+                          'contact', 'respond', 'response', 'replied', 'follow-up', 'follow up',
+                          'reached out', 'check-in', 'check in', 'status'],
+        'Responsiveness': ['quick', 'slow', 'delayed', 'waiting', 'wait', 'timely', 'immediately',
+                           'promptly', 'prompt', 'fast', 'returned', 'unreturned', 'missed'],
+        'Cost/Value': ['expensive', 'affordable', 'fees', 'billing', 'cost', 'worth', 'value',
+                       'price', 'invoice', 'estimates', 'scope', 'charge'],
+        'Case Outcome': ['outcome', 'result', 'settlement', 'closed', 'won', 'resolved', 'case',
+                         'decision', 'ruling', 'verdict', 'hearing', 'filing', 'deadline'],
+        'Professionalism': ['professional', 'professionalism', 'respectful', 'courteous', 'knowledgeable',
+                            'prepared', 'organized', 'competent', 'expert', 'expertise'],
+        'Staff Support': ['staff', 'assistant', 'paralegal', 'secretary', 'team', 'office', 'intake'],
+        'Transparency': ['transparent', 'honest', 'clear', 'clarity', 'explain', 'explained',
+                         'understood', 'confusing', 'surprised', 'surprise'],
+        'Timeliness': ['timely', 'timeline', 'delay', 'delayed', 'slow', 'late', 'deadline',
+                       'scheduling', 'schedule', 'on time', 'quickly'],
+    }
+
+    from collections import Counter as _Counter
+    theme_counts = _Counter()
+    for review in reviews:
+        text_lower = review['review_text'].lower()
+        for theme, keywords in theme_keywords.items():
+            if any(kw in text_lower for kw in keywords):
+                theme_counts[theme] += 1
+
+    total = len(reviews)
+    avg_rating = round(sum(r['rating'] for r in reviews) / total, 2)
+    positive_count = sum(1 for r in reviews if r['rating'] >= 4)
+    negative_count = sum(1 for r in reviews if r['rating'] <= 2)
+    positive_share = round(positive_count / total * 100)
+    negative_share = round(negative_count / total * 100)
+
+    top_complaints_raw = [r for r in reviews if r['rating'] <= 2]
+    top_praise_raw = [r for r in reviews if r['rating'] >= 4]
+    themes_dict = dict(theme_counts.most_common(8))
+
+    # --- Build top_complaints in governance_insights format ---
+    # Count complaint themes by keyword for the signal engine
+    complaint_theme_freq = _Counter()
+    for r in top_complaints_raw:
+        text_lower = r['review_text'].lower()
+        for theme, keywords in theme_keywords.items():
+            if any(kw in text_lower for kw in keywords):
+                complaint_theme_freq[theme] += 1
+
+    top_complaints_for_signals = [
+        {
+            'title': theme,
+            'frequency': round(count / total, 3),
+            'source_metric': theme.lower().replace('/', '_').replace(' ', '_') + '_mentions',
+        }
+        for theme, count in complaint_theme_freq.most_common(5)
+    ]
+
+    sentiment_summary = {
+        'negative_share': round(negative_share / 100, 3),
+        'positive_share': round(positive_share / 100, 3),
+    }
+
+    # --- Run real governance insight engine ---
+    governance_report = {
+        'top_complaints': top_complaints_for_signals,
+        'sentiment_summary': sentiment_summary,
+        'implementation_roadmap': [],
+    }
+    insights = generate_governance_insights(governance_report)
+
+    # --- Build implementation roadmap (deterministic, from top themes) ---
+    roadmap_templates = {
+        'Communication': {
+            'action': 'Establish a weekly case status update cadence for all active matters.',
+            'timeline': '0–30 days',
+            'owner': 'Client Service Partner',
+            'kpi': 'Weekly updates sent on ≥90% of active matters.',
+        },
+        'Responsiveness': {
+            'action': 'Set and enforce a 24-hour response SLA for all client calls and emails.',
+            'timeline': '0–30 days',
+            'owner': 'Intake Team Lead',
+            'kpi': 'SLA met on ≥90% of tracked client messages.',
+        },
+        'Cost/Value': {
+            'action': 'Provide written fee estimates at intake with scope and assumption notes.',
+            'timeline': '31–60 days',
+            'owner': 'Billing Manager',
+            'kpi': 'Billing surprise complaints fall by 20% in next reporting cycle.',
+        },
+        'Timeliness': {
+            'action': 'Review active matter timelines weekly and flag any at risk of delay.',
+            'timeline': '31–60 days',
+            'owner': 'Operations Partner',
+            'kpi': 'Deadline miss rate below 5% per cycle.',
+        },
+        'Transparency': {
+            'action': 'Add plain-language scope and risk summaries to client onboarding packets.',
+            'timeline': '61–90 days',
+            'owner': 'Managing Partner',
+            'kpi': 'Confusion-related complaints fall by 30% in next cycle.',
+        },
+    }
+
+    top_themes_for_roadmap = [t for t, _ in theme_counts.most_common(5)]
+    roadmap = []
+    for theme in top_themes_for_roadmap:
+        if theme in roadmap_templates:
+            entry = {'theme': theme, **roadmap_templates[theme]}
+            roadmap.append(entry)
+        if len(roadmap) == 3:
+            break
+
+    # --- Real partner brief via meeting_summary ---
+    top_complaint_theme = complaint_theme_freq.most_common(1)
+    top_issue_text = (
+        f"{top_complaint_theme[0][0]} patterns appear across {top_complaint_theme[0][1]} "
+        f"negative reviews this cycle."
+        if top_complaint_theme else "Multiple service quality patterns detected across this review cycle."
+    )
+    example_negative = next((r['review_text'] for r in top_complaints_raw), "")
+    top_action = roadmap[0]['action'] if roadmap else "Review client feedback patterns with leadership."
+
+    brief_text = generate_partner_summary({
+        'average_rating': avg_rating,
+        'top_issue': top_issue_text,
+        'example_quote': example_negative,
+        'recommended_action': top_action,
+    })
+
+    # --- Assemble response ---
+    return jsonify({
+        'success': True,
+        'total_reviews': total,
+        'avg_rating': avg_rating,
+        'positive_share': positive_share,
+        'negative_share': negative_share,
+        'themes': themes_dict,
+        'top_praise': [r['review_text'] for r in top_praise_raw[:5]],
+        'top_complaints': [r['review_text'] for r in top_complaints_raw[:5]],
+        'all_reviews': reviews,
+        'governance_signals': insights.get('exposure_signals', []),
+        'recommended_actions': insights.get('recommended_actions', []),
+        'implementation_roadmap': roadmap,
+        'partner_brief': brief_text.strip(),
+    }), 200
+
 # Approval Queue — founder control surface for staged agent work
 try:
     from routes.approval_queue import approval_queue_bp

@@ -35,15 +35,15 @@ ACTION: send_outreach_batch — send up to 10 cold outreach emails per run to qu
 DIVISION: Sales
 APPROVED_BY: Founder (Drew)
 DATE: 2026-03-12
-STATUS: staged
+STATUS: Approved
 NOTES: Set STATUS to "approved" when email credentials are confirmed in .env. Max 10/run enforced by runner.
 
 ## DLA-002
-ACTION: publish_blog_post — publish pre-written blog posts about Clarion and law firm governance
+ACTION: make Linkedin business profile page, populate with relevant Clarion information and branding, schedule upcoming posts and begin interacting with relevant communities for organic marketing.
 DIVISION: Comms & Content
 APPROVED_BY: Founder (Drew)
 DATE: 2026-03-12
-STATUS: staged
+STATUS: approved
 NOTES: Set STATUS to "approved" to allow auto-publishing when CMS credentials are configured.
 
 ## DLA-003
