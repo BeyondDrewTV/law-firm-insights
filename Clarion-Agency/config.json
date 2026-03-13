@@ -167,6 +167,46 @@
       "temperature": 0.2,
       "cadence": "monthly",
       "output_path": "reports/people"
+    },
+
+    "evidence_agent": {
+      "model": "anthropic/claude-3-haiku",
+      "max_output_tokens": 800,
+      "temperature": 0.2,
+      "cadence": "weekly",
+      "output_path": "reports/strategy"
+    },
+
+    "prospect_intelligence_agent": {
+      "model": "anthropic/claude-3-haiku",
+      "max_output_tokens": 800,
+      "temperature": 0.3,
+      "cadence": "weekly",
+      "output_path": "reports/sales"
+    },
+
+    "outbound_sales_agent": {
+      "model": "anthropic/claude-3-haiku",
+      "max_output_tokens": 900,
+      "temperature": 0.4,
+      "cadence": "weekly",
+      "output_path": "reports/sales"
+    },
+
+    "product_experience_agent": {
+      "model": "anthropic/claude-3-haiku",
+      "max_output_tokens": 800,
+      "temperature": 0.2,
+      "cadence": "weekly",
+      "output_path": "reports/product"
+    },
+
+    "prelaunch_content": {
+      "model": "anthropic/claude-3-haiku",
+      "max_output_tokens": 800,
+      "temperature": 0.4,
+      "cadence": "weekly",
+      "output_path": "reports/growth"
     }
 
   },

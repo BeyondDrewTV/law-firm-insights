@@ -29,7 +29,7 @@ DATA        = BASE_DIR / "data"
 REPORTS     = BASE_DIR / "reports"
 DATE        = datetime.date.today().isoformat()
 
-AGENT_KEY   = "content_seo_agent"
+AGENT_KEY   = "content_seo"       # maps to existing config.json key
 AGENT_TITLE = "Clarion Content & SEO Agent"
 PROMPT_REL  = "agents/comms/content_seo.md"
 
