@@ -49,6 +49,19 @@ from shared.approved_actions_reader import (
     load_approved_actions, route_action, is_safe_execution,
     update_action_status, append_execution_log, log_no_actions,
 )
+from shared.queue_writer import _load as _load_queue, queue_item as _queue_item
+
+# ── Autonomous Execution Layer ─────────────────────────────────────────────────
+try:
+    from execution.action_executor import execute_artifact, classify_authority
+    _EXEC_LAYER_AVAILABLE = True
+except ImportError as _exec_import_err:
+    _EXEC_LAYER_AVAILABLE = False
+    print(f"  [WARN] execution.action_executor not available: {_exec_import_err}")
+    def execute_artifact(artifact, agent_name="unknown"):  # noqa: F811
+        return None
+    def classify_authority(artifact):  # noqa: F811
+        return 3
 
 REPORTS = BASE_DIR / "reports"
 DATA    = BASE_DIR / "data"
@@ -190,12 +203,100 @@ _AGENT_SUBDIR = {
     "narrative_strategy":      "growth",
     "market_intelligence":     "strategy",
     "launch_readiness":        "strategy",
-    "outbound_sales":          "sales",
-    "prelaunch_content":       "growth",
+    "evidence_agent":                "strategy",
+    "content_seo_agent":             "comms",
+    "product_experience_agent":      "product",
+    "outbound_sales":                "sales",
+    "outbound_sales_agent":          "sales",
+    "prelaunch_content":             "growth",
+    "prelaunch_conversion":          "product",
+    "prospect_intelligence_agent":   "sales",
 }
 
 def _subdir_for_agent(agent_key: str) -> str:
     return _AGENT_SUBDIR.get(agent_key, agent_key)
+
+
+# ── Delegated Execution Router ─────────────────────────────────────────────────
+# Tracks execution stats across the full run for the end-of-run report.
+_EXEC_STATS = {
+    "autonomous":  [],   # level 1 executed
+    "delegated":   [],   # level 2 executed
+    "queued":      [],   # sent to founder approval queue
+}
+
+def _route_new_artifacts(new_items: list[dict], agent_name: str) -> None:
+    """
+    Route each new queue item through the authority model.
+    Level 1 → execute immediately (no queue write).
+    Level 2 + DLA approved → execute (no queue write).
+    Level 2 + no DLA / Level 3 → write to approval queue.
+
+    new_items: list of artifact dicts (already written to queue.json by the agent).
+    This function may REMOVE level-1/approved-level-2 items from the queue after
+    executing them so the founder doesn't see items that were auto-handled.
+    """
+    if not _EXEC_LAYER_AVAILABLE:
+        _EXEC_STATS["queued"].extend([i.get("id", "?") for i in new_items])
+        return
+
+    from shared.queue_writer import _load as _qload, _save as _qsave
+
+    for item in new_items:
+        result = execute_artifact(item, agent_name=agent_name)
+        if result is None:
+            _EXEC_STATS["queued"].append(item.get("id", "?"))
+            continue
+
+        if result.disposition == "executed" and result.success:
+            level = result.authority_level
+            if level == 1:
+                _EXEC_STATS["autonomous"].append(
+                    f"{result.artifact_id} ({result.action_type})"
+                )
+            else:
+                _EXEC_STATS["delegated"].append(
+                    f"{result.artifact_id} ({result.action_type})"
+                )
+            # Remove from queue — was auto-executed, no founder review needed
+            try:
+                all_items = _qload()
+                all_items = [q for q in all_items if q.get("id") != result.artifact_id]
+                _qsave(all_items)
+            except Exception:
+                pass
+            print(f"    [EXEC-L{level}] {result.artifact_id} ({result.action_type}): {result.notes}")
+
+        elif result.disposition in ("queued", "fallback_queued"):
+            _EXEC_STATS["queued"].append(
+                f"{result.artifact_id} ({result.action_type})"
+            )
+            level_label = f"L{result.authority_level}"
+            print(f"    [QUEUE-{level_label}] {result.artifact_id} ({result.action_type}): {result.notes}")
+
+        else:
+            # Executed but failed — keep in queue for founder visibility
+            _EXEC_STATS["queued"].append(
+                f"{result.artifact_id} ({result.action_type}) [exec-failed]"
+            )
+            print(f"    [EXEC-FAIL] {result.artifact_id} ({result.action_type}): {result.notes}")
+
+
+def _snapshot_queue() -> set[str]:
+    """Return set of current queue item IDs."""
+    try:
+        return {i.get("id") for i in _load_queue()}
+    except Exception:
+        return set()
+
+
+def _new_since_snapshot(before: set[str]) -> list[dict]:
+    """Return queue items added since the snapshot."""
+    try:
+        all_items = _load_queue()
+        return [i for i in all_items if i.get("id") not in before]
+    except Exception:
+        return []
 
 
 # ── Run wrapper ────────────────────────────────────────────────────────────────
@@ -261,8 +362,23 @@ def data_content_seo():
     ])
 
 
-def data_outbound_sales():
+def data_prospect_intelligence():
     return "\n".join([
+        f"### {label}\n{_load_file(path, label)}\n"
+        for label, path in [
+            ("ICP Definition",            MEMORY / "icp_definition.md"),
+            ("Lead Sources",              MEMORY / "lead_sources.md"),
+            ("Product Truth",             MEMORY / "product_truth.md"),
+            ("Do Not Chase",              MEMORY / "do_not_chase.md"),
+            ("Positioning Guardrails",    MEMORY / "positioning_guardrails.md"),
+            ("Prelaunch Activation Mode", MEMORY / "prelaunch_activation_mode.md"),
+            ("Existing Pipeline",         DATA   / "revenue/leads_pipeline.csv"),
+            ("Lead Research Queue",       DATA   / "revenue/lead_research_queue.csv"),
+        ]
+    ])
+
+
+def data_outbound_sales():    return "\n".join([
         f"### {label}\n{_load_file(path, label)}\n"
         for label, path in [
             ("Leads Pipeline",           DATA   / "revenue/leads_pipeline.csv"),
@@ -296,6 +412,24 @@ def data_prelaunch_content():
     ])
 
 
+def data_prelaunch_conversion():
+    return "\n".join([
+        f"### {label}\n{_load_file(path, label)}\n"
+        for label, path in [
+            ("Product Truth",              MEMORY / "product_truth.md"),
+            ("Brand QA",                   MEMORY / "brand_qa.md"),
+            ("Proof Assets",               MEMORY / "proof_assets.md"),
+            ("Conversion Friction",        MEMORY / "conversion_friction.md"),
+            ("Positioning Guardrails",     MEMORY / "positioning_guardrails.md"),
+            ("Product Experience Log",     MEMORY / "product_experience_log.md"),
+            ("Pilot Offer",                MEMORY / "pilot_offer.md"),
+            ("Prelaunch Activation Mode",  MEMORY / "prelaunch_activation_mode.md"),
+            ("UX Review Access",           MEMORY / "ux_review_access.md"),
+            ("Claude Handoff Format",      MEMORY / "claude_handoff_format.md"),
+        ]
+    ])
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
@@ -304,6 +438,12 @@ def main():
     print(f"Root   : {BASE_DIR}")
 
     _ensure_data_files()
+
+    # Capture queue depth before any agents run (for ACTIVATION STALLED check)
+    try:
+        _queue_depth_at_start = len(_load_queue())
+    except Exception:
+        _queue_depth_at_start = 0
 
     print(f"\nRunning pre-launch divisions...")
 
@@ -401,28 +541,47 @@ def main():
         traceback.print_exc()
         print("  [INFO] Comms agent will note data as unavailable — run continues.")
 
-    # ── STAGE 4: Comms & Content ───────────────────────────────────────────────
-    banner("STAGE 4 — Comms & Content (Foundation Mode)")
+    # ── STAGE 3.5: Evidence & Insight (always runs) ───────────────────────────
+    banner("STAGE 3.5 — Evidence & Insight")
+    (REPORTS / "strategy").mkdir(parents=True, exist_ok=True)
+    _q_before_evidence = _snapshot_queue()
+    try:
+        from agents.strategy.evidence_agent import run as run_evidence
+        ev_result = run_evidence()
+        results["evidence_agent"] = ev_result.get("report_path")
+        if not ev_result.get("enforcement_passed"):
+            print(f"  [WARN] Evidence enforcement FAILED: "
+                  f"{ev_result.get('enforcement_reason')}")
+        else:
+            print(f"  ✓ Evidence — {ev_result.get('artifacts_queued')} artifact(s) queued "
+                  f"({', '.join(ev_result.get('artifact_types', []))}) "
+                  f"IDs: {', '.join(ev_result.get('artifact_ids', []))}")
+    except Exception as e:
+        print(f"  ✗ Evidence Agent FAILED: {e}")
+        traceback.print_exc()
+        results["evidence_agent"] = None
+    _route_new_artifacts(_new_since_snapshot(_q_before_evidence), "evidence_agent")
 
-    comms_inputs = [DATA / "comms/discovered_conversations.md", DATA / "comms/seo_keywords.csv"]
-    comms_real, comms_missing = _has_real_input(comms_inputs)
-    if comms_real:
-        results["content_seo"] = run_division(
-            "Content & SEO", "content_seo",
-            "agents/comms/content_seo.md",
-            "comms", data_content_seo,
-            "Clarion Content & SEO Agent",
-        )
-    else:
-        print(f"  [GATE] Content & SEO — skipping (no real input)")
-        results["content_seo"] = _write_skip_report(
-            "comms", "content_seo", "Content & SEO Agent",
-            comms_missing,
-            [
-                "data/comms/discovered_conversations.md — run conversation discovery first",
-                "data/comms/seo_keywords.csv — add real keyword research data",
-            ],
-        )
+    # ── STAGE 4: Comms & Content — Content Engine ────────────────────────────
+    banner("STAGE 4 — Comms & Content (Content Engine)")
+    (REPORTS / "comms").mkdir(parents=True, exist_ok=True)
+    _q_before_content = _snapshot_queue()
+    try:
+        from agents.comms.content_seo_agent import run as run_content_seo
+        cs_result = run_content_seo()
+        results["content_seo"] = cs_result.get("report_path")
+        if not cs_result.get("enforcement_passed"):
+            print(f"  [WARN] Content SEO enforcement FAILED: "
+                  f"{cs_result.get('enforcement_reason')}")
+        else:
+            types_str = ", ".join(cs_result.get("artifact_types", []))
+            print(f"  ✓ Content SEO — {cs_result.get('total_artifacts_queued')} artifact(s) "
+                  f"queued ({types_str})")
+    except Exception as e:
+        print(f"  ✗ Content SEO FAILED: {e}")
+        traceback.print_exc()
+        results["content_seo"] = None
+    _route_new_artifacts(_new_since_snapshot(_q_before_content), "content_seo_agent")
 
     # ── STAGE 5: Revenue — DISABLED (pre-launch) ──────────────────────────────
     banner("STAGE 5 — Revenue (disabled — pre-launch)")
@@ -433,26 +592,103 @@ def main():
         ["Enable when real MRR/ARR reporting from paying customers begins"],
     )
 
-    # ── STAGE 4b: Outbound Sales (Pre-Launch Activation — always runs) ────────
-    banner("STAGE 4b — Outbound Sales (Pre-Launch Activation)")
+    # ── STAGE 4a: Prospect Intelligence (runs before Outbound Sales) ──────────
+    banner("STAGE 4a — Prospect Intelligence")
     (REPORTS / "sales").mkdir(parents=True, exist_ok=True)
-    results["outbound_sales"] = run_division(
-        "Outbound Sales", "outbound_sales",
-        "agents/sales/outbound_sales.md",
-        "sales", data_outbound_sales,
-        "Clarion Outbound Sales Agent",
-    )
+    pi_result = None
+    _q_before_pi = _snapshot_queue()
+    try:
+        from agents.sales.prospect_intelligence_agent import run as run_prospect_intel
+        pi_result = run_prospect_intel()
+        results["prospect_intelligence_agent"] = pi_result.get("report_path")
+        if not pi_result.get("enforcement_passed"):
+            print(f"  [WARN] Prospect Intelligence enforcement FAILED: "
+                  f"{pi_result.get('enforcement_reason')}")
+        else:
+            print(f"  ✓ Prospect Intelligence — {pi_result.get('prospect_count')} prospects queued "
+                  f"({pi_result.get('item_id')})")
+    except Exception as e:
+        print(f"  ✗ Prospect Intelligence FAILED: {e}")
+        traceback.print_exc()
+        results["prospect_intelligence_agent"] = None
+    _route_new_artifacts(_new_since_snapshot(_q_before_pi), "prospect_intelligence_agent")
+
+    # ── STAGE 4b: Outbound Sales — email drafting against prospect intel ────────
+    banner("STAGE 4b — Outbound Sales (Email Drafting)")
+    (REPORTS / "sales").mkdir(parents=True, exist_ok=True)
+    os_result = None
+    _q_before_sales = _snapshot_queue()
+    try:
+        from agents.sales.outbound_sales_agent import run as run_outbound_sales
+        os_result = run_outbound_sales(pi_result=pi_result)
+        results["outbound_sales"] = os_result.get("report_path")
+        if not os_result.get("enforcement_passed"):
+            print(f"  [WARN] Outbound Sales enforcement FAILED: "
+                  f"{os_result.get('enforcement_reason')}")
+        else:
+            print(f"  ✓ Outbound Sales — {os_result.get('artifacts_queued')} outreach "
+                  f"email(s) queued ({', '.join(os_result.get('artifact_ids', []))})")
+    except Exception as e:
+        print(f"  ✗ Outbound Sales FAILED: {e}")
+        traceback.print_exc()
+        results["outbound_sales"] = None
+    _route_new_artifacts(_new_since_snapshot(_q_before_sales), "outbound_sales_agent")
 
     # ── STAGE 4c: Pre-Launch Content (Pre-Launch Activation — always runs) ────
     banner("STAGE 4c — Pre-Launch Content")
     (REPORTS / "growth").mkdir(parents=True, exist_ok=True)
     (DATA / "growth").mkdir(parents=True, exist_ok=True)
+    _q_before_growth = _snapshot_queue()
     results["prelaunch_content"] = run_division(
         "Pre-Launch Content", "prelaunch_content",
         "agents/growth/prelaunch_content.md",
         "growth", data_prelaunch_content,
         "Clarion Pre-Launch Content Agent",
     )
+    _route_new_artifacts(_new_since_snapshot(_q_before_growth), "prelaunch_content")
+
+    # ── STAGE 4d: Product Experience / UX ────────────────────────────────────
+    banner("STAGE 4d — Product Experience (Conversion Optimization)")
+    (REPORTS / "product").mkdir(parents=True, exist_ok=True)
+    _q_before_product = _snapshot_queue()
+    try:
+        from agents.product.product_experience_agent import run as run_product_experience
+        pe_result = run_product_experience()
+        results["prelaunch_conversion"] = pe_result.get("report_path")
+        if not pe_result.get("enforcement_passed"):
+            print(f"  [WARN] Product Experience enforcement FAILED: "
+                  f"{pe_result.get('enforcement_reason')}")
+        else:
+            types_str = ", ".join(pe_result.get("artifact_types", []))
+            print(f"  ✓ Product Experience — {pe_result.get('artifacts_queued')} artifact(s) "
+                  f"queued ({types_str})")
+    except Exception as e:
+        print(f"  ✗ Product Experience FAILED: {e}")
+        traceback.print_exc()
+        results["prelaunch_conversion"] = None
+    _route_new_artifacts(_new_since_snapshot(_q_before_product), "product_experience_agent")
+
+    # ── STAGE 4e: Runner Enforcement — ACTIVATION STALLED check ──────────────
+    # Runs after all production agents so the queue count reflects their output.
+    banner("STAGE 4e — Runner Enforcement: Queue Output Check")
+    _queue_items_at_stage5 = len(_load_queue())
+    new_items_this_run = _queue_items_at_stage5 - _queue_depth_at_start
+    if new_items_this_run == 0:
+        print("  [ACTIVATION STALLED] Zero new approval queue items produced this run.")
+        print("  Chief of Staff will flag this run as ACTIVATION STALLED.")
+        _stall_note_for_brief = (
+            "\n\n## RUNNER ENFORCEMENT — ACTIVATION STALLED\n\n"
+            f"**Zero new approval queue items were produced during this run ({DATE}).**\n\n"
+            "All active agents (Prospect Intelligence, Outbound Sales, Pre-Launch Content, "
+            "Content SEO, Product Experience, Evidence & Insight) are required to queue "
+            "at least one item per run. "
+            "This run failed the minimum-output requirement.\n\n"
+            "**Action required:** Review agent reports above. Identify which agent "
+            "produced no queue output and investigate the blocking condition.\n"
+        )
+    else:
+        print(f"  [OK] {new_items_this_run} new approval queue item(s) produced this run.")
+        _stall_note_for_brief = ""
 
     # ── STAGE 5.5: Execute Approved Actions ───────────────────────────────────
     banner("STAGE 5.5 — Execute Approved Actions")
@@ -588,6 +824,12 @@ def main():
     latest_path = REPORTS / "executive_brief_latest.md"
     if cos_path and cos_path.exists():
         shutil.copy2(cos_path, latest_path)
+        # Append ACTIVATION STALLED notice if triggered
+        if _stall_note_for_brief:
+            with open(latest_path, "a", encoding="utf-8") as f:
+                f.write(_stall_note_for_brief)
+            with open(cos_path, "a", encoding="utf-8") as f:
+                f.write(_stall_note_for_brief)
         print(f"  ✓ Copied to: {latest_path}")
     else:
         fallback = (
@@ -610,10 +852,35 @@ def main():
     llm_fail  = [k for k, v in results.items() if not v]
 
     print(f"\n  Done.")
+    print(f"  New approval queue items this run: {new_items_this_run}")
+    if new_items_this_run == 0:
+        print(f"  [ACTIVATION STALLED] — See executive_brief_latest.md for details.")
     print(f"\n  LLM calls made  : {len(llm_ran) + 1} (divisions: {', '.join(llm_ran) or 'none'} + chief_of_staff)")
     print(f"  Skipped (no data): {len(llm_skip)} ({', '.join(llm_skip) or 'none'})")
     if llm_fail:
         print(f"  Failed          : {', '.join(llm_fail)}")
+
+    # ── Autonomous Execution Report ───────────────────────────────────────────
+    print(f"\n{'─' * 60}")
+    print(f"  AUTONOMOUS ACTIONS EXECUTED  ({len(_EXEC_STATS['autonomous'])})")
+    for item in _EXEC_STATS["autonomous"]:
+        print(f"    ✅ {item}")
+    if not _EXEC_STATS["autonomous"]:
+        print("    (none this run)")
+
+    print(f"\n  DELEGATED ACTIONS EXECUTED  ({len(_EXEC_STATS['delegated'])})")
+    for item in _EXEC_STATS["delegated"]:
+        print(f"    🔑 {item}")
+    if not _EXEC_STATS["delegated"]:
+        print("    (none this run)")
+
+    print(f"\n  QUEUED FOR FOUNDER  ({len(_EXEC_STATS['queued'])})")
+    for item in _EXEC_STATS["queued"]:
+        print(f"    📋 {item}")
+    if not _EXEC_STATS["queued"]:
+        print("    (none this run)")
+    print(f"{'─' * 60}")
+
     print(f"\n  Report written to:")
     print(f"  {latest_path}\n")
 
