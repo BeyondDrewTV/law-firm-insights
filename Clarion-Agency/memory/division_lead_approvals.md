@@ -35,16 +35,16 @@ ACTION: send_outreach_batch — send up to 10 cold outreach emails per run to qu
 DIVISION: Sales
 APPROVED_BY: Founder (Drew)
 DATE: 2026-03-12
-STATUS: Approved
-NOTES: Set STATUS to "approved" when email credentials are confirmed in .env. Max 10/run enforced by runner.
+STATUS: approved
+NOTES: DLA-001 live. SMTP credentials still needed in .env to actually send. Until then, emails are drafted to disk and fallback-queued. Max 10/run enforced by runner.
 
 ## DLA-002
-ACTION: make Linkedin business profile page, populate with relevant Clarion information and branding, schedule upcoming posts and begin interacting with relevant communities for organic marketing.
+ACTION: create_social_account — create a LinkedIn business page for Clarion, populate with real product info and branding, and queue initial posts for founder review.
 DIVISION: Comms & Content
 APPROVED_BY: Founder (Drew)
 DATE: 2026-03-12
 STATUS: approved
-NOTES: Set STATUS to "approved" to allow auto-publishing when CMS credentials are configured.
+NOTES: No LinkedIn API token required to generate setup doc. Handler will save a complete profile doc to executed_outputs/ and fall back to queue if LINKEDIN_API_KEY or LINKEDIN_ACCESS_TOKEN is absent. Token is required only for API-based posting.
 
 ## DLA-003
 ACTION: post_linkedin_thread — post Clarion content threads to LinkedIn

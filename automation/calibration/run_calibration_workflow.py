@@ -46,10 +46,12 @@ except ImportError:
     sys.exit("❌ Missing dependency: pip install requests")
 
 # ── Repo-root-safe paths ──────────────────────────────────────────────────────
-# Script is now at automation/calibration/ — two levels from repo root
-REPO_ROOT   = Path(__file__).resolve().parent.parent.parent
-DATA_DIR    = REPO_ROOT / "data" / "calibration"
-RUNS_DIR    = DATA_DIR / "runs"
+# Script lives at automation/calibration/ — two levels below repo root
+CALIBRATION_DIR = Path(__file__).resolve().parent          # automation/calibration/
+REPO_ROOT       = CALIBRATION_DIR.parent.parent            # repo root
+DATA_DIR        = REPO_ROOT / "data" / "calibration"
+RUNS_DIR        = DATA_DIR / "runs"
+DEFAULT_CSV     = DATA_DIR / "inputs" / "real_reviews.csv"  # canonical input location
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 DEFAULT_SERVER   = "http://localhost:5000"
@@ -167,7 +169,7 @@ def generate_synthetic(gaps: dict[int, int], run_dir: Path) -> Path | None:
 
     batch_arg = ",".join(f"{star}:{count}" for star, count in needed.items())
     out_path = run_dir / "synthetic_topup.json"
-    script = SCRIPTS_DIR / "generate_synthetic_topup.py"
+    script = CALIBRATION_DIR / "generate_synthetic_topup.py"
 
     print(f"   Generating synthetic top-up: {batch_arg}")
     result = subprocess.run(
@@ -185,7 +187,7 @@ def generate_synthetic(gaps: dict[int, int], run_dir: Path) -> Path | None:
 def merge_for_audit(csv_path: Path, synth_path: Path | None, run_dir: Path) -> Path:
     """Produce calibration_merged.json as a human-readable audit artifact ONLY.
     This file is NOT fed into the batch runner (would cause double-counting)."""
-    script = SCRIPTS_DIR / "merge_calibration_data.py"
+    script = CALIBRATION_DIR / "merge_calibration_data.py"
     out_path = run_dir / "calibration_merged.json"
     cmd = [sys.executable, str(script), "--csv", str(csv_path), "--output", str(out_path)]
     if synth_path:
@@ -331,7 +333,8 @@ def main():
         description="Clarion one-click calibration workflow",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--csv",    required=True,  help="Path to real reviews CSV (Google Sheets export OK)")
+    parser.add_argument("--csv",    default=str(DEFAULT_CSV),
+                        help=f"Path to real reviews CSV (default: data/calibration/inputs/real_reviews.csv)")
     parser.add_argument("--server", default=DEFAULT_SERVER)
     parser.add_argument("--token",  default=DEFAULT_TOKEN)
     parser.add_argument("--chunk",  type=int, default=CHUNK_SIZE, help=f"Reviews per API batch (default: {CHUNK_SIZE})")

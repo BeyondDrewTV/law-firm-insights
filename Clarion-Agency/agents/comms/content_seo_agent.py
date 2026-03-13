@@ -117,13 +117,55 @@ def run() -> dict:
             agent_title     = AGENT_TITLE,
         )
         result["report_path"] = report_path
-        print(f"  [ContentSEO] Report written → {report_path.name}")
+        print(f"  [ContentSEO] Report written -> {report_path.name}")
     except Exception as e:
         print(f"  [ContentSEO] FAILED: {e}")
         traceback.print_exc()
         result["enforcement_reason"] = f"Agent run failed: {e}"
         return result
 
+    new_items = _collect_new_artifacts(before_ids)
+
+    # ── Parse QUEUE_JSON blocks from report ───────────────────────────────────
+    from shared.report_parser import parse_and_queue
+    import re as _re
+    report_text = report_path.read_text(encoding="utf-8", errors="replace")
+    parsed_ids = parse_and_queue(report_text, default_agent="Content SEO Agent",
+                                  allowed_types=ALL_ARTIFACT_TYPES)
+
+    # ── Fallback: synthesize a minimal linkedin_post if nothing was queued ────
+    if not parsed_ids:
+        print("  [ContentSEO] No QUEUE_JSON blocks found — attempting synthesis fallback.")
+        # Look for PRIORITY CONTENT PROPOSAL section to extract topic
+        topic_match = _re.search(r"Topic:\s*(.+)", report_text)
+        topic = topic_match.group(1).strip() if topic_match else "Law firm reputation management"
+        try:
+            from shared.queue_writer import queue_item as _qi
+            iid = _qi(
+                item_type="linkedin_post",
+                title=f"LinkedIn Post: {topic[:60]} (synthesized)",
+                summary=f"Synthesized minimal content artifact — QUEUE_JSON block absent.",
+                payload={
+                    "artifact_type": "linkedin_post",
+                    "post_copy": (
+                        f"Topic: {topic}\n\n"
+                        "[Content agent produced narrative report but no QUEUE_JSON block. "
+                        "This is a placeholder — review agent report and manually draft post.]"
+                    ),
+                    "format_type": "placeholder",
+                    "approval_status": "DRAFT - PLACEHOLDER - REQUIRES REWRITE BEFORE PUBLISHING",
+                    "synthesis_warning": "LLM did not emit QUEUE_JSON block. Content must be rewritten.",
+                },
+                created_by_agent="Content SEO Agent (synthesized fallback)",
+                risk_level="low",
+                recommended_action="Rewrite this placeholder with actual content from agent report.",
+            )
+            parsed_ids.append(iid)
+            print(f"  [ContentSEO] Synthesized placeholder linkedin_post: {iid}")
+        except Exception as se:
+            print(f"  [ContentSEO] Synthesis fallback error: {se}")
+
+    # Refresh after parsing
     new_items = _collect_new_artifacts(before_ids)
     content_items = [i for i in new_items if i.get("type") in CONTENT_ARTIFACT_TYPES]
 
@@ -136,7 +178,7 @@ def run() -> dict:
         result["enforcement_passed"] = True
         result["enforcement_reason"] = "OK"
         types_str = ", ".join(i.get("type") for i in new_items)
-        print(f"  [ContentSEO] ✓ {len(new_items)} artifact(s) queued ({types_str}): "
+        print(f"  [ContentSEO] OK {len(new_items)} artifact(s) queued ({types_str}): "
               f"{', '.join(result['artifact_ids'])}")
     else:
         result["enforcement_passed"] = False
@@ -146,7 +188,7 @@ def run() -> dict:
             "Agent must produce at least 2 of: thought_leadership_article, "
             "linkedin_post, founder_thread."
         )
-        print(f"  [ContentSEO] ✗ Enforcement FAILED: {result['enforcement_reason']}")
+        print(f"  [ContentSEO] FAIL Enforcement: {result['enforcement_reason']}")
 
     return result
 

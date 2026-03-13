@@ -53,81 +53,89 @@ account_setup items do not count toward this minimum.
 
 ## Content Artifact Types
 
+## MANDATORY FIRST OUTPUT
+
+⚠️ Output ALL QUEUE_JSON blocks as the very first thing in your response — before AGENT:, DATE:, SUMMARY, FINDINGS, or any other section. The Python runner parses QUEUE_JSON blocks; prose after a truncation point is lost. If narrative appears before the blocks, the run fails with zero artifacts.
+
+**Minimum output every run: 2 QUEUE_JSON blocks (thought_leadership_article + linkedin_post).**
+Begin your entire response with these blocks, then write the prose report below them.
+
+**HOW TO QUEUE ARTIFACTS:** The Python runner reads ```QUEUE_JSON``` blocks from your report.
+You do NOT call queue_item() yourself. Emit all QUEUE_JSON blocks at the VERY TOP of your report, before any prose.
+
 ### Artifact 1 — thought_leadership_article
 Queue 1 per run when a substantive content angle exists.
 
-```
-queue_item(
-    item_type="thought_leadership_article",
-    title="Article: [Working title]",
-    summary="[One sentence: thesis and target audience]",
-    payload={
-        "artifact_type": "thought_leadership_article",
-        "title": "[Specific, law-firm-targeted title]",
-        "thesis": "[Single defensible argument, 1-2 sentences. Not a feature announcement.]",
-        "outline": [
-            {"section": "Opening hook", "notes": "[Problem or observation that opens the piece]"},
-            {"section": "[Section 2]", "notes": "[What it covers]"},
-            {"section": "[Section 3]", "notes": "[What it covers]"},
-            {"section": "Closing", "notes": "[What reader should think or do differently]"}
-        ],
-        "draft": "[Full article 400-700 words. Educational, no AI hype, knowledgeable operator voice. Must comply with brand_voice.md.]",
-        "target_keyword_or_pain_phrase": "[ICP search phrase or pain language]",
-        "suggested_channel": "LinkedIn Article | Blog | Medium",
-        "approval_status": "DRAFT - REQUIRES CEO APPROVAL BEFORE PUBLISHING",
-    },
-    created_by_agent="Content & SEO Agent",
-    risk_level="low",
-    recommended_action="Review draft. Approve before publishing.",
-)
+```QUEUE_JSON
+{
+  "item_type": "thought_leadership_article",
+  "title": "Article: Working title",
+  "summary": "One sentence: thesis and target audience",
+  "payload": {
+    "artifact_type": "thought_leadership_article",
+    "title": "Specific, law-firm-targeted title",
+    "thesis": "Single defensible argument, 1-2 sentences. Not a feature announcement.",
+    "outline": [
+      {"section": "Opening hook", "notes": "Problem or observation that opens the piece"},
+      {"section": "Section 2", "notes": "What it covers"},
+      {"section": "Closing", "notes": "What reader should think or do differently"}
+    ],
+    "draft": "Full article 400-700 words. Educational, no AI hype, knowledgeable operator voice.",
+    "target_keyword_or_pain_phrase": "ICP search phrase or pain language",
+    "suggested_channel": "LinkedIn Article",
+    "approval_status": "DRAFT - REQUIRES CEO APPROVAL BEFORE PUBLISHING"
+  },
+  "created_by_agent": "Content & SEO Agent",
+  "risk_level": "low",
+  "recommended_action": "Review draft. Approve before publishing."
+}
 ```
 
 ### Artifact 2 — linkedin_post
 Queue 1-2 per run. Short-form, educational, varied format week to week.
 
-```
-queue_item(
-    item_type="linkedin_post",
-    title="LinkedIn Post: [Topic label]",
-    summary="[One sentence: what the post communicates]",
-    payload={
-        "artifact_type": "linkedin_post",
-        "post_copy": "[Full post 80-220 words. No hashtag spam. No excited-to-share opener. Educational over promotional. Varied format from prior runs.]",
-        "format_type": "plain_observation | stat_plus_context | short_story | open_question | list_insight",
-        "topic_angle": "[Specific insight or pattern this post surfaces]",
-        "tied_to_article": "[Title of related thought_leadership_article, or standalone]",
-        "approval_status": "DRAFT - REQUIRES CEO APPROVAL BEFORE PUBLISHING",
-    },
-    created_by_agent="Content & SEO Agent",
-    risk_level="low",
-    recommended_action="Review post. Approve before scheduling.",
-)
+```QUEUE_JSON
+{
+  "item_type": "linkedin_post",
+  "title": "LinkedIn Post: Topic label",
+  "summary": "One sentence: what the post communicates",
+  "payload": {
+    "artifact_type": "linkedin_post",
+    "post_copy": "Full post 80-220 words. No hashtag spam. No excited-to-share opener. Educational over promotional.",
+    "format_type": "plain_observation",
+    "topic_angle": "Specific insight or pattern this post surfaces",
+    "tied_to_article": "Title of related article or standalone",
+    "approval_status": "DRAFT - REQUIRES CEO APPROVAL BEFORE PUBLISHING"
+  },
+  "created_by_agent": "Content & SEO Agent",
+  "risk_level": "low",
+  "recommended_action": "Review post. Approve before scheduling."
+}
 ```
 
 ### Artifact 3 — founder_thread
 Queue when a narrative arc exists for X/Twitter. Maximum 1 per run.
 
-```
-queue_item(
-    item_type="founder_thread",
-    title="Founder Thread: [Topic label]",
-    summary="[One sentence: what insight arc the thread walks through]",
-    payload={
-        "artifact_type": "founder_thread",
-        "thread_topic": "[Specific observation, pattern, or argument]",
-        "posts": [
-            {"n": 1, "copy": "[Opening - specific observation or counter-intuitive claim. Max 280 chars.]"},
-            {"n": 2, "copy": "[Develops argument. Max 280 chars.]"},
-            {"n": 3, "copy": "[Third beat. Max 280 chars.]"},
-            {"n": 4, "copy": "[Optional fourth beat. Max 280 chars.]"},
-            {"n": 5, "copy": "[Closing - lands the takeaway. No follow CTA. Max 280 chars.]"}
-        ],
-        "approval_status": "DRAFT - REQUIRES CEO APPROVAL BEFORE PUBLISHING",
-    },
-    created_by_agent="Content & SEO Agent",
-    risk_level="low",
-    recommended_action="Review thread. Approve before posting on X.",
-)
+```QUEUE_JSON
+{
+  "item_type": "founder_thread",
+  "title": "Founder Thread: Topic label",
+  "summary": "One sentence: what insight arc the thread walks through",
+  "payload": {
+    "artifact_type": "founder_thread",
+    "thread_topic": "Specific observation, pattern, or argument",
+    "posts": [
+      {"n": 1, "copy": "Opening - specific observation or counter-intuitive claim. Max 280 chars."},
+      {"n": 2, "copy": "Develops argument. Max 280 chars."},
+      {"n": 3, "copy": "Third beat. Max 280 chars."},
+      {"n": 5, "copy": "Closing - lands the takeaway. No follow CTA. Max 280 chars."}
+    ],
+    "approval_status": "DRAFT - REQUIRES CEO APPROVAL BEFORE PUBLISHING"
+  },
+  "created_by_agent": "Content & SEO Agent",
+  "risk_level": "low",
+  "recommended_action": "Review thread. Approve before posting on X."
+}
 ```
 
 **QUEUE OUTPUT STATUS (required every report):**

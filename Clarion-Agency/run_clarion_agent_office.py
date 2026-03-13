@@ -18,12 +18,19 @@ Usage:
 """
 
 import sys
+import io
 import argparse
 import shutil
 import datetime
 import traceback
 import json
 from pathlib import Path
+
+# Force UTF-8 output on Windows so unicode chars in LLM output don't crash the runner
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+if sys.stderr.encoding and sys.stderr.encoding.lower() not in ("utf-8", "utf8"):
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 BASE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE_DIR))
@@ -282,10 +289,10 @@ def run_division(label: str, agent_key: str, prompt_rel: str, report_subdir: str
             data_context    = data_fn(),
             agent_title     = agent_title,
         )
-        print(f"  ✓ {label} complete → {path.name}")
+        print(f"  [OK] {label} complete -> {path.name}")
         return path
     except Exception as e:
-        print(f"  ✗ {label} FAILED: {e}")
+        print(f"  [FAIL] {label} FAILED: {e}")
         traceback.print_exc()
         return None
 
@@ -433,7 +440,7 @@ def _run_approved_actions() -> int:
                 report_subdir="execution", data_context=exec_context,
                 agent_title=f"Clarion Execution — {act_id}",
             )
-            print(f"    ✓ Executed → {out_path.name}")
+            print(f"    [OK] Executed -> {out_path.name}")
             update_action_status(act_id, "completed",
                 f"Execution output: reports/execution/{out_path.name}")
             append_execution_log(act_id, act_text, owner, "completed",
@@ -442,7 +449,7 @@ def _run_approved_actions() -> int:
             executed += 1
         except Exception as e:
             err_str = str(e)[:120]
-            print(f"    ✗ Execution FAILED: {err_str}")
+            print(f"    [FAIL] Execution FAILED: {err_str}")
             traceback.print_exc()
             update_action_status(act_id, "blocked", f"Execution error: {err_str}")
             append_execution_log(act_id, act_text, owner, "blocked",
@@ -455,8 +462,8 @@ def _run_approved_actions() -> int:
 # ── Lean run summary ──────────────────────────────────────────────────────────
 
 def _print_lean_summary(run_stats: dict) -> None:
-    print(f"\n{'─' * 60}")
-    print(f"  CLARION AGENT OFFICE — RUN COMPLETE")
+    print(f"\n{'-' * 60}")
+    print(f"  CLARION AGENT OFFICE -- RUN COMPLETE")
     print(f"  Mode                     : {run_stats.get('mode', 'lean')}")
     print(f"  Prospects found          : {run_stats.get('prospects_found', 0)}")
     print(f"  Outreach created         : {run_stats.get('outreach_created', 0)}")
@@ -469,14 +476,14 @@ def _print_lean_summary(run_stats: dict) -> None:
     print(f"  Queued for founder       : {len(_EXEC_STATS['queued'])}")
     if _EXEC_STATS["autonomous"]:
         for item in _EXEC_STATS["autonomous"]:
-            print(f"    ✅ {item}")
+            print(f"    [AUTO] {item}")
     if _EXEC_STATS["delegated"]:
         for item in _EXEC_STATS["delegated"]:
-            print(f"    🔑 {item}")
+            print(f"    [DELEGATED] {item}")
     if _EXEC_STATS["queued"]:
         for item in _EXEC_STATS["queued"]:
-            print(f"    📋 {item}")
-    print(f"{'─' * 60}\n")
+            print(f"    [QUEUED] {item}")
+    print(f"{'-' * 60}\n")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -497,13 +504,13 @@ def main():
     banner("CONFIG VALIDATION")
     missing_keys = _validate_config()
     if missing_keys:
-        print(f"\n  ❌ BLOCKED — missing agent keys in config.json:")
+        print(f"\n  BLOCKED -- missing agent keys in config.json:")
         for k in missing_keys:
-            print(f"     • {k}")
+            print(f"     - {k}")
         print(f"\n  Add these keys to Clarion-Agency/config.json to proceed.")
         print(f"  No LLM calls were made. Exiting.\n")
         sys.exit(1)
-    print(f"  ✓ All required agent keys present in config.json")
+    print(f"  [OK] All required agent keys present in config.json")
 
     _ensure_data_files()
 
@@ -596,9 +603,9 @@ def main():
         try:
             from shared.conversation_discovery import run as run_conversation_discovery
             discovery_path = run_conversation_discovery()
-            print(f"  ✓ Conversation discovery complete → {discovery_path.name}")
+            print(f"  [OK] Conversation discovery complete -> {discovery_path.name}")
         except Exception as e:
-            print(f"  ✗ Conversation discovery FAILED: {e}")
+            print(f"  [FAIL] Conversation discovery FAILED: {e}")
             traceback.print_exc()
 
         # Stage 3.5: Evidence & Insight
@@ -612,9 +619,9 @@ def main():
             if not ev_result.get("enforcement_passed"):
                 print(f"  [WARN] Evidence enforcement FAILED: {ev_result.get('enforcement_reason')}")
             else:
-                print(f"  ✓ Evidence — {ev_result.get('artifacts_queued')} artifact(s) queued")
+                print(f"  [OK] Evidence - {ev_result.get('artifacts_queued')} artifact(s) queued")
         except Exception as e:
-            print(f"  ✗ Evidence Agent FAILED: {e}")
+            print(f"  [FAIL] Evidence Agent FAILED: {e}")
             traceback.print_exc()
             results["evidence_agent"] = None
         _route_new_artifacts(_new_since_snapshot(_q_before_evidence), "evidence_agent")
@@ -638,10 +645,10 @@ def main():
             print(f"  [WARN] Prospect Intelligence enforcement FAILED: "
                   f"{pi_result.get('enforcement_reason')}")
         else:
-            print(f"  ✓ Prospect Intelligence — {pi_result.get('prospect_count')} prospects queued "
+            print(f"  [OK] Prospect Intelligence -- {pi_result.get('prospect_count')} prospects queued "
                   f"({pi_result.get('item_id')})")
     except Exception as e:
-        print(f"  ✗ Prospect Intelligence FAILED: {e}")
+        print(f"  [FAIL] Prospect Intelligence FAILED: {e}")
         traceback.print_exc()
         results["prospect_intelligence_agent"] = None
     _route_new_artifacts(_new_since_snapshot(_q_before_pi), "prospect_intelligence_agent")
@@ -659,9 +666,9 @@ def main():
             print(f"  [WARN] Outbound Sales enforcement FAILED: "
                   f"{os_result.get('enforcement_reason')}")
         else:
-            print(f"  ✓ Outbound Sales — {os_result.get('artifacts_queued')} outreach email(s) queued")
+            print(f"  [OK] Outbound Sales -- {os_result.get('artifacts_queued')} outreach email(s) queued")
     except Exception as e:
-        print(f"  ✗ Outbound Sales FAILED: {e}")
+        print(f"  [FAIL] Outbound Sales FAILED: {e}")
         traceback.print_exc()
         results["outbound_sales_agent"] = None
     _route_new_artifacts(_new_since_snapshot(_q_before_sales), "outbound_sales_agent")
@@ -679,10 +686,10 @@ def main():
             print(f"  [WARN] Content SEO enforcement FAILED: {cs_result.get('enforcement_reason')}")
         else:
             types_str = ", ".join(cs_result.get("artifact_types", []))
-            print(f"  ✓ Content SEO — {cs_result.get('total_artifacts_queued')} artifact(s) "
+            print(f"  [OK] Content SEO -- {cs_result.get('total_artifacts_queued')} artifact(s) "
                   f"queued ({types_str})")
     except Exception as e:
-        print(f"  ✗ Content SEO FAILED: {e}")
+        print(f"  [FAIL] Content SEO FAILED: {e}")
         traceback.print_exc()
         results["content_seo"] = None
     _route_new_artifacts(_new_since_snapshot(_q_before_content), "content_seo")
@@ -692,11 +699,22 @@ def main():
     (REPORTS / "growth").mkdir(parents=True, exist_ok=True)
     (DATA / "growth").mkdir(parents=True, exist_ok=True)
     _q_before_growth = _snapshot_queue()
-    results["prelaunch_content"] = run_division(
+    plc_report_path = run_division(
         "Pre-Launch Content", "prelaunch_content",
         "agents/growth/prelaunch_content.md", "growth",
         data_prelaunch_content, "Clarion Pre-Launch Content Agent",
     )
+    results["prelaunch_content"] = plc_report_path
+    if plc_report_path and plc_report_path.exists():
+        from shared.report_parser import parse_and_queue as _paq
+        _plc_text = plc_report_path.read_text(encoding="utf-8", errors="replace")
+        _plc_ids = _paq(_plc_text, default_agent="Pre-Launch Content Agent",
+                        allowed_types={"linkedin_post", "thought_leadership_article", "founder_thread"})
+        if _plc_ids:
+            run_stats["content_created"] = run_stats.get("content_created", 0) + len(_plc_ids)
+            print(f"  [OK] Pre-Launch Content -- {len(_plc_ids)} artifact(s) queued: {', '.join(_plc_ids)}")
+        else:
+            print("  [WARN] Pre-Launch Content -- 0 QUEUE_JSON blocks found. Report is narrative-only.")
     _route_new_artifacts(_new_since_snapshot(_q_before_growth), "prelaunch_content")
 
     # Stage 4e: Product Experience
@@ -713,10 +731,10 @@ def main():
                   f"{pe_result.get('enforcement_reason')}")
         else:
             types_str = ", ".join(pe_result.get("artifact_types", []))
-            print(f"  ✓ Product Experience — {pe_result.get('artifacts_queued')} artifact(s) "
+            print(f"  [OK] Product Experience -- {pe_result.get('artifacts_queued')} artifact(s) "
                   f"queued ({types_str})")
     except Exception as e:
-        print(f"  ✗ Product Experience FAILED: {e}")
+        print(f"  [FAIL] Product Experience FAILED: {e}")
         traceback.print_exc()
         results["product_experience_agent"] = None
     _route_new_artifacts(_new_since_snapshot(_q_before_product), "product_experience_agent")
@@ -762,9 +780,9 @@ def main():
                 data_context    = cos_data_context(),
                 agent_title     = "Clarion Chief of Staff",
             )
-            print(f"  ✓ Executive brief → {cos_path.name}")
+            print(f"  [OK] Executive brief -> {cos_path.name}")
         except Exception as e:
-            print(f"  ✗ Chief of Staff FAILED: {e}")
+            print(f"  [FAIL] Chief of Staff FAILED: {e}")
             traceback.print_exc()
 
         # Write executive_brief_latest.md
@@ -777,7 +795,7 @@ def main():
                     f.write(_stall_note_for_brief)
                 with open(cos_path, "a", encoding="utf-8") as f:
                     f.write(_stall_note_for_brief)
-            print(f"  ✓ Copied to: {latest_path}")
+            print(f"  [OK] Copied to: {latest_path}")
         else:
             fallback = (
                 f"# Clarion Executive Brief — {DATE}\n\n"
@@ -786,11 +804,11 @@ def main():
             )
             for name, path in results.items():
                 if path and hasattr(path, "name"):
-                    fallback += f"- {name}: ✓ {path.name}\n"
+                    fallback += f"- {name}: OK {path.name}\n"
                 elif path:
-                    fallback += f"- {name}: ✓ (report path)\n"
+                    fallback += f"- {name}: OK (report path)\n"
                 else:
-                    fallback += f"- {name}: ✗ Not produced\n"
+                    fallback += f"- {name}: FAIL Not produced\n"
             latest_path.write_text(fallback, encoding="utf-8")
             print(f"  Fallback brief written to: {latest_path}")
 
@@ -807,7 +825,7 @@ def main():
             log_text = _re.sub(r"daily_llm_count:\s+\d+",
                                f"daily_llm_count:     {llm_count}", log_text)
             health_log.write_text(log_text, encoding="utf-8")
-            print(f"  ✓ office_health_log.md updated — last_trigger_check: {now_iso}")
+            print(f"  [OK] office_health_log.md updated - last_trigger_check: {now_iso}")
         except Exception as e:
             print(f"  [WARN] Could not update office_health_log.md: {e}")
 

@@ -157,23 +157,74 @@ def run(pi_result: dict | None = None) -> dict:
             agent_title     = AGENT_TITLE,
         )
         result["report_path"] = report_path
-        print(f"  [OutboundSales] Report written → {report_path.name}")
+        print(f"  [OutboundSales] Report written -> {report_path.name}")
     except Exception as e:
         print(f"  [OutboundSales] FAILED: {e}")
         traceback.print_exc()
         result["enforcement_reason"] = f"Agent run failed: {e}"
         return result
 
-    # ── Enforcement check ─────────────────────────────────────────────────────
-    new_items = _count_outreach_artifacts_this_run(outreach_before)
-    count = len(new_items)
+    # ── Parse QUEUE_JSON blocks from report and write to queue ───────────────
+    from shared.report_parser import parse_and_queue
+    import re as _re
+    report_text = report_path.read_text(encoding="utf-8", errors="replace")
+    new_ids = parse_and_queue(report_text, default_agent="Outbound Sales Agent",
+                               allowed_types={"outreach_email"})
+
+    # ── Fallback: if no QUEUE_JSON blocks, synthesize from narrative prose ────
+    if not new_ids:
+        print("  [OutboundSales] No QUEUE_JSON blocks found — attempting narrative synthesis.")
+        # Look for "Firm: X" + "Subject: Y" + "email_body" patterns in the report
+        firm_blocks = _re.split(r"\nFirm:", report_text)
+        synth_count = 0
+        for blk in firm_blocks[1:]:
+            lines = blk.strip().splitlines()
+            firm_name = lines[0].strip() if lines else "Unknown Firm"
+            subject = next(
+                (l.split(":", 1)[1].strip() for l in lines if l.lower().startswith("subject:")),
+                f"Outreach — {firm_name}",
+            )
+            # Grab lines that look like email body
+            body_lines = [l for l in lines if len(l) > 40 and not l.startswith("Firm:")
+                          and not l.lower().startswith(("subject:", "signal", "personaliz", "item id"))]
+            email_body = " ".join(body_lines[:8])
+            if not email_body:
+                continue
+            try:
+                iid = queue_item(
+                    item_type="outreach_email",
+                    title=f"Outreach — {firm_name} (synthesized)",
+                    summary=f"Synthesized draft targeting {firm_name}. Verify email body before use.",
+                    payload={
+                        "artifact_type": "outreach_email",
+                        "firm_name": firm_name,
+                        "subject_line": subject,
+                        "email_body": email_body,
+                        "synthesis_warning": "Extracted from narrative — LLM did not emit QUEUE_JSON block.",
+                        "sequence_step": 1,
+                        "prospect_source": "narrative_fallback",
+                    },
+                    created_by_agent="Outbound Sales Agent (synthesized fallback)",
+                    risk_level="medium",
+                    recommended_action="Review synthesized draft carefully before any send.",
+                )
+                new_ids.append(iid)
+                synth_count += 1
+                if synth_count >= 3:
+                    break
+            except Exception as se:
+                print(f"  [OutboundSales] Synthesis fallback error: {se}")
+        if synth_count:
+            print(f"  [OutboundSales] Synthesized {synth_count} outreach artifact(s) from narrative.")
+
+    count = len(new_ids)
     result["artifacts_queued"] = count
-    result["artifact_ids"] = [i["id"] for i in new_items]
+    result["artifact_ids"] = new_ids
 
     if count >= MINIMUM_OUTREACH_ARTIFACTS:
         result["enforcement_passed"] = True
         result["enforcement_reason"] = "OK"
-        print(f"  [OutboundSales] ✓ {count} outreach_email artifact(s) queued: "
+        print(f"  [OutboundSales] OK {count} outreach_email artifact(s) queued: "
               f"{', '.join(result['artifact_ids'])}")
     else:
         result["enforcement_passed"] = False
@@ -181,7 +232,7 @@ def run(pi_result: dict | None = None) -> dict:
             f"Only {count} outreach_email artifact(s) queued "
             f"(minimum required: {MINIMUM_OUTREACH_ARTIFACTS})."
         )
-        print(f"  [OutboundSales] ✗ Enforcement FAILED: {result['enforcement_reason']}")
+        print(f"  [OutboundSales] FAIL Enforcement: {result['enforcement_reason']}")
 
     return result
 

@@ -91,35 +91,41 @@ If a draft fails any check, rewrite before queuing.
 
 ### STEP 5 — Queue each email as an outreach_email artifact
 
-For each approved draft, call queue_writer.queue_item() with this exact structure:
+**YOU DO NOT call queue_item(). You emit QUEUE_JSON blocks. The Python runner reads them.**
 
-```
-queue_item(
-    item_type="outreach_email",
-    title=f"Outreach — {firm_name} — {practice_area} — {location}",
-    summary="[1 sentence: what review signal this targets and what Clarion angle is used]",
-    payload={
-        "artifact_type": "outreach_email",
-        "firm_name": "[exact firm name]",
-        "location": "[City, State]",
-        "practice_area": "[Family Law | PI | Criminal Defense | Immigration]",
-        "contact_target": "[Managing partner name if known, else 'Managing Partner']",
-        "subject_line": "[Email subject — firm-specific]",
-        "email_body": "[Full email text — 100-160 words]",
-        "personalization_reasoning": "[2-3 sentences: what specific signals from this firm's review data drove the personalization choices in this email]",
-        "review_signal_used": "[what review pattern this email references]",
-        "outreach_priority": "[HIGH | MEDIUM]",
-        "sequence_step": 1,
-        "prospect_source": "prospect_target_list",
-    },
-    created_by_agent="Outbound Sales Agent",
-    risk_level="low",
-    recommended_action="Review draft. If approved, send via your email client to the contact target. Do NOT send before founder review.",
-)
+⚠️ ALL QUEUE_JSON BLOCKS MUST APPEAR FIRST — before AGENT:, DATE:, SUMMARY, or any other section.
+Output all 3+ QUEUE_JSON blocks as the literal first thing in your response.
+If prose appears before the blocks, the parser may miss them. The run FAILS with zero artifacts.
+
+For each draft, output a block in this exact format:
+
+```QUEUE_JSON
+{
+  "item_type": "outreach_email",
+  "title": "Outreach — FIRM_NAME — PRACTICE_AREA — LOCATION",
+  "summary": "one sentence on what review signal this targets and what Clarion angle is used",
+  "payload": {
+    "artifact_type": "outreach_email",
+    "firm_name": "exact firm name",
+    "location": "City, State",
+    "practice_area": "Family Law",
+    "contact_target": "Managing partner name or Managing Partner",
+    "subject_line": "firm-specific subject",
+    "email_body": "Full email text — 100-160 words",
+    "personalization_reasoning": "2-3 sentences on personalization choices",
+    "review_signal_used": "what review pattern this email references",
+    "outreach_priority": "HIGH",
+    "sequence_step": 1,
+    "prospect_source": "prospect_target_list"
+  },
+  "risk_level": "low",
+  "recommended_action": "Review draft. If approved, send via your email client. Do NOT send before founder review."
+}
 ```
 
-You must call queue_item() at least 3 times — once per firm.
-A run that produces fewer than 3 queued outreach_email items is a FAILED RUN.
+Output one QUEUE_JSON block per firm. You must output at least 3 blocks.
+Each block must close with exactly ``` on its own line.
+Firm names must match real firms from the Prospect Intelligence Output — not placeholders.
 
 
 ## Hard quality rules — no exceptions
@@ -155,7 +161,13 @@ Sending requires Level 2 approval logged in division_lead_approvals.md.
 
 ## Report format
 
+**CRITICAL: Output ALL QUEUE_JSON blocks FIRST, before any other section of the report.**
+Each block is one outreach email. Output 3 blocks minimum before writing SUMMARY or anything else.
+This ensures JSON blocks are never cut off by output token limits.
+
 ```
+[ALL QUEUE_JSON BLOCKS GO HERE — output them first, at the very top of the report]
+
 AGENT:        Outbound Sales Agent
 DATE:         [YYYY-MM-DD]
 CADENCE:      Weekly
@@ -165,21 +177,10 @@ SUMMARY
 [2 sentences. How many drafts produced. Top review signal used.]
 
 PROSPECTS TARGETED THIS RUN
-[For each prospect:
-  Firm: [Name] | Priority: [HIGH|MEDIUM] | Review signal: [key observation]]
-
-OUTREACH DRAFTS QUEUED
-[For each artifact:
-  Item ID: [AQ-XXXXXXXX]
-  Firm: [Name]
-  Subject: [subject line]
-  Signal used: [review pattern referenced]
-  Personalization: [1 sentence]]
+[Firm | Priority | Review signal]
 
 QUEUE OUTPUT STATUS
-Outreach artifacts queued: [N]
-Minimum required: 3
-Status: [MET | ACTIVATION STALLED]
+Outreach artifacts queued: [N] | Minimum required: 3 | Status: [MET | STALLED]
 Item IDs: [AQ-XXXXXXXX, ...]
 
 WORK COMPLETED THIS RUN

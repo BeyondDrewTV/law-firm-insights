@@ -154,8 +154,8 @@
     },
 
     "content_seo": {
-      "model": "anthropic/claude-3-haiku",
-      "max_output_tokens": 700,
+      "model": "anthropic/claude-3-5-sonnet",
+      "max_output_tokens": 3000,
       "temperature": 0.3,
       "cadence": "daily",
       "output_path": "reports/comms"
@@ -178,32 +178,32 @@
     },
 
     "prospect_intelligence_agent": {
-      "model": "anthropic/claude-3-haiku",
-      "max_output_tokens": 800,
+      "model": "anthropic/claude-3-5-sonnet",
+      "max_output_tokens": 4000,
       "temperature": 0.3,
       "cadence": "weekly",
       "output_path": "reports/sales"
     },
 
     "outbound_sales_agent": {
-      "model": "anthropic/claude-3-haiku",
-      "max_output_tokens": 900,
+      "model": "anthropic/claude-3-5-sonnet",
+      "max_output_tokens": 4000,
       "temperature": 0.4,
       "cadence": "weekly",
       "output_path": "reports/sales"
     },
 
     "product_experience_agent": {
-      "model": "anthropic/claude-3-haiku",
-      "max_output_tokens": 800,
+      "model": "anthropic/claude-3-5-sonnet",
+      "max_output_tokens": 3000,
       "temperature": 0.2,
       "cadence": "weekly",
       "output_path": "reports/product"
     },
 
     "prelaunch_content": {
-      "model": "anthropic/claude-3-haiku",
-      "max_output_tokens": 800,
+      "model": "anthropic/claude-3-5-sonnet",
+      "max_output_tokens": 3500,
       "temperature": 0.4,
       "cadence": "weekly",
       "output_path": "reports/growth"
@@ -217,8 +217,8 @@
   },
 
   "cost_control": {
-    "max_input_tokens_department": 1500,
-    "max_input_tokens_chief_of_staff": 4000,
+    "max_input_tokens_department": 20000,
+    "max_input_tokens_chief_of_staff": 30000,
     "warn_on_budget_exceed_pct": 20,
     "monthly_budget_usd": 50.00
   },

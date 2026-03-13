@@ -37,55 +37,63 @@ across the three types below. A run with zero queued artifacts is a FAILED RUN.
 
 ## Artifact Types — Required Queue Output
 
+## HOW TO QUEUE ARTIFACTS — READ THIS FIRST
+
+**CRITICAL:** You do NOT call queue_item() yourself. The Python runner reads
+`QUEUE_JSON` blocks from your report text and queues them. You must emit these blocks.
+
+**Output ALL QUEUE_JSON blocks at the very beginning of your report, before any
+other content.** If you write narrative first, the JSON may be cut off by token limits.
+
 ### Artifact 1 — conversion_friction_report
 Queue one per HIGH or MEDIUM friction finding (minimum 1 per run).
 
-```
-queue_item(
-    item_type="conversion_friction_report",
-    title="Friction: [Page] — [Problem summary]",
-    summary="[One sentence: what friction exists and what it costs]",
-    payload={
-        "artifact_type": "conversion_friction_report",
-        "page": "[landing_page | signup | onboarding | dashboard | demo | pricing]",
-        "problem": "[Specific, factual description of the friction — one or two sentences]",
-        "impact": "[Commercial consequence — how this costs a conversion or reduces trust]",
-        "recommended_change": "[Concrete, bounded fix — one action, one element]",
-        "priority": "high | medium | low",
-    },
-    created_by_agent="Product Experience Agent",
-    risk_level="low",
-    recommended_action="Review finding. Approve for implementation or reject with reason.",
-)
+```QUEUE_JSON
+{
+  "item_type": "conversion_friction_report",
+  "title": "Friction: [Page] — [Problem summary]",
+  "summary": "One sentence: what friction exists and what it costs",
+  "payload": {
+    "artifact_type": "conversion_friction_report",
+    "page": "landing_page",
+    "problem": "Specific, factual description of the friction",
+    "impact": "Commercial consequence — how this costs a conversion or reduces trust",
+    "recommended_change": "Concrete, bounded fix — one action, one element",
+    "priority": "high"
+  },
+  "created_by_agent": "Product Experience Agent",
+  "risk_level": "low",
+  "recommended_action": "Review finding. Approve for implementation or reject with reason."
+}
 ```
 
 ### Artifact 2 — landing_page_revision
 Queue when homepage headline, subheadline, or core narrative fails the clarity test.
 Maximum one per run. Do not queue if the current copy already passes audit.
 
-```
-queue_item(
-    item_type="landing_page_revision",
-    title="Landing Page Revision — [DATE]",
-    summary="[One sentence: what the revision addresses]",
-    payload={
-        "artifact_type": "landing_page_revision",
-        "headline": "[Proposed headline — specific, law-firm-targeted, 10 words max]",
-        "subheadline": "[Proposed subheadline — clarifies mechanism, 20 words max]",
-        "problem_statement": "[The problem Clarion solves, as a prospect would state it — 1-2 sentences]",
-        "solution_explanation": "[What Clarion does and how — deterministic, no AI hype — 2-3 sentences]",
-        "credibility_elements": [
-            "[Element 1: e.g. 'Pilot analysis using your actual public reviews']",
-            "[Element 2: e.g. 'Governance brief format used by real managing partners']",
-            "[Element 3: e.g. 'Built specifically for 5-50 attorney firms']"
-        ],
-        "current_headline_assessment": "[Quote current headline and explain what it fails to communicate]",
-        "revision_rationale": "[Why this revision improves conversion — 1-2 sentences]",
-    },
-    created_by_agent="Product Experience Agent",
-    risk_level="low",
-    recommended_action="Review proposed copy. If approved, implement in frontend/src/content/marketingCopy.ts or Index.tsx.",
-)
+```QUEUE_JSON
+{
+  "item_type": "landing_page_revision",
+  "title": "Landing Page Revision — DATE",
+  "summary": "One sentence: what the revision addresses",
+  "payload": {
+    "artifact_type": "landing_page_revision",
+    "headline": "Proposed headline — specific, law-firm-targeted, 10 words max",
+    "subheadline": "Proposed subheadline — clarifies mechanism, 20 words max",
+    "problem_statement": "The problem Clarion solves as a prospect would state it",
+    "solution_explanation": "What Clarion does and how — deterministic, no AI hype",
+    "credibility_elements": [
+      "Pilot analysis using your actual public reviews",
+      "Governance brief format used by real managing partners",
+      "Built specifically for 5-50 attorney firms"
+    ],
+    "current_headline_assessment": "Quote current headline and explain what it fails to communicate",
+    "revision_rationale": "Why this revision improves conversion"
+  },
+  "created_by_agent": "Product Experience Agent",
+  "risk_level": "low",
+  "recommended_action": "Review proposed copy. If approved, implement in frontend/src/content/marketingCopy.ts or Index.tsx."
+}
 ```
 
 **QUEUE OUTPUT STATUS (required in every report):**
@@ -249,7 +257,13 @@ DIVISION SIGNAL
 
 ## Report Format
 
+**CRITICAL: Output ALL QUEUE_JSON blocks FIRST, before AGENT:, DATE:, or any other section.**
+The Python runner only reads QUEUE_JSON blocks. If JSON appears after prose, it may be cut off.
+Minimum 1 QUEUE_JSON block per run. A run with zero blocks is a FAILED RUN.
+
 ```
+[ALL QUEUE_JSON BLOCKS GO HERE — at the very top, before everything else]
+
 AGENT:        Product Experience
 DATE:         [YYYY-MM-DD]
 CADENCE:      Weekly

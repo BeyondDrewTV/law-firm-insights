@@ -107,12 +107,50 @@ def run() -> dict:
             agent_title     = AGENT_TITLE,
         )
         result["report_path"] = report_path
-        print(f"  [ProductExperience] Report written → {report_path.name}")
+        print(f"  [ProductExperience] Report written -> {report_path.name}")
     except Exception as e:
         print(f"  [ProductExperience] FAILED: {e}")
         traceback.print_exc()
         result["enforcement_reason"] = f"Agent run failed: {e}"
         return result
+
+    # Parse QUEUE_JSON blocks from report and write to queue
+    from shared.report_parser import parse_and_queue
+    import re as _re
+    report_text = report_path.read_text(encoding="utf-8", errors="replace")
+    parsed_ids = parse_and_queue(report_text, default_agent="Product Experience Agent",
+                    allowed_types=PRODUCT_ARTIFACT_TYPES)
+
+    # Fallback: synthesize a minimal conversion_friction_report if nothing queued
+    if not parsed_ids:
+        print("  [ProductExperience] No QUEUE_JSON blocks found — attempting synthesis fallback.")
+        # Look for HIGH/MEDIUM findings in the report
+        obs_match = _re.search(r"OBSERVATION:\s*(.+)", report_text)
+        obs = obs_match.group(1).strip() if obs_match else "Unspecified friction found in audit."
+        page_match = _re.search(r"AREA:\s*(.+)", report_text)
+        page = page_match.group(1).strip().lower() if page_match else "landing_page"
+        try:
+            iid = queue_item(
+                item_type="conversion_friction_report",
+                title=f"Friction: {page} — (synthesized from narrative) — {DATE}",
+                summary="Synthesized from prose report — QUEUE_JSON block was absent.",
+                payload={
+                    "artifact_type": "conversion_friction_report",
+                    "page": page,
+                    "problem": obs,
+                    "impact": "Unknown — extracted from narrative. Review agent report for details.",
+                    "recommended_change": "See PROPOSED ACTIONS section of agent report.",
+                    "priority": "medium",
+                    "synthesis_warning": "LLM did not emit QUEUE_JSON block. Verify against full report.",
+                },
+                created_by_agent="Product Experience Agent (synthesized fallback)",
+                risk_level="low",
+                recommended_action="Review full agent report. Rewrite this item with specific details.",
+            )
+            parsed_ids.append(iid)
+            print(f"  [ProductExperience] Synthesized placeholder: {iid}")
+        except Exception as se:
+            print(f"  [ProductExperience] Synthesis fallback error: {se}")
 
     # Enforcement check
     new_items = _collect_new_product_artifacts(before_ids)
@@ -125,7 +163,7 @@ def run() -> dict:
         result["enforcement_passed"] = True
         result["enforcement_reason"] = "OK"
         types_str = ", ".join(result["artifact_types"])
-        print(f"  [ProductExperience] ✓ {count} artifact(s) queued ({types_str}): "
+        print(f"  [ProductExperience] OK {count} artifact(s) queued ({types_str}): "
               f"{', '.join(result['artifact_ids'])}")
     else:
         result["enforcement_passed"] = False
@@ -135,7 +173,7 @@ def run() -> dict:
             "Agent must produce at least one conversion_friction_report, "
             "landing_page_revision, or product_improvement item."
         )
-        print(f"  [ProductExperience] ✗ Enforcement FAILED: {result['enforcement_reason']}")
+        print(f"  [ProductExperience] FAIL Enforcement: {result['enforcement_reason']}")
 
     return result
 

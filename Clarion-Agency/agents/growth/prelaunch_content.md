@@ -47,8 +47,8 @@ not to named firms or individuals.
 
 ### Weekly queue target
 Each run must add a minimum of **2 publish-ready content pieces** to the approval
-queue via `shared/queue_writer.queue_item()`. This is the absolute floor — 3 is the
-normal target. A run that queues 0 or 1 items is classified as ACTIVATION STALLED.
+queue. This is the absolute floor — 3 is the normal target. A run that queues 0 or
+1 items is classified as ACTIVATION STALLED.
 
 Formats allowed per run (use at least 2 different formats):
 - LinkedIn post (founder or company page)
@@ -69,39 +69,46 @@ Preferred channels:
 
 ---
 
-## Approval Queue Integration
+## Approval Queue Integration — QUEUE_JSON BLOCKS
 
-After drafting content entries, write each to the approval queue using
-`shared/queue_writer.py` → `queue_item()`:
+**CRITICAL: You cannot call queue_item() yourself. The Python runner does that for you.**
+**You MUST emit QUEUE_JSON blocks. The runner reads them and writes to the approval queue.**
+**Output ALL QUEUE_JSON blocks FIRST — before AGENT:, SUMMARY, or any prose.**
 
+For each content piece, emit one fenced block in this exact format:
+
+```QUEUE_JSON
+{
+  "item_type": "linkedin_post",
+  "title": "[Channel] — [Content type]: [Hook, max 80 chars]",
+  "summary": "One sentence: what this is and why now.",
+  "payload": {
+    "artifact_type": "linkedin_post",
+    "channel": "linkedin",
+    "content_type": "proof_activation",
+    "hook": "First line — the reason someone stops scrolling.",
+    "draft": "Full post draft. 80-220 words. Grounded in Clarion's product and proof.",
+    "cta": "Call to action.",
+    "source_signal": "Which file or proof drove this angle.",
+    "approval_status": "DRAFT - REQUIRES FOUNDER REVIEW BEFORE POSTING"
+  },
+  "created_by_agent": "Pre-Launch Content Agent",
+  "risk_level": "low",
+  "recommended_action": "Review draft; approve to release for posting."
+}
 ```
-queue_item(
-    item_type="content",
-    title="[Channel] — [Content type]: [Hook]",
-    summary="[1-sentence on what this is and why now]",
-    payload={
-        "channel": "linkedin|founder_post|website_snippet|x",
-        "content_type": "proof_activation|product_education|market_insight|pilot_narrative",
-        "hook": "[first line / headline]",
-        "draft": "[full draft text]",
-        "cta": "[call to action]",
-        "source_signal": "[which file/proof/observation drove this]",
-    },
-    created_by_agent="Pre-Launch Content Agent",
-    risk_level="low",
-    recommended_action="Review draft; approve to release for posting",
-)
-```
 
-Also append the entry to `data/growth/content_queue.md` as before.
-The queue item provides the founder with one-click approve/release in the dashboard.
+Use `item_type` values: `linkedin_post`, `thought_leadership_article`, or `founder_thread`.
+Minimum 2 QUEUE_JSON blocks per run. Output them at the very top before any prose.
+
+Also append each entry to `data/growth/content_queue.md` in your report (for the content log).
 
 ---
 
 ## Hard Rules
 
-1. **Minimum 2 queue items per run.** Every run must call `queue_item()` at least twice
-   before ending. If fewer than 2 items are queued, the run is ACTIVATION STALLED.
+1. **Minimum 2 QUEUE_JSON blocks per run.** Every run must emit at least 2 QUEUE_JSON
+   blocks before ending. If fewer than 2 items are queued, the run is ACTIVATION STALLED.
    Report this in QUEUE OUTPUT STATUS. There is always a valid content angle.
 
 2. **No generic content.** Every draft must be grounded in Clarion's actual product,
@@ -128,7 +135,13 @@ The queue item provides the founder with one-click approve/release in the dashbo
 
 ## Report Format
 
+**MANDATORY: Output ALL QUEUE_JSON blocks at the very top of your response, before the prose
+report begins. The Python runner parses QUEUE_JSON blocks from the start of output. Blocks that
+appear after narrative prose may be cut off by token limits and will be lost.**
+
 ```
+[ALL QUEUE_JSON BLOCKS GO HERE — minimum 2, output them before everything else]
+
 AGENT:        Pre-Launch Content
 DATE:         [YYYY-MM-DD]
 CADENCE:      Weekly
