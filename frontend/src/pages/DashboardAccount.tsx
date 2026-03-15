@@ -652,6 +652,23 @@ const DashboardAccount = () => {
                                 {internalTestingBusy ? "Loading example cycle..." : "Load example cycle into workspace"}
                               </button>
                             </div>
+                            <div className="rounded border border-neutral-200 bg-white p-4 md:col-span-2">
+                              <p className="gov-micro-label">ENGINE HARDENING TOOLS</p>
+                              <p className="mt-2 text-sm text-neutral-700">
+                                Open internal calibration and benchmark utilities in one click. This avoids re-entering internal
+                                localhost URLs during calibration/hardening sessions.
+                              </p>
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                <a href="/internal/calibration/" className="gov-btn-secondary inline-flex items-center gap-2">
+                                  <ExternalLink size={14} />
+                                  Open Calibration Console
+                                </a>
+                                <a href="/internal/benchmark/themes" className="gov-btn-secondary inline-flex items-center gap-2">
+                                  <ExternalLink size={14} />
+                                  Open Benchmark Console
+                                </a>
+                              </div>
+                            </div>
                           </div>
                         ) : null}
                       </div>

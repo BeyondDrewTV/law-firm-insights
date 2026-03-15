@@ -1,5 +1,11 @@
 # AI Pass Changelog
 
+## 2026-03-15 — Internal Tools Launcher UX Pass
+- Added an authenticated admin/dev-only internal calibration console route at `/internal/calibration/`.
+- Added an internal tools card in Dashboard Account → Internal Testing with one-click launch links for calibration and benchmark console access.
+- Added a minimal backend template (`internal_calibration_console.html`) that centralizes benchmark endpoints used during calibration/hardening.
+- **Commit:** recorded in git for this pass (see repository log).
+
 ## 2026-03-15 — Deterministic Calibration Alignment Pass
 - Tightened deterministic phrase matching with word-boundary logic for single-token phrases to reduce substring false positives.
 - Added calibration-targeted phrase/guard updates for launch-relevant disagreements (billing consultation-fee severity, severe professionalism cues, timeliness typo variant, office staff positive phrase).

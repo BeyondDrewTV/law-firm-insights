@@ -16918,6 +16918,31 @@ def handle_csrf_error(error):
 from routes.internal_benchmark import benchmark_bp
 app.register_blueprint(benchmark_bp)
 
+
+@app.route('/internal/calibration/', methods=['GET'])
+@login_required
+def internal_calibration_console():
+    """Owner/admin launcher page for internal calibration and benchmark tooling."""
+    if not current_user.is_admin:
+        _log_security_event(
+            current_user.id,
+            'admin_authz_denied',
+            metadata={'path': '/internal/calibration/', 'reason': 'not_admin'},
+        )
+        flash('Internal tools are restricted to admin users.', 'danger')
+        return redirect(url_for('dashboard'))
+
+    if not app.config.get('DEV_MODE', False):
+        flash('Internal calibration tools are only available in dev/internal mode.', 'warning')
+        return redirect(url_for('dashboard'))
+
+    return render_template(
+        'internal_calibration_console.html',
+        benchmark_themes_url='/internal/benchmark/themes',
+        benchmark_single_url='/internal/benchmark/single',
+        benchmark_batch_url='/internal/benchmark/batch',
+    )
+
 # ===== DEMO ANALYSIS ROUTE =====
 # Runs demo_reviews.csv through the real pipeline without authentication.
 # No DB writes. No user context. Safe to expose publicly.
@@ -17122,7 +17147,6 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
 
     app.run(host='0.0.0.0', port=port, debug=app.config['DEBUG'])
-
 
 
 

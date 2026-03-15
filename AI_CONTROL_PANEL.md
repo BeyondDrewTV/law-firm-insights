@@ -1,19 +1,19 @@
 # Clarion AI Control Panel
 
 ## Active Pass
-- **Pass:** Deterministic Calibration Alignment Pass
-- **Focus:** Reduce high-value deterministic vs AI benchmark disagreements for launch-relevant review patterns.
+- **Pass:** Internal Tools Launcher UX Pass
+- **Focus:** Add one-click dashboard/account access to internal calibration and benchmark routes.
 
 ## Build Focus (Now)
 1. Keep core product execution stable (upload → analysis → governance outputs).
-2. Improve deterministic benchmark alignment for launch-relevant disagreements.
-3. Keep calibration workflow reliable and auditable.
+2. Keep deterministic benchmark alignment improvements intact.
+3. Reduce operator friction for internal calibration/hardening access.
 
 ## Last Completed Pass (from git history)
 - `b9a8a97` — calibration wave 2 phrase additions + bug fixes.
 
 ## Next Pass (Suggested)
-- Continue targeted calibration phrase/guard tuning on remaining high-priority disagreement clusters.
+- Continue targeted deterministic calibration tuning on remaining high-priority disagreement clusters.
 
 ## Protected Systems (Do Not Casually Modify)
 - `backend/app.py` auth/session/CSRF/rate-limit/security-header surfaces.

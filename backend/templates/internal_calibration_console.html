@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Internal Calibration Console - Clarion{% endblock %}
+
+{% block content %}
+<div class="info-page">
+  <section class="info-hero">
+    <div class="container">
+      <p class="info-kicker">Internal Tools</p>
+      <h1>Calibration & Benchmark Console</h1>
+      <p class="info-subtitle">
+        Internal launcher for pre-launch deterministic calibration and engine hardening workflows.
+      </p>
+      <div class="hero-cta">
+        <a href="{{ benchmark_themes_url }}" class="btn btn-primary">Open Benchmark Console</a>
+        <a href="/dashboard/account?tab=profile" class="btn btn-outline">Back to Account</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-views-section">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-kicker">Available Endpoints</p>
+        <h2 class="section-title">One-click internal routes</h2>
+      </div>
+      <div class="product-view-grid">
+        <article class="product-view-card">
+          <h3>Benchmark themes</h3>
+          <p>Read current benchmark theme registry and IDs used for calibration comparisons.</p>
+          <a href="{{ benchmark_themes_url }}" class="btn btn-secondary mt-2">Open /internal/benchmark/themes</a>
+        </article>
+        <article class="product-view-card">
+          <h3>Single review benchmark</h3>
+          <p>POST endpoint for deterministic vs AI comparison on a single review payload.</p>
+          <code>{{ benchmark_single_url }}</code>
+        </article>
+        <article class="product-view-card">
+          <h3>Batch benchmark</h3>
+          <p>POST endpoint used by calibration workflow for chunked batch benchmark runs.</p>
+          <code>{{ benchmark_batch_url }}</code>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

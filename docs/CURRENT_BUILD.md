@@ -1,25 +1,25 @@
 # Current Build Scope
 
 ## Active Pass
-Deterministic calibration alignment for launch readiness.
+Internal tools launcher UX for calibration/hardening access.
 
 ## In Scope (This Pass Only)
-- Narrow deterministic phrase/guard tuning using disagreement evidence.
-- Target high-value disagreement classes (missing_theme, wrong_polarity, wrong_severity, guard failures).
-- Minor calibration workflow hardening directly supporting iteration reliability.
+- Add one-click dashboard/account launch path to internal calibration tools.
+- Verify and wire real internal routes (no guessed paths).
+- Keep implementation additive and maintainable.
 
 ## Out of Scope
+- Calibration engine logic rewrites.
 - Production AI scoring integration.
-- Governance signal engine redesign.
-- Frontend redesign or landing-page implementation.
-- Broad refactors outside deterministic calibration scope.
+- Frontend redesign or broad navigation refactors.
+- Auth/session/security model rewrites.
 
 ## Definition of Done
-- Deterministic scoring alignment improves on meaningful disagreement categories.
-- Changes remain explicit, narrow, and explainable.
-- Calibration workflow behavior remains stable.
+- Dashboard/account UI has one-click calibration launcher.
+- Benchmark launcher is shown when route exists.
+- Internal route targets are repo-verified and stable.
 
 ## Next Likely Passes
-1. Additional targeted phrase/guard passes for residual high-priority disagreements.
-2. Calibration completion/hardening pass.
+1. Additional targeted deterministic calibration tuning.
+2. Calibration completion/hardening validation pass.
 3. Landing/marketing clarity pass (copy + structure only, grounded in existing capabilities).
