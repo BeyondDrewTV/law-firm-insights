@@ -16988,6 +16988,92 @@ def internal_tools_console():
         command_center_url='/internal/command-center/',
     )
 
+# ===== INTERNAL AGENT BRIEF API =====
+# Parses Clarion-Agency reports for the operator command center UI.
+
+@app.route('/internal/api/agent-brief', methods=['GET'])
+@login_required
+def internal_api_agent_brief():
+    """Return parsed agent office data for the command center UI."""
+    denied = _internal_tools_access_or_redirect('/internal/api/agent-brief')
+    if denied is not None:
+        return denied
+
+    import re as _re
+
+    agency_dir = os.environ.get(
+        'CLARION_AGENCY_DIR',
+        os.path.join(os.path.dirname(__file__), '..', 'Clarion-Agency'),
+    )
+    agency_dir = os.path.abspath(agency_dir)
+
+    def _read(path):
+        try:
+            with open(path, encoding='utf-8') as f:
+                return f.read()
+        except Exception:
+            return ''
+
+    brief_raw  = _read(os.path.join(agency_dir, 'reports', 'executive_brief_latest.md'))
+    run_raw    = _read(os.path.join(agency_dir, 'reports', 'run_summary_latest.md'))
+
+    # ── Parse run summary ──────────────────────────────────────────────────
+    def _extract(pattern, text, default='—'):
+        m = _re.search(pattern, text, _re.IGNORECASE)
+        return m.group(1).strip() if m else default
+
+    run_summary = {
+        'date':              _extract(r'**Date:**s*(.+)',      run_raw),
+        'mode':              _extract(r'**Mode:**s*(.+)',      run_raw),
+        'prospects_found':   _extract(r'Prospects found:s*(d+)',  run_raw, '0'),
+        'outreach_sent':     _extract(r'Outreach actually sent:s*(d+)', run_raw, '0'),
+        'outreach_drafted':  _extract(r'Outreach drafted this run:s*(d+)', run_raw, '0'),
+        'queued_for_founder':_extract(r'Queued for founder (Level 3):s*(d+)', run_raw, '0'),
+        'autonomous':        _extract(r'Autonomous (Level 1):s*(d+)', run_raw, '0'),
+    }
+
+    # ── Parse exceptions ───────────────────────────────────────────────────
+    exceptions = []
+    exc_block = _re.search(r'EXCEPTIONS REQUIRING CEO ATTENTIONs*
+(.*?)(?=
+---|Z)', brief_raw, _re.DOTALL)
+    if exc_block:
+        for m in _re.finditer(r'd+.s+(.+?)s*
+s+Why it needs you:s*(.+?)
+s+Recommended owner:s*(.+?)(?=
+d+.|Z)', exc_block.group(1), _re.DOTALL):
+            exceptions.append({'title': m.group(1).strip(), 'detail': m.group(2).strip(), 'owner': m.group(3).strip()})
+
+    # ── Parse risks ────────────────────────────────────────────────────────
+    risks = []
+    risk_block = _re.search(r'TOP COMPANY RISKSs*
+(.*?)(?=
+---|Z)', brief_raw, _re.DOTALL)
+    if risk_block:
+        for m in _re.finditer(r'd+.s+(.+?)s*[—-]s*(.+?)(?=
+d+.|Z)', risk_block.group(1)):
+            risks.append({'title': m.group(1).strip(), 'source': m.group(2).strip()})
+
+    # ── Parse agent health ─────────────────────────────────────────────────
+    agents = []
+    agent_block = _re.search(r'Agent Health:s*
+(.*?)(?=
+Department Activity:|Z)', brief_raw, _re.DOTALL)
+    if agent_block:
+        for m in _re.finditer(r's{2,}(.+?):s*(Active|Low Activity|Missing)', agent_block.group(1)):
+            status_raw = m.group(2).strip()
+            status = 'active' if status_raw == 'Active' else ('low' if 'Low' in status_raw else 'missing')
+            agents.append({'name': m.group(1).strip(), 'status': status})
+
+    return jsonify({
+        'raw':         brief_raw,
+        'run_summary': run_summary,
+        'exceptions':  exceptions,
+        'risks':       risks,
+        'agents':      agents,
+    })
+
+
 # ===== DEMO ANALYSIS ROUTE =====
 # Runs demo_reviews.csv through the real pipeline without authentication.
 # No DB writes. No user context. Safe to expose publicly.
