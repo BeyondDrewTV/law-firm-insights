@@ -632,6 +632,10 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("lied to my face", 2.0),
             ("misconduct", 1.5),
             ("professional misconduct", 2.0),
+            ("rude and condescending", 2.0),
+            ("extremely rude", 2.0),
+            ("actually racist", 2.0),
+            ("racist", 2.0),
             ("stole my money", 2.0),
             ("submitted false documents", 2.0),
             # --- calibration: gap-report wave (real-review evidence) ---
@@ -842,6 +846,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("consultation was not free", 1.5),
             ("free consultation not free", 1.5),
             ("charged for consultation", 1.5),
+            ("consultation appointment fee", 1.5),
             ("unexpected consultation fee", 1.5),
             ("billing was misleading", 1.5),
             # --- calibration: gap-report wave (real-review evidence) ---
@@ -864,6 +869,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("fraudulent billing", 2.0),
             ("fraudulent invoices", 2.0),
             ("grossly inflated billing", 2.0),
+            ("charged $50", 2.0),
+            ("charged 50", 2.0),
+            ("charged for consultation appointment", 2.0),
         ],
     },
 
@@ -958,6 +966,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("grossly overpriced", 2.0),
             ("outrageously overpriced", 2.0),
             ("predatory pricing", 2.0),
+            ("what a scam", 2.0),
+            ("total scam", 2.0),
         ],
     },
 
@@ -1088,6 +1098,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("showed up late", 2.0),
             ("didn't even know he had to come", 2.0),
             ("taken more than 2 years", 2.0),
+            ("taken more then 2 years", 2.0),
             ("tanked my case", 2.0),
         ],
     },
@@ -1136,6 +1147,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("receptionist was professional", 1.0),
             ("staff went out of their way", 1.5),
             ("staff were excellent", 1.5),
+            ("will work hard for you", 1.5),
             ("wonderful support staff", 1.5),
         ],
         "negative": [
@@ -1180,10 +1192,6 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("not pleasant or helpful", 1.5),
             ("not friendly at all", 1.5),
             ("waiting room felt outdated and unprofessional", 1.0),
-        ],
-        "positive": [
-            # --- calibration: gap-report wave 2 (final_summary.json) ---
-            ("will work hard for you", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -1467,6 +1475,23 @@ def _extract_sentence_snippet(text: str, char_pos: int, window: int = 120) -> st
     return snippet
 
 
+def _find_phrase_start(text_lower: str, phrase: str) -> int:
+    """Return phrase start index with word-boundary matching for single-token phrases."""
+    if " " not in phrase:
+        pattern = re.compile(rf"\b{re.escape(phrase)}\b")
+        match = pattern.search(text_lower)
+        return match.start() if match else -1
+    return text_lower.find(phrase)
+
+
+def _phrase_is_negation_anchored(phrase: str) -> bool:
+    """Return True when the phrase itself starts with a negation token."""
+    phrase_tokens = _tokenize(phrase)
+    if not phrase_tokens:
+        return False
+    return phrase_tokens[0] in NEGATION_TOKENS
+
+
 def score_review_deterministic(
     review_text: str,
     rating: int,
@@ -1506,7 +1531,7 @@ def score_review_deterministic(
     for theme_id, polarity_buckets in THEME_PHRASES.items():
         for phrase_family, phrase_list in polarity_buckets.items():
             for phrase, base_weight in phrase_list:
-                idx = text_lower.find(phrase)
+                idx = _find_phrase_start(text_lower, phrase)
                 if idx == -1:
                     continue
 
@@ -1518,7 +1543,11 @@ def score_review_deterministic(
 
                 base_polarity = phrase_family
                 if negation_applied:
-                    if phrase_family == "positive":
+                    if _phrase_is_negation_anchored(phrase):
+                        # Phrases like "never explained" already include negation;
+                        # avoid inverting them a second time.
+                        actual_polarity = phrase_family
+                    elif phrase_family == "positive":
                         actual_polarity = "negative"
                     elif phrase_family in ("negative", "severe_negative"):
                         actual_polarity = "positive"
@@ -1567,6 +1596,18 @@ def score_review_deterministic(
                     "confidence": confidence,
                 }
 
+                # GUARD 0: explicit consultation charge phrases should stay negative.
+                # If sentence-level negation appears nearby (e.g. "wasn't free"), do not
+                # invert these billing charge indicators to positive.
+                if (
+                    theme_id == "billing_transparency"
+                    and phrase in ("charged $50", "charged 50", "charged for consultation appointment")
+                    and actual_polarity == "positive"
+                ):
+                    actual_polarity = phrase_family
+                    hit["polarity"] = phrase_family
+                    hit["negation_applied"] = False
+
                 # --- calibration: sample2 context guards ---
                 # GUARD 0a: "not guilty" negation-exempt -- phrase is a compound positive
                 # (legal verdict language); negation guard must NOT flip it to negative.
@@ -1591,6 +1632,8 @@ def score_review_deterministic(
                         "false accusation", "accused of misconduct",
                         "charged with misconduct", "allegations of misconduct",
                         "allegations against", "false charges", "wrongfully accused",
+                        "fighting misconduct", "against misconduct",
+                        "insurance misconduct", "opposing counsel misconduct",
                     ))
                 ):
                     continue  # suppress: misconduct subject is the client, not the attorney

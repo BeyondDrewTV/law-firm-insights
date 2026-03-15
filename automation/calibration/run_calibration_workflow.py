@@ -37,7 +37,7 @@ import subprocess
 import sys
 import time
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -143,7 +143,7 @@ def write_gap_report(real_reviews: list[dict], run_dir: Path) -> dict[int, int]:
     gaps = compute_gaps(real_reviews)
     lines = [
         "CLARION CALIBRATION GAP REPORT",
-        f"Generated: {datetime.utcnow().isoformat()}Z",
+        f"Generated: {datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')}",
         f"Total real reviews: {total}",
         "",
         f"{'Star':<6} {'Have':>6} {'Ideal':>8} {'Gap':>8}",
@@ -255,7 +255,7 @@ def write_summary(real: list[dict], synthetic: list[dict], chunk_results: list[d
     failures  = [c for c in chunk_results if "error" in c]
 
     summary = {
-        "run_timestamp": datetime.utcnow().isoformat() + "Z",
+        "run_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "ai_benchmark_enabled": ai_enabled,
         "total_real_reviews": len(real),
         "total_synthetic_reviews": len(synthetic),

@@ -22,7 +22,7 @@ import csv
 import json
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -89,7 +89,7 @@ def run_batch(reviews: list[dict], server: str, token: str) -> dict:
 
 def save_results(results: dict, output_path: str, reviews: list[dict]):
     out = {
-        "run_timestamp": datetime.utcnow().isoformat() + "Z",
+        "run_timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "total_reviews": len(reviews),
         "real_count": sum(1 for r in reviews if r.get("source") == "real"),
         "synthetic_count": sum(1 for r in reviews if r.get("source") == "synthetic"),
