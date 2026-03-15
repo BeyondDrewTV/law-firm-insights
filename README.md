@@ -74,3 +74,11 @@ run_calibration_workflow.bat
 cd Clarion-Agency
 python run_clarion_agent_office.py
 ```
+
+### Operator Launchers (Repo Root, Windows)
+```
+START_CLARION.bat       # Starts backend and opens command center
+OPEN_COMMAND_CENTER.bat # Opens http://localhost:5000/dashboard only
+RUN_CALIBRATION.bat     # Runs calibration workflow (venv312-aware)
+OPEN_ENGINE_TOOLS.bat   # Opens http://localhost:5000/internal/tools/
+```

@@ -1,13 +1,13 @@
 # Clarion AI Control Panel
 
 ## Active Pass
-- **Pass:** Internal Tools Launcher UX Pass
-- **Focus:** Add one-click dashboard/account access to internal calibration and benchmark routes.
+- **Pass:** Operator Startup Launcher Pass
+- **Focus:** Add one-click repo-root startup and command-center launchers for operators.
 
 ## Build Focus (Now)
 1. Keep core product execution stable (upload → analysis → governance outputs).
 2. Keep deterministic benchmark alignment improvements intact.
-3. Reduce operator friction for internal calibration/hardening access.
+3. Reduce operator friction with obvious root-level launch files.
 
 ## Last Completed Pass (from git history)
 - `b9a8a97` — calibration wave 2 phrase additions + bug fixes.

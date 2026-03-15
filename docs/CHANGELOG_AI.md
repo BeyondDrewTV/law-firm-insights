@@ -1,5 +1,11 @@
 # AI Pass Changelog
 
+## 2026-03-15 — Operator Startup Launcher Pass
+- Added root-level Windows launcher files: `START_CLARION.bat`, `OPEN_COMMAND_CENTER.bat`, `RUN_CALIBRATION.bat`, and `OPEN_ENGINE_TOOLS.bat`.
+- Reused existing backend startup convention via `backend/start.bat` and wired command center URL to `http://localhost:5000/dashboard`.
+- Added README operator-launcher section for non-technical startup clarity.
+- **Commit:** recorded in git for this pass (see repository log).
+
 ## 2026-03-15 — Internal Tools Route Correction Pass
 - Moved the new launcher/hub route from `/internal/calibration/` to dedicated `/internal/tools/`.
 - Preserved `/internal/calibration/` as the calibration-console target by removing launcher ownership of that path.
