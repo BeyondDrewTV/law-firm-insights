@@ -1,0 +1,11 @@
+CLARION CALIBRATION GAP REPORT
+Generated: 2026-03-14T23:05:31.507639Z
+Total real reviews: 121
+
+Star     Have    Ideal      Gap
+-----------------------------------
+1★         36        15        ok
+2★         17        15        ok
+3★         21        20        ok
+4★         23        20        ok
+5★         24        30        +6

@@ -1,0 +1,1 @@
+Educational thread explaining Clarion's governance-first approach vs basic monitoring.

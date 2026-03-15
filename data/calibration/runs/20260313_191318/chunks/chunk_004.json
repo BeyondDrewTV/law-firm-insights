@@ -1,0 +1,182 @@
+[
+  {
+    "review_text": "I gave their office two stars because while they were professional, the strategy they took on my case felt wrong in hindsight. Not sure I'd trust them with anything complex again.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Had a frustrating experience with this law office. The attorney seemed competent but communication was poor. I often had to chase them down for updates. Took much longer than expected.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "The result of my case was not what Mr. Kim led me to expect. I understand outcomes aren't guaranteed but the disconnect between early expectations and reality was significant.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "empathy",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Mr. Castillo got the job done but barely. I had to repeat myself multiple times and felt like I wasn't a priority. For the money I paid I expected more attentiveness.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "timeliness",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "I felt dismissed during consultations with Attorney Brooks. My questions were answered quickly without much depth. The case resolved okay but I never felt confident in the representation.",
+    "rating": 2,
+    "owner_response": "We're sorry to hear you felt this way. We strive to make every client feel heard and supported throughout their matter.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "timeliness",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "The attorney handling my divorce case through the practice was technically skilled but emotionally cold. Going through a divorce is already devastating \u2014 I needed more compassion than I got.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "empathy",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "I felt like just a file number to Mr. Nguyen. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention and empathy.",
+    "rating": 2,
+    "owner_response": "We're sorry the experience felt impersonal. We truly do care about each client's situation and will reflect on how to better convey that.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_disappointment",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Ms. Reyes handled my case but the billing was confusing and I felt overcharged for routine phone calls. The outcome was acceptable but I left feeling like I was nickel-and-dimed throughout the process.",
+    "rating": 2,
+    "owner_response": "We appreciate your feedback and take billing transparency seriously. We would welcome the opportunity to review your itemized statement with you.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "The legal work was fine but this law office overcharged and was slow to respond to emails. I've worked with other attorneys who were more proactive. Wouldn't use them again.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_disappointment",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Solid but not spectacular. Attorney Davis handled the basics well but I expected more strategic guidance. For straightforward matters I'd return. For complex litigation I'd look elsewhere.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Mr. Harris did okay work on my case. Nothing exceptional but nothing terrible either. Communication was average and the outcome was roughly what I expected. Decent but not memorable.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "value",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Three stars feels right. Mr. Harris was professional and prepared, but I felt like I could have gotten the same result for less money somewhere else. The value wasn't quite there.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "I got what I hired their office for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Communication was hit or miss with the practice. When I could get someone on the phone they were helpful, but getting to that point sometimes took longer than it should. Results were acceptable.",
+    "rating": 3,
+    "owner_response": "Thank you for this feedback \u2014 communication consistency is an area we are actively improving across the board.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "The good: Attorney Walsh clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unremarkable experience.",
+    "rating": 3,
+    "owner_response": "We appreciate the honest feedback. We are actively working on improving our response times for all client communications.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Mixed experience with the practice. Some of the staff were very helpful, others seemed indifferent. The final result was satisfactory. Might use them again for a simpler matter.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "I hired Ms. Huang for a business contract dispute. The representation was competent but the strategy felt conservative. We settled, which was probably the right call, but I left wanting more.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Average experience. Attorney Walsh was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "their office handled my matter adequately. The attorney was knowledgeable but seemed stretched thin between cases. Not bad, not great \u2014 right in the middle.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "this law office handled my matter adequately. The attorney was knowledgeable but seemed stretched thin between cases. Not bad, not great \u2014 right in the middle.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_neutral",
+    "subtype": "3star_topup"
+  }
+]

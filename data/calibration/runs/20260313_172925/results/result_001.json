@@ -1,0 +1,2721 @@
+{
+  "calibration_report": {
+    "candidate_negation_guards": [],
+    "candidate_phrase_additions": [
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "He is friendly, patient, and incredibly organized.",
+            "rating": 5,
+            "review_snippet": "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is friendly, patient, and incredibly organized. Thank yo"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "helps people in this crucial area of their lives",
+            "rating": 5,
+            "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "helps people in this crucial area of their lives",
+            "rating": 5,
+            "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "We appreciate the help he provided us with.",
+            "rating": 5,
+            "review_snippet": "Mr. Ramsey is a tough, thorough and easy to understand attorney! We appreciate the help he provided us with."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "went above and beyond to ensure he receive the best medical attention",
+            "rating": 5,
+            "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+          }
+        ],
+        "occurrence_count": 6,
+        "theme": "empathy_support"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "trustworthy, and responsive estate-planning attorney",
+            "rating": 5,
+            "review_snippet": "I had a great experience working with this firm on my estate plan. They were knowledgeable, patient, and explained everything in plain language. I felt heard, supported, and confident in the decisions"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I could not even inquire about a Will or Power of Attorney without being judged",
+            "rating": 1,
+            "review_snippet": "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact opposite experience of most reviews here and could not"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "patiently answering all of our questions from the beginning",
+            "rating": 5,
+            "review_snippet": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of cr"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "He kept us informed of the legal process and what to expect",
+            "rating": 5,
+            "review_snippet": "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the legal process and what to expect from the insurance co"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "He made the process so easy and was there to help and answer all of our questions.",
+            "rating": 5,
+            "review_snippet": "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and answer all of our questions. Very happy with how the"
+          }
+        ],
+        "occurrence_count": 5,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Mr. Ramsey is a very competent attorney",
+            "rating": 5,
+            "review_snippet": "Mr. Ramsey is a very competent attorney who knows his way around with regards to organizing trusts and,wills, and other estate planning needs! Thankful to have been able to make his acquaintance."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "It was truly a lovely experience doing our estate planning with Jeremy.",
+            "rating": 5,
+            "review_snippet": "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is friendly, patient, and incredibly organized. Thank yo"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Jeremy is dedicated and very thorough using his extensive knowledge",
+            "rating": 5,
+            "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "dedicated and very thorough using his extensive knowledge",
+            "rating": 5,
+            "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "skilled negotiator and a dedicated advocate",
+            "rating": 5,
+            "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+          }
+        ],
+        "occurrence_count": 5,
+        "theme": "professionalism_trust"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "It was very thorough so our loved ones could avoid costs and time",
+            "rating": 5,
+            "review_snippet": "Jeremy helped my husband and I get a trust in m place so our finances were secure. It was very thorough so our loved ones could avoid costs and time not having to deal with probate."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "I am very grateful and satisfied for his dedication and help\u2026",
+            "rating": 5,
+            "review_snippet": "Jeremy has helped me with a few different things a special needs trust, my will, and also real estate transactions and investments, very knowledgeable in so many different fields. I am very grateful a"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Would highly recommend",
+            "rating": 5,
+            "review_snippet": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of cr"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "resulted in a significant settlement",
+            "rating": 5,
+            "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Very happy with how the matter turned out",
+            "rating": 5,
+            "review_snippet": "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and answer all of our questions. Very happy with how the"
+          }
+        ],
+        "occurrence_count": 5,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "wonderful at answering all of our many questions in a way that was easily understood",
+            "rating": 5,
+            "review_snippet": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we to"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "guided us through our different options",
+            "rating": 5,
+            "review_snippet": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of cr"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "helped him understand his options",
+            "rating": 5,
+            "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "communication_clarity"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "took the time to explain all of our choices to insure we took the decisions that best suited our needs",
+            "rating": 5,
+            "review_snippet": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we to"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "exceeded our expectations",
+            "rating": 5,
+            "review_snippet": "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the legal process and what to expect from the insurance co"
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "expectation_setting"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "explained all of the final documentation so we were clear on any next steps",
+            "rating": 5,
+            "review_snippet": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we to"
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "A very simple probate has taken more then 2 years!",
+            "rating": 1,
+            "review_snippet": "A very simple probate has taken more then 2 years! Still waiting!!!"
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "timeliness_progress"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "His Legal Assistant, Traci, is one in a million and will work hard for you.",
+            "rating": 5,
+            "review_snippet": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. His Legal Assistant, Traci, is one in a million and will work hard for you."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Whoever answered the phone was not pleasant or helpful.",
+            "rating": 1,
+            "review_snippet": "Didn't even get past the phone call to schedule an appointment. Whoever answered the phone was not pleasant or helpful. I immediately knew I would never recommend this law practice to anyone."
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "office_staff_experience"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I don't have a way to estimate the typical baseline",
+            "rating": 1,
+            "review_snippet": "\"I'd like a range for a typical for sale by owner with no variable unknown costs considered so I know the baseline\" \"My rate is $325 an hr, I don't have a way to estimate the typical baseline\" So we h"
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "You will be charged $50 when you make your consultation appointment",
+            "rating": 1,
+            "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-refundable, even if you decide not to hire them!! S"
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "billing_transparency"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "What a scam. Please save yourself the headache, find a different attorney.",
+            "rating": 1,
+            "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-refundable, even if you decide not to hire them!! S"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "fee_value"
+      }
+    ],
+    "context_guard_failures": [
+      {
+        "ai_polarity": "positive",
+        "detail": "Deterministic flipped polarity on 'professionalism_trust' to 'negative' (negation=True, contrast=False) via phrase 'professional', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+        "deterministic_phrase": "professional",
+        "deterministic_polarity": "negative",
+        "rating": 5,
+        "review_idx": 1,
+        "review_snippet": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. Hi",
+        "theme": "professionalism_trust"
+      }
+    ],
+    "disagreement_by_theme": {
+      "billing_transparency": 2,
+      "communication_clarity": 3,
+      "communication_responsiveness": 5,
+      "empathy_support": 6,
+      "expectation_setting": 2,
+      "fee_value": 1,
+      "office_staff_experience": 2,
+      "outcome_satisfaction": 5,
+      "professionalism_trust": 7,
+      "timeliness_progress": 2
+    },
+    "disagreement_by_type": {
+      "likely_context_guard_failure": 1,
+      "missing_theme": 33,
+      "wrong_polarity": 1
+    },
+    "false_positive_themes": [],
+    "manual_review_queue": [
+      {
+        "ai_evidence_span": "You will be charged $50 when you make your consultation appointment",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-r",
+        "severity_flag": true,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "What a scam. Please save yourself the headache, find a different attorney.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-r",
+        "severity_flag": true,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "A very simple probate has taken more then 2 years!",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 19,
+        "review_snippet": "A very simple probate has taken more then 2 years! Still waiting!!!",
+        "severity_flag": true,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "Jeremy upholds the most professionalism and kindness.",
+        "ai_polarity": "positive",
+        "detail": "Deterministic flipped polarity on 'professionalism_trust' to 'negative' (negation=True, contrast=False) via phrase 'professional', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+        "deterministic_phrase": "professional",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 1,
+        "review_snippet": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. His Legal Assistant, Traci, is o",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "I don't have a way to estimate the typical baseline",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 8,
+        "review_snippet": "\"I'd like a range for a typical for sale by owner with no variable unknown costs considered so I know the baseline\" \"My rate is $325 an hr, I don't ha",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "I could not even inquire about a Will or Power of Attorney without being judged",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact oppo",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Whoever answered the phone was not pleasant or helpful.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 17,
+        "review_snippet": "Didn't even get past the phone call to schedule an appointment. Whoever answered the phone was not pleasant or helpful. I immediately knew I would nev",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      }
+    ],
+    "missed_phrases": [
+      {
+        "count": 6,
+        "sample_evidence": [
+          "He is friendly, patient, and incredibly organized.",
+          "helps people in this crucial area of their lives",
+          "helps people in this crucial area of their lives",
+          "We appreciate the help he provided us with.",
+          "went above and beyond to ensure he receive the best medical attention"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "count": 5,
+        "sample_evidence": [
+          "trustworthy, and responsive estate-planning attorney",
+          "I could not even inquire about a Will or Power of Attorney without being judged",
+          "patiently answering all of our questions from the beginning",
+          "He kept us informed of the legal process and what to expect",
+          "He made the process so easy and was there to help and answer all of our questions."
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "count": 5,
+        "sample_evidence": [
+          "Mr. Ramsey is a very competent attorney",
+          "It was truly a lovely experience doing our estate planning with Jeremy.",
+          "Jeremy is dedicated and very thorough using his extensive knowledge",
+          "dedicated and very thorough using his extensive knowledge",
+          "skilled negotiator and a dedicated advocate"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 5,
+        "sample_evidence": [
+          "It was very thorough so our loved ones could avoid costs and time",
+          "I am very grateful and satisfied for his dedication and help\u2026",
+          "Would highly recommend",
+          "resulted in a significant settlement",
+          "Very happy with how the matter turned out"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "wonderful at answering all of our many questions in a way that was easily understood",
+          "guided us through our different options",
+          "helped him understand his options"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "took the time to explain all of our choices to insure we took the decisions that best suited our needs",
+          "exceeded our expectations"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "explained all of the final documentation so we were clear on any next steps",
+          "A very simple probate has taken more then 2 years!"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "His Legal Assistant, Traci, is one in a million and will work hard for you.",
+          "Whoever answered the phone was not pleasant or helpful."
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "I don't have a way to estimate the typical baseline",
+          "You will be charged $50 when you make your consultation appointment"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "What a scam. Please save yourself the headache, find a different attorney."
+        ],
+        "theme": "fee_value"
+      }
+    ],
+    "phrase_mining_candidates": [
+      {
+        "evidence_span": "helps people in this crucial area of their lives",
+        "normalised_span": "helps people in this crucial area of their lives",
+        "occurrence_count": 2,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives.",
+          "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "wonderful at answering all of our many questions in a way that was easily unders",
+        "normalised_span": "wonderful at answering all of our many questions in a way that was easily unders",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we to"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "took the time to explain all of our choices to insure we took the decisions that",
+        "normalised_span": "took the time to explain all of our choices to insure we took the decisions that",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we to"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "explained all of the final documentation so we were clear on any next steps",
+        "normalised_span": "explained all of the final documentation so we were clear on any next steps",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we to"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "His Legal Assistant, Traci, is one in a million and will work hard for you.",
+        "normalised_span": "his legal assistant, traci, is one in a million and will work hard for you.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. His Legal Assistant, Traci, is one in a million and will work hard for you."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "trustworthy, and responsive estate-planning attorney",
+        "normalised_span": "trustworthy, and responsive estate-planning attorney",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I had a great experience working with this firm on my estate plan. They were knowledgeable, patient, and explained everything in plain language. I felt heard, supported, and confident in the decisions"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Mr. Ramsey is a very competent attorney",
+        "normalised_span": "mr. ramsey is a very competent attorney",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Ramsey is a very competent attorney who knows his way around with regards to organizing trusts and,wills, and other estate planning needs! Thankful to have been able to make his acquaintance."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "He is friendly, patient, and incredibly organized.",
+        "normalised_span": "he is friendly, patient, and incredibly organized.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is friendly, patient, and incredibly organized. Thank yo"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "It was truly a lovely experience doing our estate planning with Jeremy.",
+        "normalised_span": "it was truly a lovely experience doing our estate planning with jeremy.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is friendly, patient, and incredibly organized. Thank yo"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "It was very thorough so our loved ones could avoid costs and time",
+        "normalised_span": "it was very thorough so our loved ones could avoid costs and time",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy helped my husband and I get a trust in m place so our finances were secure. It was very thorough so our loved ones could avoid costs and time not having to deal with probate."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "I am very grateful and satisfied for his dedication and help\u2026",
+        "normalised_span": "i am very grateful and satisfied for his dedication and help\u2026",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy has helped me with a few different things a special needs trust, my will, and also real estate transactions and investments, very knowledgeable in so many different fields. I am very grateful a"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "I don't have a way to estimate the typical baseline",
+        "normalised_span": "i don't have a way to estimate the typical baseline",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "\"I'd like a range for a typical for sale by owner with no variable unknown costs considered so I know the baseline\" \"My rate is $325 an hr, I don't have a way to estimate the typical baseline\" So we h"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "I could not even inquire about a Will or Power of Attorney without being judged",
+        "normalised_span": "i could not even inquire about a will or power of attorney without being judged",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact opposite experience of most reviews here and could not"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "I chose to find a Rockford attorney with a more professional, kinder personality",
+        "normalised_span": "i chose to find a rockford attorney with a more professional, kinder personality",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact opposite experience of most reviews here and could not"
+        ],
+        "source_types": [
+          "wrong_polarity"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "Jeremy is dedicated and very thorough using his extensive knowledge",
+        "normalised_span": "jeremy is dedicated and very thorough using his extensive knowledge",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "dedicated and very thorough using his extensive knowledge",
+        "normalised_span": "dedicated and very thorough using his extensive knowledge",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "We appreciate the help he provided us with.",
+        "normalised_span": "we appreciate the help he provided us with.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Ramsey is a tough, thorough and easy to understand attorney! We appreciate the help he provided us with."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "guided us through our different options",
+        "normalised_span": "guided us through our different options",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of cr"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "patiently answering all of our questions from the beginning",
+        "normalised_span": "patiently answering all of our questions from the beginning",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of cr"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Would highly recommend",
+        "normalised_span": "would highly recommend",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of cr"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "helped him understand his options",
+        "normalised_span": "helped him understand his options",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "went above and beyond to ensure he receive the best medical attention",
+        "normalised_span": "went above and beyond to ensure he receive the best medical attention",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "resulted in a significant settlement",
+        "normalised_span": "resulted in a significant settlement",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "skilled negotiator and a dedicated advocate",
+        "normalised_span": "skilled negotiator and a dedicated advocate",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best m"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "He kept us informed of the legal process and what to expect",
+        "normalised_span": "he kept us informed of the legal process and what to expect",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the legal process and what to expect from the insurance co"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "always had my son\u2019s best interests in mind",
+        "normalised_span": "always had my son\u2019s best interests in mind",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the legal process and what to expect from the insurance co"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "exceeded our expectations",
+        "normalised_span": "exceeded our expectations",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the legal process and what to expect from the insurance co"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "He made the process so easy and was there to help and answer all of our question",
+        "normalised_span": "he made the process so easy and was there to help and answer all of our question",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and answer all of our questions. Very happy with how the"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Very happy with how the matter turned out",
+        "normalised_span": "very happy with how the matter turned out",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and answer all of our questions. Very happy with how the"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "Whoever answered the phone was not pleasant or helpful.",
+        "normalised_span": "whoever answered the phone was not pleasant or helpful.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Didn't even get past the phone call to schedule an appointment. Whoever answered the phone was not pleasant or helpful. I immediately knew I would never recommend this law practice to anyone."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "You will be charged $50 when you make your consultation appointment",
+        "normalised_span": "you will be charged $50 when you make your consultation appointment",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-refundable, even if you decide not to hire them!! S"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "What a scam. Please save yourself the headache, find a different attorney.",
+        "normalised_span": "what a scam. please save yourself the headache, find a different attorney.",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-refundable, even if you decide not to hire them!! S"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "evidence_span": "A very simple probate has taken more then 2 years!",
+        "normalised_span": "a very simple probate has taken more then 2 years!",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "A very simple probate has taken more then 2 years! Still waiting!!!"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      }
+    ],
+    "reviews_needing_inspection": [
+      {
+        "disagreement_types": [
+          "missing_theme"
+        ],
+        "rating": 1,
+        "reasons": [
+          "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched."
+        ],
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-refundable, even if you decide not to hire them!! S",
+        "severity_flag_count": 2
+      }
+    ],
+    "severe_mismatches": [
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation app",
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation app",
+        "theme": "fee_value"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 19,
+        "review_snippet": "A very simple probate has taken more then 2 years! Still waiting!!!",
+        "theme": "timeliness_progress"
+      }
+    ],
+    "summary": {
+      "agreement_rate": 0.05,
+      "ai_enabled_count": 20,
+      "ai_invalid_response_count": 0,
+      "ai_item_invalid_total": 0,
+      "ai_run_count": 20,
+      "total_disagreements": 35,
+      "total_reviews": 20,
+      "zero_disagreement_reviews": 1
+    },
+    "theme_disagreement_rates": {
+      "billing_transparency": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "communication_clarity": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "communication_responsiveness": {
+        "disagreement_count": 5,
+        "rate": 0.25
+      },
+      "empathy_support": {
+        "disagreement_count": 6,
+        "rate": 0.3
+      },
+      "expectation_setting": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "fee_value": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "office_staff_experience": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "outcome_satisfaction": {
+        "disagreement_count": 5,
+        "rate": 0.25
+      },
+      "professionalism_trust": {
+        "disagreement_count": 7,
+        "rate": 0.35
+      },
+      "timeliness_progress": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      }
+    },
+    "top_disagreements_by_priority": [
+      {
+        "ai_evidence_span": "You will be charged $50 when you make your consultation appointment",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-r",
+        "severity_flag": true,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "What a scam. Please save yourself the headache, find a different attorney.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 18,
+        "review_snippet": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-r",
+        "severity_flag": true,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "A very simple probate has taken more then 2 years!",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 19,
+        "review_snippet": "A very simple probate has taken more then 2 years! Still waiting!!!",
+        "severity_flag": true,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "Jeremy upholds the most professionalism and kindness.",
+        "ai_polarity": "positive",
+        "detail": "Deterministic flipped polarity on 'professionalism_trust' to 'negative' (negation=True, contrast=False) via phrase 'professional', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+        "deterministic_phrase": "professional",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 1,
+        "review_snippet": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. His Legal Assistant, Traci, is o",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "I don't have a way to estimate the typical baseline",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 8,
+        "review_snippet": "\"I'd like a range for a typical for sale by owner with no variable unknown costs considered so I know the baseline\" \"My rate is $325 an hr, I don't ha",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "I could not even inquire about a Will or Power of Attorney without being judged",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact oppo",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Whoever answered the phone was not pleasant or helpful.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 17,
+        "review_snippet": "Didn't even get past the phone call to schedule an appointment. Whoever answered the phone was not pleasant or helpful. I immediately knew I would nev",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "I chose to find a Rockford attorney with a more professional, kinder personality.",
+        "ai_polarity": "negative",
+        "detail": "Polarity conflict on 'professionalism_trust': det='positive', ai='negative'. Det phrase: 'professional', AI evidence: 'I chose to find a Rockford attorney with a more professional, kinder personality.'",
+        "deterministic_phrase": "professional",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "wrong_polarity",
+        "priority": 2,
+        "review_idx": 9,
+        "review_snippet": "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact oppo",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "wonderful at answering all of our many questions in a way that was easily understood",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 0,
+        "review_snippet": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the ",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "took the time to explain all of our choices to insure we took the decisions that best suited our needs",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 0,
+        "review_snippet": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the ",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "explained all of the final documentation so we were clear on any next steps",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 0,
+        "review_snippet": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "His Legal Assistant, Traci, is one in a million and will work hard for you.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 1,
+        "review_snippet": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. His Legal Assistant, Traci, is o",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "trustworthy, and responsive estate-planning attorney",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 2,
+        "review_snippet": "I had a great experience working with this firm on my estate plan. They were knowledgeable, patient, and explained everything in plain language. I fel",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Mr. Ramsey is a very competent attorney",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 3,
+        "review_snippet": "Mr. Ramsey is a very competent attorney who knows his way around with regards to organizing trusts and,wills, and other estate planning needs! Thankfu",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "He is friendly, patient, and incredibly organized.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 4,
+        "review_snippet": "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is fri",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "It was truly a lovely experience doing our estate planning with Jeremy.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 4,
+        "review_snippet": "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is fri",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "It was very thorough so our loved ones could avoid costs and time",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 5,
+        "review_snippet": "Jeremy helped my husband and I get a trust in m place so our finances were secure. It was very thorough so our loved ones could avoid costs and time n",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "I am very grateful and satisfied for his dedication and help\u2026",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 6,
+        "review_snippet": "Jeremy has helped me with a few different things a special needs trust, my will, and also real estate transactions and investments, very knowledgeable",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "helps people in this crucial area of their lives",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 10,
+        "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly h",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Jeremy is dedicated and very thorough using his extensive knowledge",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 10,
+        "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly h",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "helps people in this crucial area of their lives",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 11,
+        "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly h",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "dedicated and very thorough using his extensive knowledge",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 11,
+        "review_snippet": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly h",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "We appreciate the help he provided us with.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 12,
+        "review_snippet": "Mr. Ramsey is a tough, thorough and easy to understand attorney! We appreciate the help he provided us with.",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "guided us through our different options",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 13,
+        "review_snippet": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integ",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "patiently answering all of our questions from the beginning",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 13,
+        "review_snippet": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Would highly recommend",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 13,
+        "review_snippet": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integ",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "helped him understand his options",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 14,
+        "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also wen",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "went above and beyond to ensure he receive the best medical attention",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 14,
+        "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also wen",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "resulted in a significant settlement",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 14,
+        "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also wen",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "skilled negotiator and a dedicated advocate",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 14,
+        "review_snippet": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also wen",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "He kept us informed of the legal process and what to expect",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the lega",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "always had my son\u2019s best interests in mind",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the lega",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "exceeded our expectations",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the lega",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "He made the process so easy and was there to help and answer all of our questions.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and an",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Very happy with how the matter turned out",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and an",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      }
+    ]
+  },
+  "export_path": null,
+  "results": [
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.808,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "wonderful at answering all of our many questions in a way that was easily understood",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "took the time to explain all of our choices to insure we took the decisions that best suited our needs",
+              "polarity": "positive",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "explained all of the final documentation so we were clear on any next steps",
+              "polarity": "positive",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 333,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Very knowledgeable with estate planning. Jeremy was wonderful at answering all of our many questions in a way that was easily understood. He took the time to explain all of our choices to insure we took the decisions that best suited our needs. Jeremy also explained all of the final documentation so we were clear on any next steps."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "wonderful at answering all of our many questions in a way that was easily understood",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "took the time to explain all of our choices to insure we took the decisions that best suited our needs",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        },
+        {
+          "ai_evidence_span": "explained all of the final documentation so we were clear on any next steps",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.76,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Jeremy upholds the most professionalism and kindness.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "His Legal Assistant, Traci, is one in a million and will work hard for you.",
+              "polarity": "positive",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 193,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "low",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "professional",
+              "multiplier": 1.0,
+              "negation_applied": true,
+              "phrase_family": "positive",
+              "polarity": "negative",
+              "sentence_snippet": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Although I\u2019m not a client, Jeremy upholds the most professionalism and kindness. I highly recommend him and his firm. His Legal Assistant, Traci, is one in a million and will work hard for you."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "His Legal Assistant, Traci, is one in a million and will work hard for you.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "office_staff_experience"
+        },
+        {
+          "ai_evidence_span": "Jeremy upholds the most professionalism and kindness.",
+          "ai_polarity": "positive",
+          "detail": "Deterministic flipped polarity on 'professionalism_trust' to 'negative' (negation=True, contrast=False) via phrase 'professional', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+          "deterministic_phrase": "professional",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "likely_context_guard_failure",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.879,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "explained everything in plain language",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I felt heard, supported, and confident",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "trustworthy, and responsive estate-planning attorney",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "trustworthy, and responsive estate-planning attorney",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 322,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "explained everything",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026rm on my estate plan. They were knowledgeable, patient, and explained everything in plain language. I felt heard, suppor\u2026",
+              "theme": "communication_clarity"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "felt heard",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026ble, patient, and explained everything in plain language. I felt heard, supported, and confident in the decisions I was\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "trustworthy",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026king. Highly recommended for anyone who wants an organized, trustworthy, and responsive estate-planning attorney.",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "I had a great experience working with this firm on my estate plan. They were knowledgeable, patient, and explained everything in plain language. I felt heard, supported, and confident in the decisions I was making. Highly recommended for anyone who wants an organized, trustworthy, and responsive estate-planning attorney."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "trustworthy, and responsive estate-planning attorney",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.324,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Mr. Ramsey is a very competent attorney",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 195,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Mr. Ramsey is a very competent attorney who knows his way around with regards to organizing trusts and,wills, and other estate planning needs! Thankful to have been able to make his acquaintance."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Mr. Ramsey is a very competent attorney",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.815,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "He is friendly, patient, and incredibly organized.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "It was truly a lovely experience doing our estate planning with Jeremy.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 286,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Jeremy took a daunting task and broke it down into manageable parts. It was truly a lovely experience doing our estate planning with Jeremy. He is friendly, patient, and incredibly organized. Thank you so much for everything and helping us protect our family and prepare for the future!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "He is friendly, patient, and incredibly organized.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "It was truly a lovely experience doing our estate planning with Jeremy.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.27,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "It was very thorough so our loved ones could avoid costs and time",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 181,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Jeremy helped my husband and I get a trust in m place so our finances were secure. It was very thorough so our loved ones could avoid costs and time not having to deal with probate."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "It was very thorough so our loved ones could avoid costs and time",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.328,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I am very grateful and satisfied for his dedication and help\u2026",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 241,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Jeremy has helped me with a few different things a special needs trust, my will, and also real estate transactions and investments, very knowledgeable in so many different fields. I am very grateful and satisfied for his dedication and help\u2026"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I am very grateful and satisfied for his dedication and help\u2026",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.416,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Attorney Ramsey did a great professional job on our living trust",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 126,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "professional",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Attorney Ramsey did a great professional job on our living trust and also on my mom\u2019s li\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Attorney Ramsey did a great professional job on our living trust and also on my mom\u2019s living trust. Thanks for the great work!"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.317,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I don't have a way to estimate the typical baseline",
+              "polarity": "negative",
+              "theme": "billing_transparency"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 246,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "\"I'd like a range for a typical for sale by owner with no variable unknown costs considered so I know the baseline\" \"My rate is $325 an hr, I don't have a way to estimate the typical baseline\" So we have no way of knowing if it'll be $2k or $10k."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I don't have a way to estimate the typical baseline",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.723,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I could not even inquire about a Will or Power of Attorney without being judged",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I chose to find a Rockford attorney with a more professional, kinder personality.",
+              "polarity": "negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 404,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "professional",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026g referral. I chose to find a Rockford attorney with a more professional, kinder personality.",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "I could not even inquire about a Will or Power of Attorney without being judged for having a phone number area code that was not 815. I had exact opposite experience of most reviews here and could not get a word in from this person. If you don't have an 815 number don't waste your time. This was a disappointing referral. I chose to find a Rockford attorney with a more professional, kinder personality."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I could not even inquire about a Will or Power of Attorney without being judged",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "I chose to find a Rockford attorney with a more professional, kinder personality.",
+          "ai_polarity": "negative",
+          "detail": "Polarity conflict on 'professionalism_trust': det='positive', ai='negative'. Det phrase: 'professional', AI evidence: 'I chose to find a Rockford attorney with a more professional, kinder personality.'",
+          "deterministic_phrase": "professional",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "wrong_polarity",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.745,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Jeremy is dedicated and very thorough using his extensive knowledge",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "helps people in this crucial area of their lives",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 198,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "helps people in this crucial area of their lives",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "Jeremy is dedicated and very thorough using his extensive knowledge",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.441,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "dedicated and very thorough using his extensive knowledge",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "helps people in this crucial area of their lives",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 198,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Jeremy is dedicated and very thorough using his extensive knowledge to help people with their estate planning and other legal needs. He very adeptly helps people in this crucial area of their lives."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "helps people in this crucial area of their lives",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "dedicated and very thorough using his extensive knowledge",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.683,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "easy to understand attorney!",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "We appreciate the help he provided us with.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 108,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "easy to understand",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Mr. Ramsey is a tough, thorough and easy to understand attorney! We appreciate the help he provi\u2026",
+              "theme": "communication_clarity"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Mr. Ramsey is a tough, thorough and easy to understand attorney! We appreciate the help he provided us with."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "We appreciate the help he provided us with.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.885,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "patiently answering all of our questions from the beginning",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "guided us through our different options",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "He was very kind and made the process painless",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "bringing a high level of integrity to what he does",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Would highly recommend",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 485,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "very kind",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026y answering all of our questions from the beginning. He was very kind and made the process painless. Would highly recomm\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "integrity",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026geable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of creatin\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "My husband and I worked with Jeremy for our estate planning. He is incredibly knowledgeable, experienced, and thorough, bringing a high level of integrity to what he does. I expected the process of creating a will and thinking through everything to be daunting, however Jeremy ensured that we covered it all and guided us through our different options, patiently answering all of our questions from the beginning. He was very kind and made the process painless. Would highly recommend."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "guided us through our different options",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "patiently answering all of our questions from the beginning",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "Would highly recommend",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.182,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "helped him understand his options",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "went above and beyond to ensure he receive the best medical attention",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "skilled negotiator and a dedicated advocate",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "resulted in a significant settlement",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 436,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Kevin Frost was outstanding in handling my son's personal injury case. After his car accident, Kevin helped him understand his options. Kevin also went above and beyond to ensure he receive the best medical attention while he handled the legalities. He is a skilled negotiator and a dedicated advocate which resulted in a significant settlement. I am grateful for his service and highly recommend him to anyone without any reservations."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "helped him understand his options",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "went above and beyond to ensure he receive the best medical attention",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "resulted in a significant settlement",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": "skilled negotiator and a dedicated advocate",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.253,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "He kept us informed of the legal process and what to expect",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "exceeded our expectations",
+              "polarity": "positive",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "always had my son\u2019s best interests in mind",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "his integrity, diligence, knowledge of the law and his persistence",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 440,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "integrity",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026g an easy process. Kevin\u2019s commitment to my son through his integrity, diligence, knowledge of the law and his persisten\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Kevin Frost is a very thorough and competent personal injury lawyer. Kevin always had my son\u2019s best interests in mind. He kept us informed of the legal process and what to expect from the insurance company. Kevin took a stressful situation and made everything an easy process. Kevin\u2019s commitment to my son through his integrity, diligence, knowledge of the law and his persistence exceeded our expectations. We highly recommend Kevin Frost!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "He kept us informed of the legal process and what to expect",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "always had my son\u2019s best interests in mind",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "exceeded our expectations",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.791,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "He made the process so easy and was there to help and answer all of our questions.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Very happy with how the matter turned out",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 263,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Mr. Frost is wonderful to work with and we were very pleased with how everything was handled. He made the process so easy and was there to help and answer all of our questions. Very happy with how the matter turned out and definitely recommend him and his office."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "He made the process so easy and was there to help and answer all of our questions.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "Very happy with how the matter turned out",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.187,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Whoever answered the phone was not pleasant or helpful.",
+              "polarity": "negative",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 191,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Didn't even get past the phone call to schedule an appointment. Whoever answered the phone was not pleasant or helpful. I immediately knew I would never recommend this law practice to anyone."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Whoever answered the phone was not pleasant or helpful.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "office_staff_experience"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.843,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "You will be charged $50 when you make your consultation appointment",
+              "polarity": "severe_negative",
+              "theme": "billing_transparency"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "What a scam. Please save yourself the headache, find a different attorney.",
+              "polarity": "severe_negative",
+              "theme": "fee_value"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 388,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Just know that your \"Free initial consultation\" is NOT free. You will be charged $50 when you make your consultation appointment and this $50 is non-refundable, even if you decide not to hire them!! So you are paying them to have an appointment with them!! Unbelievable!! They claim it's for administration fees!! What a scam. Please save yourself the headache, find a different attorney."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "You will be charged $50 when you make your consultation appointment",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "What a scam. Please save yourself the headache, find a different attorney.",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "fee_value"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.365,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "A very simple probate has taken more then 2 years!",
+              "polarity": "severe_negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 67,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "A very simple probate has taken more then 2 years! Still waiting!!!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "A very simple probate has taken more then 2 years!",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "timeliness_progress"
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "total_reviews": 20
+}

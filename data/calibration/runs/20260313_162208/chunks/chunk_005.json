@@ -1,0 +1,182 @@
+[
+  {
+    "review_text": "Communication was hit or miss with this firm. When I could get someone on the phone they were helpful, but getting to that point sometimes took longer than it should. Results were acceptable.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "value",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "this firm handled my matter adequately. The attorney was knowledgeable but seemed stretched thin between cases. Not bad, not great \u2014 right in the middle.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "value",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "The good: Mr. Kim clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unremarkable experience.",
+    "rating": 3,
+    "owner_response": "We appreciate the honest feedback. We are actively working on improving our response times for all client communications.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Mr. Castillo did okay work on my case. Nothing exceptional but nothing terrible either. Communication was average and the outcome was roughly what I expected. Decent but not memorable.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Great experience overall with this firm. The attorney was empathetic, thorough, and aggressive when needed. The only hiccup was an administrative mix-up early on that caused some unnecessary stress.",
+    "rating": 4,
+    "owner_response": "Thank you for the wonderful review! We apologize for the early administrative issue and are glad it didn't affect the final outcome.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Ms. Thompson fought hard for me and delivered a strong result. I'd recommend them to friends. The one thing I'd change is more frequent proactive updates \u2014 I had to initiate most check-ins myself.",
+    "rating": 4,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_caveat",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Really pleased with Mr. Harris's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of what I expected, hence 4 stars instead of 5.",
+    "rating": 4,
+    "owner_response": "Thank you for this generous review. We always aim to provide value that justifies our fees and appreciate your candor.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Very happy with the outcome of my case thanks to their office. They were professional and prepared. Docking one star only because the billing statements were hard to read and felt disorganized.",
+    "rating": 4,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_caveat",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation.",
+    "rating": 4,
+    "owner_response": "Thank you for the kind words! We're looking into how we can improve billing estimate accuracy for future clients.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "mostly_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+    "rating": 4,
+    "owner_response": "We're thrilled with your outcome and take your staffing feedback seriously. Thank you for helping us identify areas to strengthen.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing_caveat",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Ms. Reyes did excellent work on my personal injury claim. The only reason I'm not giving 5 stars is that communication during the middle months of the case dropped off significantly.",
+    "rating": 4,
+    "owner_response": "Thank you so much for the kind words. We hear you on communication and are implementing new check-in procedures for long-running cases.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "mostly_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Strong recommend for their office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent. End result exceeded my expectations.",
+    "rating": 4,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "mostly_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Attorney Brooks is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estimated.",
+    "rating": 4,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_caveat",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "4 stars. Mr. Kim handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated and unprofessional compared to the legal work quality.",
+    "rating": 4,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Strong recommend for the practice with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent. End result exceeded my expectations.",
+    "rating": 4,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_positive",
+    "subtype": "4star_topup"
+  },
+  {
+    "review_text": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "full_service",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "I can't say enough good things about their office. Professional, compassionate, and incredibly effective. They turned a terrifying situation into a manageable one. 10/10.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "strong_positive",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Five stars without hesitation. Attorney Brooks is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "exceptional_outcome",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Attorney Brooks is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "exceptional_outcome",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Mr. Castillo handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "strong_positive",
+    "subtype": "5star_topup"
+  }
+]

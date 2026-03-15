@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. Email discovery did not find a public address for this firm. Find the address manually and re-queue, or skip this prospect.",
+  "firm_name": "Sisemore Law Firm",
+  "contact_target": "Managing Partner",
+  "subject": "Observations on Sisemore Law Firm's client reviews",
+  "body": "While looking through the public reviews for Sisemore Law Firm, one thing stood out — the firm operates in a high-ICP-density market where fragmented client feedback is common, making it difficult for leadership to identify specific operational issues when reading reviews individually.\n\nClarion is a tool that converts public client reviews into a short governance brief for firm leadership.\n\nIt classifies complaint themes, flags operational risks, and outlines partner-level action items so the feedback actually becomes usable for partners.\n\nInstead of manually reading dozens of reviews, leadership receives a concise brief showing what clients are consistently signaling.\n\nIf you're open to it, I'd be happy to walk through a sample governance brief generated from your firm's public reviews."
+}

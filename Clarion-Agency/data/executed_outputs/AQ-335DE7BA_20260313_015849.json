@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. The LLM cannot fabricate real email addresses — this is by design. To send: open this file, add the correct 'to' address, and call _handle_send_outreach_batch() directly or re-queue with recipient_email set.",
+  "firm_name": "Adair Myers Graves Stevenson",
+  "contact_target": "Multiple named partners",
+  "subject": "Adair Myers Graves Stevenson — Enhancing Client Feedback Governance",
+  "body": "I've noticed that multi-partner firms like yours often struggle with fragmented complaint patterns, making it challenging for any single partner to have full visibility into client feedback. Clarion specializes in creating governance briefs that consolidate this feedback into structured insights, enabling leadership to identify and act on potential issues. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. Email discovery did not find a public address for this firm. Find the address manually and re-queue, or skip this prospect.",
+  "firm_name": "Sisemore Law Firm",
+  "contact_target": "Managing Partner",
+  "subject": "Improving Client Feedback Governance for Sisemore Law Firm",
+  "body": "I've noticed that family law firms often accumulate fragmented client feedback across various platforms, which can lead to operational challenges in managing client sentiment. This lack of structured governance can result in missed insights. Clarion can help by providing a governance brief that organizes this feedback into actionable themes and partner-level recommendations. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

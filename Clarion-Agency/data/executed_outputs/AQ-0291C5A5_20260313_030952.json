@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. Email discovery did not find a public address for this firm. Find the address manually and re-queue, or skip this prospect.",
+  "firm_name": "Gallardo Law Firm",
+  "contact_target": "Monica Gallardo",
+  "subject": "Addressing Client Communication at Gallardo Law Firm",
+  "body": "I've noticed that immigration law firms often receive feedback about communication delays regarding case updates. This can lead to client frustration and potential reputational risk. Clarion helps by converting client feedback into actionable governance insights. Our weekly governance brief identifies these communication patterns and provides your leadership with clear action items. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

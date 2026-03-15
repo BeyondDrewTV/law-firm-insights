@@ -1,0 +1,10 @@
+{
+  "staged_emails": [
+    {
+      "email": "",
+      "subject": "A note from Clarion",
+      "body": "Hi Sarah - I noticed a pattern in Walters Law Group's recent client reviews around communication responsiveness. It's a challenge many growing firms face - feedback stays fragmented across platforms until issues become visible at the partner level. Clarion converts your public client reviews into a structured governance brief that surfaces these patterns early, with specific recommendations leadership can act on. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+    }
+  ],
+  "reason": "SMTP_PASS is a placeholder ('NEEDS_ZOHO_APP_PASSWORD'). Set a real Zoho app password in .env before outreach will send. Generate at: https://accounts.zoho.com/home#security > App-Specific Passwords."
+}

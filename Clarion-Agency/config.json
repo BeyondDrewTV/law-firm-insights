@@ -2,7 +2,7 @@
   "agents": {
 
     "chief_of_staff": {
-      "model": "anthropic/claude-3-5-sonnet",
+      "model": "openai/gpt-4o-mini",
       "max_output_tokens": 2000,
       "temperature": 0.2,
       "cadence": "weekly",
@@ -154,7 +154,7 @@
     },
 
     "content_seo": {
-      "model": "anthropic/claude-3-5-sonnet",
+      "model": "openai/gpt-4o-mini",
       "max_output_tokens": 3000,
       "temperature": 0.3,
       "cadence": "daily",
@@ -178,7 +178,7 @@
     },
 
     "prospect_intelligence_agent": {
-      "model": "anthropic/claude-3-5-sonnet",
+      "model": "anthropic/claude-sonnet-4-6",
       "max_output_tokens": 4000,
       "temperature": 0.3,
       "cadence": "weekly",
@@ -186,7 +186,7 @@
     },
 
     "outbound_sales_agent": {
-      "model": "anthropic/claude-3-5-sonnet",
+      "model": "openai/gpt-4o-mini",
       "max_output_tokens": 4000,
       "temperature": 0.4,
       "cadence": "weekly",
@@ -194,7 +194,7 @@
     },
 
     "product_experience_agent": {
-      "model": "anthropic/claude-3-5-sonnet",
+      "model": "anthropic/claude-sonnet-4-6",
       "max_output_tokens": 3000,
       "temperature": 0.2,
       "cadence": "weekly",
@@ -202,7 +202,7 @@
     },
 
     "prelaunch_content": {
-      "model": "anthropic/claude-3-5-sonnet",
+      "model": "openai/gpt-4o-mini",
       "max_output_tokens": 3500,
       "temperature": 0.4,
       "cadence": "weekly",

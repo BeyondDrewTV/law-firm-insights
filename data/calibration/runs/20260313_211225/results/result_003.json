@@ -1,0 +1,2264 @@
+{
+  "calibration_report": {
+    "candidate_negation_guards": [
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 4,
+            "review_snippet": "Got the job done and won so to speak",
+            "theme": "outcome_satisfaction"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "got the job done",
+        "themes_affected": [
+          "outcome_satisfaction"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 5,
+            "review_snippet": "Very polite staff! Would recommend!",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "polite",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 5,
+            "review_snippet": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually give you his time for FREE over the phone! Scott will",
+            "theme": "expectation_setting"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "best case scenario",
+        "themes_affected": [
+          "expectation_setting"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 4,
+            "review_snippet": "4.5 Star Rating! The stars above did not give me that option. The short story is I hired Attorney Mehlos to help me fight a battery charge. The real story is Corey helped me through the worst year of ",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "lied",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      }
+    ],
+    "candidate_phrase_additions": [
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "I was made aware of the per hour rate but not that the consultation was being billed!",
+            "rating": 1,
+            "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Scott will give you the best case scenario and worst case scenario",
+            "rating": 5,
+            "review_snippet": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually give you his time for FREE over the phone! Scott will"
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "communication_clarity"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "Then they charged me $250!?",
+            "rating": 1,
+            "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Complete waste of money.",
+            "rating": 1,
+            "review_snippet": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was going on. Complete waste of money."
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "fee_value"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Very polite staff! Would recommend!",
+            "rating": 5,
+            "review_snippet": "Very polite staff! Would recommend!"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Friendly staff.",
+            "rating": 4,
+            "review_snippet": "Friendly staff. Closed our house on here."
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "office_staff_experience"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "you guys are the best!",
+            "rating": 5,
+            "review_snippet": "It was a fantastic experience working with the Baudin Law Group!! They are like family and still feel that way. Randy , Kelly and Myrna you guys are the best! We appreciate everything you guys did for"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "professionalism_trust"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "many of which appeared inflated, before withdrawing from my case",
+            "rating": 1,
+            "review_snippet": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeared inflated, before withdrawing from my case withou"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "billing_transparency"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "I came out of the meeting without really knowing much more that what I had already googled.",
+            "rating": 1,
+            "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "he will actually give you his time for FREE over the phone!",
+            "rating": 5,
+            "review_snippet": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually give you his time for FREE over the phone! Scott will"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "It took 12 months to get it done and it nearly killed me.",
+            "rating": 4,
+            "review_snippet": "4.5 Star Rating! The stars above did not give me that option. The short story is I hired Attorney Mehlos to help me fight a battery charge. The real story is Corey helped me through the worst year of "
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "timeliness_progress"
+      }
+    ],
+    "context_guard_failures": [
+      {
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'complete waste of money' with negation=True, contrast=False. AI did not tag this theme \u2014 possible guard over-triggering.",
+        "deterministic_phrase": "complete waste of money",
+        "deterministic_polarity": "positive",
+        "rating": 1,
+        "review_idx": 17,
+        "review_snippet": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate",
+        "theme": "outcome_satisfaction"
+      }
+    ],
+    "disagreement_by_theme": {
+      "billing_transparency": 2,
+      "communication_clarity": 2,
+      "communication_responsiveness": 1,
+      "empathy_support": 1,
+      "expectation_setting": 1,
+      "fee_value": 3,
+      "office_staff_experience": 2,
+      "outcome_satisfaction": 3,
+      "professionalism_trust": 4,
+      "timeliness_progress": 1
+    },
+    "disagreement_by_type": {
+      "extra_theme": 3,
+      "likely_context_guard_failure": 1,
+      "likely_false_positive": 1,
+      "missed_severe_phrase": 1,
+      "missing_theme": 11,
+      "wrong_polarity": 1,
+      "wrong_severity": 2
+    },
+    "false_positive_themes": [
+      {
+        "count": 2,
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 1,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 1,
+        "theme": "expectation_setting"
+      }
+    ],
+    "manual_review_queue": [
+      {
+        "ai_evidence_span": "many of which appeared inflated, before withdrawing from my case",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 4,
+        "review_snippet": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeare",
+        "severity_flag": true,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "I was made aware of the per hour rate but not that the consultation was being billed!",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": true,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Then they charged me $250!?",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": true,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "I came out of the meeting without really knowing much more that what I had already googled.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": true,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "The passion, professionalism, determination, dedication and commitment...",
+        "ai_polarity": "positive",
+        "detail": "Polarity conflict on 'professionalism_trust': det='severe_negative', ai='positive'. Det phrase: 'misconduct', AI evidence: 'The passion, professionalism, determination, dedication and commitment...'",
+        "deterministic_phrase": "misconduct",
+        "deterministic_polarity": "severe_negative",
+        "disagreement_type": "wrong_polarity",
+        "priority": 4,
+        "review_idx": 16,
+        "review_snippet": "In January of 2023, after a 26 year untarnished and successful career as a firefighter/paramedic and 12 years as an adjunct fire instructor, I was fal",
+        "severity_flag": true,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "the experience left a lot to be desired in terms of personal attention and empathy",
+        "ai_polarity": "negative",
+        "detail": "Deterministic matched severe phrase 'left a lot to be desired in terms of personal attention' for 'empathy_support'; AI only returned 'negative'. Potential missed severe pattern in AI output.",
+        "deterministic_phrase": "left a lot to be desired in terms of personal attention",
+        "deterministic_polarity": "severe_negative",
+        "disagreement_type": "missed_severe_phrase",
+        "priority": 4,
+        "review_idx": 19,
+        "review_snippet": "I felt like just a file number to Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention a",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "failed to provide value, transparency, or support",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'fee_value'. Det phrase: 'failed to provide value', AI evidence: 'failed to provide value, transparency, or support'",
+        "deterministic_phrase": "failed to provide value",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 4,
+        "review_snippet": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeare",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "I was billed for a consultation that I never knew wasn\u2019t free!",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'billing_transparency'. Det phrase: 'per hour rate', AI evidence: 'I was billed for a consultation that I never knew wasn\u2019t free!'",
+        "deterministic_phrase": "per hour rate",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Complete waste of money.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'fee_value' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 17,
+        "review_snippet": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was goin",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'complete waste of money' with negation=True, contrast=False. AI did not tag this theme \u2014 possible guard over-triggering.",
+        "deterministic_phrase": "complete waste of money",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 17,
+        "review_snippet": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was goin",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      }
+    ],
+    "missed_phrases": [
+      {
+        "count": 2,
+        "sample_evidence": [
+          "I was made aware of the per hour rate but not that the consultation was being billed!",
+          "Scott will give you the best case scenario and worst case scenario"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "Then they charged me $250!?",
+          "Complete waste of money."
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "Very polite staff! Would recommend!",
+          "Friendly staff."
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "you guys are the best!"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "many of which appeared inflated, before withdrawing from my case"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "I came out of the meeting without really knowing much more that what I had already googled."
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "he will actually give you his time for FREE over the phone!"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "It took 12 months to get it done and it nearly killed me."
+        ],
+        "theme": "timeliness_progress"
+      }
+    ],
+    "phrase_mining_candidates": [
+      {
+        "evidence_span": "you guys are the best!",
+        "normalised_span": "you guys are the best!",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "It was a fantastic experience working with the Baudin Law Group!! They are like family and still feel that way. Randy , Kelly and Myrna you guys are the best! We appreciate everything you guys did for"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "many of which appeared inflated, before withdrawing from my case",
+        "normalised_span": "many of which appeared inflated, before withdrawing from my case",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeared inflated, before withdrawing from my case withou"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "failed to provide value, transparency, or support",
+        "normalised_span": "failed to provide value, transparency, or support",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeared inflated, before withdrawing from my case withou"
+        ],
+        "source_types": [
+          "wrong_severity"
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "evidence_span": "I was billed for a consultation that I never knew wasn\u2019t free!",
+        "normalised_span": "i was billed for a consultation that i never knew wasn\u2019t free!",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+        ],
+        "source_types": [
+          "wrong_severity"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "I was made aware of the per hour rate but not that the consultation was being bi",
+        "normalised_span": "i was made aware of the per hour rate but not that the consultation was being bi",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "Then they charged me $250!?",
+        "normalised_span": "then they charged me $250!?",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "evidence_span": "I came out of the meeting without really knowing much more that what I had alrea",
+        "normalised_span": "i came out of the meeting without really knowing much more that what i had alrea",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "Very polite staff! Would recommend!",
+        "normalised_span": "very polite staff! would recommend!",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Very polite staff! Would recommend!"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "Scott will give you the best case scenario and worst case scenario",
+        "normalised_span": "scott will give you the best case scenario and worst case scenario",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually give you his time for FREE over the phone! Scott will"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "he will actually give you his time for FREE over the phone!",
+        "normalised_span": "he will actually give you his time for free over the phone!",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually give you his time for FREE over the phone! Scott will"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Friendly staff.",
+        "normalised_span": "friendly staff.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Friendly staff. Closed our house on here."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "It took 12 months to get it done and it nearly killed me.",
+        "normalised_span": "it took 12 months to get it done and it nearly killed me.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "4.5 Star Rating! The stars above did not give me that option. The short story is I hired Attorney Mehlos to help me fight a battery charge. The real story is Corey helped me through the worst year of "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "The passion, professionalism, determination, dedication and commitment...",
+        "normalised_span": "the passion, professionalism, determination, dedication and commitment...",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "In January of 2023, after a 26 year untarnished and successful career as a firefighter/paramedic and 12 years as an adjunct fire instructor, I was falsely accused, charged and arrested for 5 different"
+        ],
+        "source_types": [
+          "wrong_polarity"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "Complete waste of money.",
+        "normalised_span": "complete waste of money.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was going on. Complete waste of money."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "evidence_span": "the experience left a lot to be desired in terms of personal attention and empat",
+        "normalised_span": "the experience left a lot to be desired in terms of personal attention and empat",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I felt like just a file number to Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention and empathy."
+        ],
+        "source_types": [
+          "missed_severe_phrase"
+        ],
+        "theme": "empathy_support"
+      }
+    ],
+    "reviews_needing_inspection": [
+      {
+        "disagreement_types": [
+          "wrong_severity",
+          "missing_theme"
+        ],
+        "rating": 1,
+        "reasons": [
+          "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched."
+        ],
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeabl",
+        "severity_flag_count": 3
+      },
+      {
+        "disagreement_types": [
+          "wrong_polarity"
+        ],
+        "rating": 5,
+        "reasons": [
+          "Polarity conflict on 'professionalism_trust': det='severe_negative', ai='positive'. Det phrase: 'misconduct', AI evidence: 'The passion, professionalism, determination, dedication and commitment...'"
+        ],
+        "review_idx": 16,
+        "review_snippet": "In January of 2023, after a 26 year untarnished and successful career as a firefighter/paramedic and 12 years as an adjunct fire instructor, I was falsely accused, charged and arrested for 5 different",
+        "severity_flag_count": 1
+      },
+      {
+        "disagreement_types": [
+          "missed_severe_phrase"
+        ],
+        "rating": 2,
+        "reasons": [
+          "Deterministic matched severe phrase 'left a lot to be desired in terms of personal attention' for 'empathy_support'; AI only returned 'negative'. Potential missed severe pattern in AI output."
+        ],
+        "review_idx": 19,
+        "review_snippet": "I felt like just a file number to Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention and empathy.",
+        "severity_flag_count": 1
+      }
+    ],
+    "severe_mismatches": [
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 4,
+        "review_snippet": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in ",
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the co",
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the co",
+        "theme": "fee_value"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the co",
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_polarity": "positive",
+        "detail": "Polarity conflict on 'professionalism_trust': det='severe_negative', ai='positive'. Det phrase: 'misconduct', AI evidence: 'The passion, professionalism, determination, dedication and commitment...'",
+        "deterministic_phrase": "misconduct",
+        "deterministic_polarity": "severe_negative",
+        "disagreement_type": "wrong_polarity",
+        "rating": 5,
+        "review_idx": 16,
+        "review_snippet": "In January of 2023, after a 26 year untarnished and successful career as a firefighter/paramedic and 12 years as an adju",
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_polarity": "negative",
+        "detail": "Deterministic matched severe phrase 'left a lot to be desired in terms of personal attention' for 'empathy_support'; AI only returned 'negative'. Potential missed severe pattern in AI output.",
+        "deterministic_phrase": "left a lot to be desired in terms of personal attention",
+        "deterministic_polarity": "severe_negative",
+        "disagreement_type": "missed_severe_phrase",
+        "rating": 2,
+        "review_idx": 19,
+        "review_snippet": "I felt like just a file number to Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in",
+        "theme": "empathy_support"
+      }
+    ],
+    "summary": {
+      "agreement_rate": 0.45,
+      "ai_enabled_count": 20,
+      "ai_invalid_response_count": 0,
+      "ai_item_invalid_total": 0,
+      "ai_run_count": 20,
+      "total_disagreements": 20,
+      "total_reviews": 20,
+      "zero_disagreement_reviews": 9
+    },
+    "theme_disagreement_rates": {
+      "billing_transparency": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "communication_clarity": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "communication_responsiveness": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "empathy_support": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "expectation_setting": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "fee_value": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "office_staff_experience": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "outcome_satisfaction": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "professionalism_trust": {
+        "disagreement_count": 4,
+        "rate": 0.2
+      },
+      "timeliness_progress": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      }
+    },
+    "top_disagreements_by_priority": [
+      {
+        "ai_evidence_span": "many of which appeared inflated, before withdrawing from my case",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 4,
+        "review_snippet": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeare",
+        "severity_flag": true,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "I was made aware of the per hour rate but not that the consultation was being billed!",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": true,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Then they charged me $250!?",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": true,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "I came out of the meeting without really knowing much more that what I had already googled.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": true,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "The passion, professionalism, determination, dedication and commitment...",
+        "ai_polarity": "positive",
+        "detail": "Polarity conflict on 'professionalism_trust': det='severe_negative', ai='positive'. Det phrase: 'misconduct', AI evidence: 'The passion, professionalism, determination, dedication and commitment...'",
+        "deterministic_phrase": "misconduct",
+        "deterministic_polarity": "severe_negative",
+        "disagreement_type": "wrong_polarity",
+        "priority": 4,
+        "review_idx": 16,
+        "review_snippet": "In January of 2023, after a 26 year untarnished and successful career as a firefighter/paramedic and 12 years as an adjunct fire instructor, I was fal",
+        "severity_flag": true,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "the experience left a lot to be desired in terms of personal attention and empathy",
+        "ai_polarity": "negative",
+        "detail": "Deterministic matched severe phrase 'left a lot to be desired in terms of personal attention' for 'empathy_support'; AI only returned 'negative'. Potential missed severe pattern in AI output.",
+        "deterministic_phrase": "left a lot to be desired in terms of personal attention",
+        "deterministic_polarity": "severe_negative",
+        "disagreement_type": "missed_severe_phrase",
+        "priority": 4,
+        "review_idx": 19,
+        "review_snippet": "I felt like just a file number to Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention a",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "failed to provide value, transparency, or support",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'fee_value'. Det phrase: 'failed to provide value', AI evidence: 'failed to provide value, transparency, or support'",
+        "deterministic_phrase": "failed to provide value",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 4,
+        "review_snippet": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeare",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "I was billed for a consultation that I never knew wasn\u2019t free!",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'billing_transparency'. Det phrase: 'per hour rate', AI evidence: 'I was billed for a consultation that I never knew wasn\u2019t free!'",
+        "deterministic_phrase": "per hour rate",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 5,
+        "review_snippet": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! T",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Complete waste of money.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'fee_value' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 17,
+        "review_snippet": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was goin",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'complete waste of money' with negation=True, contrast=False. AI did not tag this theme \u2014 possible guard over-triggering.",
+        "deterministic_phrase": "complete waste of money",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 17,
+        "review_snippet": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was goin",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'got the job done'. AI did not tag this theme.",
+        "deterministic_phrase": "got the job done",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 9,
+        "review_snippet": "Got the job done and won so to speak",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'polite'. AI did not tag this theme.",
+        "deterministic_phrase": "polite",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 10,
+        "review_snippet": "Very polite staff! Would recommend!",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'expectation_setting' as 'positive' via phrase 'best case scenario'. AI did not tag this theme.",
+        "deterministic_phrase": "best case scenario",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 11,
+        "review_snippet": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually giv",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'negative' via phrase 'lied' but star rating prior is 'positive'. AI did not tag this theme \u2014 possible false positive.",
+        "deterministic_phrase": "lied",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_false_positive",
+        "priority": 2,
+        "review_idx": 15,
+        "review_snippet": "4.5 Star Rating! The stars above did not give me that option. The short story is I hired Attorney Mehlos to help me fight a battery charge. The real s",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "you guys are the best!",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 3,
+        "review_snippet": "It was a fantastic experience working with the Baudin Law Group!! They are like family and still feel that way. Randy , Kelly and Myrna you guys are t",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "Very polite staff! Would recommend!",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 10,
+        "review_snippet": "Very polite staff! Would recommend!",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "Scott will give you the best case scenario and worst case scenario",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 11,
+        "review_snippet": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually giv",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "he will actually give you his time for FREE over the phone!",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 11,
+        "review_snippet": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually giv",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Friendly staff.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 12,
+        "review_snippet": "Friendly staff. Closed our house on here.",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "It took 12 months to get it done and it nearly killed me.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "4.5 Star Rating! The stars above did not give me that option. The short story is I hired Attorney Mehlos to help me fight a battery charge. The real s",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      }
+    ]
+  },
+  "export_path": null,
+  "results": [
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.523,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Professional, likeable, accessible and honest",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 45,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 0.5,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 0.6,
+              "matched_phrase": "honest",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Professional, likeable, accessible and honest",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Professional, likeable, accessible and honest"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 0.831,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 26,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Don't know the outcome yet"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.003,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "after six weeks, nothing was completed at all.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "we were told that \u201cwe never gave a timeframe\u201d.",
+              "polarity": "negative",
+              "theme": "expectation_setting"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 326,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "never gave a timeframe",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026ed on. When we questioned the status, we were told that \u201cwe never gave a timeframe\u201d. We ended up going with a different\u2026",
+              "theme": "expectation_setting"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "nothing was completed",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026aperwork for our living will and trust and after six weeks, nothing was completed at all. After following up a month and\u2026",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "We submitted all of the paperwork for our living will and trust and after six weeks, nothing was completed at all. After following up a month and one half later, we found that nothing had been worked on. When we questioned the status, we were told that \u201cwe never gave a timeframe\u201d. We ended up going with a different provider."
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.627,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They are like family and still feel that way.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "you guys are the best!",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 212,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "like family",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026tic experience working with the Baudin Law Group!! They are like family and still feel that way. Randy , Kelly and Myrna\u2026",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "It was a fantastic experience working with the Baudin Law Group!! They are like family and still feel that way. Randy , Kelly and Myrna you guys are the best! We appreciate everything you guys did for our family."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "you guys are the best!",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.014,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "many of which appeared inflated, before withdrawing from my case",
+              "polarity": "severe_negative",
+              "theme": "billing_transparency"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "failed to provide value, transparency, or support",
+              "polarity": "severe_negative",
+              "theme": "fee_value"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "withdrawing from my case without achieving any meaningful progress",
+              "polarity": "severe_negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 566,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "failed to provide value",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026However, my experience with Dane was entirely different. He failed to provide value, transparency, or support. Based on\u2026",
+              "theme": "fee_value"
+            },
+            {
+              "base_polarity": "severe_negative",
+              "base_weight": 2.0,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 2.4,
+              "matched_phrase": "without achieving any meaningful progress",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "severe_negative",
+              "polarity": "severe_negative",
+              "sentence_snippet": "\u2026of which appeared inflated, before withdrawing from my case without achieving any meaningful progress. Dane\u2019s father, To\u2026",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "I hired Dane Loizzo as my third attorney during my divorce case. Within just three weeks, Dane racked up over $7,000 in charges, many of which appeared inflated, before withdrawing from my case without achieving any meaningful progress. Dane\u2019s father, Tom Loizzo, is a well-regarded attorney with a strong reputation, and my mother has worked with Tom for decades. However, my experience with Dane was entirely different. He failed to provide value, transparency, or support. Based on my experience, I would not recommend Dane Loizzo for any divorce-related matters."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "many of which appeared inflated, before withdrawing from my case",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "failed to provide value, transparency, or support",
+          "ai_polarity": "severe_negative",
+          "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'fee_value'. Det phrase: 'failed to provide value', AI evidence: 'failed to provide value, transparency, or support'",
+          "deterministic_phrase": "failed to provide value",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "wrong_severity",
+          "severity_flag": false,
+          "theme": "fee_value"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.907,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I was billed for a consultation that I never knew wasn\u2019t free!",
+              "polarity": "severe_negative",
+              "theme": "billing_transparency"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Then they charged me $250!?",
+              "polarity": "severe_negative",
+              "theme": "fee_value"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I was made aware of the per hour rate but not that the consultation was being billed!",
+              "polarity": "severe_negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I came out of the meeting without really knowing much more that what I had already googled.",
+              "polarity": "severe_negative",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 617,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "per hour rate",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026tion that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed\u2026",
+              "theme": "billing_transparency"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "I was billed for a consultation that I never knew wasn\u2019t free! I was made aware of the per hour rate but not that the consultation was being billed! The attorney I spoke with was not very knowledgeable and I came out of the meeting without really knowing much more that what I had already googled. Then they charged me $250!? I would be concerned what else they might charge for and not disclose. The other attorney in Burlington I met with was a FREE consultation and they actually provided me with additional information I never would have thought about! Go with the \u201cother\u201d attorney in Burlington not these people."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I was billed for a consultation that I never knew wasn\u2019t free!",
+          "ai_polarity": "severe_negative",
+          "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'billing_transparency'. Det phrase: 'per hour rate', AI evidence: 'I was billed for a consultation that I never knew wasn\u2019t free!'",
+          "deterministic_phrase": "per hour rate",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "wrong_severity",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "I was made aware of the per hour rate but not that the consultation was being billed!",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "Then they charged me $250!?",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'fee_value' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "fee_value"
+        },
+        {
+          "ai_evidence_span": "I came out of the meeting without really knowing much more that what I had already googled.",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 0.803,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 21,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Pleasure to work with"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.222,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They were always available for any questions/concerns we had and they responded very quickly.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "with ease and genuine concern.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "for expertise, vast legal knowledge, and for a commitment to their clientele that is rare to find today.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 492,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "always available",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026y step of the way, with ease and genuine concern. They were always available for any questions/concerns we had and they\u2026",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "with ease and genuine concern",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026at Law, LLC. Wynn at Law was with us every step of the way, with ease and genuine concern. They were always available fo\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "commitment to their clientele",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026Wynn at Law, for expertise, vast legal knowledge, and for a commitment to their clientele that is rare to find today.",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "My husband and I both sold and purchased a home simultaneously. We could not have navigated through the legal side of things without the help of Shannon Wynn and staff, at Wynn at Law, LLC. Wynn at Law was with us every step of the way, with ease and genuine concern. They were always available for any questions/concerns we had and they responded very quickly. We recommend Wynn at Law, for expertise, vast legal knowledge, and for a commitment to their clientele that is rare to find today."
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.376,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Very professional atmosphere if you need a lawyer",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 49,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "very professional",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Very professional atmosphere if you need a lawyer",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Very professional atmosphere if you need a lawyer"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 0.857,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 36,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "got the job done",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Got the job done and won so to speak",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Got the job done and won so to speak"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'got the job done'. AI did not tag this theme.",
+          "deterministic_phrase": "got the job done",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.462,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Very polite staff! Would recommend!",
+              "polarity": "positive",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 35,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "polite",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Very polite staff! Would recommend!",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Very polite staff! Would recommend!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Very polite staff! Would recommend!",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "office_staff_experience"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'polite'. AI did not tag this theme.",
+          "deterministic_phrase": "polite",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.913,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "he will actually give you his time for FREE over the phone!",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Scott will give you the best case scenario and worst case scenario",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Thanks Scott for being a good, honest, attorney!",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 441,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 0.5,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 0.6,
+              "matched_phrase": "honest",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026he phone and lay it all out. Thanks Scott for being a good, honest, attorney!",
+              "theme": "professionalism_trust"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "best case scenario",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026u his time for FREE over the phone! Scott will give you the best case scenario and worst case scenario without taking yo\u2026",
+              "theme": "expectation_setting"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "I don't know who left a 1 star for this guy! I had to retain Scott several years ago and recently referred someone to him because he will actually give you his time for FREE over the phone! Scott will give you the best case scenario and worst case scenario without taking your money! I myself and people I have referred have never actually had an attorney get on the phone and lay it all out. Thanks Scott for being a good, honest, attorney!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Scott will give you the best case scenario and worst case scenario",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "he will actually give you his time for FREE over the phone!",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'expectation_setting' as 'positive' via phrase 'best case scenario'. AI did not tag this theme.",
+          "deterministic_phrase": "best case scenario",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.318,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Friendly staff.",
+              "polarity": "positive",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 41,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Friendly staff. Closed our house on here."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Friendly staff.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "office_staff_experience"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.053,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 11,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Good advice"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 0.767,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 55,
+          "themes": []
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "Did not totally procure all evdence related to my case!"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.781,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Corey helped me through the worst year of my life.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "From day 1, Attorney Mehlos and I came up with a plan and continued to refine our strategy",
+              "polarity": "positive",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "It took 12 months to get it done and it nearly killed me.",
+              "polarity": "positive",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 1669,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 2.0,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 2.4,
+              "matched_phrase": "worst year of my life",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026ttery charge. The real story is Corey helped me through the worst year of my life. The short: I was being attacked and c\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 2.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 2.0,
+              "matched_phrase": "lied",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026. Unfortunately the other party was very mad and completely lied to the police and I was arrested. I was innocent and it\u2026",
+              "theme": "professionalism_trust"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "came up with a plan",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026ompletely out of context. From day 1, Attorney Mehlos and I came up with a plan and continued to refine our strategy unt\u2026",
+              "theme": "expectation_setting"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "4.5 Star Rating! The stars above did not give me that option. The short story is I hired Attorney Mehlos to help me fight a battery charge. The real story is Corey helped me through the worst year of my life. The short: I was being attacked and called the police. When they arrived I did not want the \"attacker\" arrested, because it was really just an argument that went to far and I was not injured. That being the case I did not say anything other than \"Thanks for coming. Everything is okay\". Unfortunately the other party was very mad and completely lied to the police and I was arrested. I was innocent and it was frustrating because they also too things that were said completely out of context. From day 1, Attorney Mehlos and I came up with a plan and continued to refine our strategy until the prosecutor dismissed the battery charge, before we were to go to trial. It took 12 months to get it done and it nearly killed me. Obviously there is a lot more to it, but I am not writting a book! LOL There was a lot of back and forth with the Prosecutor Assistant D.A. and the Judges. It was completely overwhelming at times to be an innocent man who has never been convicted of any crime and yet it seemed that everyone except Attorney Mehlos assumed I was guilty. It was comforting to know that Attorney Mehlos was confident and prepared to win at trial. The prosecutor eventually released knowing he\u2019d have a tough case. Yet on multiple occasions Attorney Mehlos told me to trust him and the result was exactly what he predicted. I highly recommend Attorney Mehlos for any criminal case. Sincerely, Jeff R. Brownell Owner & Operator TaskMasters Home Services LLC"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'negative' via phrase 'lied' but star rating prior is 'positive'. AI did not tag this theme \u2014 possible false positive.",
+          "deterministic_phrase": "lied",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "likely_false_positive",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        },
+        {
+          "ai_evidence_span": "It took 12 months to get it done and it nearly killed me.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.254,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "The passion, professionalism, determination, dedication and commitment...",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I was found not guilty and cleared overwhelmingly on all charges.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 1108,
+          "themes": [
+            {
+              "base_polarity": "severe_negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.5,
+              "matched_phrase": "misconduct",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "severe_negative",
+              "polarity": "severe_negative",
+              "sentence_snippet": "\u2026eanors ranging from 4th degree sexual assault of a child to misconduct in office. During the 5 days I spent in jail, my\u2026",
+              "theme": "professionalism_trust"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 2.0,
+              "confidence": "low",
+              "contrast_applied": false,
+              "final_impact": 2.0,
+              "matched_phrase": "not guilty",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026with an absolute domination in the court room. I was found not guilty and cleared overwhelmingly on all charges. This m\u2026",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "In January of 2023, after a 26 year untarnished and successful career as a firefighter/paramedic and 12 years as an adjunct fire instructor, I was falsely accused, charged and arrested for 5 different counts which consisted of both felonies and misdemeanors ranging from 4th degree sexual assault of a child to misconduct in office. During the 5 days I spent in jail, my wife received a recommendation to call attorney Corey Mehlos. That decision turned out to be the one that saved my life both literally and figuratively. The passion, professionalism, determination, dedication and commitment not just from Corey, but his entire staff is second to none. He never gave up on me or my family and after nearly 3 long years, his tireless work ended with an absolute domination in the court room. I was found not guilty and cleared overwhelmingly on all charges. This man is the absolute definition of what a defense attorney should be. He is truly fearless, and I wouldn\u2019t hesitate to recommend him to anyone and every one who finds themself in need of legal assistance. Casper Mehlos law firm is THE REAL DEAL"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "The passion, professionalism, determination, dedication and commitment...",
+          "ai_polarity": "positive",
+          "detail": "Polarity conflict on 'professionalism_trust': det='severe_negative', ai='positive'. Det phrase: 'misconduct', AI evidence: 'The passion, professionalism, determination, dedication and commitment...'",
+          "deterministic_phrase": "misconduct",
+          "deterministic_polarity": "severe_negative",
+          "disagreement_priority": 4,
+          "disagreement_type": "wrong_polarity",
+          "severity_flag": true,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.651,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Complete waste of money.",
+              "polarity": "negative",
+              "theme": "fee_value"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "My case was handed off to a junior associate who had no idea what was going on.",
+              "polarity": "severe_negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 180,
+          "themes": [
+            {
+              "base_polarity": "severe_negative",
+              "base_weight": 2.0,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 2.4,
+              "matched_phrase": "my case was handed off to a junior associate",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "severe_negative",
+              "polarity": "severe_negative",
+              "sentence_snippet": "\u2026etainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea\u2026",
+              "theme": "professionalism_trust"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 2.0,
+              "confidence": "low",
+              "contrast_applied": false,
+              "final_impact": 2.0,
+              "matched_phrase": "complete waste of money",
+              "multiplier": 1.0,
+              "negation_applied": true,
+              "phrase_family": "negative",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026ff to a junior associate who had no idea what was going on. Complete waste of money.",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "I paid a hefty retainer to Attorney Walsh and got almost nothing in return. My case was handed off to a junior associate who had no idea what was going on. Complete waste of money."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Complete waste of money.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'fee_value' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "fee_value"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'complete waste of money' with negation=True, contrast=False. AI did not tag this theme \u2014 possible guard over-triggering.",
+          "deterministic_phrase": "complete waste of money",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 3,
+          "disagreement_type": "likely_context_guard_failure",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.491,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Missed a critical filing deadline that tanked my case.",
+              "polarity": "severe_negative",
+              "theme": "timeliness_progress"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Zero accountability, zero apology.",
+              "polarity": "severe_negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 171,
+          "themes": [
+            {
+              "base_polarity": "severe_negative",
+              "base_weight": 2.0,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 2.4,
+              "matched_phrase": "made my situation significantly worse",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "severe_negative",
+              "polarity": "severe_negative",
+              "sentence_snippet": "Ms. Reyes cost me thousands of dollars and made my situation significantly worse. Missed a critical fil\u2026",
+              "theme": "professionalism_trust"
+            },
+            {
+              "base_polarity": "severe_negative",
+              "base_weight": 2.0,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 2.4,
+              "matched_phrase": "tanked my case",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "severe_negative",
+              "polarity": "severe_negative",
+              "sentence_snippet": "\u2026significantly worse. Missed a critical filing deadline that tanked my case. Zero accountability, zero apology.",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Ms. Reyes cost me thousands of dollars and made my situation significantly worse. Missed a critical filing deadline that tanked my case. Zero accountability, zero apology."
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.313,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "the experience left a lot to be desired in terms of personal attention and empathy",
+              "polarity": "negative",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 161,
+          "themes": [
+            {
+              "base_polarity": "severe_negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": true,
+              "final_impact": 1.8,
+              "matched_phrase": "left a lot to be desired in terms of personal attention",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "severe_negative",
+              "polarity": "severe_negative",
+              "sentence_snippet": "\u2026Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention and\u2026",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "I felt like just a file number to Attorney Davis. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention and empathy."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "the experience left a lot to be desired in terms of personal attention and empathy",
+          "ai_polarity": "negative",
+          "detail": "Deterministic matched severe phrase 'left a lot to be desired in terms of personal attention' for 'empathy_support'; AI only returned 'negative'. Potential missed severe pattern in AI output.",
+          "deterministic_phrase": "left a lot to be desired in terms of personal attention",
+          "deterministic_polarity": "severe_negative",
+          "disagreement_priority": 4,
+          "disagreement_type": "missed_severe_phrase",
+          "severity_flag": true,
+          "theme": "empathy_support"
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "total_reviews": 20
+}

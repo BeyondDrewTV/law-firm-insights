@@ -1,0 +1,1 @@
+The current OG/meta copy uses generic professional-services language and banned copy patterns; this revision proposes law-firm-specific, governance-framed alternatives for all visible meta content.

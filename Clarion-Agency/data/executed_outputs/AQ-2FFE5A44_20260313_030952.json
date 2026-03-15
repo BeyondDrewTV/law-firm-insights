@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. Email discovery did not find a public address for this firm. Find the address manually and re-queue, or skip this prospect.",
+  "firm_name": "Sisemore Law Firm",
+  "contact_target": "Justin Sisemore",
+  "subject": "Improving Client Communication at Sisemore Law Firm",
+  "body": "I've noticed a recurring theme around communication responsiveness in reviews for family law firms like yours. This can lead to client dissatisfaction and potential loss of business. Clarion specializes in transforming client feedback into actionable governance insights. Our weekly governance brief highlights these patterns and provides your leadership with clear action items to enhance client communication. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

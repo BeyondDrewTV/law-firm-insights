@@ -1,0 +1,1 @@
+Homepage meta copy uses generic professional-services language and banned copy patterns; revision targets law-firm-specific, proof-first positioning aligned with brand_qa.md and SO-003.

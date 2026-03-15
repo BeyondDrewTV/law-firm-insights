@@ -1,18 +1,24 @@
 """
 prospect_intelligence_agent.py
 Clarion Agent Office — Prospect Intelligence Agent
-Version: 2.0 | 2026-03-12
+Version: 3.0 | 2026-03-13
 
 Identifies 5–10 real, ICP-fit law firm prospects every run using public sources.
 Writes one prospect_target_list artifact to the approval queue per run.
 Runs before Outbound Sales so the sales agent has fresh, qualified targets.
 
-Artifact type: prospect_target_list
-Minimum output: 1 artifact containing >= 5 prospects per run.
+NEW in v3.0:
+  - Email discovery phase added AFTER LLM run.
+  - shared.email_discoverer fetches each firm's public pages and extracts
+    visible email addresses (mailto links, visible text).
+  - Never guesses or synthesizes emails — only uses what is explicitly in HTML.
+  - Each prospect now carries: recipient_email, recipient_email_source,
+    recipient_email_type ("partner" | "firm_general" | "not_found").
+  - Outbound Sales agent can read recipient_email directly from the payload.
+  - Email discovery is deterministic Python — LLM is not involved.
 
-Architecture note:
-  The LLM CANNOT call queue_item() directly. It emits QUEUE_JSON blocks in its
-  text output, and this Python runner parses those blocks and calls queue_item().
+Artifact type: prospect_target_list
+Minimum output: 1 artifact containing >= 3 prospects per run.
 """
 
 import sys
@@ -38,15 +44,50 @@ AGENT_TITLE = "Clarion Prospect Intelligence Agent"
 PROMPT_REL  = "agents/sales/prospect_intelligence_agent.md"
 
 MINIMUM_ARTIFACTS = 1
-MINIMUM_PROSPECTS = 5
+MINIMUM_PROSPECTS = 3   # minimum *verified* prospects (with evidence fields) required per run
+
+
+def _count_verified(prospects: list[dict]) -> int:
+    """Count prospects that have all required evidence fields populated."""
+    required = {"firm_website", "review_source_url", "review_count_observed",
+                "average_rating_observed", "evidence_note"}
+    verified = 0
+    for p in prospects:
+        if all(p.get(f) for f in required):
+            verified += 1
+    return verified
+
+
+def _validate_email_fields(prospects: list[dict]) -> list[dict]:
+    """
+    Ensure every prospect has the three email fields.
+    Clears any email value that doesn't contain '@' (catches names accidentally
+    placed in the email field by the LLM).
+    Sets email_type to 'not_found' when email is empty or invalid.
+    """
+    for p in prospects:
+        email = p.get("recipient_email", "")
+        if email and "@" not in email:
+            # LLM put a name instead of an address — clear it
+            p["recipient_email"]        = ""
+            p["recipient_email_source"] = ""
+            p["recipient_email_type"]   = "not_found"
+        elif not email:
+            p.setdefault("recipient_email",        "")
+            p.setdefault("recipient_email_source", "")
+            p.setdefault("recipient_email_type",   "not_found")
+    return prospects
 
 
 def _data_context() -> str:
+    """
+    Minimal context — agent_runner.py already injects product_truth + standing_orders.
+    Only send what's unique to prospect research.
+    """
     parts = []
     for label, path in [
         ("ICP Definition",            MEMORY / "icp_definition.md"),
         ("Lead Sources",              MEMORY / "lead_sources.md"),
-        ("Product Truth",             MEMORY / "product_truth.md"),
         ("Do Not Chase",              MEMORY / "do_not_chase.md"),
         ("Positioning Guardrails",    MEMORY / "positioning_guardrails.md"),
         ("Prelaunch Activation Mode", MEMORY / "prelaunch_activation_mode.md"),
@@ -152,12 +193,15 @@ def _synthesize_queue_item(prospects: list[dict], text: str) -> str | None:
 def _enforce_minimum(item_id: str | None, prospects: list) -> tuple[bool, str]:
     if not item_id:
         return False, "No prospect_target_list artifact was queued this run."
-    if len(prospects) < MINIMUM_PROSPECTS:
+    verified = _count_verified(prospects)
+    total = len(prospects)
+    if verified < MINIMUM_PROSPECTS:
         return False, (
-            f"Artifact queued but contains only {len(prospects)} prospects "
-            f"(minimum required: {MINIMUM_PROSPECTS})."
+            f"Artifact queued but only {verified}/{total} prospects have all required "
+            f"evidence fields (firm_website, review_source_url, review_count_observed, "
+            f"average_rating_observed, evidence_note). Minimum required: {MINIMUM_PROSPECTS} verified."
         )
-    return True, "OK"
+    return True, f"OK — {verified}/{total} verified prospects."
 
 
 def run() -> dict:
@@ -171,6 +215,12 @@ def run() -> dict:
         "enforcement_reason": "Agent did not complete.",
         "report_path": None,
         "synthesis_used": False,
+        "email_discovery": {
+            "partner_email_found": 0,
+            "firm_general_email_found": 0,
+            "not_found": 0,
+            "total": 0,
+        },
     }
 
     try:
@@ -206,12 +256,40 @@ def run() -> dict:
         all_items = _load_all()
         match = next((i for i in all_items if i["id"] == item_id), None)
         prospects = match.get("payload", {}).get("prospects", []) if match else []
+
+        # ── Email discovery phase ─────────────────────────────────────────────
+        # Runs on the Python side — deterministic, never fabricates.
+        # Enriches each prospect with recipient_email, recipient_email_source,
+        # recipient_email_type before the item is considered final.
+        print(f"  [ProspectIntel] Phase 2: email discovery for {len(prospects)} prospect(s)...")
+        try:
+            from shared.email_discoverer import enrich_prospects_with_emails
+            prospects = _validate_email_fields(prospects)
+            prospects, email_stats = enrich_prospects_with_emails(prospects)
+            result["email_discovery"] = email_stats
+            print(f"  [ProspectIntel] Email discovery: "
+                  f"{email_stats['partner_email_found']} partner, "
+                  f"{email_stats['firm_general_email_found']} firm-general, "
+                  f"{email_stats['not_found']} not found")
+
+            # Write enriched prospects back to the queued item
+            if match:
+                match["payload"]["prospects"] = prospects
+                from shared.queue_writer import _save as _save_queue
+                _save_queue(all_items)
+                print(f"  [ProspectIntel] Enriched payload saved back to queue item {item_id}")
+        except Exception as email_err:
+            print(f"  [ProspectIntel] Email discovery error (non-fatal): {email_err}")
+            import traceback as _tb
+            _tb.print_exc()
+
         result["prospect_count"] = len(prospects)
         passed, reason = _enforce_minimum(item_id, prospects)
         result["enforcement_passed"] = passed
         result["enforcement_reason"] = reason
+        result["verified_count"] = _count_verified(prospects)
         if passed:
-            print(f"  [ProspectIntel] OK {item_id} -- {len(prospects)} prospects queued.")
+            print(f"  [ProspectIntel] OK {item_id} -- {result['verified_count']}/{len(prospects)} verified prospects queued.")
         else:
             print(f"  [ProspectIntel] FAIL Enforcement: {reason}")
 
@@ -221,6 +299,18 @@ def run() -> dict:
         result["synthesis_used"] = True
         prospects = _extract_prospects_from_narrative(report_text)
         print(f"  [ProspectIntel] Narrative extraction found {len(prospects)} firm(s).")
+
+        # Email discovery on synthesized prospects too
+        if prospects:
+            print(f"  [ProspectIntel] Phase 2: email discovery for {len(prospects)} synthesized prospect(s)...")
+            try:
+                from shared.email_discoverer import enrich_prospects_with_emails
+                prospects = _validate_email_fields(prospects)
+                prospects, email_stats = enrich_prospects_with_emails(prospects)
+                result["email_discovery"] = email_stats
+            except Exception as email_err:
+                print(f"  [ProspectIntel] Email discovery error (non-fatal): {email_err}")
+
         item_id = _synthesize_queue_item(prospects, report_text)
         result["item_id"] = item_id
         result["prospect_count"] = len(prospects)

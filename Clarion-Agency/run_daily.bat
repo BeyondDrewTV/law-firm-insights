@@ -2,8 +2,8 @@
 cd /d "%~dp0"
 echo.
 echo ============================================================
-echo   Clarion Daily Run
-echo   Conversation Discovery + Competitive Intel + Comms
+echo   Clarion LEAN Office Run  (daily)
+echo   Prospect Intel -> Outbound -> Content -> Execution
 echo ============================================================
 echo.
 
@@ -16,8 +16,8 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo   Starting daily agents...
-echo   This takes 1-3 minutes.
+echo   Starting lean office run...
+echo   This takes 3-6 minutes (prospect discovery + outbound drafting + content).
 echo.
 
 python run_daily.py
@@ -32,11 +32,13 @@ if errorlevel 1 (
     echo.
     echo ============================================================
     echo   Done. Reports written to:
-    echo     reports\market\
-    echo     reports\comms\
+    echo     reports\sales\       (prospect intel + outreach drafts)
+    echo     reports\growth\      (content artifacts)
+    echo     data\publish_ready\ (content ready to post)
+    echo     memory\outbound_email_log.md  (send results)
     echo.
-    echo   Run run_clarion_agent_office.bat on Fridays for the
-    echo   full weekly brief with executive synthesis.
+    echo   For the full weekly synthesis (Chief of Staff, market intel):
+    echo     run_clarion_agent_office.bat --full-office
     echo ============================================================
 )
 

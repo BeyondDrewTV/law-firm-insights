@@ -16917,6 +16917,8 @@ def handle_csrf_error(error):
 # All normal browser/form routes and CSRF behaviour are unaffected.
 from routes.internal_benchmark import benchmark_bp
 app.register_blueprint(benchmark_bp)
+from routes.calibration_console import calibration_bp
+app.register_blueprint(calibration_bp)
 
 # ===== DEMO ANALYSIS ROUTE =====
 # Runs demo_reviews.csv through the real pipeline without authentication.
@@ -17112,6 +17114,7 @@ try:
 except Exception as _aq_err:
     app.logger.warning('approval_queue: failed to register: %s', _aq_err)
 csrf.exempt(benchmark_bp)
+csrf.exempt(calibration_bp)
 
 # ===== APPLICATION ENTRY POINT =====
 

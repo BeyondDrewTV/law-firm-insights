@@ -1,0 +1,1 @@
+Revise homepage headline and subheadline to name the managing partner buyer, the governance brief output, and the specific mechanism — replacing any generic SaaS framing.

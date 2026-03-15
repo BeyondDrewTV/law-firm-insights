@@ -1,0 +1,3725 @@
+{
+  "calibration_report": {
+    "candidate_negation_guards": [
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 1,
+            "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm.",
+            "theme": "professionalism_trust"
+          },
+          {
+            "det_polarity": "negative",
+            "rating": 1,
+            "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was ",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 2,
+        "phrase": "rude",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 2,
+            "review_snippet": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were very polite, they would never connect me to anyon",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "polite",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 2,
+            "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O",
+            "theme": "empathy_support"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "dismissive",
+        "themes_affected": [
+          "empathy_support"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 4,
+            "review_snippet": "I am giving this review 4 stars because things started off a little shaky. Overall it was a great experience. Robert Hoglund explained everything to me so I knew exactly what to expect from beginning ",
+            "theme": "outcome_satisfaction"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "would highly recommend",
+        "themes_affected": [
+          "outcome_satisfaction"
+        ]
+      }
+    ],
+    "candidate_phrase_additions": [
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Whenever I call I get attitude.",
+            "rating": 1,
+            "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+            "rating": 1,
+            "review_snippet": "Waste of time. Had me on hold 20 minutes to tell me they couldn\u2019t take my case, without even hearing what it was about."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "my assigned agent will never return my calls after several attempts",
+            "rating": 1,
+            "review_snippet": "Contacted Hoglund to help with disability case. They said they would. Took all my info and had me sign papers to retain them. I keep calling them to talk to my agent about my case. So far my assigned "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Matthew Harmoning was so rude over the phone.",
+            "rating": 1,
+            "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "You can\u2019t ever talk to an actual lawyer.",
+            "rating": 1,
+            "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+          }
+        ],
+        "occurrence_count": 12,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "is rude and has zero compassion for clients",
+            "rating": 1,
+            "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm."
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "They have no idea how to deal with a client that has anxiety",
+            "rating": 1,
+            "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issues that affect their memory and thought process. I "
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "blaming me for not coming in when that's what I wanted in the first place.",
+            "rating": 1,
+            "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was "
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "She audibly sighed for every question I asked and almost hung up on me",
+            "rating": 1,
+            "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I felt the lawyer I had didn't help me enough to have my back",
+            "rating": 2,
+            "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't help me enough to have my back in everything and to"
+          }
+        ],
+        "occurrence_count": 9,
+        "theme": "empathy_support"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "They have no answers for why it is taking this long.",
+            "rating": 1,
+            "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I was rudely accused of not saying anything like that over the phone",
+            "rating": 1,
+            "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+            "rating": 1,
+            "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things.",
+            "rating": 1,
+            "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when we did he was very rushed. The communication from "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "My case manager barely explained things",
+            "rating": 2,
+            "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+          }
+        ],
+        "occurrence_count": 6,
+        "theme": "communication_clarity"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work.",
+            "rating": 1,
+            "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when we did he was very rushed. The communication from "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "told me 'You were the one that came to us late'",
+            "rating": 2,
+            "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "he said he understood, would file charges, and would be willing to go to court.",
+            "rating": 2,
+            "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "I knew exactly what to expect from beginning to end",
+            "rating": 4,
+            "review_snippet": "I am giving this review 4 stars because things started off a little shaky. Overall it was a great experience. Robert Hoglund explained everything to me so I knew exactly what to expect from beginning "
+          }
+        ],
+        "occurrence_count": 4,
+        "theme": "expectation_setting"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "to this day years later I still have problems from the accident",
+            "rating": 2,
+            "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't help me enough to have my back in everything and to"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Mediation failed.",
+            "rating": 2,
+            "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "They assisted me with my case and got me all the help to recover from my accident.",
+            "rating": 4,
+            "review_snippet": "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case and got me all the help to recover from my accident."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "In the end I received a fair settlement.",
+            "rating": 4,
+            "review_snippet": "I was involved in an auto accident with my wife. I can be difficult to deal with, but Shannon Carey handled it with grace and patience. In the end I received a fair settlement."
+          }
+        ],
+        "occurrence_count": 4,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "this law firm cares about money and not their client",
+            "rating": 1,
+            "review_snippet": "They have a review screening for checking to see what cases are easy wins and which require them to actually work. I was turned down based on a fraction of the total information. In my opinion this la"
+          },
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "I will probably need another lawyer to get me out of my contract",
+            "rating": 1,
+            "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issues that affect their memory and thought process. I "
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Peter Riley and his secretary and assistant are awesome.",
+            "rating": 4,
+            "review_snippet": "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case and got me all the help to recover from my accident."
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "professionalism_trust"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "Complete attitude every call",
+            "rating": 1,
+            "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm."
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "office_staff_experience"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "severe_negative",
+            "evidence_span": "Over two years and still waiting!!!",
+            "rating": 1,
+            "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "timeliness_progress"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I'm still going to be charged if I ever get approved for my disability claim.",
+            "rating": 2,
+            "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "billing_transparency"
+      }
+    ],
+    "context_guard_failures": [
+      {
+        "ai_polarity": "positive",
+        "detail": "Deterministic flipped polarity on 'timeliness_progress' to 'negative' (negation=True, contrast=False) via phrase 'timely', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+        "deterministic_phrase": "timely",
+        "deterministic_polarity": "negative",
+        "rating": 4,
+        "review_idx": 15,
+        "review_snippet": "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less",
+        "theme": "timeliness_progress"
+      }
+    ],
+    "disagreement_by_theme": {
+      "billing_transparency": 1,
+      "communication_clarity": 6,
+      "communication_responsiveness": 12,
+      "empathy_support": 10,
+      "expectation_setting": 4,
+      "office_staff_experience": 1,
+      "outcome_satisfaction": 5,
+      "professionalism_trust": 8,
+      "timeliness_progress": 2
+    },
+    "disagreement_by_type": {
+      "extra_theme": 4,
+      "likely_context_guard_failure": 1,
+      "likely_false_positive": 1,
+      "missing_theme": 41,
+      "wrong_severity": 2
+    },
+    "false_positive_themes": [
+      {
+        "count": 3,
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 1,
+        "theme": "empathy_support"
+      },
+      {
+        "count": 1,
+        "theme": "outcome_satisfaction"
+      }
+    ],
+    "manual_review_queue": [
+      {
+        "ai_evidence_span": "is rude and has zero compassion for clients",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every ",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Complete attitude every call",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every ",
+        "severity_flag": true,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "this law firm cares about money and not their client",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 1,
+        "review_snippet": "They have a review screening for checking to see what cases are easy wins and which require them to actually work. I was turned down based on a fracti",
+        "severity_flag": true,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "Over two years and still waiting!!!",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it",
+        "severity_flag": true,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "They have no idea how to deal with a client that has anxiety",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issue",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "I will probably need another lawyer to get me out of my contract",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issue",
+        "severity_flag": true,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "blaming me for not coming in when that's what I wanted in the first place.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "She audibly sighed for every question I asked and almost hung up on me",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when ",
+        "severity_flag": true,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "to this day years later I still have problems from the accident",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 10,
+        "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't h",
+        "severity_flag": true,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "They have no answers for why it is taking this long.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Whenever I call I get attitude.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 3,
+        "review_snippet": "Waste of time. Had me on hold 20 minutes to tell me they couldn\u2019t take my case, without even hearing what it was about.",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "my assigned agent will never return my calls after several attempts",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 4,
+        "review_snippet": "Contacted Hoglund to help with disability case. They said they would. Took all my info and had me sign papers to retain them. I keep calling them to t",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "I was rudely accused of not saying anything like that over the phone",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Matthew Harmoning was so rude over the phone.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "You can\u2019t ever talk to an actual lawyer.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Horrible experience.",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'professionalism_trust'. Det phrase: 'rude', AI evidence: 'Horrible experience.'",
+        "deterministic_phrase": "rude",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "will not answer simple questions",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 8,
+        "review_snippet": "Just demands money, will not answer simple questions. Aaron specifically was unprofessional. Did not offer to find someone to answer any questions. Wa",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "We barely had communication with him and when we did he was very rushed.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when ",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "I felt the lawyer I had didn't help me enough to have my back",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't h",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "other than that you are dead to them.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "They only help if they can find money in your case; other than that you are dead to them.",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "I'm still going to be charged if I ever get approved for my disability claim.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "My case manager barely explained things",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I was the only one making the main calls to check up on my claim.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "told me 'You were the one that came to us late'",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "I did not know who was representing me on the final hearing until 1\u20132 weeks before.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 13,
+        "review_snippet": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I would leave messages that were not returned sometimes for several days.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 13,
+        "review_snippet": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "months of near silence passed.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "he said he understood, would file charges, and would be willing to go to court.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "Mediation failed.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "he addressed me by my deceased son\u2019s name, twice.",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'professionalism_trust'. Det phrase: 'arrogant', AI evidence: 'he addressed me by my deceased son\u2019s name, twice.'",
+        "deterministic_phrase": "arrogant",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "in a very timely manner, and got me a settlement in less than the time",
+        "ai_polarity": "positive",
+        "detail": "Deterministic flipped polarity on 'timeliness_progress' to 'negative' (negation=True, contrast=False) via phrase 'timely', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+        "deterministic_phrase": "timely",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      }
+    ],
+    "missed_phrases": [
+      {
+        "count": 12,
+        "sample_evidence": [
+          "Whenever I call I get attitude.",
+          "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+          "my assigned agent will never return my calls after several attempts",
+          "Matthew Harmoning was so rude over the phone.",
+          "You can\u2019t ever talk to an actual lawyer."
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "count": 9,
+        "sample_evidence": [
+          "is rude and has zero compassion for clients",
+          "They have no idea how to deal with a client that has anxiety",
+          "blaming me for not coming in when that's what I wanted in the first place.",
+          "She audibly sighed for every question I asked and almost hung up on me",
+          "I felt the lawyer I had didn't help me enough to have my back"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "count": 6,
+        "sample_evidence": [
+          "They have no answers for why it is taking this long.",
+          "I was rudely accused of not saying anything like that over the phone",
+          "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+          "Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things.",
+          "My case manager barely explained things"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "count": 4,
+        "sample_evidence": [
+          "I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work.",
+          "told me 'You were the one that came to us late'",
+          "he said he understood, would file charges, and would be willing to go to court.",
+          "I knew exactly what to expect from beginning to end"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "count": 4,
+        "sample_evidence": [
+          "to this day years later I still have problems from the accident",
+          "Mediation failed.",
+          "They assisted me with my case and got me all the help to recover from my accident.",
+          "In the end I received a fair settlement."
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "this law firm cares about money and not their client",
+          "I will probably need another lawyer to get me out of my contract",
+          "Peter Riley and his secretary and assistant are awesome."
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "Complete attitude every call"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "Over two years and still waiting!!!"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "I'm still going to be charged if I ever get approved for my disability claim."
+        ],
+        "theme": "billing_transparency"
+      }
+    ],
+    "phrase_mining_candidates": [
+      {
+        "evidence_span": "is rude and has zero compassion for clients",
+        "normalised_span": "is rude and has zero compassion for clients",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "Complete attitude every call",
+        "normalised_span": "complete attitude every call",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "this law firm cares about money and not their client",
+        "normalised_span": "this law firm cares about money and not their client",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "They have a review screening for checking to see what cases are easy wins and which require them to actually work. I was turned down based on a fraction of the total information. In my opinion this la"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "They have no answers for why it is taking this long.",
+        "normalised_span": "they have no answers for why it is taking this long.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "Whenever I call I get attitude.",
+        "normalised_span": "whenever i call i get attitude.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Over two years and still waiting!!!",
+        "normalised_span": "over two years and still waiting!!!",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+        "normalised_span": "had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Waste of time. Had me on hold 20 minutes to tell me they couldn\u2019t take my case, without even hearing what it was about."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "my assigned agent will never return my calls after several attempts",
+        "normalised_span": "my assigned agent will never return my calls after several attempts",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Contacted Hoglund to help with disability case. They said they would. Took all my info and had me sign papers to retain them. I keep calling them to talk to my agent about my case. So far my assigned "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "They have no idea how to deal with a client that has anxiety",
+        "normalised_span": "they have no idea how to deal with a client that has anxiety",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issues that affect their memory and thought process. I "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "I will probably need another lawyer to get me out of my contract",
+        "normalised_span": "i will probably need another lawyer to get me out of my contract",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issues that affect their memory and thought process. I "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "I was rudely accused of not saying anything like that over the phone",
+        "normalised_span": "i was rudely accused of not saying anything like that over the phone",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "Matthew Harmoning was so rude over the phone.",
+        "normalised_span": "matthew harmoning was so rude over the phone.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "blaming me for not coming in when that's what I wanted in the first place.",
+        "normalised_span": "blaming me for not coming in when that's what i wanted in the first place.",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+        "normalised_span": "i spoke with her a total of 2 times in 6 weeks because i had a few questions",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "You can\u2019t ever talk to an actual lawyer.",
+        "normalised_span": "you can\u2019t ever talk to an actual lawyer.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "She audibly sighed for every question I asked and almost hung up on me",
+        "normalised_span": "she audibly sighed for every question i asked and almost hung up on me",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "Horrible experience.",
+        "normalised_span": "horrible experience.",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 week"
+        ],
+        "source_types": [
+          "wrong_severity"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "will not answer simple questions",
+        "normalised_span": "will not answer simple questions",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Just demands money, will not answer simple questions. Aaron specifically was unprofessional. Did not offer to find someone to answer any questions. Was not asking for legal advice, just had questions."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Everything with our case was changing all the time. We had no idea what was goin",
+        "normalised_span": "everything with our case was changing all the time. we had no idea what was goin",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when we did he was very rushed. The communication from "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "We barely had communication with him and when we did he was very rushed.",
+        "normalised_span": "we barely had communication with him and when we did he was very rushed.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when we did he was very rushed. The communication from "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "I'm not even sure what we paid for because I felt like I was always the one call",
+        "normalised_span": "i'm not even sure what we paid for because i felt like i was always the one call",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when we did he was very rushed. The communication from "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "I felt the lawyer I had didn't help me enough to have my back",
+        "normalised_span": "i felt the lawyer i had didn't help me enough to have my back",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't help me enough to have my back in everything and to"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "to this day years later I still have problems from the accident",
+        "normalised_span": "to this day years later i still have problems from the accident",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't help me enough to have my back in everything and to"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "other than that you are dead to them.",
+        "normalised_span": "other than that you are dead to them.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "They only help if they can find money in your case; other than that you are dead to them."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "I'm still going to be charged if I ever get approved for my disability claim.",
+        "normalised_span": "i'm still going to be charged if i ever get approved for my disability claim.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "My case manager barely explained things",
+        "normalised_span": "my case manager barely explained things",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "I was the only one making the main calls to check up on my claim.",
+        "normalised_span": "i was the only one making the main calls to check up on my claim.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "told me 'You were the one that came to us late'",
+        "normalised_span": "told me 'you were the one that came to us late'",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "I did not know who was representing me on the final hearing until 1\u20132 weeks befo",
+        "normalised_span": "i did not know who was representing me on the final hearing until 1\u20132 weeks befo",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were very polite, they would never connect me to anyon"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "I would leave messages that were not returned sometimes for several days.",
+        "normalised_span": "i would leave messages that were not returned sometimes for several days.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were very polite, they would never connect me to anyon"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "months of near silence passed.",
+        "normalised_span": "months of near silence passed.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "he said he understood, would file charges, and would be willing to go to court.",
+        "normalised_span": "he said he understood, would file charges, and would be willing to go to court.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "Mediation failed.",
+        "normalised_span": "mediation failed.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "he addressed me by my deceased son\u2019s name, twice.",
+        "normalised_span": "he addressed me by my deceased son\u2019s name, twice.",
+        "occurrence_count": 1,
+        "polarity": "severe_negative",
+        "sample_review_snippets": [
+          "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. O"
+        ],
+        "source_types": [
+          "wrong_severity"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "She took the time to answer my questions as the case was progressing",
+        "normalised_span": "she took the time to answer my questions as the case was progressing",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed to take. She took the time to answer my questions"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "is extremely friendly and likeable",
+        "normalised_span": "is extremely friendly and likeable",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed to take. She took the time to answer my questions"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "I was at my very bottom and my world had turned upside down.",
+        "normalised_span": "i was at my very bottom and my world had turned upside down.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case and got me all the help to recover from my accident."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "They assisted me with my case and got me all the help to recover from my acciden",
+        "normalised_span": "they assisted me with my case and got me all the help to recover from my acciden",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case and got me all the help to recover from my accident."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "Peter Riley and his secretary and assistant are awesome.",
+        "normalised_span": "peter riley and his secretary and assistant are awesome.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case and got me all the help to recover from my accident."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "always helped me with all my questions",
+        "normalised_span": "always helped me with all my questions",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Kojo was very pleasant to work with, and always helped me with all my questions."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Shannon Carey handled it with grace and patience.",
+        "normalised_span": "shannon carey handled it with grace and patience.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I was involved in an auto accident with my wife. I can be difficult to deal with, but Shannon Carey handled it with grace and patience. In the end I received a fair settlement."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "In the end I received a fair settlement.",
+        "normalised_span": "in the end i received a fair settlement.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I was involved in an auto accident with my wife. I can be difficult to deal with, but Shannon Carey handled it with grace and patience. In the end I received a fair settlement."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "I knew exactly what to expect from beginning to end",
+        "normalised_span": "i knew exactly what to expect from beginning to end",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I am giving this review 4 stars because things started off a little shaky. Overall it was a great experience. Robert Hoglund explained everything to me so I knew exactly what to expect from beginning "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      }
+    ],
+    "reviews_needing_inspection": [
+      {
+        "disagreement_types": [
+          "extra_theme",
+          "missing_theme"
+        ],
+        "rating": 1,
+        "reasons": [
+          "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "AI tagged 'office_staff_experience' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched."
+        ],
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm.",
+        "severity_flag_count": 2
+      },
+      {
+        "disagreement_types": [
+          "missing_theme"
+        ],
+        "rating": 1,
+        "reasons": [
+          "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched."
+        ],
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issues that affect their memory and thought process. I ",
+        "severity_flag_count": 2
+      }
+    ],
+    "severe_mismatches": [
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going thr",
+        "theme": "empathy_support"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going thr",
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 1,
+        "review_snippet": "They have a review screening for checking to see what cases are easy wins and which require them to actually work. I was",
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. T",
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client th",
+        "theme": "empathy_support"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client th",
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with adminis",
+        "theme": "empathy_support"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case",
+        "theme": "empathy_support"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 1,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had co",
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "rating": 2,
+        "review_idx": 10,
+        "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I ",
+        "theme": "outcome_satisfaction"
+      }
+    ],
+    "summary": {
+      "agreement_rate": 0.0,
+      "ai_enabled_count": 20,
+      "ai_invalid_response_count": 0,
+      "ai_item_invalid_total": 0,
+      "ai_run_count": 20,
+      "total_disagreements": 49,
+      "total_reviews": 20,
+      "zero_disagreement_reviews": 0
+    },
+    "theme_disagreement_rates": {
+      "billing_transparency": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "communication_clarity": {
+        "disagreement_count": 6,
+        "rate": 0.3
+      },
+      "communication_responsiveness": {
+        "disagreement_count": 12,
+        "rate": 0.6
+      },
+      "empathy_support": {
+        "disagreement_count": 10,
+        "rate": 0.5
+      },
+      "expectation_setting": {
+        "disagreement_count": 4,
+        "rate": 0.2
+      },
+      "office_staff_experience": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "outcome_satisfaction": {
+        "disagreement_count": 5,
+        "rate": 0.25
+      },
+      "professionalism_trust": {
+        "disagreement_count": 8,
+        "rate": 0.4
+      },
+      "timeliness_progress": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      }
+    },
+    "top_disagreements_by_priority": [
+      {
+        "ai_evidence_span": "is rude and has zero compassion for clients",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every ",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Complete attitude every call",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every ",
+        "severity_flag": true,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "this law firm cares about money and not their client",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 1,
+        "review_snippet": "They have a review screening for checking to see what cases are easy wins and which require them to actually work. I was turned down based on a fracti",
+        "severity_flag": true,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "Over two years and still waiting!!!",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it",
+        "severity_flag": true,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "They have no idea how to deal with a client that has anxiety",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issue",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "I will probably need another lawyer to get me out of my contract",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 5,
+        "review_snippet": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issue",
+        "severity_flag": true,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "blaming me for not coming in when that's what I wanted in the first place.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "She audibly sighed for every question I asked and almost hung up on me",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": true,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things.",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when ",
+        "severity_flag": true,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "to this day years later I still have problems from the accident",
+        "ai_polarity": "severe_negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 4,
+        "review_idx": 10,
+        "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't h",
+        "severity_flag": true,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "They have no answers for why it is taking this long.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Whenever I call I get attitude.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 2,
+        "review_snippet": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 3,
+        "review_snippet": "Waste of time. Had me on hold 20 minutes to tell me they couldn\u2019t take my case, without even hearing what it was about.",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "my assigned agent will never return my calls after several attempts",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 4,
+        "review_snippet": "Contacted Hoglund to help with disability case. They said they would. Took all my info and had me sign papers to retain them. I keep calling them to t",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "I was rudely accused of not saying anything like that over the phone",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Matthew Harmoning was so rude over the phone.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "You can\u2019t ever talk to an actual lawyer.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Horrible experience.",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'professionalism_trust'. Det phrase: 'rude', AI evidence: 'Horrible experience.'",
+        "deterministic_phrase": "rude",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 7,
+        "review_snippet": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case mana",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "will not answer simple questions",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 8,
+        "review_snippet": "Just demands money, will not answer simple questions. Aaron specifically was unprofessional. Did not offer to find someone to answer any questions. Wa",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "We barely had communication with him and when we did he was very rushed.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when ",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "I felt the lawyer I had didn't help me enough to have my back",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't h",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "other than that you are dead to them.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "They only help if they can find money in your case; other than that you are dead to them.",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "I'm still going to be charged if I ever get approved for my disability claim.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "My case manager barely explained things",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I was the only one making the main calls to check up on my claim.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "told me 'You were the one that came to us late'",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadl",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "I did not know who was representing me on the final hearing until 1\u20132 weeks before.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 13,
+        "review_snippet": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I would leave messages that were not returned sometimes for several days.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 13,
+        "review_snippet": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "months of near silence passed.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "he said he understood, would file charges, and would be willing to go to court.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "Mediation failed.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "he addressed me by my deceased son\u2019s name, twice.",
+        "ai_polarity": "severe_negative",
+        "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'professionalism_trust'. Det phrase: 'arrogant', AI evidence: 'he addressed me by my deceased son\u2019s name, twice.'",
+        "deterministic_phrase": "arrogant",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_severity",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "in a very timely manner, and got me a settlement in less than the time",
+        "ai_polarity": "positive",
+        "detail": "Deterministic flipped polarity on 'timeliness_progress' to 'negative' (negation=True, contrast=False) via phrase 'timely', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+        "deterministic_phrase": "timely",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'negative' via phrase 'rude'. AI did not tag this theme.",
+        "deterministic_phrase": "rude",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 0,
+        "review_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every ",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'negative' via phrase 'rude'. AI did not tag this theme.",
+        "deterministic_phrase": "rude",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 6,
+        "review_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'polite' but star rating prior is 'negative'. AI did not tag this theme \u2014 possible false positive.",
+        "deterministic_phrase": "polite",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "likely_false_positive",
+        "priority": 2,
+        "review_idx": 13,
+        "review_snippet": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'empathy_support' as 'negative' via phrase 'dismissive'. AI did not tag this theme.",
+        "deterministic_phrase": "dismissive",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 14,
+        "review_snippet": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'would highly recommend'. AI did not tag this theme.",
+        "deterministic_phrase": "would highly recommend",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 19,
+        "review_snippet": "I am giving this review 4 stars because things started off a little shaky. Overall it was a great experience. Robert Hoglund explained everything to m",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "She took the time to answer my questions as the case was progressing",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "is extremely friendly and likeable",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "I was at my very bottom and my world had turned upside down.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case an",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "They assisted me with my case and got me all the help to recover from my accident.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case an",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "Peter Riley and his secretary and assistant are awesome.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case an",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "always helped me with all my questions",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 17,
+        "review_snippet": "Kojo was very pleasant to work with, and always helped me with all my questions.",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Shannon Carey handled it with grace and patience.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 18,
+        "review_snippet": "I was involved in an auto accident with my wife. I can be difficult to deal with, but Shannon Carey handled it with grace and patience. In the end I r",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "In the end I received a fair settlement.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 18,
+        "review_snippet": "I was involved in an auto accident with my wife. I can be difficult to deal with, but Shannon Carey handled it with grace and patience. In the end I r",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "I knew exactly what to expect from beginning to end",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 19,
+        "review_snippet": "I am giving this review 4 stars because things started off a little shaky. Overall it was a great experience. Robert Hoglund explained everything to m",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      }
+    ]
+  },
+  "export_path": null,
+  "results": [
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.527,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "is rude and has zero compassion for clients",
+              "polarity": "severe_negative",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Complete attitude every call",
+              "polarity": "severe_negative",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 185,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "rude",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are g\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Keri Dennis, one of the staff who returns calls, is rude and has zero compassion for clients and what they are going through. Complete attitude every call. I do not recommend this firm."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "is rude and has zero compassion for clients",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "Complete attitude every call",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "office_staff_experience"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'negative' via phrase 'rude'. AI did not tag this theme.",
+          "deterministic_phrase": "rude",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.28,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "this law firm cares about money and not their client",
+              "polarity": "severe_negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 292,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "They have a review screening for checking to see what cases are easy wins and which require them to actually work. I was turned down based on a fraction of the total information. In my opinion this law firm cares about money and not their client. I would use caution when doing business here."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "this law firm cares about money and not their client",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.085,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Whenever I call I get attitude.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Over two years and still waiting!!!",
+              "polarity": "severe_negative",
+              "theme": "timeliness_progress"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "They have no answers for why it is taking this long.",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 301,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Over two years and still waiting!!! I have not received any information about my case. Whenever I call I get attitude. They have no answers for why it is taking this long. They have no knowledge about anything when I call to ask about my case. This has been 2+ years and still have not heard anything."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "They have no answers for why it is taking this long.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "Whenever I call I get attitude.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "Over two years and still waiting!!!",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.155,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 119,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Waste of time. Had me on hold 20 minutes to tell me they couldn\u2019t take my case, without even hearing what it was about."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Had me on hold 20 minutes to tell me they couldn\u2019t take my case",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.386,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "my assigned agent will never return my calls after several attempts",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 256,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Contacted Hoglund to help with disability case. They said they would. Took all my info and had me sign papers to retain them. I keep calling them to talk to my agent about my case. So far my assigned agent will never return my calls after several attempts."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "my assigned agent will never return my calls after several attempts",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.578,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They have no idea how to deal with a client that has anxiety",
+              "polarity": "severe_negative",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I will probably need another lawyer to get me out of my contract",
+              "polarity": "severe_negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 611,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Everyone involved with this law firm could use some sensitivity training. They have no idea how to deal with a client that has anxiety and brain issues that affect their memory and thought process. I will probably need another lawyer to get me out of my contract with them now since I no longer want to work with them. I didn't even get through 5 minutes of the intake process without getting completely frustrated and was nearly in tears due to the guy's lack of consideration for my issues that caused me to apply for disability benefits. I do not recommend this firm to anyone who has similar issues to mine."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "They have no idea how to deal with a client that has anxiety",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "I will probably need another lawyer to get me out of my contract",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.794,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Matthew Harmoning was so rude over the phone.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I was rudely accused of not saying anything like that over the phone",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "blaming me for not coming in when that's what I wanted in the first place.",
+              "polarity": "severe_negative",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 603,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "rude",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speakin\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Absolutely horrible. Matthew Harmoning was so rude over the phone. I had set up an appointment and speaking with administration said I have a piece of paper that I would like to show in person. I was told that most appointments were done over the phone and it wasn't necessary. It was also talked about me not missing work to come in. So I agreed to a phone appointment. Then I was rudely accused of not saying anything like that over the phone, blaming me for not coming in when that's what I wanted in the first place. Then said I couldn't listen to the recording. I would give zero stars if possible."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I was rudely accused of not saying anything like that over the phone",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "Matthew Harmoning was so rude over the phone.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "blaming me for not coming in when that's what I wanted in the first place.",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'negative' via phrase 'rude'. AI did not tag this theme.",
+          "deterministic_phrase": "rude",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.527,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "You can\u2019t ever talk to an actual lawyer.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "She audibly sighed for every question I asked and almost hung up on me",
+              "polarity": "severe_negative",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Horrible experience.",
+              "polarity": "severe_negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 697,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "rude",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026people had good experiences? And I can call and talk to the rude person that tries to hang up on me during our conversat\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Worst experience I\u2019ve had with a law firm. You can\u2019t ever talk to an actual lawyer. A paralegal is assigned to your case. Keri Dennis was my case manager. I spoke with her a total of 2 times in 6 weeks because I had a few questions about the process. She audibly sighed for every question I asked and almost hung up on me during both conversations because she had more important things to do than answer my questions about the disability process and my case. Horrible experience.\n\nThen you responded to my complaint by saying other people had good experiences? And I can call and talk to the rude person that tries to hang up on me during our conversations if I have concerns? How is that helpful?"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I spoke with her a total of 2 times in 6 weeks because I had a few questions",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "You can\u2019t ever talk to an actual lawyer.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "She audibly sighed for every question I asked and almost hung up on me",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "Horrible experience.",
+          "ai_polarity": "severe_negative",
+          "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'professionalism_trust'. Det phrase: 'rude', AI evidence: 'Horrible experience.'",
+          "deterministic_phrase": "rude",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "wrong_severity",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.696,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "will not answer simple questions",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Aaron specifically was unprofessional",
+              "polarity": "negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 200,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "unprofessional",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026y, will not answer simple questions. Aaron specifically was unprofessional. Did not offer to find someone to answer any\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Just demands money, will not answer simple questions. Aaron specifically was unprofessional. Did not offer to find someone to answer any questions. Was not asking for legal advice, just had questions."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "will not answer simple questions",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.521,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "We barely had communication with him and when we did he was very rushed.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things.",
+              "polarity": "severe_negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work.",
+              "polarity": "negative",
+              "theme": "expectation_setting"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 560,
+          "themes": []
+        },
+        "rating": 1,
+        "review_date": "2025-01-01",
+        "review_text": "Horrible. If you are thinking about going with them, don't! Our lawyer was even Robert Hogland himself. We barely had communication with him and when we did he was very rushed. The communication from his staff was by far the worst. Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things. I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work. I absolutely hated our entire experience. Save yourself and go somewhere else."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Everything with our case was changing all the time. We had no idea what was going on and we were told multiple different things.",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "We barely had communication with him and when we did he was very rushed.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "I'm not even sure what we paid for because I felt like I was always the one calling and having to do the follow up work.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.018,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I felt the lawyer I had didn't help me enough to have my back",
+              "polarity": "negative",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "to this day years later I still have problems from the accident",
+              "polarity": "severe_negative",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 333,
+          "themes": []
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "Was in a car accident and had Meshbesher. I had no idea how to handle this situation after what happened to me. Sadly I felt the lawyer I had didn't help me enough to have my back in everything and to this day years later I still have problems from the accident. It seems like it was a case where it wasn't worth the time to help me."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I felt the lawyer I had didn't help me enough to have my back",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "to this day years later I still have problems from the accident",
+          "ai_polarity": "severe_negative",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'severe_negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 4,
+          "disagreement_type": "missing_theme",
+          "severity_flag": true,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.211,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "other than that you are dead to them.",
+              "polarity": "negative",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 89,
+          "themes": []
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "They only help if they can find money in your case; other than that you are dead to them."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "other than that you are dead to them.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.161,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I was the only one making the main calls to check up on my claim.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "My case manager barely explained things",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "told me 'You were the one that came to us late'",
+              "polarity": "negative",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I'm still going to be charged if I ever get approved for my disability claim.",
+              "polarity": "negative",
+              "theme": "billing_transparency"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 697,
+          "themes": []
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "I wish I could say great things like other reviews. Genuinely I felt hopeful with the first call. I was treated well, brought in with open arms.\n\nSadly it just went down from there. In the year I was with them, I was the only one making the main calls to check up on my claim. My case manager barely explained things and told me \"You were the one that came to us late\". I did my best to keep my cool but I felt like I was just being treated as another number. I called the service quits, and despite my letter stating I was unhappy with the service, I'm still going to be charged if I ever get approved for my disability claim.\n\nSurely other people will have better experiences, but this was mine."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I'm still going to be charged if I ever get approved for my disability claim.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "My case manager barely explained things",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "I was the only one making the main calls to check up on my claim.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "told me 'You were the one that came to us late'",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.122,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I would leave messages that were not returned sometimes for several days.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I did not know who was representing me on the final hearing until 1\u20132 weeks before.",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I always felt like a number, not a person.",
+              "polarity": "negative",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 572,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "felt like a number",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026ng me on the final hearing until 1\u20132 weeks before. I always felt like a number, not a person. When you hire an attorney\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "polite",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026person. Whenever I called the receptionists, who were very polite, they would never connect me to anyone I asked for. I\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "Outcome was great \u2014 disability approved. But I was never once offered a chance to meet anyone in person. Whenever I called the receptionists, who were very polite, they would never connect me to anyone I asked for. I would leave messages that were not returned sometimes for several days. I did not know who was representing me on the final hearing until 1\u20132 weeks before. I always felt like a number, not a person. When you hire an attorney to help you with something you can't do yourself, you want to feel connected to them. Hoglund makes you feel totally disconnected."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I did not know who was representing me on the final hearing until 1\u20132 weeks before.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "I would leave messages that were not returned sometimes for several days.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'polite' but star rating prior is 'negative'. AI did not tag this theme \u2014 possible false positive.",
+          "deterministic_phrase": "polite",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "likely_false_positive",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.177,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "months of near silence passed.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "he said he understood, would file charges, and would be willing to go to court.",
+              "polarity": "negative",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "he addressed me by my deceased son\u2019s name, twice.",
+              "polarity": "severe_negative",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Mediation failed.",
+              "polarity": "negative",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "negative",
+          "review_text_length": 2160,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "dismissive",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026failed. The mediator, hand-picked by SGS, was arrogant and dismissive. Our attorney repeated that the next step was to\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "arrogant",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026.\u201d\n\nMediation failed. The mediator, hand-picked by SGS, was arrogant and dismissive. Our attorney repeated that the next\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 2,
+        "review_date": "2025-01-01",
+        "review_text": "I am a former client, regardless of their response. Schwebel Goetz & Sieben (SGS): be prepared, this process is about money, not justice or principle.\n\nOver two years ago, tragedy struck our family. Our 20-year-old son died, and our wrongful death claim involved the bar he visited that night. In our first meeting with our SGS attorney, we stressed that our priority wasn\u2019t money\u2014it was justice. He said he understood, would file charges, and would be willing to go to court. Their investigator gathered evidence supporting our claim. Then months of near silence passed. Eventually, our attorney said he would file charges; he never did. He addressed me by my deceased son\u2019s name, twice.\n\nOver the following months, I personally uncovered two more critical pieces of evidence. That I had to do this myself was a major red flag\u2014this was their job. With this new evidence, our attorney set up early mediation without our approval and before filing charges. Reluctantly, we agreed. Before the mediation, he oddly showed doubt about our claim, then shook my hand and said, \u201cYou\u2019ve done more than my investigators.\u201d\n\nMediation failed. The mediator, hand-picked by SGS, was arrogant and dismissive. Our attorney repeated that the next step was to file charges. Again, it didn\u2019t happen. Later, the insurance company made another offer based on the mediator\u2019s suggestion. We rejected it\u2014too low and we still wanted charges filed. But our attorney insisted we accept, otherwise find a different attorney. He gave no specifics as to why, just vague comments about the evidence.\n\nWe never requested early mediation. We were pushed into accepting a settlement we didn\u2019t believe in. Three times we were promised that charges would be filed\u2014they never were. The bar avoided court, responsibility, and bad publicity. For these reasons, they won, not us.\n\nOur attorney knew the opposing counsel, had worked with him before, and likely will again. This was a business negotiation, not representation. Once you hire an SGS lawyer, you give up control. Your goals become secondary to their financial incentives. We settled, but justice wasn\u2019t served and our son deserved better."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "months of near silence passed.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'empathy_support' as 'negative' via phrase 'dismissive'. AI did not tag this theme.",
+          "deterministic_phrase": "dismissive",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "he said he understood, would file charges, and would be willing to go to court.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        },
+        {
+          "ai_evidence_span": "Mediation failed.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": "he addressed me by my deceased son\u2019s name, twice.",
+          "ai_polarity": "severe_negative",
+          "detail": "Deterministic: 'negative', AI: 'severe_negative' for theme 'professionalism_trust'. Det phrase: 'arrogant', AI evidence: 'he addressed me by my deceased son\u2019s name, twice.'",
+          "deterministic_phrase": "arrogant",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "wrong_severity",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.18,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "in a very timely manner, and got me a settlement in less than the time",
+              "polarity": "positive",
+              "theme": "timeliness_progress"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "She took the time to answer my questions as the case was progressing",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "is extremely friendly and likeable",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 315,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "low",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "timely",
+              "multiplier": 1.0,
+              "negation_applied": true,
+              "phrase_family": "positive",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026s fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time\u2026",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Cody Scharph is fantastic! Did what she was asked, no attitude, in a very timely manner, and got me a settlement in less than the time it was supposed to take. She took the time to answer my questions as the case was progressing and is extremely friendly and likeable. Number one at the top as far as I'm concerned."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "She took the time to answer my questions as the case was progressing",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "is extremely friendly and likeable",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "in a very timely manner, and got me a settlement in less than the time",
+          "ai_polarity": "positive",
+          "detail": "Deterministic flipped polarity on 'timeliness_progress' to 'negative' (negation=True, contrast=False) via phrase 'timely', but AI tagged it 'positive'. Guard may have fired incorrectly.",
+          "deterministic_phrase": "timely",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "likely_context_guard_failure",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.365,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I was at my very bottom and my world had turned upside down.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Peter Riley and his secretary and assistant are awesome.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "They assisted me with my case and got me all the help to recover from my accident.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 231,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Peter Riley and his secretary and assistant are awesome. I was at my very bottom and my world had turned upside down. They assisted me with my case and got me all the help to recover from my accident. I highly recommend using them."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I was at my very bottom and my world had turned upside down.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "They assisted me with my case and got me all the help to recover from my accident.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": "Peter Riley and his secretary and assistant are awesome.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.13,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "always helped me with all my questions",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 80,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Kojo was very pleasant to work with, and always helped me with all my questions."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "always helped me with all my questions",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.619,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Shannon Carey handled it with grace and patience.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "In the end I received a fair settlement.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 176,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "I was involved in an auto accident with my wife. I can be difficult to deal with, but Shannon Carey handled it with grace and patience. In the end I received a fair settlement."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Shannon Carey handled it with grace and patience.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "In the end I received a fair settlement.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.543,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Robert Hoglund explained everything to me so I knew exactly what to expect",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I knew exactly what to expect from beginning to end",
+              "polarity": "positive",
+              "theme": "expectation_setting"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 243,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "explained everything",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026le shaky. Overall it was a great experience. Robert Hoglund explained everything to me so I knew exactly what to expect\u2026",
+              "theme": "communication_clarity"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "would highly recommend",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026e so I knew exactly what to expect from beginning to end. I would highly recommend this firm.",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "I am giving this review 4 stars because things started off a little shaky. Overall it was a great experience. Robert Hoglund explained everything to me so I knew exactly what to expect from beginning to end. I would highly recommend this firm."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I knew exactly what to expect from beginning to end",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'would highly recommend'. AI did not tag this theme.",
+          "deterministic_phrase": "would highly recommend",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "total_reviews": 20
+}

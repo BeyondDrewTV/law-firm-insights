@@ -1,0 +1,63 @@
+[
+  {
+    "review_text": "My attorney today did a excellent job",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "real"
+  },
+  {
+    "review_text": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "exceptional_outcome",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Outstanding experience from start to finish with this firm. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "referral_worthy",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Ms. Chen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "referral_worthy",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "I can't say enough good things about their team. Professional, compassionate, and incredibly effective. They turned a terrifying situation into a manageable one. 10/10.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "strong_positive",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Five stars without hesitation. Mr. Rivera is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "exceptional_outcome",
+    "subtype": "5star_topup"
+  },
+  {
+    "review_text": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like.",
+    "rating": 5,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "referral_worthy",
+    "subtype": "5star_topup"
+  }
+]

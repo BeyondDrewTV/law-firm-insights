@@ -1,0 +1,182 @@
+[
+  {
+    "review_text": "Mr. Kim got the job done but barely. I had to repeat myself multiple times and felt like I wasn't a priority. For the money I paid I expected more attentiveness.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "empathy",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "The attorney handling my divorce case through this firm was technically skilled but emotionally cold. Going through a divorce is already devastating \u2014 I needed more compassion than I got.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "I felt like just a file number to Ms. Chen. Got my matter resolved, but the experience left a lot to be desired in terms of personal attention and empathy.",
+    "rating": 2,
+    "owner_response": "We're sorry the experience felt impersonal. We truly do care about each client's situation and will reflect on how to better convey that.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_disappointment",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "The result of my case was not what Ms. Reyes led me to expect. I understand outcomes aren't guaranteed but the disconnect between early expectations and reality was significant.",
+    "rating": 2,
+    "owner_response": "We understand how difficult unexpected outcomes can be. We always aim to set realistic expectations, and we welcome the chance to speak further.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "empathy",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "The legal work was fine but the practice overcharged and was slow to respond to emails. I've worked with other attorneys who were more proactive. Wouldn't use them again.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "I gave their team two stars because while they were professional, the strategy they took on my case felt wrong in hindsight. Not sure I'd trust them with anything complex again.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_disappointment",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Mr. Patel handled my case but the billing was confusing and I felt overcharged for routine phone calls. The outcome was acceptable but I left feeling like I was nickel-and-dimed throughout the process.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "empathy",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Had a frustrating experience with their office. The attorney seemed competent but communication was poor. I often had to chase them down for updates. Took much longer than expected.",
+    "rating": 2,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "outcome_disappointment",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "I felt dismissed during consultations with Attorney Brooks. My questions were answered quickly without much depth. The case resolved okay but I never felt confident in the representation.",
+    "rating": 2,
+    "owner_response": "We're sorry to hear you felt this way. We strive to make every client feel heard and supported throughout their matter.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "timeliness",
+    "subtype": "2star_topup"
+  },
+  {
+    "review_text": "Solid but not spectacular. Ms. Reyes handled the basics well but I expected more strategic guidance. For straightforward matters I'd return. For complex litigation I'd look elsewhere.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "I got what I hired their office for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "I hired Attorney Brooks for a business contract dispute. The representation was competent but the strategy felt conservative. We settled, which was probably the right call, but I left wanting more.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Three stars feels right. Ms. Okonkwo was professional and prepared, but I felt like I could have gotten the same result for less money somewhere else. The value wasn't quite there.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "billing_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Communication was hit or miss with this firm. When I could get someone on the phone they were helpful, but getting to that point sometimes took longer than it should. Results were acceptable.",
+    "rating": 3,
+    "owner_response": "Thank you for this feedback \u2014 communication consistency is an area we are actively improving across the board.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Mixed experience with their team. Some of the staff were very helpful, others seemed indifferent. The final result was satisfactory. Might use them again for a simpler matter.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "The good: Ms. Reyes clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unremarkable experience.",
+    "rating": 3,
+    "owner_response": "We appreciate the honest feedback. We are actively working on improving our response times for all client communications.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Mr. Castillo did okay work on my case. Nothing exceptional but nothing terrible either. Communication was average and the outcome was roughly what I expected. Decent but not memorable.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "their team handled my matter adequately. The attorney was knowledgeable but seemed stretched thin between cases. Not bad, not great \u2014 right in the middle.",
+    "rating": 3,
+    "owner_response": "",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "communication_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Average experience. Ms. Goldstein was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time.",
+    "rating": 3,
+    "owner_response": "We take billing transparency seriously and are happy to walk through any invoice in detail. Please don't hesitate to reach out.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "professionalism_neutral",
+    "subtype": "3star_topup"
+  },
+  {
+    "review_text": "Average experience. Ms. Huang was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time.",
+    "rating": 3,
+    "owner_response": "We take billing transparency seriously and are happy to walk through any invoice in detail. Please don't hesitate to reach out.",
+    "date": "2025-01-01",
+    "source": "synthetic",
+    "theme": "balanced",
+    "subtype": "3star_topup"
+  }
+]

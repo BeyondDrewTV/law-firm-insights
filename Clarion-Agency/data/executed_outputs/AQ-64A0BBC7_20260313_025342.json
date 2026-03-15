@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. The LLM cannot fabricate real email addresses — this is by design. To send: open this file, add the correct 'to' address, and call _handle_send_outreach_batch() directly or re-queue with recipient_email set.",
+  "firm_name": "The Siemon Law Firm",
+  "contact_target": "Leh Siemon",
+  "subject": "Improving client communication at The Siemon Law Firm",
+  "body": "Family law firms frequently encounter reviews that reflect themes around communication responsiveness. This suggests an area where client satisfaction could be enhanced. Clarion helps firms like yours by converting client feedback into structured governance insights. Our governance briefs summarize these themes and offer actionable recommendations for leadership. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calibration Console — Clarion Internal</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+    background: #0f1117;
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  a { color: #63b3ed; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Layout */
+  .header {
+    background: #1a1f2e;
+    border-bottom: 1px solid #2d3748;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-badge {
+    background: #2d3748;
+    color: #a0aec0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+  .header h1 { font-size: 15px; font-weight: 600; color: #f7fafc; }
+  .main { max-width: 920px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  /* Panels */
+  .panel {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .panel-header {
+    background: #141824;
+    border-bottom: 1px solid #2d3748;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .panel-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: #a0aec0;
+  }
+  .panel-body { padding: 18px; }
+
+  /* Meta grid */
+  .meta-grid { display: grid; grid-template-columns: 140px 1fr; gap: 6px 14px; align-items: baseline; }
+  .meta-label { color: #718096; font-size: 12px; }
+  .meta-value { color: #e2e8f0; font-family: "SF Mono", Consolas, monospace; font-size: 12px; word-break: break-all; }
+
+  /* Status pills */
+  .pill {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .pill-ok      { background: #1a4731; color: #68d391; }
+  .pill-warn    { background: #3d2e0e; color: #f6ad55; }
+  .pill-error   { background: #3d1515; color: #fc8181; }
+  .pill-neutral { background: #2d3748; color: #a0aec0; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: opacity .15s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn-primary   { background: #3182ce; color: #fff; }
+  .btn-secondary { background: #2d3748; color: #e2e8f0; }
+  .btn-danger    { background: #c53030; color: #fff; }
+  .btn-sm { padding: 5px 12px; font-size: 12px; }
+
+  /* Upload form */
+  .upload-zone {
+    border: 2px dashed #2d3748;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    color: #718096;
+    margin-bottom: 12px;
+    transition: border-color .2s;
+  }
+  .upload-zone:hover { border-color: #4a5568; }
+  input[type="file"] { display: none; }
+  .upload-label { cursor: pointer; }
+
+  /* Run options */
+  .run-options { display: flex; gap: 20px; margin-bottom: 14px; align-items: center; flex-wrap: wrap; }
+  .checkbox-row { display: flex; align-items: center; gap: 7px; cursor: pointer; color: #a0aec0; font-size: 13px; }
+  .checkbox-row input { accent-color: #3182ce; width: 15px; height: 15px; cursor: pointer; }
+
+  /* Output box */
+  .output-box {
+    background: #0d1117;
+    border: 1px solid #2d3748;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 420px;
+    overflow-y: auto;
+    color: #a8c7fa;
+  }
+  .output-box.error { color: #fc8181; }
+  .output-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #4a5568;
+    margin-bottom: 6px;
+  }
+
+  /* Runs table */
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    font-size: 11px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; color: #4a5568;
+    padding: 7px 12px; text-align: left;
+    border-bottom: 1px solid #2d3748;
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid #1e2535; font-size: 13px; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #1e2535; }
+  .mono { font-family: "SF Mono", Consolas, monospace; font-size: 12px; }
+
+  /* Summary card */
+  .summary-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat-box {
+    background: #141824;
+    border: 1px solid #2d3748;
+    border-radius: 6px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .stat-num { font-size: 26px; font-weight: 700; color: #63b3ed; line-height: 1.1; }
+  .stat-label { font-size: 11px; color: #718096; margin-top: 3px; }
+
+  /* Markdown preview */
+  .md-preview {
+    background: #0d1117;
+    border: 1px solid #2d3748;
+    border-radius: 6px;
+    padding: 16px 18px;
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    max-height: 360px;
+    overflow-y: auto;
+    color: #a0aec0;
+  }
+
+  .alert {
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+  .alert-ok    { background: #1a4731; color: #9ae6b4; border: 1px solid #276749; }
+  .alert-error { background: #3d1515; color: #feb2b2; border: 1px solid #9b2c2c; }
+
+  .divider { height: 1px; background: #2d3748; margin: 16px 0; }
+  .empty-state { color: #4a5568; text-align: center; padding: 24px; font-size: 13px; }
+  .path-chip {
+    background: #141824;
+    border: 1px solid #2d3748;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 12px;
+    color: #90cdf4;
+    word-break: break-all;
+  }
+  .spinner {
+    display: none;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .running .spinner { display: inline-block; }
+  .running .btn-text { display: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="header-badge">Internal</span>
+  <h1>⚙ Calibration Console</h1>
+  <span style="color:#4a5568;font-size:12px;margin-left:auto;">localhost only · not exposed in prod</span>
+</div>
+
+<div class="main">
+
+{# ───────────────────────────── ALERTS ───────────────────────────── #}
+{% if upload_ok %}
+<div class="alert alert-ok">✅ {{ upload_ok }}</div>
+{% endif %}
+{% if upload_error %}
+<div class="alert alert-error">⚠ {{ upload_error }}</div>
+{% endif %}
+
+{# ───────────────────────── A. INPUT CSV ─────────────────────────── #}
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title">A — Input CSV</span>
+    {% if csv_info.exists %}
+      <span class="pill pill-ok" style="margin-left:auto;">file found</span>
+    {% else %}
+      <span class="pill pill-error" style="margin-left:auto;">missing</span>
+    {% endif %}
+  </div>
+  <div class="panel-body">
+    <div class="meta-grid" style="margin-bottom:16px;">
+      <span class="meta-label">Canonical path</span>
+      <span class="meta-value path-chip">{{ csv_info.path }}</span>
+      {% if csv_info.exists %}
+      <span class="meta-label">Last modified</span>
+      <span class="meta-value">{{ csv_info.modified }}</span>
+      <span class="meta-label">Size</span>
+      <span class="meta-value">{{ csv_info.size_kb }} KB</span>
+      <span class="meta-label">Data rows</span>
+      <span class="meta-value">{{ csv_info.row_count }}</span>
+      {% endif %}
+    </div>
+
+    <div class="divider"></div>
+    <p style="color:#718096;font-size:12px;margin-bottom:12px;">
+      Upload a new CSV to replace the canonical input file.
+      Must have columns: <span class="mono">review_text, rating, owner_response</span>
+    </p>
+    <form method="POST" action="/internal/calibration/upload" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() if csrf_token is defined else '' }}">
+      <div class="upload-zone" id="dropZone">
+        <label class="upload-label" for="csvFileInput">
+          <div style="font-size:24px;margin-bottom:6px;">📄</div>
+          <div style="font-weight:600;color:#a0aec0;">Click to choose a CSV file</div>
+          <div style="font-size:12px;margin-top:4px;" id="fileLabel">No file selected</div>
+        </label>
+        <input type="file" id="csvFileInput" name="csv_file" accept=".csv"
+               onchange="document.getElementById('fileLabel').textContent = this.files[0]?.name || 'No file selected'">
+      </div>
+      <button type="submit" class="btn btn-secondary btn-sm">⬆ Upload &amp; Replace</button>
+    </form>
+  </div>
+</div>
+
+{# ───────────────────────── B. RUN CALIBRATION ───────────────────── #}
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title">B — Run Calibration</span>
+    {% if run_result %}
+      {% if run_result.success %}
+        <span class="pill pill-ok" style="margin-left:auto;">✓ succeeded</span>
+      {% else %}
+        <span class="pill pill-error" style="margin-left:auto;">✗ failed (exit {{ run_result.returncode }})</span>
+      {% endif %}
+    {% endif %}
+  </div>
+  <div class="panel-body">
+    {% if not csv_info.exists %}
+    <div class="alert alert-error">⚠ Input CSV not found. Upload one first before running calibration.</div>
+    {% endif %}
+
+    <form method="POST" action="/internal/calibration/run" id="runForm">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() if csrf_token is defined else '' }}">
+      <div class="run-options">
+        <button type="submit" class="btn btn-primary" id="runBtn"
+                {% if not csv_info.exists %}disabled{% endif %}
+                onclick="startSpinner()">
+          <span class="spinner" id="spinner"></span>
+          <span class="btn-text">▶ Run Calibration</span>
+        </button>
+        <label class="checkbox-row">
+          <input type="checkbox" name="dry_run" value="1"> Dry run (no API calls)
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" name="no_ai" value="1"> No AI (data artifacts only)
+        </label>
+      </div>
+      <p style="color:#4a5568;font-size:12px;margin-bottom:0;">
+        Runs the full pipeline: gap report → synthetic top-up → chunked benchmark → summary.
+        The page will wait while it runs (typically 2–5 min for a full run).
+      </p>
+    </form>
+
+    {% if run_result %}
+    <div style="margin-top:18px;">
+      {% if run_result.stdout %}
+      <div class="output-label">stdout</div>
+      <div class="output-box">{{ run_result.stdout }}</div>
+      {% endif %}
+      {% if run_result.stderr %}
+      <div class="output-label" style="margin-top:12px;">stderr</div>
+      <div class="output-box error">{{ run_result.stderr }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{# ───────────────────────── D. LATEST RUN SUMMARY ────────────────── #}
+{% if latest %}
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title">D — Latest Run Summary</span>
+    {% set s = latest.data %}
+    {% if s.chunks_failed is defined and s.chunks_failed == 0 and s.chunks_succeeded is defined %}
+      <span class="pill pill-ok" style="margin-left:auto;">{{ s.chunks_succeeded }}/{{ s.chunks_total }} chunks ✓</span>
+    {% elif s.chunks_failed is defined and s.chunks_failed > 0 %}
+      <span class="pill pill-warn" style="margin-left:auto;">{{ s.chunks_failed }} chunk(s) failed</span>
+    {% endif %}
+  </div>
+  <div class="panel-body">
+    <div class="meta-grid" style="margin-bottom:16px;">
+      <span class="meta-label">Run ID</span>
+      <span class="meta-value">{{ latest.id }}</span>
+      <span class="meta-label">Run folder</span>
+      <span class="meta-value path-chip">{{ latest.rel_path }}</span>
+      {% if latest.summary_json_path %}
+      <span class="meta-label">final_summary.json</span>
+      <span class="meta-value path-chip">{{ latest.summary_json_path }}</span>
+      {% endif %}
+      {% if latest.summary_md_path %}
+      <span class="meta-label">final_summary.md</span>
+      <span class="meta-value path-chip">{{ latest.summary_md_path }}</span>
+      {% endif %}
+      <span class="meta-label">AI benchmark</span>
+      <span class="meta-value">
+        {% if s.ai_benchmark_enabled %}<span class="pill pill-ok">enabled</span>
+        {% else %}<span class="pill pill-neutral">skipped</span>{% endif %}
+      </span>
+    </div>
+
+    <div class="summary-card">
+      <div class="stat-box">
+        <div class="stat-num">{{ s.total_real_reviews }}</div>
+        <div class="stat-label">Real reviews</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">{{ s.total_synthetic_reviews }}</div>
+        <div class="stat-label">Synthetic reviews</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">{{ s.total_reviews_submitted }}</div>
+        <div class="stat-label">Total submitted</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:{% if s.chunks_failed == 0 %}#68d391{% else %}#fc8181{% endif %}">
+          {{ s.chunks_succeeded }}/{{ s.chunks_total }}
+        </div>
+        <div class="stat-label">Chunks ok</div>
+      </div>
+    </div>
+
+    {% if s.per_star_distribution %}
+    <table style="margin-bottom:16px;">
+      <thead>
+        <tr>
+          <th>Star</th><th>Real</th><th>Synthetic</th><th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for star in ['1','2','3','4','5'] %}
+        {% set dist = s.per_star_distribution.get(star, {}) %}
+        <tr>
+          <td>{{ star }}★</td>
+          <td class="mono">{{ dist.real if dist.real is defined else '—' }}</td>
+          <td class="mono">{{ dist.synthetic if dist.synthetic is defined else '—' }}</td>
+          <td class="mono">{{ (dist.real|int + dist.synthetic|int) if (dist.real is defined and dist.synthetic is defined) else '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+    {% if latest.summary_md_content %}
+    <div class="output-label">final_summary.md</div>
+    <div class="md-preview">{{ latest.summary_md_content }}</div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{# ───────────────────────── C. PREVIOUS RUNS ─────────────────────── #}
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title">C — Previous Runs</span>
+    <span style="color:#4a5568;font-size:12px;margin-left:auto;">{{ runs|length }} run(s) found</span>
+  </div>
+  <div class="panel-body" style="padding:0;">
+    {% if runs %}
+    <table>
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Real</th>
+          <th>Synthetic</th>
+          <th>Chunks</th>
+          <th>Status</th>
+          <th>Folder</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in runs %}
+        <tr>
+          <td class="mono">{{ r.ts_display }}</td>
+          <td class="mono">{{ r.real if r.real is defined else '—' }}</td>
+          <td class="mono">{{ r.synthetic if r.synthetic is defined else '—' }}</td>
+          <td class="mono">
+            {% if r.chunks_ok is defined %}
+              {% if r.chunks_fail is defined and r.chunks_fail > 0 %}
+                <span class="pill pill-warn">{{ r.chunks_ok }}/{{ r.chunks_total }}</span>
+              {% else %}
+                {{ r.chunks_ok }}/{{ r.chunks_total }}
+              {% endif %}
+            {% else %}—{% endif %}
+          </td>
+          <td>
+            {% if r.has_summary %}
+              <span class="pill pill-ok">summary ✓</span>
+            {% else %}
+              <span class="pill pill-neutral">no summary</span>
+            {% endif %}
+          </td>
+          <td class="mono" style="color:#4a5568;font-size:11px;">{{ r.rel_path }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">No runs found in data/calibration/runs/</div>
+    {% endif %}
+  </div>
+</div>
+
+</div>{# /main #}
+
+<script>
+function startSpinner() {
+  const btn = document.getElementById('runBtn');
+  if (btn) btn.classList.add('running');
+}
+// Restore button if page is shown from bfcache (back button)
+window.addEventListener('pageshow', function(e) {
+  const btn = document.getElementById('runBtn');
+  if (btn) btn.classList.remove('running');
+});
+// Auto-scroll output box to bottom after load
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.output-box').forEach(function(el) {
+    el.scrollTop = el.scrollHeight;
+  });
+});
+</script>
+</body>
+</html>

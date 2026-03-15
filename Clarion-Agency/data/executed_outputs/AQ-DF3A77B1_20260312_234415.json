@@ -1,0 +1,10 @@
+{
+  "staged_emails": [
+    {
+      "email": "",
+      "subject": "A note from Clarion",
+      "body": "Hi there,\n\nI reviewed Martinez Immigration's public client feedback and noticed something specific: about 20% of your recent reviews mention billing transparency concerns. With offices in both Houston and Austin, these kinds of client experience patterns can be hard to spot until they're widespread.\n\nClarion converts your public reviews into a structured governance brief that surfaces these themes early - giving partners clear visibility into what clients are actually experiencing across locations.\n\nI'd be glad to show you how it works using a sample of your actual reviews. Would you have 20 minutes to discuss?\n\nBest,\nJames"
+    }
+  ],
+  "smtp_error": "SMTP LOGIN FAILED for Drewyomantas@gmail.com@smtp.gmail.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 46e09a7af769-7d76ae39600sm5659080a34.17 - gsmtp'). For Gmail, SMTP_PASS must be a 16-char App Password (not your account password). Generate at: https://myaccount.google.com/apppasswords"
+}

@@ -1,0 +1,1 @@
+The current meta description and OG copy position Clarion as a generic professional services tool; this revision anchors all copy to law firm managing partners and names the governance brief as the core output.

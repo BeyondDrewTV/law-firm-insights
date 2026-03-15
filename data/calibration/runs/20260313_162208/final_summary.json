@@ -1,0 +1,40 @@
+{
+  "run_timestamp": "2026-03-13T21:22:09.112351Z",
+  "ai_benchmark_enabled": true,
+  "total_real_reviews": 57,
+  "total_synthetic_reviews": 43,
+  "total_reviews_submitted": 100,
+  "chunks_total": 0,
+  "chunks_succeeded": 0,
+  "chunks_failed": 0,
+  "per_star_distribution": {
+    "1": {
+      "real": 13,
+      "synthetic": 2
+    },
+    "2": {
+      "real": 5,
+      "synthetic": 10
+    },
+    "3": {
+      "real": 5,
+      "synthetic": 15
+    },
+    "4": {
+      "real": 9,
+      "synthetic": 11
+    },
+    "5": {
+      "real": 25,
+      "synthetic": 5
+    }
+  },
+  "gaps_at_start": {
+    "1": 2,
+    "2": 10,
+    "3": 15,
+    "4": 11,
+    "5": 5
+  },
+  "chunk_results": []
+}

@@ -1,6 +1,6 @@
 # Discovered Conversations
 # Clarion — Conversation Discovery Output
-# Generated: 2026-03-12
+# Generated: 2026-03-13
 # Source: shared/conversation_discovery.py
 # SAFETY: Read-only discovery. No posting. No login. No external interaction.
 
@@ -16,7 +16,7 @@ Total signals found: 10 (ranked by relevance)
 Platform:   Reddit — r/Epstein
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-27
-Engagement: 2413 upvotes · 573 comments
+Engagement: 2416 upvotes · 573 comments
 Link:       https://www.reddit.com/r/Epstein/comments/1rfy0tj/the_overlords_who_was_jeffrey_epstein_really/
 
 **Summary:**
@@ -36,7 +36,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/gundealsFU
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-03
-Engagement: 12 upvotes · 7 comments
+Engagement: 14 upvotes · 7 comments
 Link:       https://www.reddit.com/r/gundealsFU/comments/1rk1pot/review_negative_sierra_defense_sierradefenseus/
 
 **Summary:**
@@ -53,6 +53,26 @@ Share insight on identifying recurring patterns in client complaints rather than
 ---
 
 ### DISCOVERY SIGNAL 3
+Platform:   Reddit — r/LocalLLM
+Topic Area: Client Reviews & Feedback
+Posted:     2026-03-02
+Engagement: 5 upvotes · 45 comments
+Link:       https://www.reddit.com/r/LocalLLM/comments/1rj4hkj/small_law_firm_considering_local_llm_setup_for/
+
+**Summary:**
+Small law firm, considering local llm setup for automations and first look record reviews. Unrealistic? — Hi all,   I tried a search and read through a good many posts on here, but I couldn't find an answer directly on point, and I'm not a technical person, just have a fascination with this developing tec...
+
+**Why It Matters:**
+Directly related to Clarion's core value: surfacing patterns in client reviews law firms currently manage manually.
+
+**Suggested Participation Angle:**
+Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
+
+*Query used: `law firm client reviews`*
+
+---
+
+### DISCOVERY SIGNAL 4
 Platform:   Reddit — r/buhaydigital
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-13
@@ -72,31 +92,11 @@ Share insight on identifying recurring patterns in client complaints rather than
 
 ---
 
-### DISCOVERY SIGNAL 4
-Platform:   Reddit — r/LocalLLM
-Topic Area: Client Reviews & Feedback
-Posted:     2026-03-02
-Engagement: 4 upvotes · 45 comments
-Link:       https://www.reddit.com/r/LocalLLM/comments/1rj4hkj/small_law_firm_considering_local_llm_setup_for/
-
-**Summary:**
-Small law firm, considering local llm setup for automations and first look record reviews. Unrealistic? — Hi all,   I tried a search and read through a good many posts on here, but I couldn't find an answer directly on point, and I'm not a technical person, just have a fascination with this developing tec...
-
-**Why It Matters:**
-Directly related to Clarion's core value: surfacing patterns in client reviews law firms currently manage manually.
-
-**Suggested Participation Angle:**
-Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
-
-*Query used: `law firm client reviews`*
-
----
-
 ### DISCOVERY SIGNAL 5
 Platform:   Reddit — r/linux
 Topic Area: Client Reviews & Feedback
 Posted:     2026-03-06
-Engagement: 1798 upvotes · 233 comments
+Engagement: 1801 upvotes · 233 comments
 Link:       https://www.reddit.com/r/linux/comments/1rmhxk1/i_pulled_the_actual_bill_text_from_5_state_age/
 
 **Summary:**
@@ -116,7 +116,7 @@ Share insight on identifying recurring patterns in client complaints rather than
 Platform:   Reddit — r/pwnhub
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-11
-Engagement: 142 upvotes · 33 comments
+Engagement: 147 upvotes · 33 comments
 Link:       https://www.reddit.com/r/pwnhub/comments/1r23pu0/law_firms_turn_to_ai_resulting_in_mass_layoffs/
 
 **Summary:**
@@ -173,30 +173,10 @@ Share insight on identifying recurring patterns in client complaints rather than
 ---
 
 ### DISCOVERY SIGNAL 9
-Platform:   Reddit — r/legal
-Topic Area: Client Reviews & Feedback
-Posted:     2026-02-14
-Engagement: 48 upvotes · 100 comments
-Link:       https://www.reddit.com/r/legal/comments/1r46vrz/target_civil_demand_letter_from_pra_law_firm_for/
-
-**Summary:**
-Target Civil Demand letter from PRA Law Firm for $500. Legit or common practice? — I'm in New York.  I received a civil demand letter from PRA Law Firm on behalf of Target after an in-store incident. The criminal matter has already been resolved.  The first letter requested $300. A...
-
-**Why It Matters:**
-Directly related to Clarion's core value: surfacing patterns in client reviews law firms currently manage manually.
-
-**Suggested Participation Angle:**
-Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
-
-*Query used: `law firm client reviews`*
-
----
-
-### DISCOVERY SIGNAL 10
 Platform:   Reddit — r/neoliberal
 Topic Area: Client Reviews & Feedback
 Posted:     2026-02-26
-Engagement: 47 upvotes · 43 comments
+Engagement: 48 upvotes · 43 comments
 Link:       https://www.reddit.com/r/neoliberal/comments/1rfno18/the_case_against_a_wealth_tax/
 
 **Summary:**
@@ -209,6 +189,26 @@ Directly related to Clarion's core value: surfacing patterns in client reviews l
 Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
 
 *Query used: `law firm negative reviews`*
+
+---
+
+### DISCOVERY SIGNAL 10
+Platform:   Reddit — r/legal
+Topic Area: Client Reviews & Feedback
+Posted:     2026-02-14
+Engagement: 43 upvotes · 100 comments
+Link:       https://www.reddit.com/r/legal/comments/1r46vrz/target_civil_demand_letter_from_pra_law_firm_for/
+
+**Summary:**
+Target Civil Demand letter from PRA Law Firm for $500. Legit or common practice? — I'm in New York.  I received a civil demand letter from PRA Law Firm on behalf of Target after an in-store incident. The criminal matter has already been resolved.  The first letter requested $300. A...
+
+**Why It Matters:**
+Directly related to Clarion's core value: surfacing patterns in client reviews law firms currently manage manually.
+
+**Suggested Participation Angle:**
+Share insight on identifying recurring patterns in client complaints rather than treating each review as a one-off event.
+
+*Query used: `law firm client reviews`*
 
 ---
 
@@ -238,4 +238,4 @@ Comms: open each link, review results, and select discussions worth participatin
   Link: https://www.google.com/search?q=client+reviews+feedback
 
 ---
-*End of discovery output — 2026-03-12*
+*End of discovery output — 2026-03-13*

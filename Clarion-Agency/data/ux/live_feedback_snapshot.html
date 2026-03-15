@@ -1,0 +1,577 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Leave Feedback - Clarion</title>
+  <meta name="description" content="Turn client feedback into a clear governance workflow for your firm. Upload CSV reviews, review recurring issues, and generate partner-ready reports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/css/main.css?v=1773389726">
+
+</head>
+
+<body>
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TRUST BAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+
+<div class="trust-bar">
+
+  <span class="trust-bar-item">HTTPS in Transit</span>
+  <span class="trust-bar-item">Session Cookie Protections</span>
+  <span class="trust-bar-item">Account-Scoped Data Access</span>
+  <span class="trust-bar-item">Built by Practicing Attorneys</span>
+
+  <span class="trust-bar-item">Cancel Anytime</span>
+
+</div>
+
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAV â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+
+<nav class="navbar">
+
+  <div class="container">
+
+    <div class="nav-brand">
+
+      <a href="/" class="logo-lockup">
+
+        <span class="logo-icon">âš–ï¸</span>
+
+        <span class="logo-text">Clarion</span>
+
+        <span class="logo-badge">New</span>
+
+      </a>
+
+    </div>
+
+
+
+    <div class="nav-menu" id="navMenu">
+
+      
+
+        <a href="/how-it-works">How It Works</a>
+        <a href="/features">Features</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/security">Security</a>
+        <a href="/login" class="btn btn-secondary btn-sm">Log in</a>
+        <a href="/register" class="nav-button">Start Free Trial</a>
+      
+    </div>
+
+
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+
+      <span></span><span></span><span></span>
+
+    </button>
+
+  </div>
+
+</nav>
+
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FLASH â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+
+
+
+  
+
+
+
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• CONTENT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+
+<main>
+
+<section class="feedback-page">
+
+    <div class="container">
+
+        <div class="feedback-page-header">
+
+            <h1>Share Your Feedback</h1>
+
+            <p class="page-subtitle">
+
+                We value your opinion. Please take a moment to tell us about your experience with our firm.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="feedback-form-wrapper">
+
+            <div class="card feedback-card">
+
+                <form method="POST" action="/feedback" class="feedback-form">
+
+                    <input type="hidden" name="csrf_token" value="ImQ4ZjM0ZGY1NTVhZWZjMzk4ZTc2OWFiYWM5ZDY4Zjg4Y2I3Y2ViNjMi.abPHng.v6acZL3gtWUVQ2t130XG8cHL9xc">
+
+                    <div class="form-section">
+
+                        <h3 class="form-section-title">Service Information</h3>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="date" class="form-label">Date of Service <span class="optional">(optional)</span></label>
+
+                            <input type="date" 
+
+                                   id="date" 
+
+                                   name="date" 
+
+                                   class="form-control"
+
+                                   value="">
+
+                            <small class="form-text">Leave blank to use today's date</small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-section">
+
+                        <h3 class="form-section-title">Your Rating <span class="required">*</span></h3>
+
+                        
+
+                        <div class="rating-group">
+
+                            <div class="rating-option">
+
+                                <input type="radio" id="rating5" name="rating" value="5" required>
+
+                                <label for="rating5" class="rating-label">
+
+                                    <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+
+                                    <span class="rating-text">Excellent</span>
+
+                                </label>
+
+                            </div>
+
+                            
+
+                            <div class="rating-option">
+
+                                <input type="radio" id="rating4" name="rating" value="4">
+
+                                <label for="rating4" class="rating-label">
+
+                                    <span class="rating-stars">⭐⭐⭐⭐</span>
+
+                                    <span class="rating-text">Good</span>
+
+                                </label>
+
+                            </div>
+
+                            
+
+                            <div class="rating-option">
+
+                                <input type="radio" id="rating3" name="rating" value="3">
+
+                                <label for="rating3" class="rating-label">
+
+                                    <span class="rating-stars">⭐⭐⭐</span>
+
+                                    <span class="rating-text">Satisfactory</span>
+
+                                </label>
+
+                            </div>
+
+                            
+
+                            <div class="rating-option">
+
+                                <input type="radio" id="rating2" name="rating" value="2">
+
+                                <label for="rating2" class="rating-label">
+
+                                    <span class="rating-stars">⭐⭐</span>
+
+                                    <span class="rating-text">Needs Improvement</span>
+
+                                </label>
+
+                            </div>
+
+                            
+
+                            <div class="rating-option">
+
+                                <input type="radio" id="rating1" name="rating" value="1">
+
+                                <label for="rating1" class="rating-label">
+
+                                    <span class="rating-stars">⭐</span>
+
+                                    <span class="rating-text">Poor</span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-section">
+
+                        <h3 class="form-section-title">Your Feedback <span class="required">*</span></h3>
+
+                        
+
+                        <div class="form-group">
+
+                            <label for="review_text" class="form-label">Please share your experience</label>
+
+                            <textarea id="review_text" 
+
+                                      name="review_text" 
+
+                                      class="form-control form-textarea" 
+
+                                      rows="8" 
+
+                                      required
+
+                                      placeholder="Tell us about your experience with our firm. What did we do well? How can we improve?"></textarea>
+
+                            <small class="form-text">Please be specific about your experience so we can better serve you and future clients.</small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+                        <button type="submit" class="btn btn-primary btn-large btn-block">
+
+                            <span class="btn-icon">✓</span> Submit Feedback
+
+                        </button>
+
+                        <a href="/" class="btn btn-outline btn-block">Cancel</a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- Sidebar Info -->
+
+            <div class="feedback-sidebar">
+
+                <div class="card info-card">
+
+                    <h4 class="info-title">Why Your Feedback Matters</h4>
+
+                    <ul class="info-list">
+
+                        <li>
+
+                            <span class="info-icon">✓</span>
+
+                            <span>Helps us identify strengths to build on</span>
+
+                        </li>
+
+                        <li>
+
+                            <span class="info-icon">✓</span>
+
+                            <span>Reveals areas where we can improve</span>
+
+                        </li>
+
+                        <li>
+
+                            <span class="info-icon">✓</span>
+
+                            <span>Ensures we meet your needs and expectations</span>
+
+                        </li>
+
+                        <li>
+
+                            <span class="info-icon">✓</span>
+
+                            <span>Helps maintain high standards of service</span>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="card privacy-card">
+
+                    <h4 class="info-title">Privacy & Confidentiality</h4>
+
+                    <p>
+
+                        Your feedback is stored securely and used solely for internal quality improvement. 
+
+                        All responses are confidential.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-section">
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+
+          <span style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.875rem">âš–ï¸</span>
+
+          <span style="font-family:'Instrument Serif',serif;font-size:1.0625rem;color:rgba(255,255,255,.85)">Clarion</span>
+
+        </div>
+
+        <p class="footer-tagline">Client feedback governance for law firms and professional services teams.</p>
+        <p class="footer-attorney-note">Built for teams that need a repeatable workflow from uploaded feedback to partner review.</p>
+        <div class="footer-compliance">
+
+          <span class="footer-compliance-badge">HTTPS</span>
+          <span class="footer-compliance-badge">Access Controls</span>
+        </div>
+
+      </div>
+
+      <div class="footer-section">
+
+        <h4>Product</h4>
+
+        <ul class="footer-links">
+
+          <li><a href="/features">Features</a></li>
+
+          <li><a href="/pricing">Pricing</a></li>
+
+          <li><a href="/how-it-works">How It Works</a></li>
+
+          <li><a href="/case-studies">Case Studies</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-section">
+
+        <h4>Account</h4>
+
+        <ul class="footer-links">
+
+          <li><a href="/register">Start Free Trial</a></li>
+
+          <li><a href="/login">Log In</a></li>
+
+          <li><a href="/feedback">Client Survey Form</a></li>
+
+          
+
+        </ul>
+
+      </div>
+
+      <div class="footer-section">
+
+        <h4>Legal</h4>
+
+        <ul class="footer-links">
+
+          <li><a href="/privacy">Privacy Policy</a></li>
+
+          <li><a href="/terms">Terms of Service</a></li>
+
+          <li><a href="/security">Security</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <p>Â© 2026 Clarion. All rights reserved.</p>
+
+      <div class="footer-legal">
+
+        <a href="/privacy">Privacy</a>
+
+        <a href="/terms">Terms</a>
+
+        <a href="/security">Security</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+  // Mobile nav toggle
+
+  const toggle = document.getElementById('mobileMenuToggle');
+
+  const menu   = document.getElementById('navMenu');
+
+  toggle?.addEventListener('click', () => menu?.classList.toggle('active'));
+
+  document.querySelectorAll('.nav-menu a, .nav-menu button').forEach(el => {
+    el.addEventListener('click', () => menu?.classList.remove('active'));
+  });
+
+  // Always open the next page at the top after in-app navigation.
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  const scrollResetKey = 'Clarion:reset-scroll';
+  if (sessionStorage.getItem(scrollResetKey) === '1') {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    sessionStorage.removeItem(scrollResetKey);
+  }
+  window.addEventListener('pageshow', () => {
+    if (sessionStorage.getItem(scrollResetKey) === '1') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      sessionStorage.removeItem(scrollResetKey);
+    }
+  });
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (
+      !href ||
+      href.startsWith('#') ||
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      link.hasAttribute('download') ||
+      (link.target && link.target !== '_self')
+    ) {
+      return;
+    }
+    sessionStorage.setItem(scrollResetKey, '1');
+  });
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', () => {
+      sessionStorage.setItem(scrollResetKey, '1');
+    });
+  });
+
+  // Generic loading overlay for any form with data-loading
+  document.querySelectorAll('form[data-loading]').forEach(form => {
+    form.addEventListener('submit', () => {
+      const overlay = document.getElementById('loadingOverlay');
+      if (overlay) overlay.classList.add('active');
+    });
+
+  });
+
+
+
+  // Scroll-reveal for marketing and content sections.
+
+  const revealItems = Array.from(document.querySelectorAll('.reveal'));
+
+  if (revealItems.length) {
+
+    if ('IntersectionObserver' in window) {
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+
+        entries.forEach(entry => {
+
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add('reveal--visible');
+
+          observer.unobserve(entry.target);
+
+        });
+
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+
+
+      revealItems.forEach(item => revealObserver.observe(item));
+
+    } else {
+
+      revealItems.forEach(item => item.classList.add('reveal--visible'));
+
+    }
+
+  }
+
+</script>
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,59 @@
+{
+  "run_timestamp": "2026-03-13T04:30:03.019494Z",
+  "ai_benchmark_enabled": true,
+  "total_real_reviews": 57,
+  "total_synthetic_reviews": 0,
+  "total_reviews_submitted": 57,
+  "chunks_total": 3,
+  "chunks_succeeded": 0,
+  "chunks_failed": 3,
+  "per_star_distribution": {
+    "1": {
+      "real": 13,
+      "synthetic": 0
+    },
+    "2": {
+      "real": 5,
+      "synthetic": 0
+    },
+    "3": {
+      "real": 5,
+      "synthetic": 0
+    },
+    "4": {
+      "real": 9,
+      "synthetic": 0
+    },
+    "5": {
+      "real": 25,
+      "synthetic": 0
+    }
+  },
+  "gaps_at_start": {
+    "1": 2,
+    "2": 10,
+    "3": 15,
+    "4": 11,
+    "5": 5
+  },
+  "chunk_results": [
+    {
+      "chunk": 1,
+      "count": 20,
+      "elapsed": 4.1,
+      "error": "HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded with url: /internal/benchmark/batch (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+    },
+    {
+      "chunk": 2,
+      "count": 20,
+      "elapsed": 4.1,
+      "error": "HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded with url: /internal/benchmark/batch (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+    },
+    {
+      "chunk": 3,
+      "count": 17,
+      "elapsed": 4.0,
+      "error": "HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded with url: /internal/benchmark/batch (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=5000): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+    }
+  ]
+}

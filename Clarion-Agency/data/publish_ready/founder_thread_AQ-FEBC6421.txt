@@ -1,0 +1,1 @@
+Multi-tweet thread explaining how Clarion's signal detection works, in concrete terms.

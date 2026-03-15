@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. Email discovery did not find a public address for this firm. Find the address manually and re-queue, or skip this prospect.",
+  "firm_name": "Conoscienti & Ledbetter LLC",
+  "contact_target": "Blake Conoscienti and George Ledbetter (named founding partners)",
+  "subject": "Insights on Conoscienti & Ledbetter's client feedback",
+  "body": "While looking through the public reviews for Conoscienti & Ledbetter LLC, one thing stood out — the detailed client feedback available on platforms like Avvo indicates that clients often express specific concerns regarding outcomes and communication, but these patterns can be hard to discern when reading reviews individually.\n\nClarion is a tool that converts public client reviews into a short governance brief for firm leadership.\n\nIt classifies complaint themes, flags operational risks, and outlines partner-level action items so the feedback actually becomes usable for partners.\n\nInstead of manually reading dozens of reviews, leadership receives a concise brief showing what clients are consistently signaling.\n\nIf you're open to it, I'd be happy to walk through a sample governance brief generated from your firm's public reviews."
+}

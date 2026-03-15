@@ -66,6 +66,7 @@ DIVIDER = "=" * 60
 _REQUIRED_AGENT_KEYS = [
     "prospect_intelligence_agent",
     "outbound_sales_agent",
+    "followup_sales_agent",
     "content_seo",
     "product_experience_agent",
     "prelaunch_content",
@@ -206,6 +207,7 @@ _AGENT_SUBDIR = {
     "evidence_agent":                "strategy",
     "prospect_intelligence_agent":   "sales",
     "outbound_sales_agent":          "sales",
+    "followup_sales_agent":          "sales",
     "product_experience_agent":      "product",
     "prelaunch_content":             "growth",
     "prelaunch_conversion":          "product",
@@ -376,17 +378,73 @@ def data_prelaunch_conversion():
 # ── Approved actions executor ─────────────────────────────────────────────────
 
 def _run_approved_actions() -> int:
-    """Execute approved actions. Returns count executed."""
+    """
+    Two-phase execution:
+    Phase 1 — approval_queue.json: find 'approved'/'released' items and run them
+               through action_executor. This is the primary path for outreach_email,
+               linkedin_post, thought_leadership_article, etc.
+    Phase 2 — memory/approved_actions.md: legacy file-based approved actions.
+    Returns total count executed.
+    """
+    executed = 0
+
+    # ── Phase 1: queue-based execution ───────────────────────────────────────
+    if _EXEC_LAYER_AVAILABLE:
+        try:
+            from shared.queue_writer import _load as _qload, _save as _qsave
+            all_items = _qload()
+            approved_items = [
+                i for i in all_items
+                if i.get("status", "").lower() in ("approved", "released")
+            ]
+            if approved_items:
+                print(f"  Found {len(approved_items)} approved queue item(s) — executing via action_executor.")
+            remaining = list(all_items)
+            for item in approved_items:
+                result = execute_artifact(item, agent_name="stage5_queue_runner")
+                if result is None:
+                    continue
+                if result.disposition == "executed" and result.success:
+                    level = result.authority_level
+                    stat_entry = f"{result.artifact_id} ({result.action_type})"
+                    if level == 1:
+                        _EXEC_STATS["autonomous"].append(stat_entry)
+                    else:
+                        _EXEC_STATS["delegated"].append(stat_entry)
+                    # Mark as completed in queue instead of removing
+                    for q in remaining:
+                        if q.get("id") == result.artifact_id:
+                            q["status"] = "completed"
+                            q["executed_at"] = datetime.datetime.now().isoformat()
+                            q["execution_notes"] = result.notes
+                    print(f"    [EXEC-L{result.authority_level}] {result.artifact_id} "
+                          f"({result.action_type}): {result.notes[:100]}")
+                    executed += 1
+                elif result.disposition in ("queued", "fallback_queued"):
+                    print(f"    [QUEUE-L{result.authority_level}] {result.artifact_id} "
+                          f"({result.action_type}): {result.notes[:100]}")
+                else:
+                    print(f"    [EXEC-FAIL] {result.artifact_id} ({result.action_type}): "
+                          f"{result.notes[:100]}")
+            if approved_items:
+                _qsave(remaining)
+        except Exception as e:
+            print(f"  [WARN] Phase 1 queue execution error: {e}")
+            traceback.print_exc()
+    else:
+        print("  [WARN] action_executor not available — skipping queue-based execution.")
+
+    # ── Phase 2: legacy approved_actions.md ──────────────────────────────────
     approved = load_approved_actions()
     if not approved:
-        print("  No approved actions found — nothing to execute this cycle.")
-        log_no_actions()
-        return 0
+        if executed == 0:
+            print("  No approved actions found — nothing to execute this cycle.")
+            log_no_actions()
+        return executed
 
-    print(f"  Found {len(approved)} approved action(s).")
+    print(f"  Found {len(approved)} legacy approved action(s) in approved_actions.md.")
     exec_reports = BASE_DIR / "reports" / "execution"
     exec_reports.mkdir(parents=True, exist_ok=True)
-    executed = 0
 
     for action in approved:
         act_id   = action.get("action_id", "UNKNOWN")
@@ -394,7 +452,7 @@ def _run_approved_actions() -> int:
         owner    = action.get("owner", "")
         notes    = action.get("notes", "")
 
-        print(f"\n  → {act_id}: {act_text[:70]}...")
+        print(f"\n  -> {act_id}: {act_text[:70]}...")
 
         if not is_safe_execution(action):
             reason = "Blocked execution type — must be executed manually."
@@ -462,28 +520,137 @@ def _run_approved_actions() -> int:
 # ── Lean run summary ──────────────────────────────────────────────────────────
 
 def _print_lean_summary(run_stats: dict) -> None:
-    print(f"\n{'-' * 60}")
-    print(f"  CLARION AGENT OFFICE -- RUN COMPLETE")
-    print(f"  Mode                     : {run_stats.get('mode', 'lean')}")
-    print(f"  Prospects found          : {run_stats.get('prospects_found', 0)}")
-    print(f"  Outreach created         : {run_stats.get('outreach_created', 0)}")
-    print(f"  Content created          : {run_stats.get('content_created', 0)}")
-    print(f"  Product artifacts        : {run_stats.get('product_artifacts_created', 0)}")
-    print(f"  Approved actions executed: {run_stats.get('approved_actions_executed', 0)}")
-    print(f"  New queue items          : {run_stats.get('new_queue_items', 0)}")
-    print(f"  Autonomous executed      : {len(_EXEC_STATS['autonomous'])}")
-    print(f"  Delegated executed       : {len(_EXEC_STATS['delegated'])}")
-    print(f"  Queued for founder       : {len(_EXEC_STATS['queued'])}")
+    # Count outreach emails actually sent this run
+    try:
+        from execution.action_executor import _SENT_THIS_RUN
+        outreach_sent = len(_SENT_THIS_RUN)
+    except Exception:
+        outreach_sent = 0
+
+    lines = [
+        f"\n{'-' * 60}",
+        f"  CLARION AGENT OFFICE -- RUN COMPLETE",
+        f"  Mode                     : {run_stats.get('mode', 'lean')}",
+        f"  Prospects found          : {run_stats.get('prospects_found', 0)}",
+        f"  Outreach drafted         : {run_stats.get('outreach_created', 0)}",
+        f"  Outreach actually sent   : {outreach_sent}",
+        f"  Follow-ups drafted       : {run_stats.get('followups_drafted', 0)}",
+        f"  Content created          : {run_stats.get('content_created', 0)}",
+        f"  Product artifacts        : {run_stats.get('product_artifacts_created', 0)}",
+        f"  Approved actions executed: {run_stats.get('approved_actions_executed', 0)}",
+        f"  New queue items          : {run_stats.get('new_queue_items', 0)}",
+        f"  Autonomous executed      : {len(_EXEC_STATS['autonomous'])}",
+        f"  Delegated executed       : {len(_EXEC_STATS['delegated'])}",
+        f"  Queued for founder       : {len(_EXEC_STATS['queued'])}",
+    ]
     if _EXEC_STATS["autonomous"]:
         for item in _EXEC_STATS["autonomous"]:
-            print(f"    [AUTO] {item}")
+            lines.append(f"    [AUTO] {item}")
     if _EXEC_STATS["delegated"]:
         for item in _EXEC_STATS["delegated"]:
-            print(f"    [DELEGATED] {item}")
+            lines.append(f"    [DELEGATED] {item}")
     if _EXEC_STATS["queued"]:
         for item in _EXEC_STATS["queued"]:
-            print(f"    [QUEUED] {item}")
-    print(f"{'-' * 60}\n")
+            lines.append(f"    [QUEUED] {item}")
+    lines.append(f"{'-' * 60}\n")
+    for line in lines:
+        print(line)
+
+    # Write a markdown run summary for easy review
+    _write_run_summary(run_stats, outreach_sent)
+
+
+def _write_run_summary(run_stats: dict, outreach_sent: int) -> None:
+    """Write a concise per-run markdown summary to reports/run_summary_latest.md."""
+    now_iso  = datetime.datetime.now().isoformat(timespec="seconds")
+    summary_path = REPORTS / "run_summary_latest.md"
+    archive_path = REPORTS / f"run_summary_{DATE}.md"
+
+    # Collect blocked reasons from queued items
+    blocked_lines = []
+    for item in _EXEC_STATS["queued"]:
+        blocked_lines.append(f"- {item}")
+
+    # Collect sent emails from the dedicated outbound log (not the contaminated email_log.md)
+    outbound_log = MEMORY / "outbound_email_log.md"
+    sent_lines    = []
+    staged_lines  = []
+    failed_lines  = []
+    if outbound_log.exists():
+        for line in outbound_log.read_text(encoding="utf-8", errors="replace").splitlines():
+            if DATE not in line:
+                continue
+            if "STATUS: sent" in line:
+                sent_lines.append(f"- {line.strip()}")
+            elif "STATUS: staged_no_recipient" in line:
+                staged_lines.append(f"- {line.strip()}")
+            elif "STATUS: failed" in line:
+                failed_lines.append(f"- {line.strip()}")
+
+    lines = [
+        f"# Clarion Agent Office — Run Summary",
+        f"",
+        f"**Date:** {DATE}  ",
+        f"**Completed:** {now_iso}  ",
+        f"**Mode:** {run_stats.get('mode', 'lean')}",
+        f"",
+        f"## Outbound",
+        f"",
+        f"- Prospects found: {run_stats.get('prospects_found', 0)}",
+        f"- Outreach drafted this run: {run_stats.get('outreach_created', 0)}",
+        f"- Outreach actually sent: {outreach_sent}",
+        f"",
+    ]
+    if sent_lines:
+        lines.append("**Sent this run:**")
+        lines.extend(sent_lines)
+        lines.append("")
+    else:
+        lines.append("_Sent: 0 (no emails sent via Zoho this run)._")
+        lines.append("")
+    if staged_lines:
+        lines.append("**Staged - no recipient found (email discovery returned empty):**")
+        lines.extend(staged_lines)
+        lines.append("")
+    if failed_lines:
+        lines.append("**Failed sends (SMTP error - check outbound_email_log.md):**")
+        lines.extend(failed_lines)
+        lines.append("")
+
+    lines += [
+        f"## Content",
+        f"",
+        f"- Content artifacts created: {run_stats.get('content_created', 0)}",
+        f"- Product artifacts: {run_stats.get('product_artifacts_created', 0)}",
+        f"- Published to data/publish_ready/: {len(_EXEC_STATS['autonomous'])} item(s)",
+        f"",
+        f"## Execution",
+        f"",
+        f"- Autonomous (Level 1): {len(_EXEC_STATS['autonomous'])}",
+        f"- Delegated (Level 2): {len(_EXEC_STATS['delegated'])}",
+        f"- Queued for founder (Level 3): {len(_EXEC_STATS['queued'])}",
+        f"- Approved actions run (Stage 5): {run_stats.get('approved_actions_executed', 0)}",
+        f"",
+    ]
+    if blocked_lines:
+        lines.append("## Blocked / Queued (requires founder approval or credentials)")
+        lines.append("")
+        lines.extend(blocked_lines)
+        lines.append("")
+
+    lines += [
+        f"## Log Locations",
+        f"",
+        f"- Execution log: `data/autonomous_execution_log.md`",
+        f"- Outbound email log: `memory/outbound_email_log.md`",
+        f"- Publish-ready content: `data/publish_ready/`",
+        f"- Staged outreach (no recipient): `data/executed_outputs/`",
+    ]
+
+    content = "\n".join(lines) + "\n"
+    summary_path.write_text(content, encoding="utf-8")
+    archive_path.write_text(content, encoding="utf-8")
+    print(f"  [SUMMARY] Run summary written -> reports/run_summary_latest.md")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -762,6 +929,30 @@ def main():
     # Stage 5: Execute Approved Actions
     banner("STAGE 5 — Execute Approved Actions")
     run_stats["approved_actions_executed"] = _run_approved_actions()
+
+    # Stage 6: Follow-Up Scan + Generation
+    banner("STAGE 6 — Follow-Up Scan (7-day pipeline check)")
+    fu_result = None
+    _q_before_followup = _snapshot_queue()
+    try:
+        from agents.sales.followup_sales_agent import run as run_followup
+        fu_result = run_followup()
+        results["followup_sales_agent"] = fu_result.get("report_path")
+        run_stats["followups_drafted"] = fu_result.get("drafts_queued", 0)
+        if fu_result.get("candidates_found", 0) == 0:
+            print("  [FollowUp] No firms due for follow-up this run.")
+        elif not fu_result.get("enforcement_passed"):
+            print(f"  [WARN] Follow-Up enforcement FAILED: "
+                  f"{fu_result.get('enforcement_reason')}")
+        else:
+            print(f"  [OK] Follow-Up — "
+                  f"{fu_result.get('candidates_found')} candidate(s), "
+                  f"{fu_result.get('drafts_queued')} draft(s) queued")
+    except Exception as e:
+        print(f"  [FAIL] Follow-Up Sales FAILED: {e}")
+        traceback.print_exc()
+        results["followup_sales_agent"] = None
+    _route_new_artifacts(_new_since_snapshot(_q_before_followup), "followup_sales_agent")
 
 
     # ─────────────────────────────────────────────────────────────────────────

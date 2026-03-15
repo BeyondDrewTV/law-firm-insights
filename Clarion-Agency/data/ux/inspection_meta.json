@@ -1,0 +1,38 @@
+{
+  "inspection_timestamp": "2026-03-13T08:15:25.233319+00:00",
+  "live_url": "https://law-firm-feedback-saas.onrender.com",
+  "success": true,
+  "attempts_needed": 1,
+  "attempts_log": [
+    {
+      "attempt": 1,
+      "status": 200,
+      "bytes": 1395,
+      "elapsed_s": 0.12,
+      "error": null,
+      "result": "success"
+    }
+  ],
+  "homepage_bytes": 1395,
+  "routes_fetched": [
+    "/",
+    "/feedback"
+  ],
+  "secondary_results": {
+    "/login": {
+      "status": 302,
+      "bytes": 0,
+      "elapsed_s": 0.57,
+      "error": "HTTP 302 The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\nFound"
+    },
+    "/feedback": {
+      "status": 200,
+      "bytes": 15652,
+      "elapsed_s": 0.11,
+      "saved": "live_feedback_snapshot.html"
+    }
+  },
+  "snapshot_path": "C:\\Users\\beyon\\OneDrive\\Desktop\\CLARION\\law-firm-insights-main\\Clarion-Agency\\data\\ux\\live_homepage_snapshot.html",
+  "failure_reason": null,
+  "context_block_length": 2061
+}

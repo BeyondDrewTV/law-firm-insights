@@ -1,0 +1,10 @@
+{
+  "staged_emails": [
+    {
+      "email": "",
+      "subject": "A note from Clarion",
+      "body": "Hi there,\n\nI noticed Texas Injury Advocates has accumulated over 150 client reviews - an impressive volume that also creates a visibility challenge. With that many reviews coming in, important client feedback patterns often only surface after they've affected multiple cases.\n\nClarion converts your public reviews into a weekly governance brief that surfaces these patterns systematically - giving partners clear visibility into recurring themes before they become trends.\n\nI'd be glad to show you how it works using a sample of your actual reviews. Would you have 20 minutes this week?\n\nBest,\nJames"
+    }
+  ],
+  "smtp_error": "SMTP LOGIN FAILED for Drewyomantas@gmail.com@smtp.gmail.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 586e51a60fabf-4177e1fb6efsm7802327fac.3 - gsmtp'). For Gmail, SMTP_PASS must be a 16-char App Password (not your account password). Generate at: https://myaccount.google.com/apppasswords"
+}

@@ -1,0 +1,10 @@
+{
+  "staged_emails": [
+    {
+      "email": "",
+      "subject": "A note from Clarion",
+      "body": "Hi Miguel - Looking at Rodriguez & Associates' client reviews, I noticed a shift in sentiment patterns over the past 6 months that may be worth discussing. Most firms only see these trends after they've impacted operations. Clarion converts your public client feedback into a structured governance brief that gives partners early visibility into emerging patterns. If you're open to it, I can walk through what that would look like using a sample of your firm's actual reviews."
+    }
+  ],
+  "reason": "SMTP_PASS is a placeholder ('NEEDS_ZOHO_APP_PASSWORD'). Set a real Zoho app password in .env before outreach will send. Generate at: https://accounts.zoho.com/home#security > App-Specific Passwords."
+}

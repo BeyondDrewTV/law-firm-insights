@@ -14,9 +14,9 @@
 ---
 
 # ORCHESTRATION STATE (updated by runner each cycle)
-last_trigger_check:  2026-03-12T17:02:12
+last_trigger_check:  2026-03-13T00:49:06
 deferred_triggers:   []
-daily_llm_count:     3
+daily_llm_count:     10
 cost_cap_hit:        false
 
 ---

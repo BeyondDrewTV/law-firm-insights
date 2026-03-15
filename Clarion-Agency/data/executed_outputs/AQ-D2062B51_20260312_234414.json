@@ -1,0 +1,10 @@
+{
+  "staged_emails": [
+    {
+      "email": "",
+      "subject": "A note from Clarion",
+      "body": "Hi Sarah,\n\nI noticed a pattern in Johnson Family Law's recent client reviews - about 8 complaints specifically around communication responsiveness in the past 3 months. As firms grow (I see you've added 3 attorneys in 2025), these feedback patterns often only become visible after they've already affected multiple clients.\n\nClarion converts your public client reviews into a weekly governance brief that surfaces these patterns early - classified by theme and structured as specific partner action items.\n\nI'd be glad to walk you through how it works using a sample of your actual public reviews. Would you have 20 minutes this week?\n\nBest,\nJames"
+    }
+  ],
+  "smtp_error": "SMTP LOGIN FAILED for Drewyomantas@gmail.com@smtp.gmail.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\\n5.7.8  https://support.google.com/mail/?p=BadCredentials 46e09a7af769-7d77c961e79sm2336174a34.7 - gsmtp'). For Gmail, SMTP_PASS must be a 16-char App Password (not your account password). Generate at: https://myaccount.google.com/apppasswords"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. Email discovery did not find a public address for this firm. Find the address manually and re-queue, or skip this prospect.",
+  "firm_name": "Kuck Baxter Immigration LLC",
+  "contact_target": "Charles Kuck",
+  "subject": "Enhancing Client Communication Insights for Kuck Baxter Immigration",
+  "body": "I've observed that immigration clients often leave detailed feedback regarding communication timelines and case status responsiveness. This focus on communication can highlight operational gaps that may affect client satisfaction. Clarion can convert this feedback into a structured governance brief, providing your leadership with clear insights into client sentiment and actionable recommendations. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

@@ -1,0 +1,8 @@
+{
+  "status": "staged_no_recipient",
+  "note": "outreach_email artifact has no recipient email address. The LLM cannot fabricate real email addresses — this is by design. To send: open this file, add the correct 'to' address, and call _handle_send_outreach_batch() directly or re-queue with recipient_email set.",
+  "firm_name": "Connatser Family Law",
+  "contact_target": "Summer Connatser",
+  "subject": "Connatser Family Law — Understanding Client Feedback Patterns",
+  "body": "I've observed that smaller boutique firms like yours often face heightened sensitivity to review signals, especially regarding communication and responsiveness. This can significantly impact referral flow. Clarion provides governance briefs that turn client feedback into actionable insights, helping leadership address these critical areas proactively. If you're open to it, I can walk through what that would look like using a sample of your firm's public reviews."
+}

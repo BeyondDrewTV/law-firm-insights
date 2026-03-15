@@ -1,0 +1,2566 @@
+{
+  "calibration_report": {
+    "candidate_negation_guards": [
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 3,
+            "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe",
+            "theme": "empathy_support"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "impersonal",
+        "themes_affected": [
+          "empathy_support"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 3,
+            "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my Social Security disability. Lack of communication ",
+            "theme": "timeliness_progress"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "extremely slow",
+        "themes_affected": [
+          "timeliness_progress"
+        ]
+      }
+    ],
+    "candidate_phrase_additions": [
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "She called me the day before the hearing and answered all my questions.",
+            "rating": 4,
+            "review_snippet": "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave an example summary. She was very knowledgeable and"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "answering all my questions and, during the process of waiting, keeping me informed",
+            "rating": 4,
+            "review_snippet": "After being denied for SSDI, I decided to hire Hoglund Law. From the very first day I knew I was dealing with professionals, answering all my questions and, during the process of waiting, keeping me i"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "They answer your questions and return your calls.",
+            "rating": 4,
+            "review_snippet": "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn't made plain by the judge. I would recommend him a"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "They were very good at returning your call.",
+            "rating": 3,
+            "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "It is very frustrating because there is a date on the letter",
+            "rating": 3,
+            "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure "
+          }
+        ],
+        "occurrence_count": 8,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "although it took a while I was able to get the assistance I needed",
+            "rating": 4,
+            "review_snippet": "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the hardworking people and my attorney Tony for making su"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "will be there to assist with your case from beginning to end",
+            "rating": 3,
+            "review_snippet": "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and considerate to your needs,and will be there to assist with"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I received my determination/settlement from Social Security and did not hear from them until a month later.",
+            "rating": 3,
+            "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "24 hours later and no call",
+            "rating": 3,
+            "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "want you do all the work.",
+            "rating": 3,
+            "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+          }
+        ],
+        "occurrence_count": 5,
+        "theme": "timeliness_progress"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "All in all I was very impressed!",
+            "rating": 4,
+            "review_snippet": "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave an example summary. She was very knowledgeable and"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "I was able to get the assistance I needed to finally win my case.",
+            "rating": 4,
+            "review_snippet": "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the hardworking people and my attorney Tony for making su"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "My end result was very satisfying and I was pleased with the lawyer",
+            "rating": 4,
+            "review_snippet": "A person needs to have patience as this is a long process. My end result was very satisfying and I was pleased with the lawyer who helped represent me. It was a win for me. Thank you Matt for your hel"
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Attorney Beau Chinn is very nice and helpful when you are answering questions",
+            "rating": 4,
+            "review_snippet": "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn't made plain by the judge. I would recommend him a"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "gave me a feeling someone was looking out for my best interest.",
+            "rating": 4,
+            "review_snippet": "They answered the phone and returned my calls. Diligent service, answered my questions, and gave me a feeling someone was looking out for my best interest."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "some people might be anxious or what have you going through stuff",
+            "rating": 3,
+            "review_snippet": "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered some people might be anxious or what have you going t"
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "empathy_support"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I had a few surprises at the end as those items were not discussed...",
+            "rating": 3,
+            "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "something he told me to expect",
+            "rating": 3,
+            "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure "
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "If you expect them to help you with Student Loan Discharge, you thought wrong.",
+            "rating": 3,
+            "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "expectation_setting"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I didn\u2019t know who was handling my case at times.",
+            "rating": 4,
+            "review_snippet": "The hearing went very well. It sounded like you were prepared. The only problem for me was that I didn\u2019t know who was handling my case at times."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "I think they should tell you that no matter how long you wait for your disability...",
+            "rating": 3,
+            "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "communication_clarity"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Andrew Kinney is knowledgeable and capable of understanding",
+            "rating": 3,
+            "review_snippet": "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and considerate to your needs,and will be there to assist with"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Paralegals would receive zero stars- they were that bad at responding and communicating statuses.",
+            "rating": 3,
+            "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my Social Security disability. Lack of communication "
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "professionalism_trust"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "mocked by someone in the background of a call",
+            "rating": 3,
+            "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionist or paralegal I have to drop a couple of stars. M"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "office_staff_experience"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "They just want money from you",
+            "rating": 3,
+            "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "fee_value"
+      }
+    ],
+    "context_guard_failures": [
+      {
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'communication_clarity' as 'negative' via phrase 'lack of communication' with negation=False, contrast=True. AI did not tag this theme \u2014 possible guard over-triggering.",
+        "deterministic_phrase": "lack of communication",
+        "deterministic_polarity": "negative",
+        "rating": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a ",
+        "theme": "communication_clarity"
+      }
+    ],
+    "disagreement_by_theme": {
+      "communication_clarity": 3,
+      "communication_responsiveness": 8,
+      "empathy_support": 4,
+      "expectation_setting": 3,
+      "fee_value": 1,
+      "office_staff_experience": 1,
+      "outcome_satisfaction": 3,
+      "professionalism_trust": 2,
+      "timeliness_progress": 6
+    },
+    "disagreement_by_type": {
+      "extra_theme": 2,
+      "likely_context_guard_failure": 1,
+      "missing_theme": 28
+    },
+    "false_positive_themes": [
+      {
+        "count": 1,
+        "theme": "empathy_support"
+      },
+      {
+        "count": 1,
+        "theme": "timeliness_progress"
+      }
+    ],
+    "manual_review_queue": [
+      {
+        "ai_evidence_span": "I didn\u2019t know who was handling my case at times.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 4,
+        "review_snippet": "The hearing went very well. It sounded like you were prepared. The only problem for me was that I didn\u2019t know who was handling my case at times.",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I think they should tell you that no matter how long you wait for your disability...",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I had a few surprises at the end as those items were not discussed...",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "I received my determination/settlement from Social Security and did not hear from them until a month later.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "It is very frustrating because there is a date on the letter",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "24 hours later and no call",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "Responses to questions are EXTREMELY slow.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Paralegals would receive zero stars- they were that bad at responding and communicating statuses.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my ",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'communication_clarity' as 'negative' via phrase 'lack of communication' with negation=False, contrast=True. AI did not tag this theme \u2014 possible guard over-triggering.",
+        "deterministic_phrase": "lack of communication",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionis",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "lack of communication and just being mocked",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionis",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "mocked by someone in the background of a call",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionis",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "the communication I had received in the beginning was terrible",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered som",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "some people might be anxious or what have you going through stuff",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered som",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "If you expect them to help you with Student Loan Discharge, you thought wrong.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work.",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "They just want money from you",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'fee_value' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work.",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "want you do all the work.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work.",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      }
+    ],
+    "missed_phrases": [
+      {
+        "count": 8,
+        "sample_evidence": [
+          "She called me the day before the hearing and answered all my questions.",
+          "answering all my questions and, during the process of waiting, keeping me informed",
+          "They answer your questions and return your calls.",
+          "They were very good at returning your call.",
+          "It is very frustrating because there is a date on the letter"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "count": 5,
+        "sample_evidence": [
+          "although it took a while I was able to get the assistance I needed",
+          "will be there to assist with your case from beginning to end",
+          "I received my determination/settlement from Social Security and did not hear from them until a month later.",
+          "24 hours later and no call",
+          "want you do all the work."
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "All in all I was very impressed!",
+          "I was able to get the assistance I needed to finally win my case.",
+          "My end result was very satisfying and I was pleased with the lawyer"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "Attorney Beau Chinn is very nice and helpful when you are answering questions",
+          "gave me a feeling someone was looking out for my best interest.",
+          "some people might be anxious or what have you going through stuff"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "I had a few surprises at the end as those items were not discussed...",
+          "something he told me to expect",
+          "If you expect them to help you with Student Loan Discharge, you thought wrong."
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "I didn\u2019t know who was handling my case at times.",
+          "I think they should tell you that no matter how long you wait for your disability..."
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "Andrew Kinney is knowledgeable and capable of understanding",
+          "Paralegals would receive zero stars- they were that bad at responding and communicating statuses."
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "mocked by someone in the background of a call"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "They just want money from you"
+        ],
+        "theme": "fee_value"
+      }
+    ],
+    "phrase_mining_candidates": [
+      {
+        "evidence_span": "She called me the day before the hearing and answered all my questions.",
+        "normalised_span": "she called me the day before the hearing and answered all my questions.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave an example summary. She was very knowledgeable and"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "All in all I was very impressed!",
+        "normalised_span": "all in all i was very impressed!",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave an example summary. She was very knowledgeable and"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "answering all my questions and, during the process of waiting, keeping me inform",
+        "normalised_span": "answering all my questions and, during the process of waiting, keeping me inform",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "After being denied for SSDI, I decided to hire Hoglund Law. From the very first day I knew I was dealing with professionals, answering all my questions and, during the process of waiting, keeping me i"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "They answer your questions and return your calls.",
+        "normalised_span": "they answer your questions and return your calls.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn't made plain by the judge. I would recommend him a"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Attorney Beau Chinn is very nice and helpful when you are answering questions",
+        "normalised_span": "attorney beau chinn is very nice and helpful when you are answering questions",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn't made plain by the judge. I would recommend him a"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "I was able to get the assistance I needed to finally win my case.",
+        "normalised_span": "i was able to get the assistance i needed to finally win my case.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the hardworking people and my attorney Tony for making su"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "although it took a while I was able to get the assistance I needed",
+        "normalised_span": "although it took a while i was able to get the assistance i needed",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the hardworking people and my attorney Tony for making su"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "I didn\u2019t know who was handling my case at times.",
+        "normalised_span": "i didn\u2019t know who was handling my case at times.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "The hearing went very well. It sounded like you were prepared. The only problem for me was that I didn\u2019t know who was handling my case at times."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "My end result was very satisfying and I was pleased with the lawyer",
+        "normalised_span": "my end result was very satisfying and i was pleased with the lawyer",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "A person needs to have patience as this is a long process. My end result was very satisfying and I was pleased with the lawyer who helped represent me. It was a win for me. Thank you Matt for your hel"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "gave me a feeling someone was looking out for my best interest.",
+        "normalised_span": "gave me a feeling someone was looking out for my best interest.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "They answered the phone and returned my calls. Diligent service, answered my questions, and gave me a feeling someone was looking out for my best interest."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "Andrew Kinney is knowledgeable and capable of understanding",
+        "normalised_span": "andrew kinney is knowledgeable and capable of understanding",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and considerate to your needs,and will be there to assist with"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "will be there to assist with your case from beginning to end",
+        "normalised_span": "will be there to assist with your case from beginning to end",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and considerate to your needs,and will be there to assist with"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "I think they should tell you that no matter how long you wait for your disabilit",
+        "normalised_span": "i think they should tell you that no matter how long you wait for your disabilit",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "They were very good at returning your call.",
+        "normalised_span": "they were very good at returning your call.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "I had a few surprises at the end as those items were not discussed...",
+        "normalised_span": "i had a few surprises at the end as those items were not discussed...",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "I received my determination/settlement from Social Security and did not hear fro",
+        "normalised_span": "i received my determination/settlement from social security and did not hear fro",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a fe"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "It is very frustrating because there is a date on the letter",
+        "normalised_span": "it is very frustrating because there is a date on the letter",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "something he told me to expect",
+        "normalised_span": "something he told me to expect",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "24 hours later and no call",
+        "normalised_span": "24 hours later and no call",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "Responses to questions are EXTREMELY slow.",
+        "normalised_span": "responses to questions are extremely slow.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my Social Security disability. Lack of communication "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Paralegals would receive zero stars- they were that bad at responding and commun",
+        "normalised_span": "paralegals would receive zero stars- they were that bad at responding and commun",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my Social Security disability. Lack of communication "
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "lack of communication and just being mocked",
+        "normalised_span": "lack of communication and just being mocked",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionist or paralegal I have to drop a couple of stars. M"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "mocked by someone in the background of a call",
+        "normalised_span": "mocked by someone in the background of a call",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionist or paralegal I have to drop a couple of stars. M"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "the communication I had received in the beginning was terrible",
+        "normalised_span": "the communication i had received in the beginning was terrible",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered some people might be anxious or what have you going t"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "some people might be anxious or what have you going through stuff",
+        "normalised_span": "some people might be anxious or what have you going through stuff",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered some people might be anxious or what have you going t"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "If you expect them to help you with Student Loan Discharge, you thought wrong.",
+        "normalised_span": "if you expect them to help you with student loan discharge, you thought wrong.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "They just want money from you",
+        "normalised_span": "they just want money from you",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "evidence_span": "want you do all the work.",
+        "normalised_span": "want you do all the work.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      }
+    ],
+    "reviews_needing_inspection": [],
+    "severe_mismatches": [],
+    "summary": {
+      "agreement_rate": 0.3,
+      "ai_enabled_count": 20,
+      "ai_invalid_response_count": 0,
+      "ai_item_invalid_total": 0,
+      "ai_run_count": 20,
+      "total_disagreements": 31,
+      "total_reviews": 20,
+      "zero_disagreement_reviews": 6
+    },
+    "theme_disagreement_rates": {
+      "communication_clarity": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "communication_responsiveness": {
+        "disagreement_count": 8,
+        "rate": 0.4
+      },
+      "empathy_support": {
+        "disagreement_count": 4,
+        "rate": 0.2
+      },
+      "expectation_setting": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "fee_value": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "office_staff_experience": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "outcome_satisfaction": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "professionalism_trust": {
+        "disagreement_count": 2,
+        "rate": 0.1
+      },
+      "timeliness_progress": {
+        "disagreement_count": 6,
+        "rate": 0.3
+      }
+    },
+    "top_disagreements_by_priority": [
+      {
+        "ai_evidence_span": "I didn\u2019t know who was handling my case at times.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 4,
+        "review_snippet": "The hearing went very well. It sounded like you were prepared. The only problem for me was that I didn\u2019t know who was handling my case at times.",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I think they should tell you that no matter how long you wait for your disability...",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I had a few surprises at the end as those items were not discussed...",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "I received my determination/settlement from Social Security and did not hear from them until a month later.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "It is very frustrating because there is a date on the letter",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "24 hours later and no call",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "Responses to questions are EXTREMELY slow.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Paralegals would receive zero stars- they were that bad at responding and communicating statuses.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my ",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'communication_clarity' as 'negative' via phrase 'lack of communication' with negation=False, contrast=True. AI did not tag this theme \u2014 possible guard over-triggering.",
+        "deterministic_phrase": "lack of communication",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_context_guard_failure",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionis",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "lack of communication and just being mocked",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionis",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "mocked by someone in the background of a call",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionis",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "the communication I had received in the beginning was terrible",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered som",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "some people might be anxious or what have you going through stuff",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered som",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "If you expect them to help you with Student Loan Discharge, you thought wrong.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work.",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "They just want money from you",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'fee_value' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work.",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "want you do all the work.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 15,
+        "review_snippet": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work.",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'empathy_support' as 'negative' via phrase 'impersonal'. AI did not tag this theme.",
+        "deterministic_phrase": "impersonal",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'timeliness_progress' as 'negative' via phrase 'extremely slow'. AI did not tag this theme.",
+        "deterministic_phrase": "extremely slow",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 11,
+        "review_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "She called me the day before the hearing and answered all my questions.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 0,
+        "review_snippet": "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave ",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "All in all I was very impressed!",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 0,
+        "review_snippet": "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave ",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "answering all my questions and, during the process of waiting, keeping me informed",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 1,
+        "review_snippet": "After being denied for SSDI, I decided to hire Hoglund Law. From the very first day I knew I was dealing with professionals, answering all my question",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "They answer your questions and return your calls.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 2,
+        "review_snippet": "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn'",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "Attorney Beau Chinn is very nice and helpful when you are answering questions",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 2,
+        "review_snippet": "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn'",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "I was able to get the assistance I needed to finally win my case.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 3,
+        "review_snippet": "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the har",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "although it took a while I was able to get the assistance I needed",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 3,
+        "review_snippet": "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the har",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "My end result was very satisfying and I was pleased with the lawyer",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 5,
+        "review_snippet": "A person needs to have patience as this is a long process. My end result was very satisfying and I was pleased with the lawyer who helped represent me",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "gave me a feeling someone was looking out for my best interest.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 7,
+        "review_snippet": "They answered the phone and returned my calls. Diligent service, answered my questions, and gave me a feeling someone was looking out for my best inte",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Andrew Kinney is knowledgeable and capable of understanding",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 8,
+        "review_snippet": "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and consider",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "will be there to assist with your case from beginning to end",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 8,
+        "review_snippet": "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and consider",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "They were very good at returning your call.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 9,
+        "review_snippet": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed mul",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "something he told me to expect",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 10,
+        "review_snippet": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social ",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      }
+    ]
+  },
+  "export_path": null,
+  "results": [
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.695,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "She called me the day before the hearing and answered all my questions.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "She was very knowledgeable and to the point.",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "All in all I was very impressed!",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 474,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "answered all my questions",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026s looking for. She called me the day before the hearing and answered all my questions. After the hearing she followed up\u2026",
+              "theme": "communication_clarity"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "I had an amazing experience with Ms. Tracy Kinney. She thoroughly reviewed over 50,000 pages of records and pointed out for the judge which page gave an example summary. She was very knowledgeable and to the point. She seemed to know the judge and exactly what she was looking for. She called me the day before the hearing and answered all my questions. After the hearing she followed up with a call to see if I had any additional questions. All in all I was very impressed!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "She called me the day before the hearing and answered all my questions.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "All in all I was very impressed!",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.792,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I knew I was dealing with professionals",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "answering all my questions and, during the process of waiting, keeping me informed",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 237,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 0.5,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 0.6,
+              "matched_phrase": "professional",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026lund Law. From the very first day I knew I was dealing with professionals, answering all my questions and, during the pr\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "After being denied for SSDI, I decided to hire Hoglund Law. From the very first day I knew I was dealing with professionals, answering all my questions and, during the process of waiting, keeping me informed until the day I was approved."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "answering all my questions and, during the process of waiting, keeping me informed",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.61,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They answer your questions and return your calls.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Attorney Beau Chinn is very nice and helpful when you are answering questions",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 266,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "They answer your questions and return your calls. Attorney Beau Chinn is very nice and helpful when you are answering questions in a hearing that isn't made plain by the judge. I would recommend him and the firm he works for to anyone needing help with SSDI and SSI."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "They answer your questions and return your calls.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "Attorney Beau Chinn is very nice and helpful when you are answering questions",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.438,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I was able to get the assistance I needed to finally win my case.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "although it took a while I was able to get the assistance I needed",
+              "polarity": "positive",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 238,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "I came to Hoglund Law for help and although it took a while I was able to get the assistance I needed to finally win my case. Thanks to all of the hardworking people and my attorney Tony for making sure that I am living a better life now!"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I was able to get the assistance I needed to finally win my case.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": "although it took a while I was able to get the assistance I needed",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.223,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "medium",
+              "evidence_span": "I didn\u2019t know who was handling my case at times.",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 144,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "The hearing went very well. It sounded like you were prepared. The only problem for me was that I didn\u2019t know who was handling my case at times."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I didn\u2019t know who was handling my case at times.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.377,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "My end result was very satisfying and I was pleased with the lawyer",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 202,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "A person needs to have patience as this is a long process. My end result was very satisfying and I was pleased with the lawyer who helped represent me. It was a win for me. Thank you Matt for your help."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "My end result was very satisfying and I was pleased with the lawyer",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.024,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They responded quickly and confidentially.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "They were honest and very generous with their time.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 112,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "responded quickly",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "They responded quickly and confidentially. They were honest and v\u2026",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 0.5,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 0.6,
+              "matched_phrase": "honest",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "They responded quickly and confidentially. They were honest and very generous with their time. I recommend them.",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "They responded quickly and confidentially. They were honest and very generous with their time. I recommend them."
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.764,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They answered the phone and returned my calls.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "gave me a feeling someone was looking out for my best interest.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 155,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "returned my call",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "They answered the phone and returned my calls. Diligent service, answered my questions,\u2026",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "They answered the phone and returned my calls. Diligent service, answered my questions, and gave me a feeling someone was looking out for my best interest."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "gave me a feeling someone was looking out for my best interest.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.051,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Andrew Kinney is caring and considerate to your needs",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Andrew Kinney is knowledgeable and capable of understanding",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "will be there to assist with your case from beginning to end",
+              "polarity": "positive",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 445,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "caring",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026rough one of the toughest times in my life.Andrew Kinney is caring and considerate to your needs,and will be there to as\u2026",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Andrew Kinney of hoglund law is nothing short of excellent,he got me through one of the toughest times in my life.Andrew Kinney is caring and considerate to your needs,and will be there to assist with your case from beginning to end.Andrew is knowledgeable and capable of understanding and capable of dealing with any twists or turns that may appear in short ,Andrew Kinney is the lawyer you want to represent you ,he will get the job done......"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Andrew Kinney is knowledgeable and capable of understanding",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        },
+        {
+          "ai_evidence_span": "will be there to assist with your case from beginning to end",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'positive' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.956,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "They were very good at returning your call.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "I think they should tell you that no matter how long you wait for your disability...",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "I had a few surprises at the end as those items were not discussed...",
+              "polarity": "negative",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "I received my determination/settlement from Social Security and did not hear from them until a month later.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 708,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "impersonal",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026ad questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe m\u2026",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "They were very good at returning your call. When you had questions they answered them within a day. Felt a little impersonal as my contact changed multiple times, I believe my atty did too. I had a few surprises at the end as those items were not discussed but nothing that mattered when I found out as they were Social security \"rules\". I received my determination/settlement from Social Security and did not hear from them until a month later. I think they should tell you that no matter how long you wait for your disability you are not likely to get any more than 18 months of benefits. That info is buried in your paperwork from the SS office with your settlement. They did get it done! Glad it is over."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I think they should tell you that no matter how long you wait for your disability...",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "They were very good at returning your call.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'empathy_support' as 'negative' via phrase 'impersonal'. AI did not tag this theme.",
+          "deterministic_phrase": "impersonal",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "I had a few surprises at the end as those items were not discussed...",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        },
+        {
+          "ai_evidence_span": "I received my determination/settlement from Social Security and did not hear from them until a month later.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.661,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "medium",
+              "evidence_span": "It is very frustrating because there is a date on the letter",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Kong... was very understanding and helped me through paperwork",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "something he told me to expect",
+              "polarity": "positive",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "24 hours later and no call",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 1289,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "understanding",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026ked with Kong (not sure that is spelled right). He was very understanding and helped me through paperwork. Then, the den\u2026",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "I guess my experience with them may not be complete, but from what I have experienced so far I am frustrated. I went through them to apply for social security disability. I worked with Kong (not sure that is spelled right). He was very understanding and helped me through paperwork. Then, the denial came 3 months later, something he told me to expect. I called him. He said he would send my case to the appeals department and they would call me the next day or two. About 5 days later, I called them to see when the appeals was planning on calling. The person said they had tried to call me that morning\u2014no message was left. I seldom answer a number I don't recognize and figure if it is important they will leave a message. The call representative said she would pass my message on to \"her\". It is 24 hours later and no call. It is very frustrating because there is a date on the letter and appeals have to be done within the time frame allowed. I would have given Kong a 5 star rating, but overall it is a 3. If there was a 2 1/2 I would have done that. I kind of wish I had gone to another lawyer. UPDATE: I have a new case manager now. She seems to be conscientious regarding my case. I seldom reach her on the first call, but she usually returns my call by the next day or day after."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "It is very frustrating because there is a date on the letter",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "something he told me to expect",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        },
+        {
+          "ai_evidence_span": "24 hours later and no call",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.938,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Responses to questions are EXTREMELY slow.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Lack of communication on their end.",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Paralegals would receive zero stars- they were that bad at responding and communicating statuses.",
+              "polarity": "negative",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 468,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "lack of communication",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026g with Hoglund Law regarding my Social Security disability. Lack of communication on their end. The lawyer was way bette\u2026",
+              "theme": "communication_clarity"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.5,
+              "matched_phrase": "extremely slow",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this mat\u2026",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Responses to questions are EXTREMELY slow. The paralegals are not efficient in this matter. I was frustrated in dealing with Hoglund Law regarding my Social Security disability. Lack of communication on their end. The lawyer was way better than the paralegals. The only reason I am giving 3 stars instead of 1 is because of Andrew Kinney, the lawyer who handled my case. Paralegals would receive zero stars- they were that bad at responding and communicating statuses."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Responses to questions are EXTREMELY slow.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "Paralegals would receive zero stars- they were that bad at responding and communicating statuses.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'timeliness_progress' as 'negative' via phrase 'extremely slow'. AI did not tag this theme.",
+          "deterministic_phrase": "extremely slow",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.663,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "lack of communication and just being mocked",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "mocked by someone in the background of a call",
+              "polarity": "negative",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 263,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "low",
+              "contrast_applied": true,
+              "final_impact": 1.0,
+              "matched_phrase": "lack of communication",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "I had a five star review, but between the lack of communication and just being mocked by someone in th\u2026",
+              "theme": "communication_clarity"
+            }
+          ]
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "I had a five star review, but between the lack of communication and just being mocked by someone in the background of a call to either the receptionist or paralegal I have to drop a couple of stars. Maybe more soon. We'll see if anyone actually gets back to me..."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'communication_clarity' as 'negative' via phrase 'lack of communication' with negation=False, contrast=True. AI did not tag this theme \u2014 possible guard over-triggering.",
+          "deterministic_phrase": "lack of communication",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 3,
+          "disagreement_type": "likely_context_guard_failure",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "lack of communication and just being mocked",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "mocked by someone in the background of a call",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "office_staff_experience"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.642,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 219,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "My review is mixed. I had expressed a couple times I didn't feel communication was very good at time's. But other times I would get someone that could and would answer all my questions. Depends on who your dealing with."
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.748,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "the communication I had received in the beginning was terrible",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "some people might be anxious or what have you going through stuff",
+              "polarity": "negative",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 243,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "To start off I understand they have more than one client, the communication I had received in the beginning was terrible questions went unanswered some people might be anxious or what have you going through stuff so asking questions and \u2026 More"
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "the communication I had received in the beginning was terrible",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "some people might be anxious or what have you going through stuff",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'empathy_support' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.416,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "If you expect them to help you with Student Loan Discharge, you thought wrong.",
+              "polarity": "negative",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "They just want money from you",
+              "polarity": "negative",
+              "theme": "fee_value"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "want you do all the work.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 138,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "If you expect them to help you with Student Loan Discharge, you thought wrong. They just want money from you and want you do all the work."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "If you expect them to help you with Student Loan Discharge, you thought wrong.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'expectation_setting' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        },
+        {
+          "ai_evidence_span": "They just want money from you",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'fee_value' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "fee_value"
+        },
+        {
+          "ai_evidence_span": "want you do all the work.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.069,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 83,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "It's hard to explain in five years ago I used them I just needed paperwork verified"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.103,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 44,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Under new management so things should change"
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 0.745,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 146,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Does not consider taking those with less visible disabilities. If your disability isn't obvious, not matter how much proof you have, don't bother."
+      },
+      "disagreements": []
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 0.868,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 82,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "I agree with others. If your disability isn't visible, than don't waste your time."
+      },
+      "disagreements": []
+    }
+  ],
+  "success": true,
+  "total_reviews": 20
+}

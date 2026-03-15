@@ -1,0 +1,2979 @@
+{
+  "calibration_report": {
+    "candidate_negation_guards": [
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 3,
+            "review_snippet": "The good: Ms. Reyes clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unremarkable experience.",
+            "theme": "timeliness_progress"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "slow",
+        "themes_affected": [
+          "timeliness_progress"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "negative",
+            "rating": 4,
+            "review_snippet": "Strong recommend for this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent. End result exceeded my expectations.",
+            "theme": "communication_clarity"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "confusing",
+        "themes_affected": [
+          "communication_clarity"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 4,
+            "review_snippet": "Attorney Davis fought hard for me and delivered a strong result. I'd recommend them to friends. The one thing I'd change is more frequent proactive updates \u2014 I had to initiate most check-ins myself.",
+            "theme": "communication_responsiveness"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "proactive updates",
+        "themes_affected": [
+          "communication_responsiveness"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 4,
+            "review_snippet": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+            "theme": "outcome_satisfaction"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "won my case",
+        "themes_affected": [
+          "outcome_satisfaction"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 4,
+            "review_snippet": "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of what I expected, hence 4 stars instead of 5.",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "honest",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 4,
+            "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima",
+            "theme": "outcome_satisfaction"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "great result",
+        "themes_affected": [
+          "outcome_satisfaction"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 5,
+            "review_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends.",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "always honest",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      },
+      {
+        "examples": [
+          {
+            "det_polarity": "positive",
+            "rating": 5,
+            "review_snippet": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like.",
+            "theme": "professionalism_trust"
+          }
+        ],
+        "occurrence_count": 1,
+        "phrase": "transparent",
+        "themes_affected": [
+          "professionalism_trust"
+        ]
+      }
+    ],
+    "candidate_phrase_additions": [
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Outcome was fine.",
+            "rating": 3,
+            "review_snippet": "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Results were acceptable",
+            "rating": 3,
+            "review_snippet": "Communication was hit or miss with their office. When I could get someone on the phone they were helpful, but getting to that point sometimes took longer than it should. Results were acceptable."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "The result was outstanding.",
+            "rating": 5,
+            "review_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+            "rating": 5,
+            "review_snippet": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "The outcome exceeded my expectations.",
+            "rating": 5,
+            "review_snippet": "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended."
+          }
+        ],
+        "occurrence_count": 6,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "the billing felt a bit opaque.",
+            "rating": 3,
+            "review_snippet": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "the billing statements were hard to read and felt disorganized.",
+            "rating": 4,
+            "review_snippet": "Very happy with the outcome of my case thanks to their team. They were professional and prepared. Docking one star only because the billing statements were hard to read and felt disorganized."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Slight billing surprise at the end",
+            "rating": 4,
+            "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Billing was on the higher end of what I expected",
+            "rating": 4,
+            "review_snippet": "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of what I expected, hence 4 stars instead of 5."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+            "rating": 5,
+            "review_snippet": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like."
+          }
+        ],
+        "occurrence_count": 5,
+        "theme": "billing_transparency"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "the paralegal team seemed overloaded and dropped the ball",
+            "rating": 4,
+            "review_snippet": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "the timeline ran about 2 months longer than estimated.",
+            "rating": 4,
+            "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "an administrative mix-up early on that caused some unnecessary stress.",
+            "rating": 4,
+            "review_snippet": "Great experience overall with this law office. The attorney was empathetic, thorough, and aggressive when needed. The only hiccup was an administrative mix-up early on that caused some unnecessary str"
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+            "rating": 4,
+            "review_snippet": "Won my case with the help of this firm. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests."
+          }
+        ],
+        "occurrence_count": 4,
+        "theme": "timeliness_progress"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "Would want more clarity next time.",
+            "rating": 3,
+            "review_snippet": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Clear communicator",
+            "rating": 4,
+            "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Communication was excellent.",
+            "rating": 4,
+            "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima"
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "communication_clarity"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "deeply human. Made me feel like my case actually mattered.",
+            "rating": 5,
+            "review_snippet": "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "handled my case with expertise and genuine care.",
+            "rating": 5,
+            "review_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends."
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "I felt fully supported and informed.",
+            "rating": 5,
+            "review_snippet": "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended."
+          }
+        ],
+        "occurrence_count": 3,
+        "theme": "empathy_support"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "A few miscommunications along the way made things stressful.",
+            "rating": 3,
+            "review_snippet": "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine."
+          },
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "communication during the middle months of the case dropped off significantly",
+            "rating": 4,
+            "review_snippet": "Ms. Okonkwo did excellent work on my personal injury claim. The only reason I'm not giving 5 stars is that communication during the middle months of the case dropped off significantly."
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Attorney Davis is clearly a skilled attorney.",
+            "rating": 4,
+            "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima"
+          },
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic",
+            "rating": 5,
+            "review_snippet": "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered."
+          }
+        ],
+        "occurrence_count": 2,
+        "theme": "professionalism_trust"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "End result exceeded my expectations.",
+            "rating": 4,
+            "review_snippet": "Strong recommend for this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent. End result exceeded my expectations."
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "expectation_setting"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "negative",
+            "evidence_span": "the waiting room and office setup felt outdated and unprofessional",
+            "rating": 4,
+            "review_snippet": "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated and unprofessional compared to the legal work qual"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "office_staff_experience"
+      },
+      {
+        "examples": [
+          {
+            "ai_polarity": "positive",
+            "evidence_span": "I'd use them again without hesitation",
+            "rating": 4,
+            "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation"
+          }
+        ],
+        "occurrence_count": 1,
+        "theme": "fee_value"
+      }
+    ],
+    "context_guard_failures": [],
+    "disagreement_by_theme": {
+      "billing_transparency": 5,
+      "communication_clarity": 4,
+      "communication_responsiveness": 3,
+      "empathy_support": 3,
+      "expectation_setting": 1,
+      "fee_value": 1,
+      "office_staff_experience": 1,
+      "outcome_satisfaction": 8,
+      "professionalism_trust": 6,
+      "timeliness_progress": 5
+    },
+    "disagreement_by_type": {
+      "extra_theme": 7,
+      "likely_false_positive": 1,
+      "missing_theme": 28,
+      "wrong_polarity": 1
+    },
+    "false_positive_themes": [
+      {
+        "count": 3,
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 2,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 1,
+        "theme": "timeliness_progress"
+      },
+      {
+        "count": 1,
+        "theme": "communication_clarity"
+      },
+      {
+        "count": 1,
+        "theme": "communication_responsiveness"
+      }
+    ],
+    "manual_review_queue": [
+      {
+        "ai_evidence_span": "the billing felt a bit opaque.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 0,
+        "review_snippet": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Would want more clarity next time.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 0,
+        "review_snippet": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "A few miscommunications along the way made things stressful.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 2,
+        "review_snippet": "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Out",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "the billing statements were hard to read and felt disorganized.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 5,
+        "review_snippet": "Very happy with the outcome of my case thanks to their team. They were professional and prepared. Docking one star only because the billing statements",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "the waiting room and office setup felt outdated and unprofessional",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 6,
+        "review_snippet": "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated ",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "the paralegal team seemed overloaded and dropped the ball",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 8,
+        "review_snippet": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloade",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "Slight billing surprise at the end",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at ",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Billing was on the higher end of what I expected",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of wh",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "communication during the middle months of the case dropped off significantly",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "Ms. Okonkwo did excellent work on my personal injury claim. The only reason I'm not giving 5 stars is that communication during the middle months of t",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "the timeline ran about 2 months longer than estimated.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "an administrative mix-up early on that caused some unnecessary stress.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 13,
+        "review_snippet": "Great experience overall with this law office. The attorney was empathetic, thorough, and aggressive when needed. The only hiccup was an administrativ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "Won my case with the help of this firm. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded a",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      }
+    ],
+    "missed_phrases": [
+      {
+        "count": 6,
+        "sample_evidence": [
+          "Outcome was fine.",
+          "Results were acceptable",
+          "The result was outstanding.",
+          "Clear communication, transparent billing, and a fantastic outcome.",
+          "The outcome exceeded my expectations."
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "count": 5,
+        "sample_evidence": [
+          "the billing felt a bit opaque.",
+          "the billing statements were hard to read and felt disorganized.",
+          "Slight billing surprise at the end",
+          "Billing was on the higher end of what I expected",
+          "Clear communication, transparent billing, and a fantastic outcome."
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "count": 4,
+        "sample_evidence": [
+          "the paralegal team seemed overloaded and dropped the ball",
+          "the timeline ran about 2 months longer than estimated.",
+          "an administrative mix-up early on that caused some unnecessary stress.",
+          "the paralegal team seemed overloaded and dropped the ball on a few document requests."
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "Would want more clarity next time.",
+          "Clear communicator",
+          "Communication was excellent."
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "count": 3,
+        "sample_evidence": [
+          "deeply human. Made me feel like my case actually mattered.",
+          "handled my case with expertise and genuine care.",
+          "I felt fully supported and informed."
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "A few miscommunications along the way made things stressful.",
+          "communication during the middle months of the case dropped off significantly"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "count": 2,
+        "sample_evidence": [
+          "Attorney Davis is clearly a skilled attorney.",
+          "Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "End result exceeded my expectations."
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "the waiting room and office setup felt outdated and unprofessional"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "count": 1,
+        "sample_evidence": [
+          "I'd use them again without hesitation"
+        ],
+        "theme": "fee_value"
+      }
+    ],
+    "phrase_mining_candidates": [
+      {
+        "evidence_span": "the billing felt a bit opaque.",
+        "normalised_span": "the billing felt a bit opaque.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "Would want more clarity next time.",
+        "normalised_span": "would want more clarity next time.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "A few miscommunications along the way made things stressful.",
+        "normalised_span": "a few miscommunications along the way made things stressful.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Outcome was fine.",
+        "normalised_span": "outcome was fine.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "Results were acceptable",
+        "normalised_span": "results were acceptable",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Communication was hit or miss with their office. When I could get someone on the phone they were helpful, but getting to that point sometimes took longer than it should. Results were acceptable."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "End result exceeded my expectations.",
+        "normalised_span": "end result exceeded my expectations.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Strong recommend for this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent. End result exceeded my expectations."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "expectation_setting"
+      },
+      {
+        "evidence_span": "the billing statements were hard to read and felt disorganized.",
+        "normalised_span": "the billing statements were hard to read and felt disorganized.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Very happy with the outcome of my case thanks to their team. They were professional and prepared. Docking one star only because the billing statements were hard to read and felt disorganized."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "the waiting room and office setup felt outdated and unprofessional",
+        "normalised_span": "the waiting room and office setup felt outdated and unprofessional",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated and unprofessional compared to the legal work qual"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "office_staff_experience"
+      },
+      {
+        "evidence_span": "Mr. Castillo handled my immigration case with professionalism and care.",
+        "normalised_span": "mr. castillo handled my immigration case with professionalism and care.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated and unprofessional compared to the legal work qual"
+        ],
+        "source_types": [
+          "wrong_polarity"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "the paralegal team seemed overloaded and dropped the ball",
+        "normalised_span": "the paralegal team seemed overloaded and dropped the ball",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "Slight billing surprise at the end",
+        "normalised_span": "slight billing surprise at the end",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "Clear communicator",
+        "normalised_span": "clear communicator",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "I'd use them again without hesitation",
+        "normalised_span": "i'd use them again without hesitation",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "fee_value"
+      },
+      {
+        "evidence_span": "Billing was on the higher end of what I expected",
+        "normalised_span": "billing was on the higher end of what i expected",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of what I expected, hence 4 stars instead of 5."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "communication during the middle months of the case dropped off significantly",
+        "normalised_span": "communication during the middle months of the case dropped off significantly",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Ms. Okonkwo did excellent work on my personal injury claim. The only reason I'm not giving 5 stars is that communication during the middle months of the case dropped off significantly."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_responsiveness"
+      },
+      {
+        "evidence_span": "Communication was excellent.",
+        "normalised_span": "communication was excellent.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "communication_clarity"
+      },
+      {
+        "evidence_span": "Attorney Davis is clearly a skilled attorney.",
+        "normalised_span": "attorney davis is clearly a skilled attorney.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "the timeline ran about 2 months longer than estimated.",
+        "normalised_span": "the timeline ran about 2 months longer than estimated.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estima"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "an administrative mix-up early on that caused some unnecessary stress.",
+        "normalised_span": "an administrative mix-up early on that caused some unnecessary stress.",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Great experience overall with this law office. The attorney was empathetic, thorough, and aggressive when needed. The only hiccup was an administrative mix-up early on that caused some unnecessary str"
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "the paralegal team seemed overloaded and dropped the ball on a few document requ",
+        "normalised_span": "the paralegal team seemed overloaded and dropped the ball on a few document requ",
+        "occurrence_count": 1,
+        "polarity": "negative",
+        "sample_review_snippets": [
+          "Won my case with the help of this firm. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "timeliness_progress"
+      },
+      {
+        "evidence_span": "deeply human. Made me feel like my case actually mattered.",
+        "normalised_span": "deeply human. made me feel like my case actually mattered.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic",
+        "normalised_span": "mr. nguyen is everything you want in an attorney \u2014 smart, strategic",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "professionalism_trust"
+      },
+      {
+        "evidence_span": "handled my case with expertise and genuine care.",
+        "normalised_span": "handled my case with expertise and genuine care.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "The result was outstanding.",
+        "normalised_span": "the result was outstanding.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+        "normalised_span": "clear communication, transparent billing, and a fantastic outcome.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "billing_transparency"
+      },
+      {
+        "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+        "normalised_span": "clear communication, transparent billing, and a fantastic outcome.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "I felt fully supported and informed.",
+        "normalised_span": "i felt fully supported and informed.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "empathy_support"
+      },
+      {
+        "evidence_span": "The outcome exceeded my expectations.",
+        "normalised_span": "the outcome exceeded my expectations.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "evidence_span": "They turned a terrifying situation into a manageable one.",
+        "normalised_span": "they turned a terrifying situation into a manageable one.",
+        "occurrence_count": 1,
+        "polarity": "positive",
+        "sample_review_snippets": [
+          "I can't say enough good things about their team. Professional, compassionate, and incredibly effective. They turned a terrifying situation into a manageable one. 10/10."
+        ],
+        "source_types": [
+          "missing_theme"
+        ],
+        "theme": "outcome_satisfaction"
+      }
+    ],
+    "reviews_needing_inspection": [],
+    "severe_mismatches": [],
+    "summary": {
+      "agreement_rate": 0.0,
+      "ai_enabled_count": 20,
+      "ai_invalid_response_count": 0,
+      "ai_item_invalid_total": 0,
+      "ai_run_count": 20,
+      "total_disagreements": 37,
+      "total_reviews": 20,
+      "zero_disagreement_reviews": 0
+    },
+    "theme_disagreement_rates": {
+      "billing_transparency": {
+        "disagreement_count": 5,
+        "rate": 0.25
+      },
+      "communication_clarity": {
+        "disagreement_count": 4,
+        "rate": 0.2
+      },
+      "communication_responsiveness": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "empathy_support": {
+        "disagreement_count": 3,
+        "rate": 0.15
+      },
+      "expectation_setting": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "fee_value": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "office_staff_experience": {
+        "disagreement_count": 1,
+        "rate": 0.05
+      },
+      "outcome_satisfaction": {
+        "disagreement_count": 8,
+        "rate": 0.4
+      },
+      "professionalism_trust": {
+        "disagreement_count": 6,
+        "rate": 0.3
+      },
+      "timeliness_progress": {
+        "disagreement_count": 5,
+        "rate": 0.25
+      }
+    },
+    "top_disagreements_by_priority": [
+      {
+        "ai_evidence_span": "the billing felt a bit opaque.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 0,
+        "review_snippet": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Would want more clarity next time.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 0,
+        "review_snippet": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "A few miscommunications along the way made things stressful.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 2,
+        "review_snippet": "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Out",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "the billing statements were hard to read and felt disorganized.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 5,
+        "review_snippet": "Very happy with the outcome of my case thanks to their team. They were professional and prepared. Docking one star only because the billing statements",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "the waiting room and office setup felt outdated and unprofessional",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 6,
+        "review_snippet": "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated ",
+        "severity_flag": false,
+        "theme": "office_staff_experience"
+      },
+      {
+        "ai_evidence_span": "the paralegal team seemed overloaded and dropped the ball",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 8,
+        "review_snippet": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloade",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "Slight billing surprise at the end",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 9,
+        "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at ",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Billing was on the higher end of what I expected",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 10,
+        "review_snippet": "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of wh",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "communication during the middle months of the case dropped off significantly",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 11,
+        "review_snippet": "Ms. Okonkwo did excellent work on my personal injury claim. The only reason I'm not giving 5 stars is that communication during the middle months of t",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": "the timeline ran about 2 months longer than estimated.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 12,
+        "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "an administrative mix-up early on that caused some unnecessary stress.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 13,
+        "review_snippet": "Great experience overall with this law office. The attorney was empathetic, thorough, and aggressive when needed. The only hiccup was an administrativ",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": "the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+        "ai_polarity": "negative",
+        "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 3,
+        "review_idx": 14,
+        "review_snippet": "Won my case with the help of this firm. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded a",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'timeliness_progress' as 'negative' via phrase 'slow'. AI did not tag this theme.",
+        "deterministic_phrase": "slow",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 1,
+        "review_snippet": "The good: Ms. Reyes clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unrem",
+        "severity_flag": false,
+        "theme": "timeliness_progress"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'communication_clarity' as 'negative' via phrase 'confusing' but star rating prior is 'positive'. AI did not tag this theme \u2014 possible false positive.",
+        "deterministic_phrase": "confusing",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "likely_false_positive",
+        "priority": 2,
+        "review_idx": 4,
+        "review_snippet": "Strong recommend for this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent.",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Mr. Castillo handled my immigration case with professionalism and care.",
+        "ai_polarity": "positive",
+        "detail": "Polarity conflict on 'professionalism_trust': det='negative', ai='positive'. Det phrase: 'unprofessional', AI evidence: 'Mr. Castillo handled my immigration case with professionalism and care.'",
+        "deterministic_phrase": "unprofessional",
+        "deterministic_polarity": "negative",
+        "disagreement_type": "wrong_polarity",
+        "priority": 2,
+        "review_idx": 6,
+        "review_snippet": "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated ",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'communication_responsiveness' as 'positive' via phrase 'proactive updates'. AI did not tag this theme.",
+        "deterministic_phrase": "proactive updates",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 7,
+        "review_snippet": "Attorney Davis fought hard for me and delivered a strong result. I'd recommend them to friends. The one thing I'd change is more frequent proactive up",
+        "severity_flag": false,
+        "theme": "communication_responsiveness"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'won my case'. AI did not tag this theme.",
+        "deterministic_phrase": "won my case",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 8,
+        "review_snippet": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloade",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'honest'. AI did not tag this theme.",
+        "deterministic_phrase": "honest",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 10,
+        "review_snippet": "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of wh",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'great result'. AI did not tag this theme.",
+        "deterministic_phrase": "great result",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 12,
+        "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because ",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'always honest'. AI did not tag this theme.",
+        "deterministic_phrase": "always honest",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 16,
+        "review_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": null,
+        "ai_polarity": null,
+        "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'transparent'. AI did not tag this theme.",
+        "deterministic_phrase": "transparent",
+        "deterministic_polarity": "positive",
+        "disagreement_type": "extra_theme",
+        "priority": 2,
+        "review_idx": 17,
+        "review_snippet": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great leg",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "Outcome was fine.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 2,
+        "review_snippet": "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Out",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "Results were acceptable",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 3,
+        "review_snippet": "Communication was hit or miss with their office. When I could get someone on the phone they were helpful, but getting to that point sometimes took lon",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "End result exceeded my expectations.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 4,
+        "review_snippet": "Strong recommend for this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent.",
+        "severity_flag": false,
+        "theme": "expectation_setting"
+      },
+      {
+        "ai_evidence_span": "Clear communicator",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 9,
+        "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at ",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "I'd use them again without hesitation",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'fee_value' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 9,
+        "review_snippet": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at ",
+        "severity_flag": false,
+        "theme": "fee_value"
+      },
+      {
+        "ai_evidence_span": "Communication was excellent.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 12,
+        "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because ",
+        "severity_flag": false,
+        "theme": "communication_clarity"
+      },
+      {
+        "ai_evidence_span": "Attorney Davis is clearly a skilled attorney.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 12,
+        "review_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because ",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "deeply human. Made me feel like my case actually mattered.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actual",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 15,
+        "review_snippet": "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actual",
+        "severity_flag": false,
+        "theme": "professionalism_trust"
+      },
+      {
+        "ai_evidence_span": "handled my case with expertise and genuine care.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "The result was outstanding.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 16,
+        "review_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'billing_transparency' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 17,
+        "review_snippet": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great leg",
+        "severity_flag": false,
+        "theme": "billing_transparency"
+      },
+      {
+        "ai_evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 17,
+        "review_snippet": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great leg",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "I felt fully supported and informed.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 18,
+        "review_snippet": "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectati",
+        "severity_flag": false,
+        "theme": "empathy_support"
+      },
+      {
+        "ai_evidence_span": "The outcome exceeded my expectations.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 18,
+        "review_snippet": "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectati",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      },
+      {
+        "ai_evidence_span": "They turned a terrifying situation into a manageable one.",
+        "ai_polarity": "positive",
+        "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+        "deterministic_phrase": null,
+        "deterministic_polarity": null,
+        "disagreement_type": "missing_theme",
+        "priority": 1,
+        "review_idx": 19,
+        "review_snippet": "I can't say enough good things about their team. Professional, compassionate, and incredibly effective. They turned a terrifying situation into a mana",
+        "severity_flag": false,
+        "theme": "outcome_satisfaction"
+      }
+    ]
+  },
+  "export_path": null,
+  "results": [
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.638,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "medium",
+              "evidence_span": "the billing felt a bit opaque.",
+              "polarity": "negative",
+              "theme": "billing_transparency"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "Would want more clarity next time.",
+              "polarity": "negative",
+              "theme": "communication_clarity"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 169,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Average experience. Attorney Davis was thorough but the billing felt a bit opaque. I'm not sure every hour billed was truly necessary. Would want more clarity next time."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "the billing felt a bit opaque.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "Would want more clarity next time.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_clarity' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.44,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "response times were slow and the office was sometimes hard to reach",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 169,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "hard to reach",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unremarkable experien\u2026",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "slow",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026. Reyes clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result\u2026",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "The good: Ms. Reyes clearly knows the law. The bad: response times were slow and the office was sometimes hard to reach. Net result \u2014 a fine but unremarkable experience."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'timeliness_progress' as 'negative' via phrase 'slow'. AI did not tag this theme.",
+          "deterministic_phrase": "slow",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.583,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "medium",
+              "evidence_span": "A few miscommunications along the way made things stressful.",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Outcome was fine.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 164,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "I got what I hired the practice for but the process was bumpier than it needed to be. A few miscommunications along the way made things stressful. Outcome was fine."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "A few miscommunications along the way made things stressful.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        },
+        {
+          "ai_evidence_span": "Outcome was fine.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.504,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Results were acceptable",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "neutral",
+          "review_text_length": 194,
+          "themes": []
+        },
+        "rating": 3,
+        "review_date": "2025-01-01",
+        "review_text": "Communication was hit or miss with their office. When I could get someone on the phone they were helpful, but getting to that point sometimes took longer than it should. Results were acceptable."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Results were acceptable",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.587,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "End result exceeded my expectations.",
+              "polarity": "positive",
+              "theme": "expectation_setting"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "the intake process was slow and confusing.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 187,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "confusing",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026aw office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excelle\u2026",
+              "theme": "communication_clarity"
+            },
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.0,
+              "matched_phrase": "slow",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026or this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything wa\u2026",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Strong recommend for this law office with one caveat \u2014 the intake process was slow and confusing. Once the case got rolling, everything was excellent. End result exceeded my expectations."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'communication_clarity' as 'negative' via phrase 'confusing' but star rating prior is 'positive'. AI did not tag this theme \u2014 possible false positive.",
+          "deterministic_phrase": "confusing",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "likely_false_positive",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "End result exceeded my expectations.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'expectation_setting' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "expectation_setting"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.79,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Very happy with the outcome of my case thanks to their team.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "They were professional and prepared.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "the billing statements were hard to read and felt disorganized.",
+              "polarity": "negative",
+              "theme": "billing_transparency"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 191,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "professional",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026with the outcome of my case thanks to their team. They were professional and prepared. Docking one star only because the\u2026",
+              "theme": "professionalism_trust"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "happy with the outcome",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Very happy with the outcome of my case thanks to their team. They\u2026",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Very happy with the outcome of my case thanks to their team. They were professional and prepared. Docking one star only because the billing statements were hard to read and felt disorganized."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "the billing statements were hard to read and felt disorganized.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.761,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Mr. Castillo handled my immigration case with professionalism and care.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "the waiting room and office setup felt outdated and unprofessional",
+              "polarity": "negative",
+              "theme": "office_staff_experience"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 204,
+          "themes": [
+            {
+              "base_polarity": "negative",
+              "base_weight": 1.5,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.5,
+              "matched_phrase": "unprofessional",
+              "multiplier": 1.0,
+              "negation_applied": false,
+              "phrase_family": "negative",
+              "polarity": "negative",
+              "sentence_snippet": "\u2026aint is the waiting room and office setup felt outdated and unprofessional compared to the legal work quality.",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "4 stars. Mr. Castillo handled my immigration case with professionalism and care. My only complaint is the waiting room and office setup felt outdated and unprofessional compared to the legal work quality."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "the waiting room and office setup felt outdated and unprofessional",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'office_staff_experience' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "office_staff_experience"
+        },
+        {
+          "ai_evidence_span": "Mr. Castillo handled my immigration case with professionalism and care.",
+          "ai_polarity": "positive",
+          "detail": "Polarity conflict on 'professionalism_trust': det='negative', ai='positive'. Det phrase: 'unprofessional', AI evidence: 'Mr. Castillo handled my immigration case with professionalism and care.'",
+          "deterministic_phrase": "unprofessional",
+          "deterministic_polarity": "negative",
+          "disagreement_priority": 2,
+          "disagreement_type": "wrong_polarity",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.207,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": []
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 198,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "proactive updates",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026them to friends. The one thing I'd change is more frequent proactive updates \u2014 I had to initiate most check-ins myself.",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Attorney Davis fought hard for me and delivered a strong result. I'd recommend them to friends. The one thing I'd change is more frequent proactive updates \u2014 I had to initiate most check-ins myself."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'communication_responsiveness' as 'positive' via phrase 'proactive updates'. AI did not tag this theme.",
+          "deterministic_phrase": "proactive updates",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.165,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "medium",
+              "evidence_span": "the paralegal team seemed overloaded and dropped the ball",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 200,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "won my case",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Won my case with the help of the practice. The legal strateg\u2026",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Won my case with the help of the practice. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'won my case'. AI did not tag this theme.",
+          "deterministic_phrase": "won my case",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": "the paralegal team seemed overloaded and dropped the ball",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.322,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "always available",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Clear communicator",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "Slight billing surprise at the end",
+              "polarity": "negative",
+              "theme": "billing_transparency"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "I'd use them again without hesitation",
+              "polarity": "positive",
+              "theme": "fee_value"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 201,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "always available",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026o work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps t\u2026",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Mr. Kim was fantastic to work with. Clear communicator, aggressive negotiator, and always available. Slight billing surprise at the end keeps this at 4 stars, but I'd use them again without hesitation."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Slight billing surprise at the end",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "Clear communicator",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": "I'd use them again without hesitation",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'fee_value' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "fee_value"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.609,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "genuinely cared about my situation",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "Billing was on the higher end of what I expected",
+              "polarity": "negative",
+              "theme": "billing_transparency"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 192,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "genuinely cared",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the highe\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "honest",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Really pleased with Ms. Goldstein's representation. Knowledgeable, honest, and genuinely cared about my situation. Billing was on the higher end of what I expected, hence 4 stars instead of 5."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Billing was on the higher end of what I expected",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'billing_transparency' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'honest'. AI did not tag this theme.",
+          "deterministic_phrase": "honest",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.118,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "communication during the middle months of the case dropped off significantly",
+              "polarity": "negative",
+              "theme": "communication_responsiveness"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 184,
+          "themes": []
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Ms. Okonkwo did excellent work on my personal injury claim. The only reason I'm not giving 5 stars is that communication during the middle months of the case dropped off significantly."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "communication during the middle months of the case dropped off significantly",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'communication_responsiveness' with polarity 'negative' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_responsiveness"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.683,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Attorney Davis is clearly a skilled attorney.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Communication was excellent.",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "the timeline ran about 2 months longer than estimated.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 204,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "great result",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was exc\u2026",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Attorney Davis is clearly a skilled attorney. Got a great result for our business dispute. Communication was excellent. Knocking off one star because the timeline ran about 2 months longer than estimated."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Communication was excellent.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'communication_clarity' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "communication_clarity"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'outcome_satisfaction' as 'positive' via phrase 'great result'. AI did not tag this theme.",
+          "deterministic_phrase": "great result",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": "Attorney Davis is clearly a skilled attorney.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        },
+        {
+          "ai_evidence_span": "the timeline ran about 2 months longer than estimated.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.832,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "The attorney was empathetic, thorough, and aggressive when needed.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "an administrative mix-up early on that caused some unnecessary stress.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 204,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "empathetic",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026t experience overall with this law office. The attorney was empathetic, thorough, and aggressive when needed. The only h\u2026",
+              "theme": "empathy_support"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Great experience overall with this law office. The attorney was empathetic, thorough, and aggressive when needed. The only hiccup was an administrative mix-up early on that caused some unnecessary stress."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "an administrative mix-up early on that caused some unnecessary stress.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.715,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Won my case with the help of this firm.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            },
+            {
+              "confidence": "medium",
+              "evidence_span": "the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+              "polarity": "negative",
+              "theme": "timeliness_progress"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 197,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "won my case",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Won my case with the help of this firm. The legal strategy w\u2026",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "rating": 4,
+        "review_date": "2025-01-01",
+        "review_text": "Won my case with the help of this firm. The legal strategy was spot-on. I'm giving 4 stars instead of 5 because the paralegal team seemed overloaded and dropped the ball on a few document requests."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "the paralegal team seemed overloaded and dropped the ball on a few document requests.",
+          "ai_polarity": "negative",
+          "detail": "AI tagged 'timeliness_progress' with polarity 'negative' (confidence=medium); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 3,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "timeliness_progress"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 3.018,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "deeply human. Made me feel like my case actually mattered.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 162,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Five stars without hesitation. Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic, and deeply human. Made me feel like my case actually mattered."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "deeply human. Made me feel like my case actually mattered.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "Mr. Nguyen is everything you want in an attorney \u2014 smart, strategic",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'professionalism_trust' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 1.986,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Always available, always prepared, always honest.",
+              "polarity": "positive",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "handled my case with expertise and genuine care.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "The result was outstanding.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 172,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "always available",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result\u2026",
+              "theme": "communication_responsiveness"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.5,
+              "confidence": "high",
+              "contrast_applied": false,
+              "final_impact": 1.8,
+              "matched_phrase": "always honest",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026ertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already refe\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Mr. Harris handled my case with expertise and genuine care. Always available, always prepared, always honest. The result was outstanding. I've already referred two friends."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "handled my case with expertise and genuine care.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "The result was outstanding.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'always honest'. AI did not tag this theme.",
+          "deterministic_phrase": "always honest",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.847,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+              "polarity": "positive",
+              "theme": "communication_clarity"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+              "polarity": "positive",
+              "theme": "billing_transparency"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 179,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "clear communication",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026utstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic ou\u2026",
+              "theme": "communication_clarity"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "transparent",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what g\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Outstanding experience from start to finish with their team. Clear communication, transparent billing, and a fantastic outcome. This is what great legal representation looks like."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'billing_transparency' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "billing_transparency"
+        },
+        {
+          "ai_evidence_span": "Clear communication, transparent billing, and a fantastic outcome.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        },
+        {
+          "ai_evidence_span": null,
+          "ai_polarity": null,
+          "detail": "Deterministic tagged 'professionalism_trust' as 'positive' via phrase 'transparent'. AI did not tag this theme.",
+          "deterministic_phrase": "transparent",
+          "deterministic_polarity": "positive",
+          "disagreement_priority": 2,
+          "disagreement_type": "extra_theme",
+          "severity_flag": false,
+          "theme": "professionalism_trust"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.059,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "I felt fully supported and informed.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "The outcome exceeded my expectations.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 174,
+          "themes": []
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "Mr. Nguyen is exceptional. From the first consultation to the final resolution, I felt fully supported and informed. The outcome exceeded my expectations. Highly recommended."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "I felt fully supported and informed.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'empathy_support' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "empathy_support"
+        },
+        {
+          "ai_evidence_span": "The outcome exceeded my expectations.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    },
+    {
+      "benchmark_result": {
+        "ai_benchmark": {
+          "elapsed_s": 2.172,
+          "error": null,
+          "model": "openai/gpt-4o-mini",
+          "skipped": false,
+          "themes": [
+            {
+              "confidence": "high",
+              "evidence_span": "Professional, compassionate, and incredibly effective.",
+              "polarity": "positive",
+              "theme": "professionalism_trust"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "compassionate, and incredibly effective.",
+              "polarity": "positive",
+              "theme": "empathy_support"
+            },
+            {
+              "confidence": "high",
+              "evidence_span": "They turned a terrifying situation into a manageable one.",
+              "polarity": "positive",
+              "theme": "outcome_satisfaction"
+            }
+          ]
+        },
+        "ai_enabled": true,
+        "deterministic": {
+          "rating_prior": "positive",
+          "review_text_length": 168,
+          "themes": [
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "compassionate",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "\u2026an't say enough good things about their team. Professional, compassionate, and incredibly effective. They turned a terri\u2026",
+              "theme": "empathy_support"
+            },
+            {
+              "base_polarity": "positive",
+              "base_weight": 1.0,
+              "confidence": "medium",
+              "contrast_applied": false,
+              "final_impact": 1.2,
+              "matched_phrase": "professional",
+              "multiplier": 1.2,
+              "negation_applied": false,
+              "phrase_family": "positive",
+              "polarity": "positive",
+              "sentence_snippet": "I can't say enough good things about their team. Professional, compassionate, and incredibly effective. They\u2026",
+              "theme": "professionalism_trust"
+            }
+          ]
+        },
+        "rating": 5,
+        "review_date": "2025-01-01",
+        "review_text": "I can't say enough good things about their team. Professional, compassionate, and incredibly effective. They turned a terrifying situation into a manageable one. 10/10."
+      },
+      "disagreements": [
+        {
+          "ai_evidence_span": "They turned a terrifying situation into a manageable one.",
+          "ai_polarity": "positive",
+          "detail": "AI tagged 'outcome_satisfaction' with polarity 'positive' (confidence=high); no deterministic phrase matched.",
+          "deterministic_phrase": null,
+          "deterministic_polarity": null,
+          "disagreement_priority": 1,
+          "disagreement_type": "missing_theme",
+          "severity_flag": false,
+          "theme": "outcome_satisfaction"
+        }
+      ]
+    }
+  ],
+  "success": true,
+  "total_reviews": 20
+}
