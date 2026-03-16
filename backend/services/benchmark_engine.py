@@ -146,6 +146,15 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("best way to reach them", 0.8),
             # --- calibration: full_batch_20260311 ---
             ("responses were quick", 1.5),
+            # --- calibration: wave3 live-run gaps ---
+            ("kept us informed of the legal process", 1.5),
+            ("kept him informed", 1.0),
+            ("kept her informed", 1.0),
+            ("he kept us informed", 1.5),
+            ("stayed informed", 1.0),
+            ("gave us his time", 1.5),
+            ("give you his time for free", 1.5),
+            ("give his time for free", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -228,6 +237,24 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("cut off mid-sentence", 2.0),
             ("went silent for", 2.0),
             ("firm went silent", 2.0),
+            # --- calibration: wave3 live-run gaps ---
+            ("i send email after email", 2.0),
+            ("send email after email without", 2.0),
+            ("email after email without responses", 2.0),
+            ("without replies", 1.5),
+            ("kept calling and sending messages", 1.5),
+            ("i kept calling", 1.5),
+            ("crickets", 1.5),
+            ("crickets from", 1.5),
+            ("never even really had meetings", 1.5),
+            ("never had real meetings", 1.5),
+            ("never had meetings with me", 1.5),
+            ("told to do it yourself", 1.5),
+            ("tell me to do it yourself", 1.5),
+            ("judged for having", 1.5),
+            ("without being judged", 1.5),
+            ("no one ever returns a call", 1.5),
+            ("no one returns calls", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -469,6 +496,19 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("at my very bottom", 1.5),
             ("world had turned upside down", 1.5),
             ("very friendly and also very helpful", 1.0),
+            # --- calibration: wave3 live-run gaps ---
+            ("friendly, patient", 1.5),
+            ("friendly and patient", 1.5),
+            ("friendly family oriented", 1.5),
+            ("family oriented practice", 1.5),
+            ("we appreciate the help", 1.5),
+            ("appreciate the help he provided", 1.5),
+            ("appreciate the help she provided", 1.5),
+            ("appreciate all of the help", 1.5),
+            ("appreciate the help", 1.0),
+            ("incredibly organized", 1.0),
+            ("helps people in this crucial area", 1.5),
+            ("dedicated to helping", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -597,6 +637,27 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("never gave up on", 1.5),
             ("definition of what a defense attorney should be", 2.0),
             ("smart, strategic", 1.0),
+            # --- calibration: wave3 live-run gaps ---
+            ("kindness", 1.0),
+            ("professionalism and kindness", 1.5),
+            ("wonderful to work with", 1.5),
+            ("pleasure to work with", 1.5),
+            ("lovely experience", 1.5),
+            ("truly a lovely experience", 1.5),
+            ("great experience working with", 1.5),
+            ("highly recommend", 1.5),
+            ("would highly recommend", 1.5),
+            ("i highly recommend", 1.5),
+            ("strongly recommend", 1.5),
+            ("i would recommend", 1.0),
+            ("knowledgeable attorney", 1.5),
+            ("very knowledgeable", 1.5),
+            ("extremely knowledgeable", 1.5),
+            ("thorough attorney", 1.5),
+            ("very thorough", 1.5),
+            ("extremely thorough", 1.5),
+            ("dedicated attorney", 1.5),
+            ("very dedicated", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -1112,6 +1173,21 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("still waiting for resolution", 1.5),
             ("taking forever", 1.2),
             ("process dragged out", 1.5),
+            # --- calibration: wave3 live-run gaps ---
+            ("it took 12 months", 1.5),
+            ("took 12 months", 1.5),
+            ("took over a year", 1.5),
+            ("my ltd appeal took a long time", 1.5),
+            ("appeal took a long time", 1.5),
+            ("took a long time", 1.0),
+            ("after 2 years", 1.5),
+            ("after two years", 1.5),
+            ("2 years later", 1.5),
+            ("still waiting", 1.5),
+            ("still no resolution", 1.5),
+            ("over two years", 1.5),
+            ("two and a half years", 1.5),
+            ("2 and a half years", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -1330,6 +1406,18 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("the final result was satisfactory", 1.0),
             ("turned a terrifying situation into a manageable one", 2.0),
             ("would highly recommend", 1.5),
+            # --- calibration: wave3 live-run gaps ---
+            ("very happy with how the matter turned out", 1.5),
+            ("happy with how everything was handled", 1.5),
+            ("very pleased with how everything was handled", 1.5),
+            ("grateful and satisfied", 1.5),
+            ("very grateful and satisfied", 1.5),
+            ("satisfying result", 1.5),
+            ("very satisfying", 1.5),
+            ("made the process so easy", 1.0),
+            ("helped me get approved", 1.5),
+            ("got approved", 1.5),
+            ("approved for", 1.0),
         ],
         "negative": [
             # --- original ---
@@ -1383,6 +1471,14 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("stuck without legal counsel", 2.0),
             ("never got proper legal help from him", 2.0),
             ("nothing was completed at all", 1.5),
+            # --- calibration: wave3 live-run gaps ---
+            ("not satisfied with their efforts", 1.5),
+            ("not satisfied with the work", 1.5),
+            ("my lawyer was representing the defendant", 2.0),
+            ("felt like my lawyer was on the other side", 2.0),
+            ("never really fought", 1.5),
+            ("never really did anything", 1.5),
+            ("never fought for me", 1.5),
         ],
         "severe_negative": [
             # --- original ---
