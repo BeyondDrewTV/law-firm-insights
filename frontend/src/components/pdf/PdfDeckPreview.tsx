@@ -2,6 +2,7 @@ import { formatApiDate } from "@/lib/dateTime";
 
 type PdfPreviewTheme = { name: string; mentions?: number };
 type PdfPreviewAction = { action: string; owner: string; timeframe: string; kpi: string };
+type PdfPreviewDecision = { theme: string; recommendation: string };
 
 type PdfDeckPreviewProps = {
   firmName: string;
@@ -17,6 +18,7 @@ type PdfDeckPreviewProps = {
   previousAtRiskSignals?: number | null;
   themes?: PdfPreviewTheme[];
   actions?: PdfPreviewAction[];
+  decisions?: PdfPreviewDecision[];
   positiveComments?: string[];
   negativeComments?: string[];
   compact?: boolean;
@@ -52,6 +54,7 @@ const PdfDeckPreview = ({
   previousAtRiskSignals,
   themes = [],
   actions = [],
+  decisions = [],
   positiveComments = [],
   negativeComments = [],
   compact = false,
@@ -70,8 +73,8 @@ const PdfDeckPreview = ({
       ? `${leadTheme.name} is the main client issue in this cycle${typeof leadTheme.mentions === "number" ? `, appearing ${leadTheme.mentions} times` : ""}.`
       : "Recurring client issues will appear here once the report is generated.",
     previewActions.length > 0
-      ? `${previewActions.length} action ${previewActions.length === 1 ? "priority is" : "priorities are"} listed for owner follow-through in the next review cycle.`
-      : "Action ownership and follow-through appear here once the implementation plan is generated.",
+      ? `${previewActions.length} follow-through ${previewActions.length === 1 ? "item is" : "items are"} listed for owner review before the next partner discussion.`
+      : "Assigned follow-through appears here once the implementation plan is generated.",
   ];
 
   return (
@@ -97,11 +100,11 @@ const PdfDeckPreview = ({
         <section className="rounded-[20px] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] p-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Leadership summary</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Leadership Briefing</p>
               <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-slate-900">{summaryLines[0]}</p>
             </div>
             <div className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-600">
-              Preview of current report structure
+              Reference view of the brief packet
             </div>
           </div>
           <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
@@ -134,7 +137,7 @@ const PdfDeckPreview = ({
 
         <section className="grid gap-3 lg:grid-cols-[1fr_1.15fr]">
           <div className="rounded-[20px] border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Recurring client issues</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Signals That Matter Most</p>
             <div className="mt-3 space-y-2 text-sm text-slate-900">
               {previewThemes.length > 0 ? (
                 previewThemes.map((theme) => (
@@ -151,7 +154,7 @@ const PdfDeckPreview = ({
             </div>
           </div>
           <div className="rounded-[20px] border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">90-day governance plan</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Assigned Follow-Through</p>
             <div className="mt-3 space-y-2 text-sm">
               {previewActions.length > 0 ? (
                 previewActions.map((action, index) => (
@@ -173,16 +176,30 @@ const PdfDeckPreview = ({
           </div>
         </section>
 
+        {!compact && decisions.length > 0 ? (
+          <section className="rounded-[20px] border border-slate-200 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Decisions &amp; Next Steps</p>
+            <div className="mt-3 space-y-2">
+              {decisions.slice(0, compact ? 2 : 3).map((item, index) => (
+                <div key={`decision-${index}`} className="border-l-[3px] border-l-[#0EA5C2] pl-3 py-1">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-[#0EA5C2]">{item.theme}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-slate-900">{item.recommendation}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         {!compact && (positiveComment || negativeComment) ? (
           <section className="grid gap-3 sm:grid-cols-2">
             <div className="rounded-[20px] border border-emerald-200 bg-emerald-50/80 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-900">Representative praise</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-900">Supporting Client Evidence</p>
               <p className="mt-2 line-clamp-4 text-sm leading-6 text-slate-800">
                 {positiveComment || "No representative positive comment."}
               </p>
             </div>
             <div className="rounded-[20px] border border-rose-200 bg-rose-50/80 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-rose-900">Representative concern</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-rose-900">Supporting Client Evidence</p>
               <p className="mt-2 line-clamp-4 text-sm leading-6 text-slate-800">
                 {negativeComment || "No representative negative comment."}
               </p>

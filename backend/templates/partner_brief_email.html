@@ -213,15 +213,15 @@
     <div class="wrapper">
       <div class="container">
         <div class="header">
-          <p class="eyebrow">Clarion Client Experience Brief</p>
-          <h1 class="title">Partner Briefing Summary</h1>
+          <p class="eyebrow">Clarion Governance Brief</p>
+          <h1 class="title">Partner Governance Brief</h1>
           <p class="meta">
             {{ firm_name or "Your Firm" }} &bull; {{ generated_at or "Current reporting period" }}
           </p>
         </div>
 
         <div class="section">
-          <p class="section-label">Metrics</p>
+          <p class="section-label">Leadership Briefing</p>
           <div class="metric-grid" role="presentation">
             <div class="metric-card">
               <p class="metric-label">Average Rating</p>
@@ -235,23 +235,27 @@
         </div>
 
         <div class="section">
-          <p class="section-label">Top Client Issue</p>
+          <p class="section-label">Signals That Matter Most</p>
           <p class="issue-name">{{ top_issue_name or "No dominant issue identified" }}</p>
           <p class="issue-meta">
             {{ top_issue_percentage_label or "" }}
           </p>
-          <div class="quote">"{{ example_quote or "No representative quote available." }}"</div>
         </div>
 
         <div class="section">
-          <p class="section-label">Recommended Discussion</p>
+          <p class="section-label">Decisions &amp; Next Steps</p>
           <div class="discussion">
             {{ recommended_discussion or "Review this issue with partners and confirm clear action ownership and timeline." }}
           </div>
         </div>
 
+        <div class="section">
+          <p class="section-label">Supporting Client Evidence</p>
+          <div class="quote">"{{ example_quote or "No representative quote available." }}"</div>
+        </div>
+
         <div class="footer">
-          <a class="cta" href="{{ dashboard_url or '#' }}">Open Full Dashboard</a>
+          <a class="cta" href="{{ dashboard_url or '#' }}">Open Governance Brief</a>
           <p class="footnote">
             This brief summarizes the current reporting cycle to support partner meeting preparation.
           </p>

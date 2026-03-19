@@ -18,6 +18,7 @@ import {
 import PdfDeckPreview from "@/components/pdf/PdfDeckPreview";
 import { useAuth } from "@/contexts/AuthContext";
 import { resolvePlanLimits } from "@/config/planLimits";
+import { defaultSampleBriefPdfPath } from "@/data/sampleFirmData";
 import { formatApiDate, toApiTimestamp } from "@/lib/dateTime";
 
 const DashboardPdfPreview = () => {
@@ -340,14 +341,14 @@ const DashboardPdfPreview = () => {
                 Upload a client feedback CSV and let Clarion generate a report first. Once a report is ready, you can
                 review the brief layout, branding, and final PDF here.
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <Link to="/upload" className="gov-btn-primary px-3 py-1.5 text-xs">
-                  Upload your first CSV
-                </Link>
-                <Link to="/demo/reports/26/pdf" className="gov-btn-secondary px-3 py-1.5 text-xs">
-                  Open read-only demo brief
-                </Link>
-              </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Link to="/upload" className="gov-btn-primary px-3 py-1.5 text-xs">
+                    Upload your first CSV
+                  </Link>
+                  <Link to={defaultSampleBriefPdfPath} className="gov-btn-secondary px-3 py-1.5 text-xs">
+                    Review sample brief PDF
+                  </Link>
+                </div>
             </section>
           ) : (
             <section className="grid gap-5 xl:grid-cols-[360px_1fr]">
@@ -577,6 +578,10 @@ const DashboardPdfPreview = () => {
                         If the embed fails, the PDF itself may still download normally.
                       </p>
                       <p className="mt-2 text-xs text-slate-500">
+                        Keep this aligned to the on-screen brief artifact: Leadership Briefing, Signals That Matter
+                        Most, Assigned Follow-Through, Decisions &amp; Next Steps, and Supporting Client Evidence.
+                      </p>
+                      <p className="mt-2 text-xs text-slate-500">
                         {pdfWatermarked
                           ? "Free-plan downloads stay watermarked. The layout, branding, and content still reflect the real governance brief structure."
                           : "This view reflects the final governance brief file your firm can download and circulate."}
@@ -640,10 +645,10 @@ const DashboardPdfPreview = () => {
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                       Layout reference
                     </p>
-                    <h2 className="mt-2 text-xl font-semibold text-slate-950">Structure guide for the brief layout</h2>
+                    <h2 className="mt-2 text-xl font-semibold text-slate-950">Structure guide for the brief packet</h2>
                     <p className="mt-2 text-sm leading-6 text-slate-600">
-                      This reference view helps you review hierarchy and pacing at a glance. The embedded PDF above
-                      remains the source of truth for the final file.
+                      This reference view helps you review hierarchy and pacing against the same section order used on
+                      the report detail page. The embedded PDF above remains the source of truth for the final file.
                     </p>
                   </div>
 
@@ -669,6 +674,10 @@ const DashboardPdfPreview = () => {
                         owner: item.owner || "Operations",
                         timeframe: item.timeline || "0-30 days",
                         kpi: item.kpi,
+                      }))}
+                      decisions={(previewDetail?.recommended_changes || []).map((item) => ({
+                        theme: item.theme || "",
+                        recommendation: item.recommendation || "",
                       }))}
                       positiveComments={previewDetail?.top_praise || []}
                       negativeComments={previewDetail?.top_complaints || []}

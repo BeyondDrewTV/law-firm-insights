@@ -1006,14 +1006,14 @@ def _build_governance_snapshot_page(
         Paragraph(participants_text, styles["body"]),
         Spacer(1, 0.04 * inch),
         Paragraph("Agenda", styles["h2"]),
-        Paragraph("- Exposure Status & Partner Escalation", styles["body"]),
-        Paragraph("- Accountability Overview", styles["body"]),
-        Paragraph("- Required Decisions", styles["body"]),
-        Paragraph("- Open Governance Actions", styles["body"]),
-        Paragraph("- Risk Drivers", styles["body"]),
+        Paragraph("- Leadership Briefing", styles["body"]),
+        Paragraph("- Signals That Matter Most", styles["body"]),
+        Paragraph("- Assigned Follow-Through", styles["body"]),
+        Paragraph("- Decisions & Next Steps", styles["body"]),
+        Paragraph("- Supporting Client Evidence", styles["body"]),
         Paragraph("- Client Signals", styles["body"]),
         Spacer(1, 0.04 * inch),
-        Paragraph("Firm Risk Posture", styles["h2"]),
+        Paragraph("Leadership Briefing", styles["h2"]),
         Spacer(1, 0.03 * inch),
         Paragraph("Exposure & Escalation", styles["h2"]),
         Spacer(1, 0.03 * inch),
@@ -1048,7 +1048,7 @@ def _build_governance_snapshot_page(
     )
     flow.append(snapshot_table)
     flow.append(Spacer(1, 0.08 * inch))
-    flow.append(Paragraph("Governance Signals Summary", styles["h2"]))
+    flow.append(Paragraph("Signals That Matter Most", styles["h2"]))
     top_signals = list(governance_signals[:3])
     top_recommendations = list(governance_recommendations[:3])
     summary_rows: List[List[object]] = [
@@ -1136,7 +1136,7 @@ def _build_governance_snapshot_page(
     for line in integrity_messages:
         flow.append(Paragraph(line, styles["body"]))
     flow.append(Spacer(1, 0.08 * inch))
-    flow.append(Paragraph("Required Decisions", styles["h2"]))
+    flow.append(Paragraph("Decisions & Next Steps", styles["h2"]))
     try:
         open_actions_int = int(str(open_actions))
     except ValueError:
@@ -1161,7 +1161,7 @@ def _build_execution_accountability_page(
     exposure_status: str,
     negative_themes: Sequence[Dict[str, float]],
 ) -> List[object]:
-    flow: List[object] = [Paragraph("Open Governance Actions", styles["h1"]), Spacer(1, 0.06 * inch)]
+    flow: List[object] = [Paragraph("Assigned Follow-Through", styles["h1"]), Spacer(1, 0.06 * inch)]
 
     now = datetime.utcnow()
     summary = {"overdue": 0, "in_progress": 0, "planned": 0, "completed": 0}

@@ -394,6 +394,14 @@ const ReportDetail = () => {
     () => sortedActions.filter((row) => isUnassigned(row)).length,
     [sortedActions],
   );
+  const completedCount = useMemo(
+    () => sortedActions.filter((row) => isCompleted(row)).length,
+    [sortedActions],
+  );
+  const activeActionCount = useMemo(
+    () => sortedActions.filter((row) => !isCompleted(row)).length,
+    [sortedActions],
+  );
 
   const escalation = useMemo(() => {
     if (overdueCount > 0 && unassignedCount > 0)
@@ -442,6 +450,23 @@ const ReportDetail = () => {
       recommendation: item.recommendation,
     }));
   }, [report?.recommended_changes]);
+  const firstDecision = nextSteps[0] || null;
+
+  const briefingBullets = useMemo(() => {
+    if (!report) return [] as string[];
+    if (report.executive_summary.length > 0) {
+      return report.executive_summary.slice(0, 4);
+    }
+    const bullets = [
+      `${report.name || report.title} is ready for partner review.`,
+      `Top focus area: ${report.themes[0]?.name || "No dominant theme yet"}.`,
+      `${report.total_reviews || 0} reviews analyzed with an average rating of ${report.avg_rating.toFixed(2)}.`,
+    ];
+    if (firstDecision?.recommendation) {
+      bullets.push(firstDecision.recommendation);
+    }
+    return bullets;
+  }, [firstDecision?.recommendation, report]);
 
   const emailSummaryFields = useMemo(() => {
     const averageRating = `${report?.avg_rating?.toFixed(2) || "0.00"} / 5`;
@@ -471,21 +496,21 @@ const ReportDetail = () => {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Partner Brief Summary</title>
+    <title>Governance Brief Email</title>
   </head>
   <body style="margin:0;padding:24px;background:#f3f5f9;font-family:Segoe UI,Arial,sans-serif;color:#0D1B2A;">
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;">
       <tr>
         <td style="padding:18px 20px;background:#0F2D57;color:#ffffff;">
           <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.9;">Clarion</div>
-          <div style="margin-top:8px;font-size:20px;font-weight:700;">Partner Brief Summary</div>
+          <div style="margin-top:8px;font-size:20px;font-weight:700;">Governance Brief Email</div>
           <div style="margin-top:6px;font-size:12px;opacity:.9;">${title} &bull; ${escapeHtml(generatedAt)}</div>
         </td>
       </tr>
-      <tr><td style="padding:18px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Average Rating</div><div style="margin-top:4px;font-size:16px;font-weight:600;color:#0D1B2A;">${avg}</div></td></tr>
-      <tr><td style="padding:0 20px 16px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Top Issue</div><div style="margin-top:4px;font-size:16px;font-weight:600;color:#0D1B2A;">${issue}</div></td></tr>
-      <tr><td style="padding:0 20px 16px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Example Client Quote</div><div style="margin-top:6px;padding:10px;border-left:3px solid #EF4444;background:#F8FAFC;color:#0D1B2A;font-size:14px;line-height:1.45;">"${quote}"</div></td></tr>
-      <tr><td style="padding:0 20px 20px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Recommended Partner Discussion</div><div style="margin-top:6px;padding:10px;border-left:3px solid #0EA5C2;background:#F8FAFC;color:#0D1B2A;font-size:14px;line-height:1.45;">${discussion}</div></td></tr>
+      <tr><td style="padding:18px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Leadership Briefing</div><div style="margin-top:4px;font-size:16px;font-weight:600;color:#0D1B2A;">${avg}</div></td></tr>
+      <tr><td style="padding:0 20px 16px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Signals That Matter Most</div><div style="margin-top:4px;font-size:16px;font-weight:600;color:#0D1B2A;">${issue}</div></td></tr>
+      <tr><td style="padding:0 20px 16px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Decisions &amp; Next Steps</div><div style="margin-top:6px;padding:10px;border-left:3px solid #0EA5C2;background:#F8FAFC;color:#0D1B2A;font-size:14px;line-height:1.45;">${discussion}</div></td></tr>
+      <tr><td style="padding:0 20px 20px 20px;"><div style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;">Supporting Client Evidence</div><div style="margin-top:6px;padding:10px;border-left:3px solid #EF4444;background:#F8FAFC;color:#0D1B2A;font-size:14px;line-height:1.45;">"${quote}"</div></td></tr>
     </table>
   </body>
 </html>`;
@@ -909,11 +934,89 @@ const ReportDetail = () => {
   // Packet sections — rendered both in normal mode and present mode
   // ─────────────────────────────────────────────────────────────────────────
 
-  /** Section 1: Key Signals this period */
-  const signalsSection = (
+  /** Section 1: Leadership briefing */
+  const leadershipSection = (
     <PacketSection
       eyebrow="Section 1"
-      title="Key Signals This Period"
+      title="Leadership Briefing"
+      presentMode={presentMode}
+    >
+      <div className="grid gap-3 lg:grid-cols-3">
+        <GovernanceCard
+          title="Current cycle"
+          accent={escalation.on ? "warn" : "success"}
+          chip={
+            <GovStatusChip
+              label={escalation.on ? "Needs review" : "Ready for review"}
+              variant={escalation.on ? "warn" : "success"}
+              size="sm"
+            />
+          }
+          summary={`Generated ${formatDateTime(report.created_at)} and ready for partner review.`}
+        />
+        <GovernanceCard
+          title="Top signal"
+          accent={report.themes.length > 0 ? "warn" : "neutral"}
+          chip={
+            report.themes.length > 0 ? (
+              <GovStatusChip
+                label={`${report.themes[0].mentions} mention${report.themes[0].mentions === 1 ? "" : "s"}`}
+                variant="warn"
+                size="sm"
+              />
+            ) : undefined
+          }
+          summary={
+            report.themes[0]
+              ? `${report.themes[0].name} is the strongest issue theme this cycle.`
+              : report.top_complaints[0] || "No dominant signal is available yet."
+          }
+        />
+        <GovernanceCard
+          title="Follow-through"
+          accent={escalation.on ? "risk" : activeActionCount > 0 ? "warn" : "success"}
+          chip={
+            <GovStatusChip
+              label={escalation.on ? "Escalate" : activeActionCount > 0 ? "In motion" : "Clear"}
+              variant={escalation.on ? "risk" : activeActionCount > 0 ? "warn" : "success"}
+              size="sm"
+            />
+          }
+          summary={`${activeActionCount} active, ${overdueCount} overdue, ${unassignedCount} unassigned, ${completedCount} completed.`}
+        />
+      </div>
+
+      {firstDecision ? (
+        <div className="mt-5 rounded-[10px] border border-[#D9E7F5] bg-[#F5F9FC] px-5 py-4">
+          <p className="gov-type-eyebrow">Decision to bring into the meeting</p>
+          <p className="mt-2 text-[15px] font-semibold text-[#0D1B2A]">{firstDecision.theme}</p>
+          <p className="mt-1 text-[13px] leading-relaxed text-slate-700">
+            {firstDecision.recommendation}
+          </p>
+        </div>
+      ) : null}
+
+      {briefingBullets.length > 0 ? (
+        <div className="mt-5">
+          <p className="mb-2 gov-type-eyebrow">What leadership needs to know now</p>
+          <ul className="space-y-1">
+            {briefingBullets.map((item, index) => (
+              <li key={`briefing-${index}`} className="flex items-start gap-2">
+                <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-slate-400" aria-hidden />
+                <span className="text-[13px] leading-relaxed text-slate-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </PacketSection>
+  );
+
+  /** Section 2: Key Signals this period */
+  const signalsSection = (
+    <PacketSection
+      eyebrow="Section 2"
+      title="Signals That Matter Most"
       presentMode={presentMode}
     >
       {/* Metric tiles */}
@@ -994,13 +1097,20 @@ const ReportDetail = () => {
     </PacketSection>
   );
 
-  /** Section 2: Actions & Owners */
+  /** Section 3: Actions & owners */
   const actionsSection = (
     <PacketSection
-      eyebrow="Section 2"
-      title="Actions & Owners"
+      eyebrow="Section 3"
+      title="Assigned Follow-Through"
       presentMode={presentMode}
     >
+      <div className="mb-4 rounded-[10px] border border-[#E5E7EB] bg-[#F8FAFC] px-4 py-3">
+        <p className="gov-type-eyebrow">Follow-through posture</p>
+        <p className="mt-1 text-[13px] text-slate-700">
+          Confirm ownership, due dates, and any blocked items before this brief goes into the next partner discussion.
+        </p>
+      </div>
+
       {/* Escalation callout */}
       {escalation.on ? (
         <div className="mb-4 flex items-start gap-3 rounded-[8px] border border-amber-200 bg-amber-50 px-4 py-3">
@@ -1155,15 +1265,15 @@ const ReportDetail = () => {
     </PacketSection>
   );
 
-  /** Section 3: Exposure Notes (top complaints + quotes) */
+  /** Section 5: Supporting client evidence */
   const exposureSection = (
     <PacketSection
-      eyebrow="Section 3"
-      title="Exposure Notes"
+      eyebrow="Section 5"
+      title="Supporting Client Evidence"
       presentMode={presentMode}
     >
       {report.top_complaints.length === 0 ? (
-        <p className="text-[13px] text-slate-500">No exposure notes for this period.</p>
+        <p className="text-[13px] text-slate-500">No supporting client evidence for this period.</p>
       ) : (
         <div className="space-y-4">
           {report.top_complaints.slice(0, 4).map((quote, index) => (
@@ -1236,22 +1346,6 @@ const ReportDetail = () => {
           ))}
         </div>
       )}
-      {/* Executive summary items (shown in normal mode as expandable addendum) */}
-      {!presentMode && report.executive_summary.length > 0 ? (
-        <div className="mt-4">
-          <p className="mb-2 gov-type-eyebrow">
-            Executive summary
-          </p>
-          <ul className="space-y-1">
-            {report.executive_summary.map((item, index) => (
-              <li key={`exec-${index}`} className="flex items-start gap-2">
-                <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-slate-400" aria-hidden />
-                <span className="text-[13px] leading-relaxed text-slate-700">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
     </PacketSection>
   );
 
@@ -1317,10 +1411,11 @@ const ReportDetail = () => {
           </div>
         </header>
 
+        {leadershipSection}
         {signalsSection}
         {actionsSection}
-        {exposureSection}
         {decisionsSection}
+        {exposureSection}
       </BriefPresentMode>
 
       {/* ── Normal page view ──────────────────────────────────────────────── */}
@@ -1330,7 +1425,7 @@ const ReportDetail = () => {
           {/* Page header */}
           <header className="flex flex-wrap items-start justify-between gap-4">
             <div className="min-w-0 flex-1">
-              <p className="workspace-shell-eyebrow">Leadership Artifact</p>
+              <p className="workspace-shell-eyebrow">Current governance brief</p>
               {renameMode === "editing" ||
               renameMode === "saving" ||
               renameMode === "error" ? (
@@ -1392,6 +1487,9 @@ const ReportDetail = () => {
               <p className="mt-1.5 text-[13px] text-slate-500">
                 Generated {formatDateTime(report.created_at)}
               </p>
+              <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-slate-600">
+                Use this packet for partner review, action decisions, and follow-through updates for the current cycle.
+              </p>
               {renameMode === "saved" && (
                 <p className="mt-1 text-[11px] text-emerald-700">Saved.</p>
               )}
@@ -1418,7 +1516,7 @@ const ReportDetail = () => {
                 onClick={() => setEmailPreviewOpen(true)}
                 disabled={isSendingBrief}
               >
-                Email to Partners
+                Send partner brief
               </button>
               <button
                 data-testid="report-view-brief"
@@ -1436,7 +1534,7 @@ const ReportDetail = () => {
                 className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#0D1B2A] px-3 py-2 text-[12px] font-medium text-white transition-colors hover:bg-[#16263b]"
                 onClick={openCreateAction}
               >
-                + Create Action
+                + Add follow-through
               </button>
             </div>
           </header>
@@ -1470,10 +1568,11 @@ const ReportDetail = () => {
           ) : null}
 
           {/* ── Four packet sections ─────────────────────────────────────── */}
+          {leadershipSection}
           {signalsSection}
           {actionsSection}
-          {exposureSection}
           {decisionsSection}
+          {exposureSection}
 
           {/* ── Evidence accordion (additional context, not in present mode) */}
           <section className="rounded-[12px] border border-[#E5E7EB] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.05)]">

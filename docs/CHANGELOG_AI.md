@@ -1,124 +1,328 @@
 # AI Pass Changelog
 
-## 2026-03-15 — Live Tagger Validation + Definitive Calibration Pass
-
-### Root Cause Identified and Resolved
-All prior calibration wave 1 and wave 2 phrase additions targeted `backend/services/bench/deterministic_tagger.py`. The live `/internal/benchmark/batch` endpoint uses `backend/services/benchmark_engine.py` — a separate, self-contained 1943-line engine with its own `THEME_PHRASES` dict. The two files are architecturally independent. Prior edits had zero effect on any live calibration run.
+## 2026-03-19 - Governance Brief Output Unification Pass
 
 ### Files Changed
-- `backend/services/benchmark_engine.py` — phrase additions (Wave 3, targeting live engine)
+- `frontend/src/components/reports/EmailBriefPreviewModal.tsx`
+- `frontend/src/pages/ReportDetail.tsx`
+- `frontend/src/components/pdf/PdfDeckPreview.tsx`
+- `frontend/src/pages/DashboardPdfPreview.tsx`
+- `backend/templates/partner_brief_email.html`
+- `backend/pdf_generator.py`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
 
-### Phrase Additions to `benchmark_engine.py` (Wave 3)
-Targeted the exact evidence spans from the previous run's `missing_theme` disagreements:
+### What Changed
+- Aligned all brief output surfaces to the canonical 5-section spine established by `ReportDetail.tsx`:
+  Leadership Briefing → Signals That Matter Most → Assigned Follow-Through → Decisions & Next Steps → Supporting Client Evidence
 
-- **communication_responsiveness** (+17): `crickets`, `i kept calling`, `email after email without`, `without replies`, `never had meetings`, `kept us informed of the legal process`, `give his time for free`, `no one ever returns a call`, `told to do it yourself`, `judged for having`, etc.
-- **empathy_support** (+12): `friendly, patient`, `friendly and patient`, `family oriented practice`, `appreciate the help`, `incredibly organized`, `helps people in this crucial area`, `dedicated to helping`
-- **professionalism_trust** (+20): `kindness`, `professionalism and kindness`, `wonderful to work with`, `lovely experience`, `highly recommend`, `very knowledgeable`, `very thorough`, `very dedicated`, `extremely knowledgeable`, etc.
-- **outcome_satisfaction positive** (+11): `very happy with how the matter turned out`, `grateful and satisfied`, `helped me get approved`, `made the process so easy`
-- **outcome_satisfaction negative** (+7): `not satisfied with their efforts`, `never really fought`, `my lawyer was representing the defendant`
-- **timeliness_progress negative** (+15): `it took 12 months`, `over two years`, `still waiting`, `appeal took a long time`, `after 2 years`, `two and a half years`
+**EmailBriefPreviewModal.tsx**
+- Swapped tile order so Decisions & Next Steps (§4) appears before Supporting Client Evidence (§5), matching canonical brief order.
 
-### Parity Verification (5/5 probes passed)
-Before running calibration, confirmed live server returns correct themes:
-- `"Crickets from my legal aide..."` → `communication_responsiveness: negative` ✅
-- `"They never even really had meetings with me..."` → `communication_responsiveness: negative` ✅
-- `"Jeremy upholds the most professionalism and kindness."` → `professionalism_trust: positive` ✅
-- `"He is friendly, patient, and incredibly organized."` → `empathy_support: positive` ✅
-- `"No one ever returns a call in this office."` → `communication_responsiveness: negative` ✅
+**ReportDetail.tsx**
+- Swapped `<tr>` row order in `emailHtmlSummary` inline HTML so Decisions & Next Steps precedes Supporting Client Evidence.
 
-### Definitive Calibration Results (run: 20260315_200410)
-| Metric | Baseline | Wave 3 | Delta |
-|---|---|---|---|
-| Agreement rate | 19.6% | **27.3%** | +7.7pp |
-| Clean reviews (0 disagree) | 28/143 | **39/143** | +11 |
-| `missing_theme` count | 180 | **152** | -28 |
-| `missed_severe_phrase` | 4 | 3 | -1 |
+**partner_brief_email.html**
+- Relabeled `Metrics` → `Leadership Briefing`
+- Relabeled `Top Client Issue` → `Signals That Matter Most`
+- Added explicit `Decisions & Next Steps` section label (was `Recommended Discussion`)
+- Added explicit `Supporting Client Evidence` section label (quote was previously embedded unlabeled inside Top Client Issue section)
+- Changed header eyebrow from `Clarion Client Experience Brief` → `Clarion Governance Brief`
+- Changed header title from `Partner Briefing Summary` → `Partner Governance Brief`
+- Changed CTA text from `Open Full Dashboard` → `Open Governance Brief`
 
-**Per-chunk rates:**
-- Chunk 1: 30% → **65%** (+35pp) — largest single-chunk gain
-- Chunk 3: 35% → **40%** (+5pp)
-- Chunk 4: 0% → **10%** (+10pp) — previously zero-agreement chunk
-- Chunk 8: 33% → **67%** (+33pp)
+**PdfDeckPreview.tsx**
+- Added `PdfPreviewDecision` type and `decisions` prop
+- Added `Decisions & Next Steps` render section between Assigned Follow-Through and Supporting Client Evidence
+- Restored missing closing `</div>` tag dropped during prior partial edit
 
-**Theme improvements:**
-- `empathy_support`: 29 → 22 disagreements (-7)
-- `outcome_satisfaction`: 31 → 23 disagreements (-8)
-- `communication_responsiveness`: 51 → 47 (-4)
+**DashboardPdfPreview.tsx**
+- Passed `previewDetail.recommended_changes` mapped as `decisions` prop to `PdfDeckPreview`
 
-**New extra_theme increase (+11):** The new phrases are firing on reviews where AI doesn't tag the theme. This is the expected tradeoff of broader coverage — needs guard review in a follow-on pass.
+**pdf_generator.py** (heading strings only — no logic changed)
+- Replaced 5 agenda items with canonical section names
+- Replaced `Firm Risk Posture` h2 with `Leadership Briefing`
+- Replaced `Governance Signals Summary` h2 with `Signals That Matter Most`
+- Replaced `Required Decisions` h2 with `Decisions & Next Steps`
+- Replaced `Open Governance Actions` h1 (execution page) with `Assigned Follow-Through`
+- Removed 6th agenda item (`- Client Signals`) — canonical spine has 5 sections
 
-**Commit:** pending git commit for this pass.
+### Verification
+- `npm run build` in `frontend/` — passed (pre-existing large-chunk warning remains non-blocking)
+- `python -m py_compile backend/pdf_generator.py` — PARSE_OK
 
-## 2026-03-15 — Calibration Wave: Phrase Expansion + Guard Fixes Pass (deterministic_tagger.py — wrong file)
-**File changed:** `backend/services/bench/deterministic_tagger.py` only.
+### What Remains Split
+- Backend PDF sub-labels (`Exposure & Escalation`, `Execution Summary`, `Since Last Brief`) are internal operational labels within canonical sections — not competing section spine, acceptable
+- Inline email summary (`emailHtmlSummary`) covers 4 of 5 sections — no Assigned Follow-Through row, acceptable for summary format
+- `pdf_generator.py` still uses `Exposure & Escalation` as a sub-heading within the Leadership Briefing section — deeper data-plumbing unification deferred
 
-**P0 — Phrase library expansion (~70 new phrases across all 10 themes):**
-- `communication_responsiveness`: added crickets, email-after-email, barely communicated, stayed in contact, kept in close contact, unreachable, communicate well variants, returned her/his call, calls back, quick to respond, always available.
-- `communication_clarity`: added left me in the dark, couldn't/could not understand, hard to follow, never explained, thoroughly/well explained, walked me through.
-- `empathy_support`: added lawyers not caring, you are dead to them, treated as a number, just a number, barely gave opportunity to speak, cut me off and rambling, no compassion, handled with grace/patience, reassured me, made me feel comfortable/at ease, showed empathy, patient.
-- `professionalism_trust`: added spoken to that way, crooked law office, do not trust this firm, misrepresentation, not licensed in my state, I knew I was dealing with professionals, true/highly professional.
-- `expectation_setting`: added completely let me down, only to be told, different than promised, sent inexperienced son, not what I was told, walked through the process, prepared me.
-- `billing_transparency`: added 16 hours of work, excessive/excess fees/charges, charged for consultation, billing dispute.
-- `fee_value`: added worth every penny, great value, fair price/fee, not worth the money.
-- `timeliness_progress`: added over two years still waiting, 2.5 years, only heard day before hearing, still waiting, no progress, nothing has been done, made sure done on time, met deadlines, ahead of schedule, in a timely manner.
-- `office_staff_experience`: added wonderful/amazing/great/kind staff, phone assistant hired to tell people, incompetent/unhelpful staff, legal assistant/aide, office staff was.
-- `outcome_satisfaction`: added failed me during appeal, never got proper legal help, still lost my license, helped me be approved, finally got justice, very satisfying, satisfied with the outcome, won my case, got my case handled.
 
-**P3 — Theme routing fix:**
-- `"polite"` / `"very polite"` / `"polite staff"` / `"very polite staff"` moved from `professionalism_trust` → `office_staff_experience` (calibration finding: AI consistently routes these to office_staff_experience).
+## 2026-03-18 - Public Proof + Brief Continuity Pass
 
-**P1 — Negation guard proximal distance fix:**
-- `_has_proximal_negation()` now accepts `before_only=True` parameter.
-- For `_neg` family phrases, negation guard now only fires if the negation token appears *before* the phrase (within NEGATION_PROXIMITY_TOKENS tokens). This prevents subsequent-clause negation tokens (e.g. "do not trust" after "crooked") from incorrectly flipping an inherently-negative phrase to positive.
-- Fixes confirmed FPs: `"Crooked law office, do not trust this firm"`, `"without replies"` compound negative.
+### Files Changed
+- `frontend/src/components/SiteNav.tsx`
+- `frontend/src/components/landing/LandingHeroSection.tsx`
+- `frontend/src/components/landing/LandingFinalSection.tsx`
+- `frontend/src/components/pdf/PdfDeckPreview.tsx`
+- `frontend/src/components/reports/EmailBriefPreviewModal.tsx`
+- `frontend/src/content/landingV3.ts`
+- `frontend/src/data/sampleFirmData.ts`
+- `frontend/src/pages/Dashboard.tsx`
+- `frontend/src/pages/DashboardPdfPreview.tsx`
+- `frontend/src/pages/DemoPdfPreview.tsx`
+- `frontend/src/pages/DemoReportDetail.tsx`
+- `frontend/src/pages/DemoWorkspace.tsx`
+- `frontend/src/pages/ExecutionPage.tsx`
+- `frontend/src/pages/Features.tsx`
+- `frontend/src/pages/HowItWorks.tsx`
+- `frontend/src/pages/Pricing.tsx`
+- `frontend/src/pages/ReportDetail.tsx`
+- `frontend/src/pages/ReportsPage.tsx`
+- `frontend/tailwind.config.ts`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
 
-**P2 — Duration-based severity escalation:**
-- Added `_DURATION_SEVERE_PATTERNS` regex for "delayed/waited N months/years", "over two years", "X and a half years" patterns.
-- `timeliness_neg` / `waiting_neg` family phrases escalate to `severe_negative` when duration pattern is present in review text.
+### What Changed
+- Tightened the public proof spine so the sample brief route is now the clearest public proof artifact.
+- Reframed `/demo` as secondary mechanics proof rather than a competing primary proof route.
+- Reworked `/dashboard` so the strongest top action is opening the current brief.
+- Reworked `/dashboard/actions` to reference the current brief packet more directly.
+- Tightened frontend output continuity by aligning PDF/email reference language to the canonical 5-section brief.
+- Fixed active Tailwind font drift (`Manrope` as sans token, `Newsreader` as serif display token).
 
-**Smoke test:** 15/15 targeted cases pass including all known FPs from final_summary.json.
-- **Commit:** pending — run calibration to validate before git commit.
+### Verification
+- `npm run build` in `frontend/`
 
-## 2026-03-15 — Operator Command Center Correction Pass
-- Added a real internal operator landing route at `/internal/command-center/` and a minimal template command center.
-- Added a dedicated internal calibration console page at `/internal/calibration/` so command-center links resolve to real pages.
-- Updated `START_CLARION.bat` and `OPEN_COMMAND_CENTER.bat` to open `/internal/command-center/` instead of direct dashboard URL.
-- Reframed helper launchers as optional in `README.md`, keeping `START_CLARION.bat` as the single obvious primary entry point.
-- **Commit:** recorded in git for this pass (see repository log).
+## 2026-03-18 - Upload-To-First-Brief UX Alignment Pass
 
-## 2026-03-15 — Operator Startup Launcher Pass
-- Added root-level Windows launcher files: `START_CLARION.bat`, `OPEN_COMMAND_CENTER.bat`, `RUN_CALIBRATION.bat`, and `OPEN_ENGINE_TOOLS.bat`.
-- Reused existing backend startup convention via `backend/start.bat` and wired command center URL to `http://localhost:5000/dashboard`.
-- Added README operator-launcher section for non-technical startup clarity.
-- **Commit:** recorded in git for this pass (see repository log).
+### Files Changed
+- `frontend/src/pages/Upload.tsx`
+- `frontend/src/pages/Onboarding.tsx`
+- `frontend/src/components/billing/UploadUsageBar.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
 
-## 2026-03-15 — Internal Tools Route Correction Pass
-- Moved the new launcher/hub route from `/internal/calibration/` to dedicated `/internal/tools/`.
-- Preserved `/internal/calibration/` as the calibration-console target by removing launcher ownership of that path.
-- Kept dashboard/account CTAs pointing directly to `/internal/calibration/` and `/internal/benchmark/themes`.
-- **Commit:** recorded in git for this pass (see repository log).
+### What Changed
+- Reworked `/upload` to lead from one CSV into the current report packet.
+- Rebuilt post-upload success state with direct links into report, workspace home, and follow-through.
+- Onboarding now opens first report directly when setup includes a real CSV upload.
+- Replaced upload-usage helper with ASCII-safe version.
 
-## 2026-03-15 — Internal Tools Launcher UX Pass
-- Added an authenticated admin/dev-only internal tools launcher route for calibration/benchmark access.
-- Added an internal tools card in Dashboard Account → Internal Testing with one-click launch links for calibration and benchmark console access.
-- Added a minimal backend template for internal benchmark endpoint launch targets used during calibration/hardening.
-- **Commit:** recorded in git for this pass (see repository log).
+### Verification
+- `npm run build` in `frontend/`
+- live browser check on `/upload`
 
-## 2026-03-15 — Deterministic Calibration Alignment Pass
-- Tightened deterministic phrase matching with word-boundary logic for single-token phrases to reduce substring false positives.
-- Added calibration-targeted phrase/guard updates for launch-relevant disagreements (billing consultation-fee severity, severe professionalism cues, timeliness typo variant, office staff positive phrase).
-- Fixed a dictionary-key overwrite bug in `office_staff_experience` that was dropping most positive staff phrases.
-- Removed calibration workflow `datetime.utcnow()` deprecation usage in workflow/batch scripts via timezone-aware UTC timestamps.
-- **Commit:** recorded in git for this pass (see repository log).
+## 2026-03-18 - Report-Detail Governance-Brief UX Alignment Pass
 
-## 2026-03-15 — Clarion AI Memory System Setup
-- Added a lightweight AI control/startup layer for fast orientation and handoff continuity.
-- Added scoped docs for current build boundaries, project state, protected systems, overview, and AI standards.
-- Normalized startup path so future sessions can begin with four files instead of long chat handoffs.
-- **Commit:** recorded in git for this pass (see repository log).
+### Files Changed
+- `frontend/src/pages/ReportDetail.tsx`
+- `frontend/src/components/WorkspaceLayout.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
 
-## Prior Notable Passes (from git history)
-- `b9a8a97` — calibration wave 2 phrase additions + bug fixes.
-- `3f6aba0` — outbound email quality and content SEO improvements.
-- `d2647c5` — calibration + agent office pipeline fix.
-- `30cb290` — approval queue dashboard/backend integration pass.
+### What Changed
+- Reworked `/dashboard/reports/:id` to open as a governance brief artifact.
+- Added Leadership Briefing section with cycle readiness, top signal, follow-through posture, first decision, and briefing bullets.
+- Reordered report packet to: leadership briefing → signals → follow-through → decisions → evidence.
+
+### Verification
+- `npm run build` in `frontend/`
+- live browser check on `/dashboard/reports/8`
+
+## 2026-03-18 - Actions Follow-Through UX Alignment Pass
+
+### Files Changed
+- `frontend/src/pages/ExecutionPage.tsx`
+- `frontend/src/components/actions/ActionCard.tsx`
+- `frontend/src/components/WorkspaceLayout.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Reworked `/dashboard/actions` to lead with follow-through accountability posture.
+- Added top posture block for overdue, unowned, blocked, and active-needs-review work.
+- Demoted filters to secondary refinement panel.
+
+### Verification
+- `npm run build` in `frontend/`
+- live browser check on `/dashboard/actions`
+
+## 2026-03-18 - Dashboard Workspace-Home Refinement Pass
+
+### Files Changed
+- `frontend/src/pages/Dashboard.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Reworked `/dashboard` to lead with current cycle and latest brief.
+- Demoted OversightBand, GovernanceNarrativeRail, and recent-brief history into supporting-context tier.
+
+### Verification
+- `npm run build` in `frontend/`
+
+## 2026-03-18 - First Authenticated Product UX Alignment Pass
+
+### Files Changed
+- `frontend/src/components/WorkspaceLayout.tsx`
+- `frontend/src/pages/Dashboard.tsx`
+- `frontend/src/pages/Onboarding.tsx`
+- `frontend/src/pages/Login.tsx`
+- `frontend/src/pages/Signup.tsx`
+- `frontend/src/pages/Upload.tsx`
+- `frontend/src/index.css`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Reframed authenticated workspace shell around current-cycle language.
+- Updated sidebar labels and grouping to governance-cycle nav model.
+- Updated login/signup/onboarding to governance-cycle framing.
+
+### Verification
+- `npm run build` in `frontend/`
+
+## 2026-03-18 - Public-Site Polish And Consistency Cleanup
+
+### Files Changed
+- `frontend/src/components/SiteNav.tsx`
+- `frontend/src/pages/Privacy.tsx`
+- `frontend/src/pages/Terms.tsx`
+- `frontend/src/pages/Contact.tsx`
+- `frontend/src/pages/Docs.tsx`
+- `frontend/src/pages/DemoWorkspace.tsx`
+- `frontend/src/pages/DemoReportDetail.tsx`
+- `frontend/src/pages/DemoPdfPreview.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Polished all user-reachable public React routes to one coherent Clarion system.
+- Renamed public demo experience to `sample workspace` throughout.
+- Fixed stale `isDarkMarketingChrome` references in `SiteNav.tsx`.
+
+### Verification
+- `npm run build` in `frontend/`
+
+## 2026-03-18 - Secondary Public React Route Alignment
+
+### Files Changed
+- `frontend/src/components/PageLayout.tsx`
+- `frontend/src/components/SiteNav.tsx`
+- `frontend/src/components/MarketingProofBar.tsx`
+- `frontend/src/components/PricingSection.tsx`
+- `frontend/src/data/pricingPlans.ts`
+- `frontend/src/pages/Features.tsx`
+- `frontend/src/pages/HowItWorks.tsx`
+- `frontend/src/pages/Pricing.tsx`
+- `frontend/src/pages/Security.tsx`
+- `frontend/src/index.css`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Rebuilt shared public shell around lighter V3 editorial chrome.
+- Rewrote `/features`, `/how-it-works`, `/pricing`, `/security` around canonical governance-brief positioning.
+- Fixed React key warning on pricing comparison table.
+
+### Verification
+- `npm run build` in `frontend/`
+
+## 2026-03-18 - In-House V3 Landing Implementation On Canonical React Route
+
+### Files Changed
+- `frontend/index.html`
+- `frontend/src/pages/Index.tsx`
+- `frontend/src/index.css`
+- `frontend/src/content/landingV3.ts`
+- `frontend/src/components/landing/Landing*.tsx` (all 7 section components)
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Implemented approved V3 landing on canonical React route `/`.
+- Governance-brief-centered, partner-facing hierarchy: hero → trust → workflow → outputs → accountability → meeting → CTA.
+
+### Verification
+- `npm run build` in `frontend/`
+- live browser check at `http://127.0.0.1:8081/`
+
+## 2026-03-18 - Lovable Purge + Canonical Landing Surface Consolidation
+
+### Files Changed
+- `backend/app.py`
+- `README.md`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Flask overlapping public routes (`/features`, `/how-it-works`, `/pricing`, `/security`, `/privacy`, `/terms`) now serve built React app when `frontend/dist` exists; legacy templates remain fallback only.
+
+### Verification
+- `python -m py_compile backend/app.py`
+
+## 2026-03-18 - Release-Candidate Stabilization + Clean Seeded Smoke Confirmation
+
+### Files Changed
+- `tools/ensure_e2e_user.py`
+- `tools/reset_e2e_state.py`
+- `frontend/package.json`
+- `frontend/src/components/ui/button.tsx`
+- `frontend/src/components/governance/PageTabs.tsx`
+- `frontend/src/components/governance/GovernanceCard.tsx`
+- `frontend/vite.config.ts`
+- `README.md`
+- `tools/README.md`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Seeded smoke tools now resolve same DB as running app.
+- Clean Team workspace smoke confirmed: login → upload → report → action → PDF → email.
+- Removed Tailwind ambiguous utility warnings in shared governance/button components.
+
+### Verification
+- `npm run build` in `frontend/`
+- Clean seeded smoke: all API calls 200/201.
+
+## 2026-03-18 - Operator Workflow / Release Smoke Pass
+
+### Files Changed
+- `frontend/vite.config.ts`
+- `frontend/src/api/authService.ts`
+- `backend/app.py`
+- `backend/services/email_service.py`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Vite `/api` proxy now configurable.
+- Restored missing upload-success helpers in `backend/app.py`.
+- Fixed naive/aware datetime comparison in exposure snapshot and PDF path.
+- Fixed Resend email attachment serialization.
+
+### Verification
+- Full local smoke pass confirmed all workflow segments.
+
+## 2026-03-15 - Live Tagger Validation + Definitive Calibration Pass
+- Live phrase work moved from `bench/deterministic_tagger.py` into `benchmark_engine.py`.
+- Stored run `20260315_200410`: `27.3%` clean-review agreement (`39/143`).
+
+## Prior Notable Passes
+- `b9a8a97` - calibration wave 2 phrase additions + bug fixes
+- `3f6aba0` - outbound email quality and content SEO improvements
+- `d2647c5` - calibration + agent office pipeline fix
+- `30cb290` - approval queue dashboard/backend integration pass

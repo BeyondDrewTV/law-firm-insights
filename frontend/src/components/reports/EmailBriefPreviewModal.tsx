@@ -58,23 +58,23 @@ export default function EmailBriefPreviewModal({
         </DialogHeader>
 
         <section className="rounded-[10px] border border-[#E5E7EB] bg-white p-4">
-          <h3 className="text-sm font-semibold text-[#0D1B2A]">Summary Snapshot</h3>
+          <h3 className="text-sm font-semibold text-[#0D1B2A]">Current Governance Brief Snapshot</h3>
           <div className="mt-3 grid gap-3 md:grid-cols-2">
             <div className="rounded-[8px] border border-[#E5E7EB] bg-slate-50 p-3">
-              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Average Rating</p>
+              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Leadership Briefing</p>
               <p className="mt-1 text-sm text-[#0D1B2A]">{averageRating}</p>
             </div>
             <div className="rounded-[8px] border border-[#E5E7EB] bg-slate-50 p-3">
-              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Top Issue</p>
+              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Signals That Matter Most</p>
               <p className="mt-1 text-sm text-[#0D1B2A]">{topIssue}</p>
             </div>
             <div className="rounded-[8px] border border-[#E5E7EB] bg-slate-50 p-3">
-              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Example Client Quote</p>
-              <p className="mt-1 text-sm text-[#0D1B2A]">&quot;{exampleQuote}&quot;</p>
+              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Decisions &amp; Next Steps</p>
+              <p className="mt-1 text-sm text-[#0D1B2A]">{recommendedDiscussion}</p>
             </div>
             <div className="rounded-[8px] border border-[#E5E7EB] bg-slate-50 p-3">
-              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Recommended Partner Discussion</p>
-              <p className="mt-1 text-sm text-[#0D1B2A]">{recommendedDiscussion}</p>
+              <p className="text-xs uppercase tracking-[0.08em] text-[#6B7280]">Supporting Client Evidence</p>
+              <p className="mt-1 text-sm text-[#0D1B2A]">&quot;{exampleQuote}&quot;</p>
             </div>
           </div>
         </section>
@@ -121,10 +121,10 @@ export default function EmailBriefPreviewModal({
         </section>
 
         <section className="rounded-[10px] border border-[#E5E7EB] bg-white p-4">
-          <h3 className="text-sm font-semibold text-[#0D1B2A]">Email Preview</h3>
+          <h3 className="text-sm font-semibold text-[#0D1B2A]">Governance Brief Email Preview</h3>
           <div className="mt-3 overflow-hidden rounded-[8px] border border-[#E5E7EB] bg-white">
             <iframe
-              title="Partner brief email preview"
+              title="Governance brief email preview"
               srcDoc={htmlSummary}
               className="h-[420px] w-full bg-white"
             />
