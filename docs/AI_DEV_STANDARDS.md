@@ -45,6 +45,16 @@ When a pass changes repo behavior or scope understanding, update:
 Keep doc updates tight. The goal is accurate handoff state, not exhaustive prose.
 
 ## 8) Context Loading
-- Load the 4 startup docs at the top of each session.
+- Load startup docs at the top of each session: `NORTH_STAR.md`, `PROJECT_STATE.md`, `CURRENT_BUILD.md`, `PROTECTED_SYSTEMS.md`.
+- `NORTH_STAR.md` answers what the product is and what it should feel like. Read it before any design or UX pass.
+- `PROJECT_STATE.md` answers where things currently stand. Read it before any implementation pass.
 - Load only the files needed for the active task — but load them fully before editing.
-- When a pass spans 5+ files, it is fine to read them all upfront in one batch before writing anything.
+- When a pass spans 5+ files, read them all upfront in one batch before writing anything.
+
+## 9) Doc Evolution
+These docs should evolve with the project. When a doc's guidance is wrong or stale:
+- Update it as part of the pass that revealed the staleness
+- Keep the update tight — fix the wrong thing, don't rewrite the whole doc
+- `NORTH_STAR.md` evolves only when product identity, design direction, or the canonical brief spine genuinely changes — not as a changelog
+- `PROJECT_STATE.md` should stay concise and current — trim historical detail to `CHANGELOG_AI.md` when sections stop being actionable
+- `PROTECTED_SYSTEMS.md` should reflect actual risk levels, not historical caution that no longer applies
