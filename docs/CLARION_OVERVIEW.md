@@ -34,9 +34,10 @@ Clarion is a law-firm client feedback governance platform that turns uploaded fe
 - Marketing/landing layer (`frontend/src/pages/Index.tsx`, marketing components).
 
 ## Major Current Priorities
-- Keep core governance engine reliable for real meeting use.
-- Complete/validate calibration quality work.
-- Improve landing/marketing clarity so capabilities are communicated accurately.
+- Product is release-candidate ready. Operator smoke passed. Landing and authenticated UX aligned.
+- Continue tightening public-to-product narrative continuity (signals page, reports list).
+- Domain cutover to `clarion.co` when ready (Render custom domain, Stripe webhook, Resend, frontend API base URL, CORS).
+- Calibration work is complete enough — hold the live engine stable, do not treat calibration as the main story.
 - Maintain clean AI handoff discipline to reduce drift across sessions.
 
 ## Product Truths (Non-Drift)
