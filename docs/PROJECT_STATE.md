@@ -1,6 +1,32 @@
 # Clarion Project State
 
-_This file reflects current live state. Historical detail lives in `CHANGELOG_AI.md`. Design direction and product identity live in `NORTH_STAR.md`._
+_This file reflects current live state. Historical detail lives in `CHANGELOG_AI.md`. Design direction and product identity live in `NORTH_STAR.md`. Working rules and protected systems live in `AI_WORKING_RULES.md`._
+
+---
+
+## Startup Reads (Every Session)
+1. `NORTH_STAR.md` — product identity, design direction, canonical brief spine
+2. `PROJECT_STATE.md` (this file) — live state, architecture map, current pass
+3. `AI_WORKING_RULES.md` — pass discipline, protected systems, build rules
+
+---
+
+## Repository Structure
+- `backend/` — Flask monolith, APIs, services, templates, pdf_generator
+- `frontend/src/` — React/TypeScript/Vite SPA (marketing + authenticated workspace)
+- `Clarion-Agency/` — Agent office runtime, per-division agents, memory, execution layer
+- `automation/calibration/` — Calibration pipeline scripts
+- `data/calibration/` — Calibration inputs, synthetic reviews, run outputs
+- `docs/` — This doc set (NORTH_STAR, PROJECT_STATE, AI_WORKING_RULES, CHANGELOG_AI)
+- `tools/` — Smoke test helpers, seeded workspace tooling
+
+## Major Subsystems (Verified File Paths)
+- Feedback ingestion: `backend/app.py`, `frontend/src/pages/Upload.tsx`
+- Governance signal engine: `backend/services/governance_insights.py`
+- Calibration: `automation/calibration/`, `backend/services/benchmark_engine.py`
+- Brief/PDF output: `backend/pdf_generator.py` + report PDF routes in `backend/app.py`
+- Action tracking: `frontend/src/pages/ExecutionPage.tsx` + action APIs in `backend/app.py`
+- Landing: `frontend/src/pages/Index.tsx`, `frontend/src/components/landing/`
 
 ---
 
@@ -33,7 +59,43 @@ Release-candidate ready. Operator smoke passed. V3 landing active. Authenticated
 
 ---
 
-## Architecture Notes (Critical — Do Not Lose)
+## Repository Structure
+
+```
+law-firm-insights-main/
+├── backend/                     # Flask monolith — API, services, governance engine
+│   ├── app.py                   # Main application (auth boundary — high caution)
+│   ├── services/                # governance_insights.py, benchmark_engine.py, etc.
+│   ├── pdf_generator.py         # Governance brief PDF generation (high caution)
+│   └── templates/               # Jinja2 email templates
+├── frontend/                    # React / TypeScript / Vite SPA
+│   └── src/pages + components
+├── Clarion-Agency/              # AI Agent Office (22+ agents across 5 divisions)
+├── automation/calibration/      # Calibration workflow scripts
+├── data/calibration/            # Calibration inputs, synthetic reviews, run outputs
+├── docs/                        # This doc set
+├── scripts/                     # Local dev convenience scripts (.bat, .ps1)
+├── tools/                       # Maintenance, smoke test, e2e helpers
+└── tools/diagnostics/           # Diagnostic scripts (diag_*.py)
+```
+
+**Verified subsystems:**
+- Feedback ingestion: `backend/app.py` + `frontend/src/pages/Upload.tsx`
+- Governance signal engine: `backend/services/governance_insights.py`
+- Calibration harness: `automation/calibration/` + `backend/services/benchmark_engine.py`
+- Brief/PDF output: `backend/pdf_generator.py` + report PDF routes in `backend/app.py`
+- Action tracking: `frontend/src/pages/ExecutionPage.tsx` + action APIs in `backend/app.py`
+- Marketing/landing: `frontend/src/pages/Index.tsx` + landing components
+
+---
+
+## Active Pass
+
+_None in progress. Last completed: 2026-03-19 — Authenticated Continuity Audit + Standards/Docs Evolution._
+
+---
+
+
 
 **Calibration engines are separate:**
 - `backend/services/benchmark_engine.py` — used by `/internal/benchmark/batch` (live calibration path, all phrase/guard changes go here)
@@ -96,19 +158,14 @@ When ready to move to `clarion.co`:
 ---
 
 ## Last Completed Pass
-
-2026-03-19 — Authenticated Continuity Audit + Standards Evolution
+2026-03-19 — Authenticated Continuity Audit + Standards/Doc Evolution
 
 - ReportDetail.tsx: Present brief button promoted to primary dark
 - DemoWorkspace.tsx: Step 5 brief render replaced with document-forward artifact card
-- AI_DEV_STANDARDS.md, PROTECTED_SYSTEMS.md, CODEX_BUILD_RULES.md, CLARION_OVERVIEW.md: evolved to match project maturity
-- NORTH_STAR.md: created
+- NORTH_STAR.md created; AI_WORKING_RULES.md consolidated from 3 files; PROJECT_STATE trimmed to live-state format
 
----
-
-## Next Pass Options
-
-1. Signals page audit (`/dashboard/signals`) — confirm it reads as part of the governance cycle, not a detached data list
-2. ReportsPage audit (`/dashboard/reports`) — confirm brief list presentation quality
-3. Domain cutover execution
+## Active / Next Passes
+1. **Signals page** (`/dashboard/signals`) — audit whether it reads as governance-cycle evidence or detached data list
+2. **ReportsPage** (`/dashboard/reports`) — brief list presentation quality
+3. **Domain cutover** to `clarion.co` (checklist below)
 4. Legacy Flask template retirement (if deploy constraints allow)
