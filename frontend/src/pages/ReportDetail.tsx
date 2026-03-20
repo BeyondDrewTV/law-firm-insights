@@ -1500,15 +1500,15 @@ const ReportDetail = () => {
 
             {/* Toolbar */}
             <div className="flex flex-wrap items-center gap-2">
-              {/* ★ Present mode button */}
+              {/* ★ Present mode — primary brief artifact action */}
               <button
                 type="button"
                 onClick={enterPresent}
-                className="inline-flex items-center gap-1.5 rounded-[6px] border border-[#D1D5DB] bg-white px-3 py-2 text-[12px] font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50"
+                className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#0D1B2A] px-3 py-2 text-[12px] font-semibold text-white transition-colors hover:bg-[#16263b]"
                 title="Open presentation mode (also via ?present=1)"
               >
                 <Maximize2 size={13} aria-hidden />
-                Present
+                Present brief
               </button>
               <button
                 type="button"
@@ -1531,7 +1531,7 @@ const ReportDetail = () => {
               <button
                 data-testid="report-create-action"
                 type="button"
-                className="inline-flex items-center gap-1.5 rounded-[6px] bg-[#0D1B2A] px-3 py-2 text-[12px] font-medium text-white transition-colors hover:bg-[#16263b]"
+                className="inline-flex items-center gap-1.5 rounded-[6px] border border-[#D1D5DB] bg-white px-3 py-2 text-[12px] font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50"
                 onClick={openCreateAction}
               >
                 + Add follow-through
