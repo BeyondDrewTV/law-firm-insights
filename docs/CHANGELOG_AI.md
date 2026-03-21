@@ -1,5 +1,20 @@
 # AI Pass Changelog
 
+## 2026-03-21 - Landing Hero Refinement Pass
+
+### Files Changed
+- `frontend/src/components/landing/LandingHeroSection.tsx`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Refined the landing hero with a slightly wider editorial text measure, calmer headline scale, looser headline leading, and more vertical breathing room between the eyebrow, headline, body copy, CTAs, and supporting proof notes.
+- Rebalanced the hero grid so the left narrative column feels less compressed while the right-side governance brief preview keeps its visual authority.
+- Preserved the existing headline, CTA hierarchy, route structure, and product framing. This was a typography-and-layout pass only.
+
+### Verification
+- `npm run build` in `frontend/`
+
 ## 2026-03-19 - Governance Brief Output Unification Pass
 
 ### Files Changed

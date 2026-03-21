@@ -36,6 +36,8 @@ Release-candidate ready. Operator smoke passed. V3 landing active. Authenticated
 
 **Active focus:** narrative continuity tightening (signals page, reports list next). Domain cutover to `clarion.co` pending.
 
+Last completed UX pass: `2026-03-21 - Landing Hero Refinement Pass`.
+
 ---
 
 ## Canonical Brief Section Spine (Locked)
