@@ -1,8 +1,0 @@
-phrase_id,phrase_text,theme,weight,added_date,added_by,last_modified
-PH-001,kept me informed,communication,0.82,2025-12-01,system_seed,2025-12-01
-PH-002,hard to reach,responsiveness,-0.78,2025-12-01,system_seed,2025-12-01
-PH-003,exceeded expectations,outcome_satisfaction,0.91,2025-12-01,system_seed,2025-12-01
-PH-004,took too long to return my call,responsiveness,-0.85,2025-12-01,system_seed,2025-12-01
-PH-005,very professional,professionalism,0.74,2025-12-01,system_seed,2025-12-01
-PH-006,worth every penny,value_for_cost,0.88,2025-12-01,system_seed,2025-12-01
-PH-007,felt rushed,communication,-0.61,2026-01-15,model_suggested,2026-01-15

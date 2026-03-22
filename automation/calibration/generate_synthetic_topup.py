@@ -158,7 +158,7 @@ THEME_TAGS = {
 
 def generate_reviews(star: int, count: int, theme: str | None = None) -> list[dict]:
     if star not in TEMPLATES:
-        sys.exit(f"❌ No templates for {star}-star reviews")
+        sys.exit(f"[ERROR] No templates for {star}-star reviews")
 
     templates = TEMPLATES[star]
     reviews = []
@@ -216,7 +216,7 @@ def main():
         random.seed(args.seed)
 
     if not args.star and not args.batch:
-        sys.exit("❌ Provide either --star or --batch")
+        sys.exit("[ERROR] Provide either --star or --batch")
 
     all_reviews = []
 
@@ -229,21 +229,21 @@ def main():
                 star = int(star_str.strip())
                 count = int(count_str.strip())
             except ValueError:
-                sys.exit(f"❌ Invalid batch format '{pair}' — use star:count e.g. '2:15'")
+                sys.exit(f"[ERROR] Invalid batch format '{pair}' - use star:count e.g. '2:15'")
             reviews = generate_reviews(star, count, args.theme)
             all_reviews.extend(reviews)
-            print(f"  → Generated {len(reviews)} {star}★ reviews")
+            print(f"  -> Generated {len(reviews)} {star}* reviews")
     else:
         reviews = generate_reviews(args.star, args.count, args.theme)
         all_reviews.extend(reviews)
-        print(f"\nGenerated {len(reviews)} {args.star}★ reviews")
+        print(f"\nGenerated {len(reviews)} {args.star}* reviews")
 
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(all_reviews, f, indent=2, ensure_ascii=False)
 
-    print(f"\n✅ {len(all_reviews)} synthetic reviews written → {output_path}")
+    print(f"\n[OK] {len(all_reviews)} synthetic reviews written -> {output_path}")
     print(f"   Merge with: python automation/calibration/merge_calibration_data.py --csv <real.csv> --json {output_path}")
 
 

@@ -7,13 +7,10 @@ export interface PricingPlan {
   planType: PlanType;
   name: string;
   audience: string;
-  /** Monthly price display string */
   price: string;
   period: string;
-  /** Annual price display string */
   annualPrice: string;
   annualPeriod: string;
-  /** e.g. "Save ~$358/year" */
   annualSavings: string | null;
   badge: string | null;
   features: string[];
@@ -28,7 +25,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "free",
     planType: "free",
     name: "Free",
-    audience: "Solo trial — validate your first governance cycle",
+    audience: "Validate a first governance cycle without changing the firm's process",
     price: "$0",
     period: "",
     annualPrice: "$0",
@@ -39,13 +36,13 @@ export const pricingPlans: PricingPlan[] = [
       "50 reviews per upload",
       "1 governance brief per month",
       "90-day report history",
-      "Governance signals & action tracking",
+      "Governance signals and action tracking",
       "Watermarked PDF reports",
-      "1 user (solo trial)",
+      "1 user workspace",
       "No credit card required",
     ],
     cta: {
-      default: "Start free workspace →",
+      default: "Start free workspace",
       current: "Go to Dashboard",
     },
   },
@@ -53,25 +50,25 @@ export const pricingPlans: PricingPlan[] = [
     id: "team",
     planType: "team",
     name: "Team",
-    audience: "Recurring governance for active small firms",
+    audience: "Recurring governance for firms running a monthly partner-review rhythm",
     price: "$179",
     period: "/month",
     annualPrice: "$1,790",
     annualPeriod: "/year",
-    annualSavings: "Save ~$358/year",
-    badge: "Best for Small Firms",
+    annualSavings: "Save about $358 per year",
+    badge: "Best for small firms",
     features: [
       "250 reviews per upload",
       "10 governance briefs per month",
       "1-year report history",
-      "Professional PDF reports — no watermark",
+      "Professional PDF reports with no watermark",
       "Unlimited team members",
       "Team invite system",
-      "Full governance workflow (signals, actions, briefs)",
+      "Full governance workflow with signals, actions, and briefs",
       "Restore deleted reports within retention window",
     ],
     cta: {
-      default: "Start Team trial →",
+      default: "Start Team checkout",
       current: "Go to Dashboard",
     },
   },
@@ -79,34 +76,30 @@ export const pricingPlans: PricingPlan[] = [
     id: "firm",
     planType: "firm",
     name: "Firm",
-    audience: "Full-platform coverage across practice groups",
+    audience: "Full-platform coverage across practice groups and recurring leadership review",
     price: "$449",
     period: "/month",
     annualPrice: "$4,490",
     annualPeriod: "/year",
-    annualSavings: "Save ~$898/year",
-    badge: "Full Platform",
+    annualSavings: "Save about $898 per year",
+    badge: "Full platform",
     features: [
       "1,000 reviews per upload",
       "Unlimited governance briefs",
       "Unlimited report history",
-      "Professional PDF reports — no watermark",
+      "Professional PDF reports with no watermark",
       "Unlimited team members",
       "Scheduled governance brief delivery",
-      "Custom branding & firm logo on reports",
+      "Custom branding and firm logo on reports",
       "Restore deleted reports within retention window",
       "Priority support",
     ],
     cta: {
-      default: "Talk to us about Firm →",
+      default: "Talk to us about Firm",
       current: "Go to Dashboard",
     },
   },
 ];
-
-// ---------------------------------------------------------------------------
-// Comparison table rows — single source of truth for the feature matrix
-// ---------------------------------------------------------------------------
 
 export interface ComparisonRow {
   feature: string;
@@ -118,26 +111,18 @@ export interface ComparisonRow {
 }
 
 export const comparisonRows: ComparisonRow[] = [
-  // Upload capacity
   { feature: "Reviews per upload", category: "Capacity", free: "50", team: "250", firm: "1,000" },
   { feature: "Governance briefs per month", category: "Capacity", free: "1", team: "10", firm: "Unlimited" },
   { feature: "Report history", category: "Capacity", free: "90 days", team: "1 year", firm: "Unlimited" },
-  // Core features
-  { feature: "Governance signals & action tracking", category: "Governance", free: true, team: true, firm: true },
+  { feature: "Governance signals and action tracking", category: "Governance", free: true, team: true, firm: true },
   { feature: "PDF report download", category: "Governance", free: "Watermarked", team: true, firm: true },
   { feature: "Restore deleted reports", category: "Governance", free: false, team: true, firm: true },
-  // Team
-  { feature: "Team members", category: "Team", free: "1 (solo)", team: "Unlimited", firm: "Unlimited" },
+  { feature: "Team members", category: "Team", free: "1", team: "Unlimited", firm: "Unlimited" },
   { feature: "Team invite system", category: "Team", free: false, team: true, firm: true },
-  // Firm features
   { feature: "Scheduled brief delivery", category: "Firm Features", free: false, team: false, firm: true },
-  { feature: "Custom branding & logo", category: "Firm Features", free: false, team: false, firm: true },
+  { feature: "Custom branding and logo", category: "Firm Features", free: false, team: false, firm: true },
   { feature: "Priority support", category: "Firm Features", free: false, team: false, firm: true },
 ];
-
-// ---------------------------------------------------------------------------
-// FAQ content
-// ---------------------------------------------------------------------------
 
 export interface FaqItem {
   value: string;
@@ -168,7 +153,7 @@ export const pricingFaqs: FaqItem[] = [
     value: "free-vs-team-firm",
     question: "When should we use Free, Team, or Firm?",
     answer:
-      "Free is designed for first-cycle validation — one upload, one brief, one user. Team is for firms running a recurring monthly governance rhythm. Firm is for year-round, cross-practice coverage with scheduled delivery and custom branding.",
+      "Free is designed for first-cycle validation: one upload, one brief, one user. Team is for firms running a recurring monthly governance rhythm. Firm is for year-round, cross-practice coverage with scheduled delivery and custom branding.",
   },
   {
     value: "team-to-firm",

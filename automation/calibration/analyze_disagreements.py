@@ -19,6 +19,7 @@ Output written to: data/calibration/runs/<run>/disagreement_report.md
 
 import argparse
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -27,13 +28,27 @@ from pathlib import Path
 REPO_ROOT     = Path(__file__).resolve().parent.parent.parent
 RUNS_DIR      = REPO_ROOT / "data" / "calibration" / "runs"
 MIN_FREQUENCY = 2   # min times a missing_theme must appear before suggesting a phrase
+TIMESTAMPED_RUN_RE = re.compile(r"^\d{8}_\d{6}$")
 
 
 def latest_run() -> Path:
-    runs = sorted([r for r in RUNS_DIR.iterdir() if r.is_dir()], reverse=True)
-    if not runs:
+    timestamped_runs = [
+        r for r in RUNS_DIR.iterdir()
+        if r.is_dir()
+        and TIMESTAMPED_RUN_RE.fullmatch(r.name)
+        and (r / "final_summary.json").exists()
+    ]
+    if timestamped_runs:
+        return sorted(timestamped_runs, key=lambda r: r.name, reverse=True)[0]
+
+    fallback_runs = [
+        r for r in RUNS_DIR.iterdir()
+        if r.is_dir()
+        and (r / "final_summary.json").exists()
+    ]
+    if not fallback_runs:
         sys.exit("No calibration runs found in data/calibration/runs/")
-    return runs[0]
+    return sorted(fallback_runs, key=lambda r: r.stat().st_mtime, reverse=True)[0]
 
 
 def load_all_results(run_dir: Path) -> list[dict]:
@@ -123,17 +138,45 @@ def suggest_phrases(by_type: dict) -> list[dict]:
     return sorted(candidates, key=lambda x: -x["frequency"])
 
 
+def extract_chunk_summary(run_dir: Path) -> list[dict]:
+    """Pull per-chunk agreement and dominant disagreement signals from final_summary.json."""
+    summary_path = run_dir / "final_summary.json"
+    if not summary_path.exists():
+        return []
+
+    summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    chunk_rows = []
+    for chunk in summary.get("chunk_results", []):
+        result = chunk.get("result") or {}
+        report = result.get("calibration_report") or {}
+        report_summary = report.get("summary") or {}
+        disagreement_by_theme = report.get("disagreement_by_theme") or {}
+        disagreement_by_type = report.get("disagreement_by_type") or {}
+        top_theme = max(disagreement_by_theme.items(), key=lambda item: item[1])[0] if disagreement_by_theme else ""
+        top_type = max(disagreement_by_type.items(), key=lambda item: item[1])[0] if disagreement_by_type else ""
+        chunk_rows.append({
+            "chunk": chunk.get("chunk"),
+            "agreement_rate": float(report_summary.get("agreement_rate", 0.0) or 0.0),
+            "disagreements": int(report_summary.get("total_disagreements", 0) or 0),
+            "top_theme": top_theme,
+            "top_type": top_type,
+        })
+    return chunk_rows
+
+
 def write_report(run_dir: Path, disagreements: list[dict], analysis: dict, candidates: list[dict]):
     total = len(disagreements)
     by_type = analysis["by_type"]
     by_theme = analysis["by_theme"]
     p4 = analysis["priority4"]
+    chunk_rows = extract_chunk_summary(run_dir)
 
     lines = [
         "# Clarion Calibration — Disagreement Analysis",
         f"**Run:** `{run_dir.name}`",
         f"**Generated:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
         f"**Total disagreements:** {total}",
+        f"**Source folder:** `{run_dir}`",
         "",
         "---",
         "",
@@ -159,7 +202,20 @@ def write_report(run_dir: Path, disagreements: list[dict], analysis: dict, candi
 
     lines += [
         "",
-        "## 3. Priority-4 Issues (Production Risk)",
+        "## 3. Chunk Drift",
+        "",
+        "| Chunk | Agreement | Disagreements | Dominant Theme | Dominant Type |",
+        "|------|-----------|---------------|----------------|---------------|",
+    ]
+    for row in chunk_rows:
+        lines.append(
+            f"| {row['chunk']} | {round(row['agreement_rate'] * 100)}% | "
+            f"{row['disagreements']} | `{row['top_theme'] or '—'}` | `{row['top_type'] or '—'}` |"
+        )
+
+    lines += [
+        "",
+        "## 4. Priority-4 Issues (Production Risk)",
         f"*{len(p4)} issues requiring immediate attention*",
         "",
     ]
@@ -176,7 +232,7 @@ def write_report(run_dir: Path, disagreements: list[dict], analysis: dict, candi
         ]
 
     lines += [
-        "## 4. Phrase Candidates (missing_theme patterns)",
+        "## 5. Phrase Candidates (missing_theme patterns)",
         f"*Patterns appearing ≥{MIN_FREQUENCY}x where AI tagged a theme the deterministic engine missed*",
         "",
     ]
@@ -197,13 +253,14 @@ def write_report(run_dir: Path, disagreements: list[dict], analysis: dict, candi
 
     lines += [
         "---",
-        "## 5. Next Steps",
+        "## 6. Next Steps",
         "",
         "1. Review Priority-4 issues above — these have the highest production risk",
-        "2. For each `missing_theme`: evaluate suggested phrases and add approved ones to `THEME_PHRASES` in `backend/services/benchmark_engine.py`",
-        "3. For `likely_false_positive` / `likely_context_guard_failure`: review context guards in `score_review_deterministic()`",
-        "4. Re-run calibration after phrase additions and compare disagreement counts",
-        "5. Target: <15% overall disagreement rate, 0 P4 issues",
+        "2. Use the Chunk Drift table first; the weakest chunk usually reveals the next live-engine priority",
+        "3. For each `missing_theme`: evaluate suggested phrases and add approved ones to `THEME_PHRASES` in `backend/services/benchmark_engine.py`",
+        "4. For `likely_false_positive` / `likely_context_guard_failure`: review context guards in `score_review_deterministic()`",
+        "5. Re-run calibration after phrase additions and compare disagreement counts",
+        "6. Target: <15% overall disagreement rate, 0 P4 issues",
         "",
         f"Full phrase candidates: `{run_dir.name}/phrase_candidates.json`",
     ]
@@ -236,7 +293,7 @@ def main():
     # Write disagreement_report.md
     report_path = write_report(run_dir, disagreements, analysis, candidates)
 
-    print(f"✅ {len(disagreements)} disagreements analyzed")
+    print(f"[ok] {len(disagreements)} disagreements analyzed")
     print(f"   Report     : {report_path}")
     print(f"   Candidates : {candidates_path}")
 
@@ -249,9 +306,9 @@ def main():
             print(f"     {t:<35} {len(items):>4}  ({round(len(items)/total*100)}%)")
     print(f"\n   Priority-4 issues: {p4_count}")
     if p4_count == 0:
-        print("   ✅ No P4 issues — engine is in good shape")
+        print("   [ok] No P4 issues - engine is in good shape")
     else:
-        print("   ⚠️  Review P4 issues in the report before launch")
+        print("   [warn] Review P4 issues in the report before launch")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,0 @@
-deal_id,firm_size_attorneys,practice_area,geography,plan_tier,deal_value_mrr,close_date,win_reason,buyer_role,days_to_close
-CW-001,12,personal_injury,Southeast,growth,199,2026-01-10,roi_and_reporting_depth,managing_partner,18
-CW-002,4,family_law,Midwest,starter,79,2026-01-17,ease_of_setup,office_manager,9
-CW-003,18,employment,Northeast,growth,199,2026-01-24,benchmarking_feature,managing_partner,22
-CW-004,6,immigration,Southwest,starter,79,2026-02-07,price_and_simplicity,attorney_partner,14
-CW-005,9,estate_planning,West,growth,199,2026-02-21,peer_referral,managing_partner,11

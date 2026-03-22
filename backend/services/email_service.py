@@ -367,7 +367,7 @@ def send_email_with_pdf(
         "to": [to_email],
         "subject": subject,
         "html": html,
-        "attachments": [{"filename": filename, "content": pdf_bytes}],
+        "attachments": [{"filename": filename, "content": list(pdf_bytes)}],
     }
 
     return resend.Emails.send(params)

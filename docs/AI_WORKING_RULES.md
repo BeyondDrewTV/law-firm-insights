@@ -148,6 +148,28 @@ Doc update policy:
 
 ---
 
+## Repository Hygiene (Enforced Every Session)
+
+Claude actively enforces these rules — not just when asked:
+
+**Never commit:**
+- `*.db`, `*.sqlite` — database files
+- `diag_*.py`, `tmp_*.py` — diagnostic scripts
+- `tmp/` contents — temporary files
+- `*.bat`, `*.ps1` operational convenience scripts
+- `data/calibration/runs/` — generated run artifacts
+- `archive/` — legacy reference material
+
+**Cleanup checkpoint trigger:** After every 5–10 sessions, Claude should proactively note if a cleanup pass is due and offer to run it. The checklist lives in `docs/ENGINEERING_PRACTICES.md`.
+
+**Commit messages must follow the format:** `scope: short description`
+- Good: `fix: remove RETURNING clause from verify-email upsert`
+- Bad: `update`, `fix bug`, `WIP`, `changes`
+
+See `docs/ENGINEERING_PRACTICES.md` for the full engineering practices reference.
+
+---
+
 ## Tool/Connector Recommendation Lane (Recommendation-Only)
 
 Use this lane only when a pass exposes concrete delivery friction. This lane is not roadmap authority.

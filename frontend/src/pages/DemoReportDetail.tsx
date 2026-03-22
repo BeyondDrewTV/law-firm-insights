@@ -16,15 +16,15 @@ const DemoReportDetail = () => {
       <PageLayout>
         <section className="section-container section-padding">
           <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="gov-badge gov-badge-watch mb-3">Read-Only Demo Mode</p>
-            <h1 className="text-2xl font-bold text-slate-900">Demo report unavailable</h1>
-            <p className="mt-2 text-sm text-slate-600">This demo report could not be loaded.</p>
+            <p className="gov-badge gov-badge-neutral mb-3">Sample Workspace</p>
+            <h1 className="text-2xl font-bold text-slate-900">Sample report unavailable</h1>
+            <p className="mt-2 text-sm text-slate-600">This sample report could not be loaded.</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link to="/demo" className="gov-btn-secondary">
-                Back to read-only demo
+                Back to sample workspace
               </Link>
               <Link to="/signup" className="gov-btn-primary">
-                Start real workspace
+                Start workspace
               </Link>
             </div>
           </article>
@@ -41,60 +41,60 @@ const DemoReportDetail = () => {
     <PageLayout>
       <section className="section-container section-padding space-y-6">
         <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <p className="gov-badge gov-badge-watch mb-3">Read-Only Demo Mode</p>
+          <p className="gov-badge gov-badge-controlled mb-3">Sample Governance Brief</p>
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Example cycle report</p>
+              <p className="landing-kicker mb-2">Governance Brief</p>
               <h1 className="text-3xl font-bold text-slate-900">{report.name}</h1>
               <p className="mt-1 text-sm text-slate-600">
-                Sample law-firm data for evaluation. This page shows what one completed cycle turns into once feedback
-                has been grouped into client issues and follow-through.
+                Sample law-firm governance brief. Review the client issues, assigned follow-through, and leadership
+                briefing below before starting a live workspace.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
               <Link to="/demo" className="gov-btn-secondary">
-                Back to example cycle
+                See sample workspace mechanics
               </Link>
               <Link to={`/demo/reports/${report.id}/pdf`} className="gov-btn-primary inline-flex items-center gap-2">
-                <Download size={15} /> Open read-only example brief
+                <Download size={15} /> Open sample brief PDF
               </Link>
             </div>
           </div>
         </div>
 
-        <section className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950 shadow-sm">
-          <p className="font-semibold">This report is part of the read-only example cycle, not your live workspace.</p>
+        <section className="rounded-xl border border-[#D7D0C3] bg-[#F6F0E4] p-4 text-sm text-[#374151]">
+          <p className="font-semibold text-[#111827]">This is a sample governance brief using law-firm example data.</p>
           <p className="mt-1">
-            Use it to inspect the structure, language, and action workflow. Start a real workspace to upload your own
-            feedback and generate live reports.
+            The structure — leadership briefing, signals, assigned follow-through, and decisions — is the same structure
+            a live workspace produces after a real feedback upload.
           </p>
         </section>
 
         <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Review Count</p>
-            <p className="mt-1 text-3xl font-bold text-slate-900">{report.totalReviews}</p>
-            <p className="mt-1 text-xs text-slate-600">Records included in this snapshot.</p>
-          </article>
-          <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Overall Sentiment</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900">{report.avgRating.toFixed(2)} / 5</p>
-            <p className="mt-1 text-xs text-slate-600">Current cycle rating.</p>
+            <p className="text-xs uppercase tracking-wide text-slate-500">Top Issue</p>
+            <p className="mt-1 line-clamp-2 text-sm font-semibold text-slate-900">{report.topIssue}</p>
+            <p className="mt-1 text-xs text-slate-600">Most recurring client complaint this cycle.</p>
           </article>
           <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
             <p className="text-xs uppercase tracking-wide text-slate-500">Top Theme</p>
             <p className="mt-1 text-sm font-semibold text-slate-900">{report.topTheme}</p>
-            <p className="mt-1 text-xs text-slate-600">Most recurring issue area.</p>
+            <p className="mt-1 text-xs text-slate-600">Dominant issue category.</p>
           </article>
           <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Top Issue</p>
-            <p className="mt-1 line-clamp-2 text-sm font-semibold text-slate-900">{report.topIssue}</p>
-            <p className="mt-1 text-xs text-slate-600">Most cited complaint summary.</p>
+            <p className="text-xs uppercase tracking-wide text-slate-500">Overall Sentiment</p>
+            <p className="mt-1 text-2xl font-bold text-slate-900">{report.avgRating.toFixed(2)} / 5</p>
+            <p className="mt-1 text-xs text-slate-600">Cycle average rating.</p>
+          </article>
+          <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+            <p className="text-xs uppercase tracking-wide text-slate-500">Reviews Analyzed</p>
+            <p className="mt-1 text-3xl font-bold text-slate-900">{report.totalReviews}</p>
+            <p className="mt-1 text-xs text-slate-600">Records included in this brief.</p>
           </article>
         </section>
 
         <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-900">Cycle movement at a glance</h2>
+          <h2 className="text-lg font-semibold text-slate-900">Leadership Briefing</h2>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             <article className="rounded-lg border border-slate-200 bg-slate-50 p-4">
               <p className="text-xs uppercase tracking-wide text-slate-500">Overall satisfaction</p>
@@ -125,11 +125,11 @@ const DemoReportDetail = () => {
         <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <h3 className="text-lg font-semibold text-slate-900">90-Day Implementation Plan (Read-only)</h3>
+              <h3 className="text-lg font-semibold text-slate-900">Assigned Follow-Through</h3>
               <p className="text-sm text-slate-600">Theme-based actions with owners and success metrics.</p>
             </div>
             <button type="button" className="gov-btn-secondary cursor-not-allowed opacity-70" disabled>
-              Add action item (read-only demo)
+              Add action item (sample workspace)
             </button>
           </div>
           <div className="mt-4 space-y-2">
@@ -143,6 +143,14 @@ const DemoReportDetail = () => {
                 <p className="mt-1 text-sm text-slate-600">Success metric: {item.kpi}</p>
               </article>
             ))}
+          </div>
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Link to={`/demo/reports/${report.id}/pdf`} className="gov-btn-secondary">
+              Open PDF view
+            </Link>
+            <Link to="/signup" className="gov-btn-secondary">
+              Start workspace
+            </Link>
           </div>
         </section>
       </section>

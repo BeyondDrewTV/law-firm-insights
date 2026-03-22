@@ -159,8 +159,8 @@ const Signup = () => {
           >
             {view === "form" ? (
               <div className="animate-fade-in transition-all motion-med ease-in-out">
-                <h1 className="mb-3 text-3xl font-semibold text-slate-900">Create your firm account</h1>
-                <p className="mb-6 text-slate-600">Set up your workspace to begin your governance cycle.</p>
+                <h1 className="mb-3 text-3xl font-semibold text-slate-900">Set up Clarion for your firm</h1>
+                <p className="mb-6 text-slate-600">Create the workspace that will hold review cycles, governance briefs, and follow-through.</p>
 
                 {errors.general && (
                   <div className="mb-4 rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
@@ -189,7 +189,7 @@ const Signup = () => {
 
                   <div>
                     <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-900">
-                      Email
+                      Work email
                     </label>
                     <input
                       id="email"
@@ -210,7 +210,7 @@ const Signup = () => {
                       Password
                     </label>
                     {!formData.password && (
-                      <p className="mb-2 text-xs text-slate-500">At least 8 characters — uppercase, lowercase, number, and special character recommended.</p>
+                      <p className="mb-2 text-xs text-slate-500">At least 8 characters - uppercase, lowercase, number, and special character recommended.</p>
                     )}
                     <div className="relative">
                       <input
@@ -272,12 +272,12 @@ const Signup = () => {
                         Creating your account…
                       </>
                     ) : (
-                      "Create Free Account"
+                      "Create workspace"
                     )}
                   </button>
                 </form>
 
-                <p className="mt-3 text-center text-sm text-slate-600">No credit card required.</p>
+                <p className="mt-3 text-center text-sm text-slate-600">You can finish setup now and upload the first review export later.</p>
 
                 <div className="mt-6 text-center text-sm">
                   <p className="mb-2 text-slate-600">Already have an account?</p>

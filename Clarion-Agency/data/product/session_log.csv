@@ -1,6 +1,0 @@
-account_id,session_date,user_id_hash,session_minutes,pages_visited,reports_generated
-ACC-001,2026-03-05,a1b2c3d4,18,7,1
-ACC-003,2026-03-05,e5f6g7h8,24,11,2
-ACC-003,2026-03-06,i9j0k1l2,14,6,0
-ACC-005,2026-03-06,m3n4o5p6,20,8,1
-ACC-002,2026-03-07,q7r8s9t0,11,4,0

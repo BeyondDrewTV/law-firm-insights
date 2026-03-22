@@ -6,29 +6,27 @@ const Docs = () => (
   <PageLayout>
     <section className="marketing-hero">
       <div className="section-container space-y-4">
-        <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-          Documentation
-        </p>
+        <p className="landing-kicker">Documentation</p>
         <h1 className="marketing-hero-title">What Clarion does today</h1>
         <p className="max-w-3xl marketing-hero-body">
           Clarion is a client-feedback governance workflow for law firms: upload feedback, review recurring client
-          issues, assign owners, and generate a governance brief. This page is the truth layer for the current product,
-          not another marketing summary.
+          issues, assign owners, and generate a governance brief. This page is a current-product reference, not another
+          marketing summary.
         </p>
-        <p className="max-w-3xl text-sm leading-6 text-white/75">
-          Use it to separate what is shipped today from what remains manual, deployment-dependent, or intentionally
-          read-only in the public demo.
+        <p className="max-w-3xl text-sm leading-7 text-slate-600">
+          Use it to separate what is available in the current product from what remains setup-dependent or intentionally
+          read-only in the sample workspace.
         </p>
         <MarketingProofBar
           items={[
             "Current shipped workflow only",
             "Manual and deployment-dependent items named plainly",
-            "Read-only demo boundaries kept explicit",
+            "Sample-workspace boundaries kept explicit",
           ]}
         />
         <div className="flex flex-wrap gap-3 pt-1">
           <Link to="/demo" className="gov-btn-primary">
-            Open read-only demo
+            Open sample workspace
           </Link>
           <Link to="/pricing" className="gov-btn-secondary">
             See plans
@@ -41,8 +39,8 @@ const Docs = () => (
       <div className="section-container space-y-5">
         <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
           <article className="supporting-lead">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Current state</p>
-            <h2 className="mt-2 text-2xl font-semibold text-slate-900">The product boundary is simple: what ships, what stays manual, and what remains demo-only.</h2>
+            <p className="landing-kicker !text-[#5F6470]">Current state</p>
+            <h2 className="mt-2 text-2xl font-semibold text-slate-900">The product boundary is simple: what is available now, what depends on setup, and what stays sample-only.</h2>
             <div className="supporting-divider-list mt-5">
               <div className="py-4 first:pt-0">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Shipped workflow</p>
@@ -53,7 +51,7 @@ const Docs = () => (
               </div>
               <div className="py-4">
                 <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Still manual or deployment-dependent
+                  Setup-dependent items
                 </p>
                 <p className="mt-2 text-sm leading-6 text-slate-700">
                   CSV preparation, support inbox replies, and outbound delivery features still depend on the deployment
@@ -61,9 +59,9 @@ const Docs = () => (
                 </p>
               </div>
               <div className="py-4 last:pb-0">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Read-only demo</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Sample workspace</p>
                 <p className="mt-2 text-sm leading-6 text-slate-700">
-                  Public demo pages use sample law-firm data, stay read-only, and never write to a live workspace.
+                  Public sample pages use sample law-firm data, stay read-only, and never write to a live workspace.
                 </p>
               </div>
             </div>
@@ -85,12 +83,12 @@ const Docs = () => (
             <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
               <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Next action</p>
               <p className="mt-2 text-sm text-slate-700">
-                If the current shipped boundary fits your workflow, inspect the demo once and then choose the plan that
+                If the current product boundary fits your workflow, inspect the sample workspace once and then choose the plan that
                 matches your review cadence.
               </p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <Link to="/demo" className="gov-btn-primary">
-                  Open read-only demo
+                  Open sample workspace
                 </Link>
                 <Link to="/pricing" className="gov-btn-secondary">
                   See plans

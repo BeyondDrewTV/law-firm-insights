@@ -1,8 +1,0 @@
-lead_id,created_date,lead_source,firm_size_attorneys,practice_area,geography,icp_match,lead_score,assigned_rep,status
-LEAD-001,2026-01-03,linkedin_outbound,12,personal_injury,Southeast,true,82,ceo,closed_won
-LEAD-002,2026-01-05,organic_search,4,family_law,Midwest,true,71,ceo,closed_won
-LEAD-003,2026-01-08,referral,18,employment,Northeast,true,91,ceo,closed_won
-LEAD-004,2026-01-15,linkedin_outbound,3,general_practice,South,false,38,ceo,disqualified
-LEAD-005,2026-03-01,referral,11,estate_planning,West,true,84,sdr,qualified
-LEAD-006,2026-03-03,linkedin_outbound,7,family_law,Midwest,true,68,sdr,demo_scheduled
-LEAD-007,2026-03-05,content_marketing,5,criminal_defense,West,true,61,sdr,new

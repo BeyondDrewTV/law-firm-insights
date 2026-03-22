@@ -8,105 +8,96 @@ import { PRODUCT_FLAGS } from "@/lib/productFlags";
 const pillars = [
   {
     icon: Lock,
-    title: "Data Protection",
+    title: "Data protection",
     sentence: "Client feedback data is handled with practical safeguards for storage and transport.",
     bullets: [
-      "Encrypted transport in production (HTTPS).",
+      "Encrypted transport in production.",
       "Backups and infrastructure protections handled by the hosting layer.",
     ],
-    iconTone: "bg-blue-500/20 border-blue-500/30 text-blue-400",
   },
   {
     icon: UserCheck,
-    title: "Access Controls",
+    title: "Access controls",
     sentence: "Workspace data access is scoped to authenticated accounts.",
     bullets: [
       "Protected routes and authenticated API checks.",
       "Session cookies use HttpOnly and SameSite protections.",
     ],
-    iconTone: "bg-emerald-500/20 border-emerald-500/30 text-emerald-400",
   },
   {
     icon: ShieldCheck,
-    title: "Responsible Use",
+    title: "Responsible use",
     sentence: "Firm data is used only to deliver your reporting workflow.",
     bullets: [
       "No sale of customer data for advertising.",
-      "Report deletion is available in-product; account closure and privacy requests are handled through support.",
+      "Report deletion is available in-product and privacy requests are handled through support.",
     ],
-    iconTone: "bg-amber-500/20 border-amber-500/30 text-amber-400",
   },
 ];
-
-const darkCardClass =
-  "rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors duration-300";
 
 const Security = () => {
   return (
     <PageLayout>
       <section className="marketing-hero">
         <div className="section-container max-w-4xl space-y-5">
-          <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-            Security
-          </p>
-          <h1 className="marketing-hero-title">Security protections for client feedback workflows</h1>
+          <p className="landing-kicker">Security</p>
+          <h1 className="marketing-hero-title">Security notes for the current Clarion workflow.</h1>
           <p className="max-w-3xl marketing-hero-body">
-            {coreNarrative} This page outlines implemented protections and access boundaries.
+            {coreNarrative} This page is a practical reference for current safeguards, access boundaries, and product
+            constraints. It is not a certification claim.
           </p>
           <MarketingProofBar
             items={[
               "Authentication required for workspace access",
-              "Session-cookie protections in place",
-              "Data used only for your reporting workflow",
+              "Session protections in place",
+              "Customer data is used only for the reporting workflow",
             ]}
           />
-          <div className="max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200">What this page covers</p>
-            <p className="mt-2 text-sm leading-6 text-slate-200">
-              Implemented safeguards, authentication boundaries, and current product security notes. It is a reference
-              page for the live product, not a certification or compliance summary.
+          <div className="public-route-card max-w-3xl">
+            <p className="landing-kicker !text-[#5F6470]">What this page covers</p>
+            <p className="mt-3 text-sm leading-7 text-slate-700">
+              Implemented safeguards, authentication boundaries, and current product notes. This is a live-product
+              reference page for firms evaluating Clarion's operating model.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="supporting-section bg-gradient-to-br from-[#0F172A] via-[#1E3A5F] to-[#0F172A]">
+      <section className="supporting-section">
         <div className="section-container">
           <div className="mb-6 max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-300">Core controls</p>
-            <h2 className="mt-2 text-2xl font-semibold text-white md:text-3xl">Three practical security pillars</h2>
+            <p className="landing-kicker">Core controls</p>
+            <h2 className="mt-4 landing-section-title text-[#111827]">Three practical security pillars.</h2>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">
-          {pillars.map((pillar) => (
-            <article key={pillar.title} className={darkCardClass}>
-              <div
-                className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl border ${pillar.iconTone}`}
-              >
-                <pillar.icon size={18} />
-              </div>
-              <h2 className="text-xl font-semibold text-white">{pillar.title}</h2>
-              <p className="mt-2 text-sm text-slate-300">{pillar.sentence}</p>
-              <ul className="mt-4 space-y-2">
-                {pillar.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2 text-sm text-slate-300">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+            {pillars.map((pillar) => (
+              <article key={pillar.title} className="public-route-card">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-[#D7D0C3] bg-[#FFF9EE] text-slate-800">
+                  <pillar.icon size={18} />
+                </div>
+                <h2 className="text-xl font-semibold text-slate-900">{pillar.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-slate-700">{pillar.sentence}</p>
+                <ul className="mt-4 space-y-2">
+                  {pillar.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2 text-sm leading-7 text-slate-700">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8B6F3D]" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="supporting-section border-y border-slate-200 bg-slate-50">
+      <section className="supporting-section border-y border-[#D7D0C3] bg-[rgba(255,250,244,0.72)]">
         <div className="section-container trust-stack">
           <article className="trust-intro">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Reference notes</p>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
-              These notes provide implementation detail behind the high-level security model above. They describe the
-              current product state rather than future commitments.
+            <p className="landing-kicker !text-[#5F6470]">Reference notes</p>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-700">
+              These notes provide implementation detail behind the high-level model above. They describe the current
+              product state rather than future commitments.
             </p>
           </article>
           <div className="space-y-4">

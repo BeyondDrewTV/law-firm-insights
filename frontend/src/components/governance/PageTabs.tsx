@@ -65,14 +65,14 @@ export function PageTabs({ value, onValueChange, tabs, className = "" }: PageTab
               // Typography
               "text-[13px] font-medium leading-none whitespace-nowrap",
               // Default (inactive) state — smooth color + opacity transition
-              "text-slate-400 transition-[color,opacity] duration-[150ms] ease-[cubic-bezier(0.2,0,0.2,1)]",
+              "text-slate-400 transition-[color,opacity] duration-150 ease-out",
               // Hover — darkens text to near-active weight without committing to active
               "hover:text-slate-700",
               // Active state — full ink weight
               "data-[state=active]:text-[#0D1B2A]",
               // Active bottom border — slide-in via scaleX so it feels intentional
               "after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-[2px] after:rounded-t-[1px] after:bg-[#0EA5C2]",
-              "after:origin-left after:transition-[transform,opacity] after:duration-[150ms] after:ease-[cubic-bezier(0.2,0,0.2,1)]",
+              "after:origin-left after:transition-[transform,opacity] after:duration-150 after:ease-out",
               "after:scale-x-0 after:opacity-0",
               "data-[state=active]:after:scale-x-100 data-[state=active]:after:opacity-100",
               // Focus ring — teal, only on keyboard nav

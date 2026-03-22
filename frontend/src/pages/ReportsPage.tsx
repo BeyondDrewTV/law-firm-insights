@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { formatApiDate } from "@/lib/dateTime";
 import { resolvePlanLimits } from "@/config/planLimits";
+import { defaultSampleBriefPath } from "@/data/sampleFirmData";
 
 type BriefRow = {
   id: number;
@@ -271,8 +272,8 @@ const ReportsPage = () => {
               </Button>
             </div>
             <div className="mt-3">
-              <Link to="/demo" className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700">
-                Open read-only example cycle
+              <Link to={defaultSampleBriefPath} className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700">
+                Review sample brief
               </Link>
             </div>
           </section>

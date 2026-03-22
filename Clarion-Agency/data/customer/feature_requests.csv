@@ -1,6 +1,0 @@
-request_id,account_id,request_date,feature_description,category,priority_requested,plan_tier
-FR-001,ACC-003,2026-02-10,Export dashboard data to CSV for our internal reporting,data_export,high,growth
-FR-002,ACC-001,2026-02-14,Slack notification when a new review scores below 6.0,integrations,medium,growth
-FR-003,ACC-005,2026-02-24,Compare our scores to regional averages not just national,benchmarking,high,growth
-FR-004,ACC-002,2026-03-01,Ability to tag reviews with internal case matter codes,tagging,low,starter
-FR-005,ACC-004,2026-03-05,Spanish language review support,language,medium,starter

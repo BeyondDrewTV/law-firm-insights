@@ -107,12 +107,12 @@ const Login = () => {
       <section className="section-container section-padding max-w-xl auth-shell">
         <div className="auth-card bg-card border border-white/25 rounded-xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.32)] transition-all motion-slow ease-out">
           <h1 className="mb-3 text-3xl font-bold text-slate-900">
-            {requiresTwoFactor ? "Enter verification code" : "Log in to Clarion"}
+            {requiresTwoFactor ? "Enter verification code" : "Sign in to continue the review cycle"}
           </h1>
           <p className="mb-6 text-slate-700">
             {requiresTwoFactor
-              ? "Complete sign-in with the 6-digit code sent to your email"
-              : "Access your dashboard and feedback analysis"}
+              ? "Complete sign-in with the 6-digit code sent to your email."
+              : "Open the latest brief, review follow-through, and continue the current workspace."}
           </p>
 
           {verificationMessage ? (
@@ -129,7 +129,7 @@ const Login = () => {
 
           {!requiresTwoFactor && !error && email ? (
             <p className="mb-4 text-sm text-slate-600">
-              Use <span className="font-medium text-slate-900">{email}</span> to continue.
+              Use <span className="font-medium text-slate-900">{email}</span> to open the workspace.
             </p>
           ) : null}
 

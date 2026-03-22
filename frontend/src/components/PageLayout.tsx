@@ -1,4 +1,4 @@
-﻿import { PropsWithChildren, useEffect } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
@@ -17,7 +17,9 @@ const PAGE_TITLES: Record<string, string> = {
   "/signup": "Sign Up",
   "/check-email": "Check Email",
   "/verify-success": "Verify Success",
-  "/demo": "Read-Only Demo",
+  "/demo": "Sample Workspace",
+  "/docs": "Documentation",
+  "/forgot-password": "Forgot Password",
 };
 
 const PageLayout = ({ children }: PropsWithChildren) => {
@@ -29,22 +31,40 @@ const PageLayout = ({ children }: PropsWithChildren) => {
     pathname === "/verify-success" ||
     pathname.startsWith("/verify-email") ||
     pathname === "/verified" ||
-    pathname.startsWith("/verified");
+    pathname.startsWith("/verified") ||
+    pathname === "/forgot-password" ||
+    pathname.startsWith("/reset-password");
+  const isWorkspaceRoute =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/upload") ||
+    pathname.startsWith("/signals/");
+  const isPublicRoute = !isWorkspaceRoute;
 
   useEffect(() => {
-    const page = PAGE_TITLES[pathname] || "Clarion";
-    document.title = `${page} — Clarion`;
+    const page =
+      pathname.startsWith("/demo/reports/") && pathname.endsWith("/pdf")
+        ? "Sample Brief"
+        : pathname.startsWith("/demo/reports/")
+          ? "Sample Report"
+          : PAGE_TITLES[pathname] || "Clarion";
+    document.title = page === "Clarion" ? "Clarion" : `${page} - Clarion`;
   }, [pathname]);
 
   return (
-    <div className={["marketing-shell min-h-screen", isAuthRoute ? "bg-[#0F172A]" : "bg-background"].join(" ")}>
+    <div
+      className={[
+        "min-h-screen",
+        isPublicRoute ? "marketing-shell landing-v3-shell bg-[#F6F0E4] text-[#111827]" : "bg-background",
+      ].join(" ")}
+    >
       <SkipToMainContent />
       <SiteNav />
       <main
         id="main-content"
         className={[
-          "pt-16 pb-10 transition-colors duration-300",
-          isAuthRoute ? "bg-gradient-to-b from-[#0F172A] via-[#132C53] to-[#0F172A]" : "",
+          "pt-16",
+          isWorkspaceRoute ? "pb-10" : "pb-12",
+          isAuthRoute ? "route-shell-auth" : "",
         ].join(" ")}
       >
         {children}
@@ -55,4 +75,3 @@ const PageLayout = ({ children }: PropsWithChildren) => {
 };
 
 export default PageLayout;
-

@@ -1,6 +1,0 @@
-note_id,call_date,account_id,buyer_role,objection_theme,objection_detail,outcome
-CN-001,2026-01-06,ACC-001,managing_partner,price,Said $199/mo was at the top of their budget but agreed ROI case was strong,closed_won
-CN-002,2026-01-14,prospect_P08,managing_partner,integrations,Wanted direct Clio integration before committing,no_decision_follow_up
-CN-003,2026-02-03,prospect_P12,office_manager,complexity,Worried about time to set up and train staff,trial_started
-CN-004,2026-02-19,prospect_P15,attorney_partner,trust,New vendor — wanted references before signing,closed_won
-CN-005,2026-03-04,prospect_P21,managing_partner,price,Solo firm — $79 starter still felt high vs. doing nothing,no_decision_lost

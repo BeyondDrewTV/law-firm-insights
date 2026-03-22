@@ -1,6 +1,0 @@
-week_ending,line_item,provider,cost_usd,prior_week_cost_usd,pct_change
-2026-03-07,LLM inference,OpenRouter,148.22,134.91,9.9
-2026-03-07,hosting_api,Railway,42.00,42.00,0.0
-2026-03-07,database,Supabase,25.00,25.00,0.0
-2026-03-07,email_transactional,Resend,6.40,5.20,23.1
-2026-03-07,monitoring,Sentry,26.00,26.00,0.0

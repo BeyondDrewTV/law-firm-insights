@@ -1,14 +1,52 @@
 import hashlib
 import os
 import sqlite3
+from pathlib import Path
 from typing import Iterable
+
+try:
+    from dotenv import dotenv_values
+except Exception:  # pragma: no cover - fallback when python-dotenv is unavailable
+    dotenv_values = None
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+BACKEND_DIR = REPO_ROOT / "backend"
+BACKEND_ENV_FILE = BACKEND_DIR / ".env"
+
+
+def _load_backend_env() -> dict[str, str]:
+    if dotenv_values is None or not BACKEND_ENV_FILE.exists():
+        return {}
+    values = dotenv_values(BACKEND_ENV_FILE)
+    return {
+        str(key): str(value)
+        for key, value in values.items()
+        if key and value is not None
+    }
+
+
+def _normalize_firm_plan(raw_value: str | None) -> tuple[str, str]:
+    value = str(raw_value or "team").strip().lower()
+    if value in {"firm", "annual", "firm_annual", "leadership"}:
+        return ("firm", "annual")
+    if value in {"team", "monthly", "team_monthly", "professional"}:
+        return ("team", "monthly")
+    return ("free", "trial")
 
 
 def _db_path() -> str:
-    env_path = (os.environ.get("DATABASE_PATH") or "").strip()
+    backend_env = _load_backend_env()
+    env_path = (os.environ.get("DATABASE_PATH") or backend_env.get("DATABASE_PATH") or "").strip()
     if env_path:
         return os.path.abspath(env_path)
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "backend", "feedback.db"))
+
+    database_url = (os.environ.get("DATABASE_URL") or backend_env.get("DATABASE_URL") or "").strip()
+    if database_url.startswith("sqlite:///"):
+        sqlite_path = database_url.replace("sqlite:///", "", 1)
+        return os.path.abspath(os.path.join(BACKEND_DIR, sqlite_path))
+
+    return str((BACKEND_DIR / "feedback.db").resolve())
 
 
 def _table_exists(cur: sqlite3.Cursor, table: str) -> bool:
@@ -61,6 +99,7 @@ def _reset_login_backoff_redis(email: str, client_ip: str = "127.0.0.1") -> bool
 
 def main() -> None:
     email = (os.environ.get("E2E_SMOKE_EMAIL") or "smoke.e2e@lawfirminsights.local").strip().lower()
+    firm_plan, subscription_type = _normalize_firm_plan(os.environ.get("E2E_SMOKE_PLAN"))
     db_path = _db_path()
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
@@ -188,9 +227,16 @@ def main() -> None:
         if "two_factor_enabled" in user_cols:
             sets.append("two_factor_enabled = 0")
         if "subscription_status" in user_cols:
-            sets.append("subscription_status = 'trial'")
+            sets.append("subscription_status = 'active'")
         if "subscription_type" in user_cols:
-            sets.append("subscription_type = 'trial'")
+            sets.append("subscription_type = ?")
+            params.append(subscription_type)
+        if "is_verified" in user_cols:
+            sets.append("is_verified = 1")
+        if "email_verified" in user_cols:
+            sets.append("email_verified = 1")
+        if "onboarding_complete" in user_cols:
+            sets.append("onboarding_complete = 1")
         # Reset auth/backoff counters where present.
         if "failed_login_attempts" in user_cols:
             sets.append("failed_login_attempts = 0")
@@ -204,6 +250,12 @@ def main() -> None:
             sql = f"UPDATE users SET {', '.join(sets)} WHERE id = ?"
             params.append(user_id)
             cur.execute(sql, tuple(params))
+
+    if _table_exists(cur, "firms"):
+        firm_cols = _table_columns(cur, "firms")
+        if "plan" in firm_cols:
+            for fid in firm_ids:
+                cur.execute("UPDATE firms SET plan = ? WHERE id = ?", (firm_plan, fid))
 
     limiter_rows_deleted = 0
     # Best-effort DB-backed limiter cleanup for common table names.
@@ -228,7 +280,8 @@ def main() -> None:
     limiter_reset = _reset_login_backoff_redis(email) or limiter_rows_deleted > 0
     print(
         f"[e2e-reset] user found=true reports_deleted={reports_deleted} "
-        f"actions_deleted={actions_deleted} limiter_reset={str(limiter_reset).lower()}"
+        f"actions_deleted={actions_deleted} limiter_reset={str(limiter_reset).lower()} "
+        f"plan={firm_plan} subscription_type={subscription_type}"
     )
 
 

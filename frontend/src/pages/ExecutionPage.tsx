@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Activity, Zap, ClipboardList } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
+import { ClipboardList } from "lucide-react";
 import { toast } from "sonner";
+
 import GovernanceEmptyState from "@/components/governance/GovernanceEmptyState";
 import { ActionColumnSkeleton } from "@/components/governance/skeletons";
-
 import {
   createReportAction,
   deleteReportAction,
@@ -55,8 +55,9 @@ const ownerLabel = (action: ReportActionItem): string => {
   return owner || "Unassigned";
 };
 
+const hasOwner = (action: ReportActionItem): boolean => Boolean((action.owner || "").trim());
+
 const ExecutionPage = () => {
-  const navigate = useNavigate();
   const { user } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const [actions, setActions] = useState<ReportActionItem[]>([]);
@@ -67,17 +68,22 @@ const ExecutionPage = () => {
   const [creatingAction, setCreatingAction] = useState(false);
   const [createActionError, setCreateActionError] = useState("");
   const [targetReportId, setTargetReportId] = useState<number | null>(null);
-
-  // ── Workflow tab: "firm-wide" | "my-actions" | "overdue" ─────────────────
   const [actionsTab, setActionsTab] = useState<"firm-wide" | "my-actions" | "overdue">("firm-wide");
-
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [ownerFilter, setOwnerFilter] = useState<string>("all");
   const [reportFilter, setReportFilter] = useState<string>("all");
+
   const isOverdueOnlyFilter = searchParams.get("filter") === "overdue";
   const readyReports = useMemo(
     () => reports.filter((report) => report.status === "ready"),
     [reports],
+  );
+  const latestReadyReport = useMemo(
+    () =>
+      readyReports
+        .slice()
+        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0] || null,
+    [readyReports],
   );
   const hasReadyCycle = readyReports.length > 0;
   const hasAnyCycle = reports.length > 0;
@@ -93,8 +99,8 @@ const ExecutionPage = () => {
         setError(actionsResult.error || "Unable to load actions.");
         setActions([]);
       } else {
-        setActions(actionsResult.actions);
         setError("");
+        setActions(actionsResult.actions);
       }
 
       if (reportsResult.success && reportsResult.reports) {
@@ -115,7 +121,7 @@ const ExecutionPage = () => {
   useEffect(() => {
     if (targetReportId) return;
     const ready = readyReports
-      .filter((report) => report.status === "ready")
+      .slice()
       .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())[0];
     const fallback = reports
       .slice()
@@ -162,33 +168,6 @@ const ExecutionPage = () => {
     });
   }, [actions, isOverdueOnlyFilter, ownerFilter, reportFilter, statusFilter]);
 
-  const grouped = useMemo(() => {
-    const open: ReportActionItem[] = [];
-    const inProgress: ReportActionItem[] = [];
-    const blocked: ReportActionItem[] = [];
-    const completed: ReportActionItem[] = [];
-    filteredActions.forEach((action) => {
-      if (action.status === "done") completed.push(action);
-      else if (action.status === "blocked") blocked.push(action);
-      else if (action.status === "in_progress") inProgress.push(action);
-      else open.push(action);
-    });
-    return { open, inProgress, blocked, completed };
-  }, [filteredActions]);
-
-  const summary = useMemo(
-    () => ({
-      total: filteredActions.length,
-      open: grouped.open.length,
-      overdue: filteredActions.filter((action) => isOverdue(action)).length,
-    }),
-    [filteredActions, grouped.open.length],
-  );
-
-  // ── Tab-aware action list ─────────────────────────────────────────────────
-  // "Firm-wide"  → existing filteredActions (all)
-  // "My Actions" → filtered to the current user's name/email match
-  // "Overdue"    → uses existing isOverdue helper
   const myActionsSet = useMemo(() => {
     if (!user) return filteredActions;
     const myName = (user.name || "").trim().toLowerCase();
@@ -206,23 +185,70 @@ const ExecutionPage = () => {
 
   const tabActions = useMemo(() => {
     if (actionsTab === "my-actions") return myActionsSet;
-    if (actionsTab === "overdue")    return overdueActionsSet;
+    if (actionsTab === "overdue") return overdueActionsSet;
     return filteredActions;
   }, [actionsTab, filteredActions, myActionsSet, overdueActionsSet]);
 
-  const tabGrouped = useMemo(() => {
-    const open: ReportActionItem[] = [];
-    const inProgress: ReportActionItem[] = [];
-    const blocked: ReportActionItem[] = [];
-    const completed: ReportActionItem[] = [];
-    tabActions.forEach((action) => {
-      if (action.status === "done") completed.push(action);
-      else if (action.status === "blocked") blocked.push(action);
-      else if (action.status === "in_progress") inProgress.push(action);
-      else open.push(action);
-    });
-    return { open, inProgress, blocked, completed };
-  }, [tabActions]);
+  const overdueNow = useMemo(() => tabActions.filter((action) => isOverdue(action)), [tabActions]);
+  const blockedNow = useMemo(
+    () => tabActions.filter((action) => action.status === "blocked" && !isOverdue(action)),
+    [tabActions],
+  );
+  const unownedNow = useMemo(
+    () =>
+      tabActions.filter(
+        (action) =>
+          action.status !== "done" &&
+          action.status !== "blocked" &&
+          !isOverdue(action) &&
+          !hasOwner(action),
+      ),
+    [tabActions],
+  );
+  const openReview = useMemo(
+    () =>
+      tabActions.filter(
+        (action) => action.status === "open" && !isOverdue(action) && hasOwner(action),
+      ),
+    [tabActions],
+  );
+  const inProgressReview = useMemo(
+    () =>
+      tabActions.filter(
+        (action) => action.status === "in_progress" && !isOverdue(action) && hasOwner(action),
+      ),
+    [tabActions],
+  );
+  const completedActions = useMemo(
+    () => tabActions.filter((action) => action.status === "done"),
+    [tabActions],
+  );
+
+  const summary = useMemo(
+    () => ({
+      overdue: overdueNow.length,
+      unowned: tabActions.filter((action) => action.status !== "done" && !hasOwner(action)).length,
+      blocked: tabActions.filter((action) => action.status === "blocked").length,
+      needsReview: tabActions.filter((action) => action.status !== "done").length,
+    }),
+    [overdueNow.length, tabActions],
+  );
+
+  const accountabilityDirective = useMemo(() => {
+    if (summary.overdue > 0) {
+      return `${summary.overdue} overdue follow-through item${summary.overdue === 1 ? "" : "s"} need partner review now.`;
+    }
+    if (summary.unowned > 0) {
+      return `${summary.unowned} follow-through item${summary.unowned === 1 ? "" : "s"} still need a named owner before the next discussion.`;
+    }
+    if (summary.blocked > 0) {
+      return `${summary.blocked} blocked item${summary.blocked === 1 ? "" : "s"} may stall the current governance cycle.`;
+    }
+    if (summary.needsReview > 0) {
+      return `${summary.needsReview} active follow-through item${summary.needsReview === 1 ? " is" : "s are"} moving without immediate risk.`;
+    }
+    return "Current follow-through is clear. Completed items remain available as cycle history.";
+  }, [summary.blocked, summary.needsReview, summary.overdue, summary.unowned]);
 
   const resetFilters = () => {
     setStatusFilter("all");
@@ -236,6 +262,12 @@ const ExecutionPage = () => {
     reportFilter !== "all" ||
     isOverdueOnlyFilter;
 
+  const clearUrlFilter = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete("filter");
+    setSearchParams(next);
+  };
+
   const handleResetFilters = () => {
     resetFilters();
     if (isOverdueOnlyFilter) {
@@ -243,15 +275,9 @@ const ExecutionPage = () => {
     }
   };
 
-  const clearUrlFilter = () => {
-    const next = new URLSearchParams(searchParams);
-    next.delete("filter");
-    setSearchParams(next);
-  };
-
   const openCreateActionModal = () => {
     if (!hasReadyCycle || !targetReportId) {
-      toast.message("Create actions after the first report is ready.");
+      toast.message("Add follow-through after the first brief is ready.");
       return;
     }
     setCreateActionError("");
@@ -276,7 +302,7 @@ const ExecutionPage = () => {
 
   const handleCreateAction = async (values: ActionFormValues) => {
     if (!targetReportId) {
-      setCreateActionError("No governance brief is available yet. Generate a report first, then create actions.");
+      setCreateActionError("No governance brief is available yet. Generate a report first, then add follow-through.");
       return;
     }
 
@@ -300,7 +326,7 @@ const ExecutionPage = () => {
     }
 
     setActions((prev) => [result.action as ReportActionItem, ...prev]);
-    toast.success("Governance action created.");
+    toast.success("Follow-through item created.");
     closeCreateActionModal();
   };
 
@@ -318,306 +344,446 @@ const ExecutionPage = () => {
       return;
     }
     setActions((prev) => prev.filter((a) => a.id !== actionId));
-    toast.success("Action deleted.");
+    toast.success("Follow-through item deleted.");
   };
 
-  return (
-      <PageWrapper
-        eyebrow="Follow-through"
-        title="Action Workspace"
-        description="Track ownership and execution of governance responses."
-        contentClassName="stage-sequence"
-        actions={
-          <>
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-[8px] border border-[#D1D5DB] bg-transparent px-4 py-2 text-sm font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-transparent"
-              onClick={handleResetFilters}
-              disabled={!hasActiveFilters}
-            >
-              Reset filters
-            </button>
-            <Link
-              className={[
-                "inline-flex items-center justify-center rounded-[8px] px-4 py-2 text-sm font-semibold transition-colors",
-                hasReadyCycle
-                  ? "bg-[#0D1B2A] text-white hover:bg-[#16263b]"
-                  : "cursor-not-allowed border border-[#D1D5DB] bg-white text-slate-400 hover:bg-white",
-              ].join(" ")}
-              to={hasReadyCycle ? "#" : "/dashboard"}
-              aria-disabled={!hasReadyCycle}
-              onClick={(event) => {
-                if (!hasReadyCycle) {
-                  event.preventDefault();
-                  return;
-                }
-                event.preventDefault();
-                openCreateActionModal();
-              }}
-            >
-              {hasReadyCycle ? "Create Action" : "Create Action After First Cycle"}
-            </Link>
-          </>
-        }
-      >
-        {!hasReadyCycle ? (
-          <section className="rounded-xl border border-blue-100 bg-blue-50/70 p-5 shadow-sm">
-            <p className="gov-label text-blue-700">Action Workspace</p>
-            <h2 className="gov-section-intro mt-2">Actions open after a report is ready</h2>
-            <p className="gov-body mt-2 max-w-3xl">
-              Clarion uses this workspace for follow-through after the first governance cycle exists: upload feedback,
-              review recurring {DISPLAY_LABELS.clientIssuePlural.toLowerCase()}, then assign owners and due dates here.
-            </p>
-          </section>
-        ) : null}
+  const renderActionGroup = (
+    title: string,
+    description: string,
+    actionsForGroup: ReportActionItem[],
+    emptyTitle: string,
+    emptyDescription: string,
+    accent: "risk" | "warn" | "neutral" | "success" = "neutral",
+  ) => (
+    <div className="space-y-4 rounded-[12px] border border-[#E3E8EF] bg-white p-5 shadow-sm">
+      <div>
+        <p className="gov-label">{title}</p>
+        <p className="gov-body mt-2">{description}</p>
+      </div>
+      {actionsForGroup.length > 0 ? (
+        <div className="space-y-4">
+          {actionsForGroup.map((action) => (
+            <ActionCard key={`${title}-${action.id}`} action={action} onDelete={handleDeleteAction} />
+          ))}
+        </div>
+      ) : (
+        <GovernanceEmptyState
+          size="sm"
+          icon={<ClipboardList size={18} />}
+          title={emptyTitle}
+          description={emptyDescription}
+          className={
+            accent === "risk"
+              ? "rounded-[10px] border border-red-100 bg-red-50/50"
+              : accent === "warn"
+                ? "rounded-[10px] border border-amber-100 bg-amber-50/50"
+                : accent === "success"
+                  ? "rounded-[10px] border border-emerald-100 bg-emerald-50/40"
+                  : "rounded-[10px] border border-slate-200 bg-slate-50/70"
+          }
+        />
+      )}
+    </div>
+  );
 
-        <section className="rounded-[12px] border border-[#E3E8EF] bg-white px-6 py-5 shadow-sm">
-          <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <div>
-              <p className="gov-label">Current queue</p>
-              <h2 className="gov-section-intro mt-2">Keep ownership visible, then narrow the list only when you need to.</h2>
-              <p className="gov-body mt-3 max-w-xl">
-                This workspace is primarily for assigning and finishing follow-through. Filters are available, but the main job is keeping the current action queue clear and credible.
-              </p>
-              <div className="mt-4 workspace-inline-stats">
-                <div className="workspace-inline-stat">
-                  <p className="gov-label">Visible</p>
-                  <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.total}</p>
-                </div>
-                <div className="workspace-inline-stat">
-                  <p className="gov-label">Open</p>
-                  <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.open}</p>
-                </div>
-                <div className="workspace-inline-stat">
-                  <p className="gov-label">Overdue</p>
-                  <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.overdue}</p>
-                </div>
+  return (
+    <PageWrapper
+      eyebrow="Follow-through"
+      title="Follow-through for the current brief"
+      description="Review what is overdue, unowned, blocked, and ready before these items roll into the next partner discussion."
+      contentClassName="stage-sequence"
+      actions={
+        <>
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-[8px] border border-[#D1D5DB] bg-transparent px-4 py-2 text-sm font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:text-slate-400 disabled:hover:bg-transparent"
+            onClick={handleResetFilters}
+            disabled={!hasActiveFilters}
+          >
+            Reset view
+          </button>
+          {latestReadyReport ? (
+            <Link
+              className="inline-flex items-center justify-center rounded-[8px] border border-[#D1D5DB] bg-white px-4 py-2 text-sm font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50"
+              to={`/dashboard/reports/${latestReadyReport.id}`}
+            >
+              Open current brief
+            </Link>
+          ) : null}
+          <Link
+            className={[
+              "inline-flex items-center justify-center rounded-[8px] px-4 py-2 text-sm font-semibold transition-colors",
+              hasReadyCycle
+                ? "bg-[#0D1B2A] text-white hover:bg-[#16263b]"
+                : "cursor-not-allowed border border-[#D1D5DB] bg-white text-slate-400 hover:bg-white",
+            ].join(" ")}
+            to={hasReadyCycle ? "#" : "/dashboard"}
+            aria-disabled={!hasReadyCycle}
+            onClick={(event) => {
+              if (!hasReadyCycle) {
+                event.preventDefault();
+                return;
+              }
+              event.preventDefault();
+              openCreateActionModal();
+            }}
+          >
+            {hasReadyCycle ? "Add follow-through" : "Add follow-through after first cycle"}
+          </Link>
+        </>
+      }
+    >
+      {!hasReadyCycle ? (
+        <section className="rounded-xl border border-blue-100 bg-blue-50/70 p-5 shadow-sm">
+          <p className="gov-label text-blue-700">Follow-through</p>
+          <h2 className="gov-section-intro mt-2">Follow-through opens after the first brief is ready</h2>
+          <p className="gov-body mt-2 max-w-3xl">
+            Clarion uses this workspace once the first governance cycle is ready: upload feedback, review recurring{" "}
+            {DISPLAY_LABELS.clientIssuePlural.toLowerCase()}, then assign owners and due dates here before the next
+            partner discussion.
+          </p>
+        </section>
+      ) : null}
+
+      <section className="rounded-[12px] border border-[#E3E8EF] bg-white px-6 py-5 shadow-sm">
+        <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <p className="gov-label">Current follow-through posture</p>
+            <h2 className="gov-section-intro mt-2">Keep the current cycle credible before the next partner review.</h2>
+            <p className="gov-body mt-3 max-w-xl">
+              {accountabilityDirective}{" "}
+              {latestReadyReport
+                ? `The current brief packet is ready for review in ${latestReadyReport.name || `Report #${latestReadyReport.id}`}.`
+                : "Open the latest report packet or upload the next cycle to keep follow-through current."}
+            </p>
+            <div className="mt-4 workspace-inline-stats">
+              <div className="workspace-inline-stat">
+                <p className="gov-label">Overdue</p>
+                <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.overdue}</p>
+              </div>
+              <div className="workspace-inline-stat">
+                <p className="gov-label">Unowned</p>
+                <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.unowned}</p>
+              </div>
+              <div className="workspace-inline-stat">
+                <p className="gov-label">Blocked</p>
+                <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.blocked}</p>
+              </div>
+              <div className="workspace-inline-stat">
+                <p className="gov-label">Needs review</p>
+                <p className="mt-1 text-[20px] font-semibold text-slate-900">{loading ? "..." : summary.needsReview}</p>
               </div>
             </div>
-            <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <p className="gov-label">Narrow the workspace</p>
-                  <p className="gov-body-sm mt-1">Use one filter pass when you need a cleaner execution list.</p>
+            {latestReadyReport ? (
+              <div className="mt-4 rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                <p className="gov-label">Current brief context</p>
+                <p className="mt-2 text-sm font-semibold text-slate-900">
+                  {latestReadyReport.name || `Report #${latestReadyReport.id}`}
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-600">
+                  Keep ownership and due-state aligned here, then carry the same record into the brief packet for
+                  partner review.
+                </p>
+                <div className="mt-3">
+                  <Link
+                    to={`/dashboard/reports/${latestReadyReport.id}`}
+                    className="inline-flex items-center rounded-[8px] border border-[#D1D5DB] bg-white px-3 py-1.5 text-xs font-medium text-[#0D1B2A] transition-colors hover:bg-slate-50"
+                  >
+                    Open current brief
+                  </Link>
                 </div>
-                {isOverdueOnlyFilter ? (
-                  <button type="button" className="gov-btn-secondary" onClick={clearUrlFilter}>
-                    Clear overdue view
-                  </button>
-                ) : null}
               </div>
-              <div className="mt-4 grid gap-4 md:grid-cols-3">
-                <div>
-                  <label className="gov-label mb-1 block">Status</label>
-                  <div className="relative">
-                    <select
-                      className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
-                      value={statusFilter}
-                      onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-                    >
-                      <option value="all">All Statuses</option>
-                      <option value="open">Open</option>
-                      <option value="in_progress">In Progress</option>
-                      <option value="blocked">Blocked</option>
-                      <option value="done">Completed</option>
-                      <option value="overdue">Overdue</option>
-                    </select>
-                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
-                  </div>
+            ) : null}
+          </div>
+          <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] p-4">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p className="gov-label">Refine only when needed</p>
+                <p className="gov-body-sm mt-1">Use filters after you review the at-risk work first.</p>
+              </div>
+              {isOverdueOnlyFilter ? (
+                <button type="button" className="gov-btn-secondary" onClick={clearUrlFilter}>
+                  Clear overdue view
+                </button>
+              ) : null}
+            </div>
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
+              <div>
+                <label className="gov-label mb-1 block">Status</label>
+                <div className="relative">
+                  <select
+                    className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
+                  >
+                    <option value="all">All statuses</option>
+                    <option value="open">Open</option>
+                    <option value="in_progress">In progress</option>
+                    <option value="blocked">Blocked</option>
+                    <option value="done">Completed</option>
+                    <option value="overdue">Overdue</option>
+                  </select>
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
                 </div>
-                <div>
-                  <label className="gov-label mb-1 block">Owner</label>
-                  <div className="relative">
-                    <select
-                      className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
-                      value={ownerFilter}
-                      onChange={(e) => setOwnerFilter(e.target.value)}
-                    >
-                      <option value="all">All Owners</option>
-                      {ownerOptions.map((owner) => (
-                        <option key={owner.value} value={owner.value}>
-                          {owner.label}
-                        </option>
-                      ))}
-                    </select>
-                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
-                  </div>
+              </div>
+              <div>
+                <label className="gov-label mb-1 block">Owner</label>
+                <div className="relative">
+                  <select
+                    className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
+                    value={ownerFilter}
+                    onChange={(e) => setOwnerFilter(e.target.value)}
+                  >
+                    <option value="all">All owners</option>
+                    {ownerOptions.map((owner) => (
+                      <option key={owner.value} value={owner.value}>
+                        {owner.label}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
                 </div>
-                <div>
-                  <label className="gov-label mb-1 block">Report</label>
-                  <div className="relative">
-                    <select
-                      className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
-                      value={reportFilter}
-                      onChange={(e) => setReportFilter(e.target.value)}
-                    >
-                      <option value="all">All Reports</option>
-                      {reportOptions.map((report) => (
-                        <option key={report.id} value={String(report.id)}>
-                          {report.name}
-                        </option>
-                      ))}
-                    </select>
-                    <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
-                  </div>
+              </div>
+              <div>
+                <label className="gov-label mb-1 block">Report</label>
+                <div className="relative">
+                  <select
+                    className="h-[40px] w-full appearance-none rounded-[8px] border border-[#D1D5DB] bg-white px-3 pr-8 text-[14px] text-[#0D1B2A] outline-none transition-colors focus:border-[#0EA5C2]"
+                    value={reportFilter}
+                    onChange={(e) => setReportFilter(e.target.value)}
+                  >
+                    <option value="all">All reports</option>
+                    {reportOptions.map((report) => (
+                      <option key={report.id} value={String(report.id)}>
+                        {report.name}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500">v</span>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {error ? (
-          <div className="rounded-xl border border-destructive/35 bg-destructive/10 p-6 text-sm text-destructive">{error}</div>
-        ) : null}
+      {error ? (
+        <div className="rounded-xl border border-destructive/35 bg-destructive/10 p-6 text-sm text-destructive">{error}</div>
+      ) : null}
 
-        {/* ── Workflow tabs ─────────────────────────────────────────────── */}
-        {!loading && hasReadyCycle ? (
-          <PageTabs
-            value={actionsTab}
-            onValueChange={(v) => {
-              setActionsTab(v as typeof actionsTab);
-              // Sync: if URL has overdue filter and user switches away, clear it
-              if (v !== "overdue" && isOverdueOnlyFilter) clearUrlFilter();
-            }}
-            tabs={[
-              { value: "firm-wide",  label: "Firm-wide" },
-              { value: "my-actions", label: "My Actions", badgeCount: myActionsSet.length > 0 ? myActionsSet.length : undefined },
-              { value: "overdue",    label: "Overdue", badgeCount: overdueActionsSet.length, badgeUrgent: overdueActionsSet.length > 0 },
-            ]}
-          />
-        ) : null}
-
-        {loading ? (
-          <section aria-label="Loading governance actions" className="grid gap-6 lg:grid-cols-4">
-            {Array.from({ length: 4 }).map((_, col) => (
-              <ActionColumnSkeleton key={`exec-skeleton-${col}`} />
-            ))}
-          </section>
-        ) : filteredActions.length === 0 ? (
-          <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
-            <GovernanceEmptyState
-              size="lg"
-              icon={<ClipboardList size={20} />}
-              title="No governance actions yet"
-              description={
-                !hasAnyCycle
-                  ? "The first cycle starts with a CSV upload. Once the report is ready, review client issues and assign ownership here."
-                  : !hasReadyCycle
-                    ? "Your first governance cycle is still being prepared. Actions become available once the report is ready for issue review."
-                    : `Actions are created after reviewing client issues. Confirm what needs ownership, then assign due dates and partners here.`
-              }
-              primaryAction={
-                !hasAnyCycle
-                  ? { label: "Upload feedback CSV", href: "/upload" }
-                  : !hasReadyCycle
-                    ? { label: "Check report status", href: "/dashboard/reports" }
-                    : { label: "Review client issues", href: "/dashboard/signals" }
-              }
-              secondaryAction={
-                hasReadyCycle && !(!hasAnyCycle) && !(!hasReadyCycle)
-                  ? { label: "Create action manually", onClick: openCreateActionModal }
-                  : { label: "Return to dashboard", href: "/dashboard" }
-              }
-              footer={
-                <Link to="/demo" className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700">
-                  Open read-only example cycle
-                </Link>
-              }
-            />
-          </section>
-        ) : tabActions.length === 0 && actionsTab !== "firm-wide" ? (
-          <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
-            <GovernanceEmptyState
-              size="md"
-              icon={<ClipboardList size={20} />}
-              title={
-                actionsTab === "my-actions"
-                  ? "No governance actions assigned to you"
-                  : "No overdue actions — all within due dates"
-              }
-              description={
-                actionsTab === "my-actions"
-                  ? "Review firm-wide actions to see where ownership is missing and assign yourself to any that need a named partner."
-                  : "All current actions are within their due dates. Good standing — review firm-wide actions to stay ahead of upcoming deadlines."
-              }
-              primaryAction={{ label: "View firm-wide actions", onClick: () => setActionsTab("firm-wide") }}
-            />
-          </section>
-        ) : (
-          <section className="space-y-4">
-            <div>
-              <p className="gov-type-eyebrow">
-                {actionsTab === "overdue" ? "Overdue actions" : actionsTab === "my-actions" ? "My assigned actions" : "By status"}
-              </p>
-              <p className="mt-1 text-sm text-slate-700">
-                {actionsTab === "overdue"
-                  ? "These actions have passed their due date and require immediate partner review."
-                  : actionsTab === "my-actions"
-                    ? "Actions where you are listed as the owner. Keep these current before the next review."
-                    : "Open work stays first. Completed items remain visible without competing with the active queue."}
-              </p>
-            </div>
-            <div className="grid gap-6 lg:grid-cols-4">
-              <div className="space-y-4">
-                <h2 className="text-lg font-medium text-neutral-900">Open Actions</h2>
-                {tabGrouped.open.map((action) => (
-                  <ActionCard key={`open-${action.id}`} action={action} onDelete={handleDeleteAction} />
-                ))}
-              </div>
-              <div className="space-y-4">
-                <h2 className="text-lg font-medium text-neutral-900">In Progress</h2>
-                {tabGrouped.inProgress.map((action) => (
-                  <ActionCard key={`progress-${action.id}`} action={action} onDelete={handleDeleteAction} />
-                ))}
-              </div>
-              <div className="space-y-4">
-                <h2 className="text-lg font-medium text-neutral-900">Blocked</h2>
-                {tabGrouped.blocked.map((action) => (
-                  <ActionCard key={`blocked-${action.id}`} action={action} onDelete={handleDeleteAction} />
-                ))}
-              </div>
-              <div className="space-y-4">
-                <h2 className="text-lg font-medium text-neutral-900">Completed</h2>
-                {tabGrouped.completed.map((action) => (
-                  <ActionCard key={`done-${action.id}`} action={action} onDelete={handleDeleteAction} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        <Dialog
-          open={createModalOpen}
-          onOpenChange={(open) => {
-            if (!open) {
-              closeCreateActionModal();
-              return;
-            }
-            setCreateModalOpen(true);
+      {!loading && hasReadyCycle ? (
+        <PageTabs
+          value={actionsTab}
+          onValueChange={(value) => {
+            setActionsTab(value as typeof actionsTab);
+            if (value !== "overdue" && isOverdueOnlyFilter) clearUrlFilter();
           }}
-        >
-          <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>Create Governance Action</DialogTitle>
-              <DialogDescription>
-                Create an action with clear ownership, due date, and success metric.
-              </DialogDescription>
-            </DialogHeader>
-            <ActionForm
-              open={createModalOpen}
-              mode="create"
-              initialValues={createActionInitialValues}
-              ownerOptions={ownerSuggestions}
-              submitting={creatingAction}
-              submitLabel="Create Action"
-              submittingLabel="Creating..."
-              serverError={createActionError}
-              onCancel={closeCreateActionModal}
-              onSubmit={handleCreateAction}
-            />
-          </DialogContent>
-        </Dialog>
-      </PageWrapper>
+          tabs={[
+            { value: "firm-wide", label: "All follow-through" },
+            {
+              value: "my-actions",
+              label: "Assigned to me",
+              badgeCount: myActionsSet.length > 0 ? myActionsSet.length : undefined,
+            },
+            {
+              value: "overdue",
+              label: "Overdue now",
+              badgeCount: overdueActionsSet.length,
+              badgeUrgent: overdueActionsSet.length > 0,
+            },
+          ]}
+        />
+      ) : null}
+
+      {loading ? (
+        <section aria-label="Loading governance actions" className="grid gap-6 lg:grid-cols-4">
+          {Array.from({ length: 4 }).map((_, col) => (
+            <ActionColumnSkeleton key={`exec-skeleton-${col}`} />
+          ))}
+        </section>
+      ) : filteredActions.length === 0 ? (
+        <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+          <GovernanceEmptyState
+            size="lg"
+            icon={<ClipboardList size={20} />}
+            title="No follow-through created yet"
+            description={
+              !hasAnyCycle
+                ? "The first cycle starts with a CSV upload. Once the report is ready, review client issues and assign ownership here."
+                : !hasReadyCycle
+                  ? "Your first governance cycle is still being prepared. Follow-through becomes available once the report is ready for issue review."
+                  : "Follow-through opens after reviewing client issues. Confirm what needs ownership, then assign due dates and partners here."
+            }
+            primaryAction={
+              !hasAnyCycle
+                ? { label: "Upload feedback CSV", href: "/upload" }
+                : !hasReadyCycle
+                  ? { label: "Check report status", href: "/dashboard/reports" }
+                  : { label: "Review client issues", href: "/dashboard/signals" }
+            }
+            secondaryAction={
+              hasReadyCycle
+                ? { label: "Add follow-through manually", onClick: openCreateActionModal }
+                : { label: "Return to dashboard", href: "/dashboard" }
+            }
+            footer={
+              <Link
+                to="/demo"
+                className="text-sm text-slate-500 underline underline-offset-4 transition-colors hover:text-slate-700"
+              >
+                Open sample workspace
+              </Link>
+            }
+          />
+        </section>
+      ) : tabActions.length === 0 && actionsTab !== "firm-wide" ? (
+        <section className="rounded-xl border border-[#E3E8EF] bg-white shadow-sm">
+          <GovernanceEmptyState
+            size="md"
+            icon={<ClipboardList size={20} />}
+            title={
+              actionsTab === "my-actions"
+                ? "No follow-through assigned to you"
+                : "No overdue follow-through - all within due dates"
+            }
+            description={
+              actionsTab === "my-actions"
+                ? "Review firm-wide follow-through to see where ownership is missing and assign yourself to the items that need a named lead."
+                : "All current follow-through is within due dates. Review the firm-wide view to stay ahead of the next discussion."
+            }
+            primaryAction={{ label: "View all follow-through", onClick: () => setActionsTab("firm-wide") }}
+          />
+        </section>
+      ) : (
+        <section className="space-y-6">
+          <div className="rounded-[12px] border border-[#E3E8EF] bg-white px-5 py-4 shadow-sm">
+            <p className="gov-type-eyebrow">
+              {actionsTab === "overdue"
+                ? "Overdue follow-through"
+                : actionsTab === "my-actions"
+                  ? "Assigned follow-through"
+                  : "Firm-wide follow-through"}
+            </p>
+            <p className="mt-1 text-sm text-slate-700">
+              {actionsTab === "overdue"
+                ? "These items have passed their due date and require immediate partner review."
+                : actionsTab === "my-actions"
+                  ? "This view keeps your owned follow-through visible before the next leadership discussion."
+                  : "Review the work that is at risk first, then confirm what is moving cleanly in the current cycle."}
+            </p>
+          </div>
+
+          <div className="space-y-5">
+            <div>
+              <p className="gov-type-eyebrow">At risk now</p>
+              <p className="mt-1 text-sm text-slate-700">
+                These items are the clearest threats to a credible partner-ready review cycle.
+              </p>
+            </div>
+            <div className="grid gap-6 xl:grid-cols-3">
+              {renderActionGroup(
+                "Overdue",
+                "Due dates have passed and need immediate review.",
+                overdueNow,
+                "No overdue follow-through",
+                "Everything currently in view is still within due date.",
+                "risk",
+              )}
+              {renderActionGroup(
+                "Unowned",
+                "These items still need a named owner before the next discussion.",
+                unownedNow,
+                "No unowned follow-through",
+                "Visible items already have ownership assigned.",
+                "warn",
+              )}
+              {renderActionGroup(
+                "Blocked",
+                "These items are stalled and may keep the current cycle from closing cleanly.",
+                blockedNow,
+                "No blocked follow-through",
+                "Nothing in view is currently marked blocked.",
+                "warn",
+              )}
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            <div>
+              <p className="gov-type-eyebrow">Needs review before the next partner discussion</p>
+              <p className="mt-1 text-sm text-slate-700">
+                Confirm ownership, progress, and due dates before these items roll into the next brief.
+              </p>
+            </div>
+            <div className="grid gap-6 xl:grid-cols-2">
+              {renderActionGroup(
+                "Ready to start",
+                "Owned items that still need visible movement.",
+                openReview,
+                "No ready-to-start follow-through",
+                "There are no owned open items in the current view.",
+              )}
+              {renderActionGroup(
+                "In progress",
+                "Work already underway that should stay visible until it closes.",
+                inProgressReview,
+                "No in-progress follow-through",
+                "There are no actively moving items in the current view.",
+              )}
+            </div>
+          </div>
+
+          <div className="space-y-5">
+            <div>
+              <p className="gov-type-eyebrow">Progressing cleanly</p>
+              <p className="mt-1 text-sm text-slate-700">
+                Completed follow-through stays visible as cycle history without competing with active review.
+              </p>
+            </div>
+            {renderActionGroup(
+              "Completed",
+              "Closed items remain available as a record of follow-through.",
+              completedActions,
+              "No completed follow-through in view",
+              "Completed items will appear here as the cycle progresses.",
+              "success",
+            )}
+          </div>
+        </section>
+      )}
+
+      <Dialog
+        open={createModalOpen}
+        onOpenChange={(open) => {
+          if (!open) {
+            closeCreateActionModal();
+            return;
+          }
+          setCreateModalOpen(true);
+        }}
+      >
+        <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Create follow-through item</DialogTitle>
+            <DialogDescription>
+              Create an item with clear ownership, due date, and success metric.
+            </DialogDescription>
+          </DialogHeader>
+          <ActionForm
+            open={createModalOpen}
+            mode="create"
+            initialValues={createActionInitialValues}
+            ownerOptions={ownerSuggestions}
+            submitting={creatingAction}
+            submitLabel="Add follow-through"
+            submittingLabel="Adding..."
+            serverError={createActionError}
+            onCancel={closeCreateActionModal}
+            onSubmit={handleCreateAction}
+          />
+        </DialogContent>
+      </Dialog>
+    </PageWrapper>
   );
 };
 

@@ -1,6 +1,0 @@
-week_ending,agent_key,model,calls,prompt_tokens,completion_tokens,estimated_cost_usd
-2026-03-07,chief_of_staff,claude-sonnet-4-20250514,14,187420,28340,38.12
-2026-03-07,customer_discovery,claude-sonnet-4-20250514,22,241180,34910,49.80
-2026-03-07,market_intelligence,claude-haiku-4-5-20251001,31,98440,14220,10.44
-2026-03-07,integrity_monitor,claude-haiku-4-5-20251001,28,84310,12180,8.94
-2026-03-07,revenue_ops,claude-sonnet-4-20250514,19,204660,29740,41.84

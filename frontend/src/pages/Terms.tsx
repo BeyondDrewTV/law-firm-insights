@@ -5,9 +5,7 @@ const Terms = () => (
   <PageLayout>
     <section className="marketing-hero">
       <div className="section-container max-w-4xl space-y-5">
-        <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-          Terms
-        </p>
+        <p className="landing-kicker">Terms</p>
         <h1 className="marketing-hero-title">Terms of Service</h1>
         <p className="max-w-3xl marketing-hero-body">
           This page explains the service scope, customer responsibilities, and the current billing, retention, and
@@ -20,9 +18,9 @@ const Terms = () => (
             "Analysis and report boundaries stated plainly",
           ]}
         />
-        <div className="max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200">What this page is for</p>
-          <p className="mt-2 text-sm leading-6 text-slate-200">
+        <div className="public-route-card max-w-3xl">
+          <p className="landing-kicker !text-[#5F6470]">What this page is for</p>
+          <p className="mt-3 text-sm leading-7 text-slate-700">
             A current-product terms reference. It is meant to clarify how Clarion is provided and where responsibility
             remains with the customer.
           </p>
@@ -33,7 +31,7 @@ const Terms = () => (
     <section className="supporting-section border-y border-slate-200 bg-slate-50">
       <div className="section-container trust-stack">
         <article className="trust-intro">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Quick map</p>
+          <p className="landing-kicker !text-[#5F6470]">Quick map</p>
           <div className="trust-divider-list mt-4">
             <div className="py-3 first:pt-0">
               <p className="text-sm text-slate-700">What Clarion includes in the service today.</p>
@@ -52,13 +50,13 @@ const Terms = () => (
           <div className="trust-section-body">
             <p>
               Effective date: March 6, 2026. Clarion is a software product for uploading CSV-based client feedback,
-              generating governance reports, reviewing those reports in a dashboard, assigning follow-up actions, and
-              exporting report PDFs based on the features available on your plan.
+              generating governance reports, reviewing the resulting governance record in the workspace, assigning
+              follow-up actions, and exporting report PDFs based on the features available on your plan.
             </p>
             <ul className="list-disc space-y-2 pl-6">
               <li>Free, Team, and Firm plans have different limits for reviews per upload, reports per month, seats, PDF output, report history access, and deleted-report restore.</li>
               <li>Partner-brief email delivery is available only when Clarion email delivery is configured in the deployment environment.</li>
-              <li>Clarion is for operational analysis and reporting. It does not provide legal advice.</li>
+              <li>Clarion supports client-feedback governance and follow-through. It does not provide legal advice.</li>
             </ul>
           </div>
         </article>
@@ -75,7 +73,7 @@ const Terms = () => (
             </p>
             <p>
               You remain solely responsible for your legal work, client relationships, regulatory duties, and decisions
-              made from any report output, trend summary, or generated recommendation.
+              made from any report output, issue summary, or recommended action.
             </p>
           </div>
         </article>

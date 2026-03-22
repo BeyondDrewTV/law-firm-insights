@@ -90,37 +90,35 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      <section className="marketing-hero">
-        <div className="section-container max-w-4xl space-y-5">
-          <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-            Support
-          </p>
+    <section className="marketing-hero">
+      <div className="section-container max-w-4xl space-y-5">
+          <p className="landing-kicker">Support</p>
           <h1 className="marketing-hero-title">Support that stays structured when something needs attention.</h1>
           <p className="max-w-3xl marketing-hero-body">
-            The primary support path in Clarion is a tracked ticket: submit the issue once, keep the details attached to
-            the request, and route sensitive categories into the right review path.
+            Use the support form to open a tracked request, keep the details attached to one record, and route billing,
+            privacy, upload, or brief-delivery issues into the right review path.
           </p>
           <MarketingProofBar
             items={[
-              "Real ticket intake",
-              "Server-side triage and escalation",
-              "Support inbox stays consistent",
+              "Tracked support requests",
+              "Structured intake for uploads, billing, and briefs",
+              "Sensitive categories routed appropriately",
             ]}
           />
-          <div className="max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200">Preferred support path</p>
+          <div className="public-route-card max-w-3xl">
+            <p className="landing-kicker !text-[#5F6470]">Preferred support path</p>
             <div className="mt-3 grid gap-4 md:grid-cols-[1fr_auto_1fr] md:items-start">
               <div>
-                <p className="text-sm font-medium text-white">Use the form for operational support</p>
-                <p className="mt-1 text-sm leading-6 text-slate-200">
+                <p className="text-sm font-medium text-slate-900">Use the form for product support</p>
+                <p className="mt-1 text-sm leading-7 text-slate-700">
                   Product issues, uploads, billing, account access, privacy requests, and partner-brief delivery all
                   create a tracked ticket here.
                 </p>
               </div>
-              <div className="hidden self-center text-blue-300 md:block">/</div>
+              <div className="hidden self-center text-[#8B6F3D] md:block">/</div>
               <div>
-                <p className="text-sm font-medium text-white">Use direct email only when needed</p>
-                <p className="mt-1 text-sm leading-6 text-slate-200">
+                <p className="text-sm font-medium text-slate-900">Use direct email only when needed</p>
+                <p className="mt-1 text-sm leading-7 text-slate-700">
                   Security reports and urgent follow-up can still go by email, but the form remains the primary intake
                   path for support work.
                 </p>
@@ -135,11 +133,11 @@ const Contact = () => {
           <article className="supporting-lead">
             <div className="grid gap-5 border-b border-slate-200 pb-5 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Primary intake</p>
+                <p className="landing-kicker !text-[#5F6470]">Primary intake</p>
                 <h2 className="mt-2 text-2xl font-semibold text-slate-900">Open a support ticket</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                   Submit the issue once and Clarion creates the tracked ticket reference shown on this page. Sensitive
-                  categories keep their escalation handling; routine issues can still receive immediate guidance.
+                  categories keep their escalation handling, and routine issues can still receive immediate guidance.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 lg:max-w-[220px]">
@@ -262,9 +260,9 @@ const Contact = () => {
               </label>
 
               <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-4">
-                <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500">
                   Form submission creates the structured ticket record for this request.
-                </p>
+              </p>
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -294,7 +292,7 @@ const Contact = () => {
                   </a>
                 </p>
                 <p className="text-xs text-slate-500">
-                  Direct email reaches the support inbox, but the form on this page remains the preferred structured
+                  Direct email reaches the support inbox, but the form on this page remains the preferred tracked
                   intake path.
                 </p>
               </div>

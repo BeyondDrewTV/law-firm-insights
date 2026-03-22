@@ -35,6 +35,7 @@ const Onboarding = () => {
 
   const [firmName, setFirmName] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadedReportId, setUploadedReportId] = useState<number | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -104,6 +105,7 @@ const Onboarding = () => {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const nextFile = event.target.files?.[0] || null;
     setSelectedFile(nextFile);
+    setUploadedReportId(null);
   };
 
   const handleConfirmSetup = async () => {
@@ -137,6 +139,7 @@ const Onboarding = () => {
           setIsSaving(false);
           return;
         }
+        setUploadedReportId(uploadResult.data?.summary.report_id ?? null);
         window.dispatchEvent(new Event("reports:uploaded"));
       }
 
@@ -155,8 +158,8 @@ const Onboarding = () => {
     }
   };
 
-  const openDashboard = () => {
-    navigate("/dashboard", { replace: true });
+  const openNextWorkspaceStep = () => {
+    navigate(uploadedReportId ? `/dashboard/reports/${uploadedReportId}` : "/dashboard", { replace: true });
   };
 
   if (isLoading || !isLoggedIn || !user) {
@@ -164,8 +167,8 @@ const Onboarding = () => {
   }
 
   return (
-    <main className="fade-enter flex min-h-screen items-center justify-center bg-gradient-to-b from-[#0f1f3d] via-[#172d57] to-[#0b1630] px-6 py-12">
-      <section className="w-full max-w-[480px] rounded-2xl border border-white/20 bg-white p-8 shadow-[0_20px_50px_rgba(0,0,0,0.25)] transition-all motion-slow ease-out">
+    <main className="workspace-onboarding-shell fade-enter flex min-h-screen items-center justify-center px-6 py-12">
+      <section className="workspace-onboarding-card w-full max-w-[560px] rounded-2xl border bg-white p-8 shadow-[0_20px_50px_rgba(0,0,0,0.14)] transition-all motion-slow ease-out">
         <header className="mb-8 space-y-2">
           {isPreview ? (
             <p className="inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-800">
@@ -173,10 +176,12 @@ const Onboarding = () => {
             </p>
           ) : null}
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-            Step {stepIndex} / 4
+            Step {stepIndex} of 4
           </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Welcome to Clarion</h1>
-          <p className="text-[14px] font-normal text-[#6B7280]">Client Experience Governance</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Start the first governance cycle</h1>
+          <p className="max-w-xl text-[14px] font-normal text-[#6B7280]">
+            Set up the workspace, confirm how feedback is handled, and bring in the first review export when you are ready.
+          </p>
           {isPreview ? (
             <p className="text-[13px] text-slate-600">
               Internal owner preview. This walk-through is read-only and does not change firm setup or upload live data.
@@ -194,6 +199,12 @@ const Onboarding = () => {
         >
           {step === 1 && (
             <div className="space-y-5">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Name the workspace</h2>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  Use the firm name partners and team leads will recognize in briefs and workspace review.
+                </p>
+              </div>
               <div className="space-y-2">
                 <label htmlFor="firm_name" className="block text-sm font-medium text-slate-800">
                   Firm name
@@ -223,8 +234,8 @@ const Onboarding = () => {
           {step === 2 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Client Data Protection</h2>
-                <p className="text-sm font-medium text-slate-700">Your client data stays yours.</p>
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Confirm feedback handling</h2>
+                <p className="text-sm font-medium text-slate-700">Your client feedback stays firm-specific.</p>
                 <p className="text-sm leading-relaxed text-slate-600">
                   Uploaded review data is stored securely and used only to generate client issues for your firm.
                   Clarion does not share client feedback across firms and does not use uploaded data to train
@@ -248,15 +259,21 @@ const Onboarding = () => {
               </div>
 
               <button type="button" className="gov-btn-primary w-full justify-center" onClick={() => transitionTo(3)}>
-                Understood, Continue
+                Continue to first upload
               </button>
             </div>
           )}
 
           {step === 3 && (
             <div className="space-y-5">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Start the first review cycle</h2>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  Upload one CSV from the current review period now, or continue into the workspace and upload later.
+                </p>
+              </div>
               <div className="rounded-[10px] border border-[#D1D5DB] bg-white p-5">
-                <p className="text-sm font-semibold text-slate-900">Upload your firm&apos;s client reviews</p>
+                <p className="text-sm font-semibold text-slate-900">Upload one review export</p>
                 <p className="mt-1 text-xs text-slate-600">Include columns for rating and review text. CSV format.</p>
 
                 <button
@@ -281,7 +298,7 @@ const Onboarding = () => {
                   to="/demo"
                   className="text-[13px] text-[#6B7280] transition-colors hover:text-slate-700 hover:underline"
                 >
-                  Or explore with demo data &rarr;
+                  Or review the sample workspace &rarr;
                 </Link>
               </div>
 
@@ -298,6 +315,12 @@ const Onboarding = () => {
 
           {step === 4 && (
             <div className="space-y-5">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Review before opening the workspace</h2>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  Confirm the workspace name and whether you want Clarion to start the first cycle now.
+                </p>
+              </div>
               <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
                 <p>
                   <span className="font-medium text-slate-900">Firm:</span> {firmName.trim()}
@@ -305,6 +328,11 @@ const Onboarding = () => {
                 <p className="mt-2">
                   <span className="font-medium text-slate-900">CSV:</span>{" "}
                   {selectedFile ? selectedFile.name : "No file selected (you can upload later)."}
+                </p>
+                <p className="mt-2 text-xs leading-5 text-slate-600">
+                  {selectedFile
+                    ? "If you continue with this file, Clarion will create the first report packet during setup and you can open it directly after onboarding."
+                    : "If you continue without a file, Clarion will open workspace home and you can start the first upload from there."}
                 </p>
               </div>
 
@@ -334,17 +362,19 @@ const Onboarding = () => {
               <div className="flex justify-center">
                 <CheckCircle2 className="h-10 w-10 text-[#0EA5C2]" />
               </div>
-              <h2 className="text-2xl font-bold text-[#0D1B2A]">You&apos;re ready to go.</h2>
+              <h2 className="text-2xl font-bold text-[#0D1B2A]">Your workspace is ready.</h2>
               <p className="text-[14px] text-[#6B7280]">
-                Your governance workspace for {firmName.trim() || "your firm"} is ready.
+                {uploadedReportId
+                  ? `Clarion created the first report packet for ${firmName.trim() || "your firm"}. Open it first to review signals, decisions, and follow-through for the current cycle.`
+                  : `Clarion is ready for ${firmName.trim() || "your firm"} to review the current cycle, latest brief, and follow-through.`}
               </p>
 
               <div className="space-y-3">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#9CA3AF]">
-                  Your Governance Workflow
+                  What Clarion does next
                 </p>
                 <div className="flex items-start justify-center gap-2">
-                  {["Upload Feedback", `Review ${DISPLAY_LABELS.clientIssuePlural}`, "Assign Actions", "Generate Brief"].map((label, index) => (
+                  {["Upload Feedback", `Review ${DISPLAY_LABELS.clientIssuePlural}`, "Assign Follow-Through", "Bring Brief Into Meetings"].map((label, index) => (
                     <div key={label} className="flex items-start">
                       <div className="w-[86px] text-center">
                         <span className="mx-auto inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#0EA5C2] text-[11px] font-semibold text-white">
@@ -358,8 +388,8 @@ const Onboarding = () => {
                 </div>
               </div>
 
-              <button type="button" className="gov-btn-primary h-12 w-full justify-center text-base" onClick={openDashboard}>
-                {isPreview ? "Return to workspace" : "Go to Dashboard"}
+              <button type="button" className="gov-btn-primary h-12 w-full justify-center text-base" onClick={openNextWorkspaceStep}>
+                {isPreview ? "Return to workspace" : uploadedReportId ? "Open first report" : "Open workspace home"}
               </button>
               {isPreview ? (
                 <button

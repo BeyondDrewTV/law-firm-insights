@@ -1,6 +1,0 @@
-account_id,activation_date,plan_tier,firm_size_attorneys,practice_area,geography,arr_value,status
-ACC-001,2026-01-10,growth,12,personal_injury,Southeast,2388,active
-ACC-002,2026-01-17,starter,4,family_law,Midwest,948,active
-ACC-003,2026-01-24,growth,18,employment,Northeast,2388,active
-ACC-004,2026-02-07,starter,6,immigration,Southwest,948,active
-ACC-005,2026-02-21,growth,9,estate_planning,West,2388,active

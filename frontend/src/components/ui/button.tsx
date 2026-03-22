@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva(
   // Base: layout, font, transitions, focus, disabled
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium " +
-  "transition-[background-color,border-color,box-shadow,transform] duration-[150ms] ease-[cubic-bezier(0.2,0,0.2,1)] " +
+  "transition-[background-color,border-color,box-shadow,transform] duration-150 ease-out " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0EA5C2] focus-visible:ring-offset-2 focus-visible:shadow-[0_0_0_3px_rgba(14,165,194,0.18)] " +
   "active:scale-[0.98] active:shadow-none " +
   "disabled:pointer-events-none disabled:opacity-50",

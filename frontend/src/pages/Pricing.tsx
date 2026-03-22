@@ -4,8 +4,10 @@ import { toast } from "sonner";
 import { finalizeCheckoutSession, startCheckoutSession, type BillingPlan } from "@/api/authService";
 import PricingSection from "@/components/PricingSection";
 import PageLayout from "@/components/PageLayout";
+import MarketingProofBar from "@/components/MarketingProofBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { pricingPlans, type PricingPlanId } from "@/data/pricingPlans";
+import { defaultSampleBriefPath } from "@/data/sampleFirmData";
 
 const validPlans: BillingPlan[] = ["team", "firm"];
 const focusedPlanIds: PricingPlanId[] = ["team", "firm"];
@@ -17,7 +19,6 @@ const Pricing = () => {
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [focusedCheckoutPlan, setFocusedCheckoutPlan] = useState<BillingPlan | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
-  // P5 persistent checkout-return states
   const [checkoutCanceled, setCheckoutCanceled] = useState(false);
   const [canceledPlan, setCanceledPlan] = useState<BillingPlan | null>(null);
   const [finalizeError, setFinalizeError] = useState<string | null>(null);
@@ -27,20 +28,24 @@ const Pricing = () => {
   const sessionId = searchParams.get("session_id");
   const plan = searchParams.get("plan");
   const selectedPlanParam = searchParams.get("intent");
+
   const parsedPlan = useMemo(() => {
     if (validPlans.includes(plan as BillingPlan)) return plan as BillingPlan;
     return null;
   }, [plan]);
+
   const focusedPlanId = useMemo(() => {
     if (focusedPlanIds.includes(selectedPlanParam as PricingPlanId)) {
       return selectedPlanParam as PricingPlanId;
     }
     return null;
   }, [selectedPlanParam]);
+
   const focusedPlan = useMemo(
     () => pricingPlans.find((tier) => tier.id === focusedPlanId) ?? null,
     [focusedPlanId],
   );
+
   const finalizeAfterLoginPath =
     checkoutStatus === "success" && sessionId && parsedPlan
       ? `/pricing?checkout=success&session_id=${encodeURIComponent(sessionId)}&plan=${encodeURIComponent(parsedPlan)}`
@@ -62,8 +67,8 @@ const Pricing = () => {
         toast.success("Checkout confirmed. Your account has been updated.");
         navigate("/dashboard", { replace: true });
       } else {
-        const msg = result.error || "We couldn't verify your payment. Please refresh or contact support.";
-        setFinalizeError(msg);
+        const message = result.error || "We could not verify your payment. Please refresh or contact support.";
+        setFinalizeError(message);
         setSearchParams({}, { replace: true });
       }
       setIsFinalizing(false);
@@ -87,7 +92,6 @@ const Pricing = () => {
     if (checkoutStatus !== "canceled") {
       return;
     }
-    // Capture the plan before clearing params so the "try again" CTA can re-open it
     if (parsedPlan) setCanceledPlan(parsedPlan);
     setCheckoutCanceled(true);
     setSearchParams({}, { replace: true });
@@ -127,15 +131,14 @@ const Pricing = () => {
     window.location.assign(result.checkout_url);
   };
 
-  // Retry checkout from the canceled banner
-  const handleRetryCheckout = async (plan: BillingPlan) => {
+  const handleRetryCheckout = async (retryPlan: BillingPlan) => {
     setCheckoutCanceled(false);
     setStartCheckoutError(null);
     if (!isLoggedIn) {
-      navigate(`/login?redirectTo=${encodeURIComponent(`/pricing?intent=${plan}`)}`);
+      navigate(`/login?redirectTo=${encodeURIComponent(`/pricing?intent=${retryPlan}`)}`);
       return;
     }
-    const result = await startCheckoutSession(plan, `/pricing?intent=${plan}`);
+    const result = await startCheckoutSession(retryPlan, `/pricing?intent=${retryPlan}`);
     if (!result.success || !result.checkout_url) {
       setStartCheckoutError(result.error || "Unable to restart checkout. Please try again.");
       return;
@@ -160,25 +163,30 @@ const Pricing = () => {
   return (
     <PageLayout>
       <section className="marketing-hero">
-        <div className="section-container space-y-4">
-          <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-            Pricing
-          </p>
-          <h1 className="marketing-hero-title">Governance tools built for how law firms actually operate.</h1>
+        <div className="section-container space-y-5">
+          <p className="landing-kicker">Pricing</p>
+          <h1 className="marketing-hero-title">Choose the review cadence that fits the firm.</h1>
           <p className="max-w-3xl marketing-hero-body">
-            Start with a free trial — no credit card required. Move to Team when governance becomes a monthly discipline. Choose Firm for full-platform coverage with scheduled delivery, custom branding, and unlimited capacity.
+            Start with a free first cycle. Move to Team when governance becomes a recurring monthly discipline. Choose
+            Firm for broader coverage, scheduled delivery, and a steadier cross-practice review rhythm.
           </p>
 
-          {/* ── Billing toggle — lives in hero so it's visible before the cards ── */}
-          <div className="pt-1">
-            <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 p-1 text-sm backdrop-blur-sm">
+          <MarketingProofBar
+            items={[
+              "Built for law firms",
+              "No credit card required to start Free",
+              "Secure checkout via Stripe",
+              "Plans sized around governance cadence",
+            ]}
+          />
+
+          <div className="pt-2">
+            <div className="inline-flex items-center rounded-full border border-[#D7D0C3] bg-[#FFFDF9] p-1 text-sm shadow-sm">
               <button
                 type="button"
                 onClick={() => setBillingCycle("monthly")}
                 className={`rounded-full px-4 py-1.5 font-medium transition ${
-                  billingCycle === "monthly"
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-white/70 hover:text-white"
+                  billingCycle === "monthly" ? "bg-[#111827] text-white shadow-sm" : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 Monthly
@@ -187,13 +195,11 @@ const Pricing = () => {
                 type="button"
                 onClick={() => setBillingCycle("annual")}
                 className={`rounded-full px-4 py-1.5 font-medium transition ${
-                  billingCycle === "annual"
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-white/70 hover:text-white"
+                  billingCycle === "annual" ? "bg-[#111827] text-white shadow-sm" : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 Annual
-                <span className="ml-1.5 rounded-full bg-emerald-500/30 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-200">
+                <span className="ml-1.5 rounded-full bg-[#EAF6EE] px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">
                   Save up to 17%
                 </span>
               </button>
@@ -201,27 +207,12 @@ const Pricing = () => {
           </div>
 
           <div className="flex flex-wrap gap-3 pt-1">
-            <a href="#pricing-page-plans" className="gov-btn-primary">
+            <Link to={defaultSampleBriefPath} className="gov-btn-primary">
+              Review sample brief
+            </Link>
+            <a href="#pricing-page-plans" className="gov-btn-secondary">
               Compare plans
             </a>
-            <Link to="/contact" className="gov-btn-secondary">
-              Contact support
-            </Link>
-          </div>
-
-          {/* ── Trust strip ── */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 pt-4">
-            {[
-              "Built for law firms",
-              "No credit card required",
-              "Secure checkout via Stripe",
-              "Designed for client experience governance",
-            ].map((item) => (
-              <span key={item} className="flex items-center gap-1.5 text-xs text-white/60">
-                <span className="h-1 w-1 rounded-full bg-white/30" />
-                {item}
-              </span>
-            ))}
           </div>
         </div>
       </section>
@@ -251,28 +242,23 @@ const Pricing = () => {
         </section>
       )}
 
-      {/* ── P5: Canceled checkout banner ──────────────────────────────────── */}
       {checkoutCanceled && (
         <section className="section-container pb-2 pt-4">
           <div className="rounded-lg border border-slate-200 bg-slate-50 px-5 py-4 text-sm text-slate-800">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <p className="font-semibold text-slate-900">Checkout was canceled — your plan hasn't changed.</p>
+                <p className="font-semibold text-slate-900">Checkout was canceled. Your plan has not changed.</p>
                 <p className="mt-1 text-slate-600">
                   You can pick up where you left off. Your workspace and data are untouched.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {canceledPlan ? (
-                    <button
-                      type="button"
-                      onClick={() => void handleRetryCheckout(canceledPlan)}
-                      className="gov-btn-primary"
-                    >
-                      Try checkout again →
+                    <button type="button" onClick={() => void handleRetryCheckout(canceledPlan)} className="gov-btn-primary">
+                      Try checkout again
                     </button>
                   ) : (
                     <a href="#pricing-page-plans" className="gov-btn-primary">
-                      Choose a plan →
+                      Choose a plan
                     </a>
                   )}
                   <Link to="/contact" className="gov-btn-secondary">
@@ -284,16 +270,15 @@ const Pricing = () => {
                 type="button"
                 aria-label="Dismiss"
                 onClick={() => setCheckoutCanceled(false)}
-                className="shrink-0 rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors"
+                className="shrink-0 rounded p-1 text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-700"
               >
-                ✕
+                X
               </button>
             </div>
           </div>
         </section>
       )}
 
-      {/* ── P5: Finalize / payment failure banner ─────────────────────────── */}
       {finalizeError && (
         <section className="section-container pb-2 pt-4">
           <div className="rounded-lg border border-red-200 bg-red-50 px-5 py-4 text-sm">
@@ -303,11 +288,11 @@ const Pricing = () => {
                 <p className="mt-1 text-red-800">{finalizeError}</p>
                 <p className="mt-2 text-red-700">
                   If your card was declined, double-check the card details or try a different payment method. If you
-                  used a test card number in a live checkout session, it won't be accepted — use a real card instead.
+                  used a test card number in a live checkout session, it will not be accepted.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <a href="#pricing-page-plans" className="gov-btn-primary">
-                    Try a different card →
+                    Try a different card
                   </a>
                   <Link to="/contact" className="gov-btn-secondary">
                     Contact support
@@ -318,30 +303,29 @@ const Pricing = () => {
                 type="button"
                 aria-label="Dismiss"
                 onClick={() => setFinalizeError(null)}
-                className="shrink-0 rounded p-1 text-red-400 hover:bg-red-100 hover:text-red-700 transition-colors"
+                className="shrink-0 rounded p-1 text-red-400 transition-colors hover:bg-red-100 hover:text-red-700"
               >
-                ✕
+                X
               </button>
             </div>
           </div>
         </section>
       )}
 
-      {/* ── P5: Checkout-start failure banner (near focused plan CTA) ─────── */}
       {startCheckoutError && (
         <section className="section-container pb-2 pt-4">
           <div className="rounded-lg border border-red-200 bg-red-50 px-5 py-4 text-sm">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <p className="font-semibold text-red-900">We couldn't start checkout.</p>
+                <p className="font-semibold text-red-900">We could not start checkout.</p>
                 <p className="mt-1 text-red-800">{startCheckoutError}</p>
                 <p className="mt-2 text-red-700">
-                  This is sometimes caused by a card being declined before reaching Stripe's checkout page. Try a
-                  different card, or contact support if the problem continues.
+                  This is sometimes caused by a billing or sign-in problem before reaching Stripe. Try again or contact
+                  support if the issue continues.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <a href="#pricing-page-plans" className="gov-btn-primary">
-                    Try a different card →
+                    Try again
                   </a>
                   <Link to="/contact" className="gov-btn-secondary">
                     Contact support
@@ -352,9 +336,9 @@ const Pricing = () => {
                 type="button"
                 aria-label="Dismiss"
                 onClick={() => setStartCheckoutError(null)}
-                className="shrink-0 rounded p-1 text-red-400 hover:bg-red-100 hover:text-red-700 transition-colors"
+                className="shrink-0 rounded p-1 text-red-400 transition-colors hover:bg-red-100 hover:text-red-700"
               >
-                ✕
+                X
               </button>
             </div>
           </div>
@@ -363,17 +347,15 @@ const Pricing = () => {
 
       {focusedPlan && (
         <section className="section-container pb-2 pt-6">
-          <div className={`marketing-panel rounded-2xl px-6 py-6 ${
-            focusedPlan.id === "firm" ? "marketing-tone-violet" : "marketing-tone-blue"
-          }`}>
+          <div className={`marketing-panel rounded-2xl px-6 py-6 ${focusedPlan.id === "firm" ? "marketing-tone-violet" : "marketing-tone-blue"}`}>
             <div className="flex flex-wrap items-start justify-between gap-5">
               <div className="max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-600">Selected upgrade</p>
-                <h2 className="mt-2 text-2xl font-semibold text-slate-900">{focusedPlan.name}</h2>
-                <p className="mt-2 text-sm text-slate-700">{focusedPlan.audience}</p>
-                <p className="mt-3 text-sm text-slate-700">
+                <p className="landing-kicker !text-[#5F6470]">Selected upgrade</p>
+                <h2 className="mt-3 text-2xl font-semibold text-slate-900">{focusedPlan.name}</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-700">{focusedPlan.audience}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">
                   This tier is designed for firms that need more room to run recurring governance cycles without losing
-                  workflow continuity.
+                  workflow continuity between uploads and partner review.
                 </p>
                 <ul className="mt-4 grid gap-2 text-sm text-slate-800 sm:grid-cols-2">
                   {focusedPlan.features.slice(0, 4).map((feature) => (
@@ -413,15 +395,18 @@ const Pricing = () => {
       <section className="section-container pb-2 pt-6">
         <div className="supporting-cta-strip">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Choose by cadence</p>
-            <p className="mt-2 text-sm text-slate-700">
+            <p className="landing-kicker !text-[#5F6470]">Choose by cadence</p>
+            <p className="mt-2 text-sm leading-7 text-slate-700">
               Free validates a first cycle. Team supports a recurring monthly operating rhythm. Firm is for broader,
-              ongoing coverage across practice groups.
+              ongoing coverage across practice groups and partner review.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link to={!isLoading && isLoggedIn ? "/dashboard" : "/signup"} className="gov-btn-primary">
-              {!isLoading && isLoggedIn ? "Go to Dashboard" : "Start Free workspace"}
+            <Link to={defaultSampleBriefPath} className="gov-btn-primary">
+              Review sample brief
+            </Link>
+            <Link to={!isLoading && isLoggedIn ? "/dashboard" : "/signup"} className="gov-btn-secondary">
+              {!isLoading && isLoggedIn ? "Open workspace home" : "Start free workspace"}
             </Link>
             <Link to="/contact" className="gov-btn-secondary">
               Contact support

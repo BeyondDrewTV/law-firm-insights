@@ -1,6 +1,0 @@
-snapshot_date,stage,deal_count,total_value_mrr,avg_days_in_stage,deals_stalled_14d
-2026-03-07,new_lead,12,0,3.2,1
-2026-03-07,qualified,7,1393,8.1,2
-2026-03-07,demo_scheduled,4,756,5.4,0
-2026-03-07,trial_active,3,557,11.2,1
-2026-03-07,negotiation,1,199,6.0,0

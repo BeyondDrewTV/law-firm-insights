@@ -4,10 +4,10 @@
  * Refactored from ad-hoc layout to GovernanceCard + GovStatusChip.
  *
  * Zones:
- *   header  → action title + status chip
- *   meta    → owner · due date
- *   detail  → collapsible activity log
- *   actions → "Open report" link + delete button
+ *   header  -> action title + status chip
+ *   meta    -> owner and due date
+ *   detail  -> collapsible activity log
+ *   actions -> "Open report" link + delete button
  */
 
 import { useMemo, useState } from "react";
@@ -52,19 +52,19 @@ const resolveStatusLabel = (action: ReportActionItem): StatusLabel => {
 };
 
 const statusToChipVariant: Record<StatusLabel, GovStatusChipVariant> = {
-  Overdue:       "risk",
-  Blocked:       "risk",
+  Overdue: "risk",
+  Blocked: "risk",
   "In Progress": "warn",
-  Completed:     "success",
-  Open:          "muted",
+  Completed: "success",
+  Open: "muted",
 };
 
 const statusToAccent: Record<StatusLabel, GovernanceCardAccent> = {
-  Overdue:       "risk",
-  Blocked:       "risk",
+  Overdue: "risk",
+  Blocked: "risk",
   "In Progress": "warn",
-  Completed:     "success",
-  Open:          "neutral",
+  Completed: "success",
+  Open: "neutral",
 };
 
 const monthDay = (value?: string | null) =>
@@ -106,9 +106,7 @@ const ActionCard = ({ action, onDelete }: ActionCardProps) => {
 
   const metaItems: string[] = [
     owner ? `Partner: ${owner}` : "Unassigned",
-    action.due_date
-      ? (isOverdue(action) ? `Due ${dueDate} — overdue` : `Due ${dueDate}`)
-      : "No due date set",
+    action.due_date ? (isOverdue(action) ? `Due ${dueDate} - overdue` : `Due ${dueDate}`) : "No due date set",
   ];
 
   const handleConfirmDelete = async () => {
@@ -146,7 +144,7 @@ const ActionCard = ({ action, onDelete }: ActionCardProps) => {
                     key={`${entry.date}-${entry.description}-${index}`}
                     className="text-[12px] text-[#9CA3AF]"
                   >
-                    {entry.date} — {entry.description}
+                    {entry.date} - {entry.description}
                   </li>
                 ))}
               </ul>

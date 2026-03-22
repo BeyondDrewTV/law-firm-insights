@@ -1,84 +1,51 @@
-# Clarion — Law Firm Client Feedback Governance
+# Clarion — Client Feedback Governance for Law Firms
 
-> Built by [Andrew Yomantas](https://linkedin.com/in/andrew-yomantas-94a7383b0) — AI Product & Operations Builder, Loves Park IL.
+> **Live demo:** [law-firm-feedback-saas.onrender.com](https://law-firm-feedback-saas.onrender.com)
+> · Built by [Andrew Yomantas](https://linkedin.com/in/andrew-yomantas-94a7383b0)
 
 ---
 
-## What This Is
+## What It Is
 
-Clarion is a governance-focused SaaS platform for small law firms.
-
-Law firm managing partners have no structured way to turn client feedback into actionable governance decisions. Reviews come in, patterns go unnoticed, complaints don't loop back into operations. Partners walk into meetings without a clear record of what clients are actually saying.
+Law firm managing partners have no structured way to turn client feedback into governance decisions. Reviews come in across email, surveys, and post-matter feedback — patterns go unnoticed, complaints don't loop back into operations, and partners walk into meetings without a clear record of what clients are actually saying.
 
 Clarion closes that loop.
 
-Upload client feedback → classify it into governance themes → surface recurring signals and recommended actions → produce partner-ready governance briefs that drive real meeting decisions.
+**The workflow:**
+1. Upload a CSV export of client reviews
+2. Clarion classifies each review into governance themes — deterministically, no LLM dependency
+3. Recurring signals and recommended actions surface automatically
+4. Partners assign owners and due dates to each action
+5. A governance brief is generated — readable on-screen, exportable as PDF, deliverable by email
+6. Repeat each cycle to track what changed, what stalled, and what needs escalation
 
-**Status:** Release-candidate ready. Operator smoke-tested end-to-end. Active development ongoing toward first pilot.
-
----
-
-## What This Demonstrates
-
-**Systems thinking at depth**
-- Fully deterministic classification engine — 10 governance themes, negation/contrast guards, severity escalation. Zero LLM dependency in production scoring; labels are reproducible and auditable.
-- Workspace-scoped data isolation so each firm's data is structurally separated
-- Append-only audit log for governance decisions — immutable by design, not convention
-- Calibration harness that benchmarks the deterministic engine against AI-generated labels, with stored run artifacts for regression tracking
-
-**AI-directed product execution**
-- Scoped, designed, architected, and built solo without a traditional engineering team
-- Directed AI assistants to implement production-grade architecture across frontend and backend
-- Every major design decision was specified before code was written — architecture-first, not vibe-coding
-- Internal AI agent office (separate from the law firm product) handles Clarion's own outbound operations: 22 agents across 5 divisions with structured authority matrices and bounded execution gates
-
-**Full-stack product ownership**
-- From blank canvas to operator-smoke-tested platform
-- Pricing, billing, and plan enforcement implemented (Stripe, Free/Team/Firm tiers)
-- Email verification, rate limiting, CSRF, session management — real security posture
-- PDF generation, email delivery, and shareable brief outputs in the same governance cycle
-
-**Domain specificity**
-- Built for a specific vertical with specific accountability structures — not generic CRM
-- The operative loop is: issue → action → owner → follow-through/trend
-- Governance brief outputs are designed for managing partners, not operators or analysts
+The output is a partner-ready governance brief with a canonical 5-section spine: Leadership Briefing → Signals That Matter Most → Assigned Follow-Through → Decisions & Next Steps → Supporting Evidence.
 
 ---
 
-## Core Product Workflow
+## Live Product
 
-1. Upload client feedback (CSV export from reviews, surveys, or post-matter feedback)
-2. Classify reviews into 10 governance themes — deterministically, no LLM
-3. Generate structured governance signals and recommended actions
-4. Assign actions with owner, due date, and status tracking
-5. Produce governance brief outputs: on-screen, PDF, and email summary
-6. Repeat each cycle to monitor what changed and what stalled
-
----
-
-## Architecture Highlights
-
-| Layer | Description |
+| Surface | URL |
 |---|---|
-| Classification Engine | Deterministic, rule-based. 10 themes, negation/contrast guards, severity escalation. No LLM in scoring path. Reproducible outputs. |
-| Governance Brief Output | 5-section canonical spine. ReportLab-generated PDFs. Present mode for partner meetings. Email delivery via Resend. |
-| Calibration Harness | Benchmarks deterministic engine vs. AI-generated labels. Bearer-token gated. Stored run artifacts for regression tracking. |
-| Billing & Plan Enforcement | Stripe integration. Free, Team ($179/mo), and Firm ($449/mo) tiers. Plan-scoped feature gating throughout. |
-| Agent Office (Internal) | 22-agent autonomous operations system for Clarion's own business. 5 divisions, structured authority matrices, bounded execution. Separate from the law firm product. |
-| Frontend | React / TypeScript / Vite. Custom governance design system. Brief-first IA. Present mode for partner meetings. |
-| Backend | Python / Flask monolith. SQLite (dev) / PostgreSQL (production on Render). Redis. Sentry. |
+| Landing page | [law-firm-feedback-saas.onrender.com](https://law-firm-feedback-saas.onrender.com) |
+| Sample governance brief | [/demo/reports/sample](https://law-firm-feedback-saas.onrender.com/demo/reports/sample) |
+| Sample workspace | [/demo](https://law-firm-feedback-saas.onrender.com/demo) |
 
 ---
 
 ## Tech Stack
 
-**Frontend:** React, TypeScript, Vite, Tailwind CSS  
-**Backend:** Python, Flask, SQLite / PostgreSQL  
-**Infrastructure:** Render, Redis, Sentry  
-**Billing:** Stripe  
-**Email:** Resend  
-**PDF Generation:** ReportLab  
-**Agent Office:** Python, custom orchestration layer  
+| Layer | Technology |
+|---|---|
+| Frontend | React 18, TypeScript, Vite, Tailwind CSS |
+| Backend | Python 3.14, Flask |
+| Database | SQLite (dev) / PostgreSQL (production) |
+| Hosting | Render |
+| Billing | Stripe (Free / Team / Firm tiers) |
+| Email | Resend |
+| PDF Generation | ReportLab |
+| Monitoring | Sentry |
+
 
 ---
 
@@ -86,30 +53,90 @@ Upload client feedback → classify it into governance themes → surface recurr
 
 ```
 clarion/
-├── backend/                     # Flask API + deterministic scoring engine
-│   ├── app.py                   # Main application, auth, session, rate limiting
-│   ├── services/                # Governance insights, benchmark engine, scoring
-│   ├── routes/                  # API route handlers
-│   └── pdf_generator.py         # Governance brief PDF generation (ReportLab)
+├── backend/                    # Flask API — auth, billing, governance engine
+│   ├── app.py                  # Main application: routes, session, rate limiting, security
+│   ├── pdf_generator.py        # ReportLab-based governance brief PDF generation
+│   └── services/
+│       ├── governance_insights.py   # Signal extraction, severity scoring, action generation
+│       ├── benchmark_engine.py      # Deterministic classification engine (10 themes)
+│       └── email_service.py         # Resend-based partner brief email delivery
 │
-├── frontend/                    # React SPA
+├── frontend/                   # React SPA — marketing site + authenticated workspace
 │   └── src/
-│       ├── pages/               # Workspace routes + public marketing routes
-│       └── components/          # Governance design system components
+│       ├── pages/              # Route-level components (Dashboard, Signals, Reports, etc.)
+│       └── components/
+│           ├── landing/        # Public marketing components
+│           ├── governance/     # Shared design system components (cards, chips, wrappers)
+│           └── dashboard/      # Dashboard-specific modules
 │
-├── Clarion-Agency/              # Internal AI agent office (Clarion's own operations)
-│   ├── agents/                  # Per-division agent definitions
-│   ├── execution/               # Bounded execution layer (L1/L2/L3 authority model)
-│   └── memory/                  # Agent memory, standing orders, approved actions
+├── Clarion-Agency/             # Internal AI agent office — Clarion's own operations
+│   ├── agents/                 # Per-division agent definitions and prompts
+│   ├── execution/              # Bounded execution layer (L1/L2/L3 authority model)
+│   └── memory/                 # Standing orders, approved actions, agent memory
 │
-├── automation/calibration/      # Benchmark calibration workflow scripts
-├── data/calibration/            # Calibration inputs, synthetic reviews, run outputs
-└── tools/                       # Smoke test helpers and seeded workspace tooling
+├── automation/calibration/     # Benchmark calibration pipeline scripts
+├── data/calibration/           # Calibration inputs and synthetic review data
+├── docs/                       # Architecture docs, working rules, project state
+└── tools/                      # Smoke test helpers and seeded workspace tooling
 ```
+
+---
+
+## Architecture Notes
+
+**Classification engine** (`backend/services/benchmark_engine.py`)
+- Fully deterministic — no LLM in the scoring path
+- 10 governance themes with negation/contrast guards and severity escalation
+- Outputs are reproducible and auditable across runs
+- Benchmarked against AI-generated labels via a separate calibration harness
+
+**Governance brief output**
+- 5-section canonical spine, locked across all output surfaces
+- On-screen brief, ReportLab PDF, and Resend email delivery from the same data source
+- Present mode for displaying the brief on a screen in partner meetings
+
+**Billing and plan enforcement**
+- Stripe integration with Free, Team ($179/mo), and Firm ($449/mo) tiers
+- Plan-scoped feature gating throughout: report limits, PDF watermarks, seat caps
+
+**Security posture**
+- Session-based auth with Flask-Login
+- CSRF protection, rate limiting, security headers
+- Workspace-scoped data isolation — each firm's data is structurally separated at the query level
+
+---
+
+## Project Status
+
+Release-candidate ready. Operator smoke-tested end-to-end:
+login → CSV upload → report generation → signals view → action creation → PDF export → partner brief email delivery
+
+Active development: dashboard visual hierarchy pass, design system refinement, domain cutover to `clarion.co`.
+
+---
+
+## Running Locally
+
+**Requirements:** Python 3.11+, Node 18+
+
+```bash
+# Backend
+cd backend
+pip install -r requirements.txt
+cp .env.example .env   # fill in RESEND_API_KEY, SECRET_KEY, STRIPE_* keys
+python app.py
+
+# Frontend (separate terminal)
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend dev server proxies `/api/*` requests to the Flask backend automatically.
 
 ---
 
 ## Contact
 
-**Andrew Yomantas**  
+**Andrew Yomantas** — AI Product & Operations Builder, Loves Park IL
 [LinkedIn](https://linkedin.com/in/andrew-yomantas-94a7383b0) · drewyomantas@gmail.com · [GitHub](https://github.com/BeyondDrewTV)

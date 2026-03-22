@@ -1,49 +1,79 @@
-# secrets
+# ── Secrets & environment ────────────────────────────────────────────────────
 .env
 .env.*
+.env.local
 *.key
 *.pem
+secrets/
 
-# python
+# ── Python ───────────────────────────────────────────────────────────────────
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
 .venv/
 venv/
-
-# node
-node_modules/
+env/
+backend/venv312/
+*.egg-info/
 dist/
+.pytest_cache/
 
-# databases
+# ── Node / Frontend ──────────────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/build/
+.vite/
+*.tsbuildinfo
+
+# ── Databases ────────────────────────────────────────────────────────────────
 *.db
 *.sqlite
 *.sqlite3
 
-# OS/editor
+# ── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+tmp/
+
+# ── OS / Editor ──────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Python envs
-venv/
-.venv/
-backend/venv312/
+# ── Calibration run artifacts ─────────────────────────────────────────────────
+# These are generated outputs, not source code.
+# Keep the folder structure and README; ignore the data files.
+data/calibration/runs/*/chunks/
+data/calibration/runs/*/results/
+data/calibration/runs/*/real_reviews.csv
+data/calibration/runs/*/synthetic_topup.json
+data/calibration/runs/*/final_summary.json
+data/calibration/runs/*/final_summary.md
+data/calibration/runs/*/gap_report.txt
+data/calibration/runs/*/phrase_candidates.json
+data/calibration/runs/*/disagreement_report.md
 
-# Logs
-logs/
-*.log
+# ── Temporary / operational scripts (local use only) ─────────────────────────
+diag_*.py
+tmp_*.py
+kill_server.ps1
+commit_*.bat
+RUN_CALIBRATION.bat
+START_CLARION.bat
 
-# Databases
-*.db
-*.sqlite
-*.sqlite3
-
-# Temp/generated PDFs
+# ── Generated PDF temps ──────────────────────────────────────────────────────
 backend/tmp_pdf_checks/
 
-# Node
-node_modules/
-dist/
-build/
-.vite/
+# ── Archive (legacy reference only, not for public review) ───────────────────
+archive/
+
+# ── Agent office runtime artifacts ───────────────────────────────────────────
+Clarion-Agency/__pycache__/
+Clarion-Agency/data/
+Clarion-Agency/reports/
+Clarion-Agency/_test_parse.py
+Clarion-Agency/run_daily.bat
+Clarion-Agency/run_clarion_agent_office.bat

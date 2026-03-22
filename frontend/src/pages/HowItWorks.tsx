@@ -1,37 +1,24 @@
 import { Link } from "react-router-dom";
-import { ArrowDown, ArrowLeft, BarChart3, BriefcaseBusiness, Upload } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-import MarketingReportPreview from "@/components/MarketingReportPreview";
+import LandingOperatingPreview from "@/components/landing/LandingOperatingPreview";
 import { useAuth } from "@/contexts/AuthContext";
-import {
-  confidenceDefinition,
-  implementationPlanDefinition,
-  trendStabilityDefinition,
-} from "@/content/marketingCopy";
+import { landingWorkflowSteps } from "@/content/landingV3";
+import { defaultSampleBriefPath } from "@/data/sampleFirmData";
 
-const loopSteps = [
+const postUploadRows = [
   {
-    icon: Upload,
-    title: "Upload",
-    description: "Import one CSV export and confirm the required structure before analysis starts.",
-    bullets: ["Checks required columns", "Flags malformed or empty rows"],
+    title: "A governance brief leadership can use",
+    body: "Recurring issues, what changed, and the decisions that need partner attention now.",
   },
   {
-    icon: BarChart3,
-    title: "Review",
-    description: "Surface recurring client issues, report movement, and what needs partner visibility now.",
-    bullets: [trendStabilityDefinition, confidenceDefinition],
+    title: "An operating record that stays live",
+    body: "The report, issues, actions, and review history stay tied to the same cycle instead of being split across notes and follow-up threads.",
   },
   {
-    icon: BriefcaseBusiness,
-    title: "Act",
-    description: "Assign owners, timelines, and next steps so the cycle produces accountable follow-through.",
-    bullets: [implementationPlanDefinition, "Governance brief prepared for leadership review"],
+    title: "Meeting-ready outputs",
+    body: "Use the workspace, PDF brief, and email summary to carry the same review into the room and back into execution after the meeting.",
   },
 ];
-
-const darkCardClass =
-  "rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors duration-300";
 
 const HowItWorks = () => {
   const { isLoggedIn, isLoading } = useAuth();
@@ -39,151 +26,82 @@ const HowItWorks = () => {
   return (
     <PageLayout>
       <section className="marketing-hero">
-        <div className="section-container space-y-4">
-          <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-            How It Works
-          </p>
-          <h1 className="marketing-hero-title">See the workflow once, clearly.</h1>
-          <p className="max-w-2xl marketing-hero-body">
-            Clarion takes one review-period export through a simple operating loop: validate the CSV, surface recurring
-            client issues, assign follow-through, and prepare the governance brief for leadership review.
+        <div className="section-container space-y-5">
+          <p className="landing-kicker">How It Works</p>
+          <h1 className="marketing-hero-title">From one feedback export to a meeting-ready governance review.</h1>
+          <p className="max-w-3xl marketing-hero-body">
+            Clarion follows a simple operating loop: upload feedback, structure the recurring service issues, assign
+            follow-through, and carry the same brief into partner review.
           </p>
           <div className="flex flex-wrap gap-3 pt-1">
-            <Link to="/demo" className="gov-btn-primary">
-              Open read-only example cycle
+            <Link to={defaultSampleBriefPath} className="gov-btn-primary">
+              Review sample brief
             </Link>
-            <Link to={!isLoading && isLoggedIn ? "/upload" : "/pricing"} className="gov-btn-secondary">
-              {!isLoading && isLoggedIn ? "Begin with a CSV upload" : "See plans"}
+            <Link to={!isLoading && isLoggedIn ? "/upload" : "/demo"} className="gov-btn-secondary">
+              {!isLoading && isLoggedIn ? "Begin with a CSV upload" : "See sample workspace"}
             </Link>
           </div>
         </div>
       </section>
 
-      <section id="reporting-loop" className="supporting-section bg-gradient-to-br from-[#0F172A] via-[#1E3A5F] to-[#0F172A]">
-        <div className="section-container">
-          <h2 className="text-3xl font-bold text-white md:text-4xl">The operating loop</h2>
-          <p className="mt-2 text-lg text-slate-200">
-            One cycle turns feedback into issues, ownership, and the next leadership discussion.
-          </p>
-
-          <div className="mt-8 hidden items-stretch gap-3 lg:grid lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
-            {loopSteps.map((step, index) => (
-              <div key={step.title} className="contents">
-                <article className={`${darkCardClass} relative overflow-hidden`}>
-                  <p className="absolute -top-3 left-2 text-6xl font-black text-blue-500/20">{index + 1}</p>
-                  <div className="relative">
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/20">
-                      <step.icon className="text-blue-400" size={20} />
-                    </div>
-                    <p className="text-xs uppercase tracking-widest text-blue-400">Step {index + 1}</p>
-                    <h3 className="mt-1 text-xl font-bold text-white">{step.title}</h3>
-                    <p className="mt-2 text-sm text-slate-200">{step.description}</p>
-                    <ul className="mt-3 space-y-1.5">
-                      {step.bullets.map((bullet) => (
-                        <li key={bullet} className="text-xs text-slate-200">
-                          - {bullet}
-                        </li>
-                      ))}
-                    </ul>
+      <section className="supporting-section">
+        <div className="section-container grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+          <article className="supporting-lead">
+            <p className="landing-kicker">Workflow</p>
+            <h2 className="landing-section-title mt-4 text-[#111827]">Five steps, one operating record.</h2>
+            <div className="landing-rail mt-8">
+              {landingWorkflowSteps.map((step) => (
+                <div key={step.step} className="landing-rail-step">
+                  <div>
+                    <p className="landing-rail-step-number">Step {step.step}</p>
                   </div>
-                </article>
-                {index < loopSteps.length - 1 && (
-                  <div className="flex items-center justify-center text-2xl text-blue-500">&rarr;</div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 space-y-3 lg:hidden">
-            {loopSteps.map((step, index) => (
-              <div key={step.title}>
-                <article className={`${darkCardClass} relative overflow-hidden`}>
-                  <p className="absolute -top-3 left-2 text-6xl font-black text-blue-500/20">{index + 1}</p>
-                  <div className="relative">
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/20">
-                      <step.icon className="text-blue-400" size={20} />
-                    </div>
-                    <p className="text-xs uppercase tracking-widest text-blue-400">Step {index + 1}</p>
-                    <h3 className="mt-1 text-xl font-bold text-white">{step.title}</h3>
-                    <p className="mt-2 text-sm text-slate-200">{step.description}</p>
+                  <div>
+                    <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-700">{step.body}</p>
                   </div>
-                </article>
-                {index < loopSteps.length - 1 && (
-                  <div className="flex justify-center py-2 text-blue-500">
-                    <ArrowDown size={18} />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-5 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-slate-300">
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-300">Return lane</p>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-xs text-slate-200">
-                Repeat
-                <ArrowLeft size={13} className="text-blue-400" />
-              </div>
+                </div>
+              ))}
             </div>
-            <p className="mt-2 text-xs text-slate-200">
-              After action items are assigned, run the next upload cycle to measure movement.
+          </article>
+
+          <div className="lg:sticky lg:top-24">
+            <LandingOperatingPreview mode="outputs" />
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              Clarion is designed to make the output visible before the meeting starts: what clients are telling the
+              firm, what is assigned, and what is still lagging.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="supporting-section border-y border-slate-200 bg-slate-50">
-        <div className="section-container space-y-5">
-          <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-            <article className="supporting-lead">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">After upload</p>
-              <h2 className="mt-2 text-2xl font-bold text-slate-900">The product does three things, in order.</h2>
-              <div className="supporting-divider-list mt-5">
-                <div className="py-4 first:pt-0">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">1. Validation</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    Clarion checks required CSV columns and flags obvious formatting problems before analysis.
-                  </p>
-                </div>
-                <div className="py-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">2. Report creation</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    The app creates a governance report, surfaces recurring client issues, and updates the current cycle.
-                  </p>
-                </div>
-                <div className="py-4 last:pb-0">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">3. Follow-through</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-700">
-                    Your team reviews owners, due dates, and the governance brief. Clarion does not auto-contact clients
-                    or partners on its own.
-                  </p>
-                </div>
-              </div>
+      <section className="supporting-section border-y border-[#D7D0C3] bg-[rgba(255,250,244,0.72)]">
+        <div className="section-container grid gap-5 lg:grid-cols-3">
+          {postUploadRows.map((row) => (
+            <article key={row.title} className="public-route-card">
+              <p className="landing-kicker !text-[#5F6470]">After upload</p>
+              <h2 className="mt-3 text-xl font-semibold text-slate-900">{row.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-700">{row.body}</p>
             </article>
+          ))}
+        </div>
+      </section>
 
-            <article className="supporting-subtle">
-              <h2 className="text-xl font-bold text-slate-900">See the output before you upload</h2>
-              <p className="mt-2 text-sm text-slate-600">
-                One read-only example is enough to show what the finished cycle looks like in product.
-              </p>
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                <MarketingReportPreview compact />
-              </div>
-              <p className="mt-3 text-xs text-slate-500">
-                Read-only example report: recurring client issues, action ownership, and the same brief structure used
-                in product.
-              </p>
-            </article>
-          </div>
-
+      <section className="supporting-section">
+        <div className="section-container">
           <div className="supporting-cta-strip">
-            <p className="text-sm text-slate-600">Inspect the finished output first, then move to a live upload when you are ready to run your own cycle.</p>
+            <div className="max-w-2xl">
+              <p className="landing-kicker !text-[#5F6470]">Run the cycle</p>
+              <p className="mt-2 text-sm leading-7 text-slate-700">
+                Start with the sample brief if you want the finished artifact first. Move to the sample workspace only
+                if you want to inspect how the cycle is assembled step by step.
+              </p>
+            </div>
             <div className="flex flex-wrap gap-3">
-              <Link to="/demo" className="gov-btn-primary">
-                Open read-only example cycle
+              <Link to={defaultSampleBriefPath} className="gov-btn-primary">
+                Review sample brief
               </Link>
-              <Link to={!isLoading && isLoggedIn ? "/upload" : "/pricing"} className="gov-btn-secondary">
-                {!isLoading && isLoggedIn ? "Begin with a CSV upload" : "See plans"}
+              <Link to={!isLoading && isLoggedIn ? "/upload" : "/demo"} className="gov-btn-secondary">
+                {!isLoading && isLoggedIn ? "Begin with a CSV upload" : "See sample workspace"}
               </Link>
             </div>
           </div>

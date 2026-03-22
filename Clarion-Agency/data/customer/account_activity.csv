@@ -1,6 +1,0 @@
-account_id,week_ending,logins,feature_sessions,unique_users_active,reports_opened,avg_session_minutes
-ACC-001,2026-03-07,9,14,3,4,18
-ACC-002,2026-03-07,3,4,1,1,11
-ACC-003,2026-03-07,12,19,4,6,22
-ACC-004,2026-03-07,2,3,1,0,8
-ACC-005,2026-03-07,7,10,2,3,16

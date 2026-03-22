@@ -1,6 +1,0 @@
-submission_id,account_id,validated_date,reviews_submitted,reviews_passed,reviews_failed,failure_reasons
-SUB-001,ACC-001,2026-01-12,47,47,0,
-SUB-003,ACC-002,2026-01-19,23,23,0,
-SUB-004,ACC-003,2026-01-26,83,81,2,review_too_short|suspected_duplicate
-SUB-006,ACC-004,2026-02-11,16,16,0,
-SUB-007,ACC-005,2026-02-23,58,57,1,non_english_language

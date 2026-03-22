@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "python ../scripts/reset_e2e_state.py && python ../scripts/ensure_e2e_user.py && playwright test"
+    "test:e2e": "python ../tools/reset_e2e_state.py && python ../tools/ensure_e2e_user.py && playwright test"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -1,4 +1,0 @@
-case_id,batch_id,account_id,review_id,flagged_date,flag_reason,resolution_status
-EC-001,BATCH-003,ACC-003,REV-3042,2026-01-26,review_text_under_10_chars,excluded
-EC-002,BATCH-003,ACC-003,REV-3067,2026-01-26,suspected_duplicate,excluded
-EC-003,BATCH-005,ACC-005,REV-5021,2026-02-23,non_english_primary_language,held_pending_review

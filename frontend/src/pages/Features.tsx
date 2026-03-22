@@ -1,79 +1,57 @@
 import { Link } from "react-router-dom";
-import { BriefcaseBusiness, CheckCircle2, ShieldAlert } from "lucide-react";
-import InfoTooltip from "@/components/InfoTooltip";
-import MarketingReportPreview from "@/components/MarketingReportPreview";
+import { BriefcaseBusiness, Building2, UserRoundSearch } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+import LandingOperatingPreview from "@/components/landing/LandingOperatingPreview";
 import { useAuth } from "@/contexts/AuthContext";
-import { implementationPlanDefinition } from "@/content/marketingCopy";
+import { defaultSampleBriefPath } from "@/data/sampleFirmData";
 
-const personaBands = [
+const roleBands = [
   {
     id: "partners",
-    title: "For Managing Partners",
-    description: "Use the cycle to see where client experience needs leadership attention before the next meeting.",
-    icon: ShieldAlert,
-    iconTone: "bg-amber-500/20 border-amber-500/30 text-amber-400",
-    outcomes: [
-      {
-        label: "Spot recurring service risk before it becomes client loss.",
-        detail: "Client issues are surfaced from repeated negative patterns across the uploaded review set.",
-      },
-      {
-        label: "Review one operating record instead of reading every comment.",
-        detail: "Reports summarize movement and repeated complaints in one place.",
-      },
-      {
-        label: "Walk into the meeting with a brief and a next-step agenda.",
-        detail: "The governance brief keeps issues, actions, and discussion points aligned.",
-      },
-    ],
+    title: "Managing partners",
+    body: "See what clients are telling the firm, where partner attention is required, and which actions are still stalled before the next review meeting.",
+    icon: Building2,
   },
   {
     id: "operations",
-    title: "For Operations Leaders",
-    description: "Run the cycle consistently and keep follow-through visible after the meeting ends.",
+    title: "Operations leaders",
+    body: "Run the review cycle consistently, keep ownership visible, and carry the same operating record from upload through follow-through.",
     icon: BriefcaseBusiness,
-    iconTone: "bg-blue-500/20 border-blue-500/30 text-blue-400",
-    outcomes: [
-      {
-        label: "Keep report status, review volume, and action ownership in one workspace.",
-        detail: "The product keeps current-cycle output tied to the next round of execution.",
-      },
-      {
-        label: "Assign owners, timelines, and measurable success criteria.",
-        detail: implementationPlanDefinition,
-      },
-      {
-        label: "Preserve a report record the team can return to next cycle.",
-        detail: "Reports and briefs stay connected to the same operating history.",
-      },
-    ],
   },
   {
-    id: "intake",
-    title: "For Intake And Marketing",
-    description: "Turn repeated complaints into specific service-improvement priorities instead of anecdotal fixes.",
-    icon: CheckCircle2,
-    iconTone: "bg-emerald-500/20 border-emerald-500/30 text-emerald-400",
-    outcomes: [
-      {
-        label: "See where communication and intake friction repeat.",
-        detail: "Theme grouping highlights where clients report the same problem over and over.",
-      },
-      {
-        label: "Tie service fixes to owners rather than informal notes.",
-        detail: "Clarion keeps action ownership visible after the cycle is reviewed.",
-      },
-      {
-        label: "Compare one cycle to the next when process changes are made.",
-        detail: "Recurring use helps teams see whether the service experience is moving in the right direction.",
-      },
-    ],
+    id: "client-service",
+    title: "Client service and intake owners",
+    body: "Turn repeated complaints into named issues, assigned fixes, and a cleaner handoff back into the next cycle.",
+    icon: UserRoundSearch,
   },
 ];
 
-const darkCardClass =
-  "rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-colors duration-300";
+const featureGroups = [
+  {
+    title: "Clarify what needs partner attention",
+    body: "Clarion structures recurring service issues so leaders can review the pattern quickly instead of reading every comment one by one.",
+    bullets: [
+      "Recurring communication, billing, and responsiveness issues are surfaced together.",
+      "The same cycle keeps issue summaries connected to the source report.",
+    ],
+  },
+  {
+    title: "Keep action ownership in the same record",
+    body: "The product is designed to stop decisions from disappearing into meeting notes.",
+    bullets: [
+      "Owners, due dates, and current status stay attached to the same review cycle.",
+      "The brief and workspace point to the same follow-through record.",
+    ],
+  },
+  {
+    title: "Carry the output into the room",
+    body: "Clarion gives the firm a meeting-ready operating artifact, not a dashboard wall that still needs interpretation.",
+    bullets: [
+      "Use the workspace, PDF brief, and email summary from the same cycle.",
+      "Review what changed, what is unresolved, and what should be escalated now.",
+    ],
+  },
+];
 
 const Features = () => {
   const { isLoggedIn, isLoading } = useAuth();
@@ -81,108 +59,107 @@ const Features = () => {
   return (
     <PageLayout>
       <section className="marketing-hero">
-        <div className="section-container space-y-4">
-          <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-            Features
-          </p>
-          <h1 className="marketing-hero-title">Built for the people who have to run the cycle.</h1>
+        <div className="section-container space-y-5">
+          <p className="landing-kicker">Features</p>
+          <h1 className="marketing-hero-title">Built for the people who have to run the review cycle, not admire it.</h1>
           <p className="max-w-3xl marketing-hero-body">
-            Clarion is most useful when leadership, operations, and client-facing teams can work from the same client
-            feedback record without turning it into another loose analytics exercise.
+            Clarion gives law firms one operating record for client feedback: what clients are saying, what needs
+            partner attention, who owns the response, and what still needs to move before the next meeting.
           </p>
           <div className="flex flex-wrap gap-3 pt-1">
+            <Link to={defaultSampleBriefPath} className="gov-btn-primary">
+              Review sample brief
+            </Link>
             {!isLoading && isLoggedIn ? (
-              <Link to="/dashboard" className="gov-btn-primary">
-                Go to Dashboard
+              <Link to="/upload" className="gov-btn-secondary">
+                Begin with a CSV upload
               </Link>
             ) : (
-              <Link to="/pricing" className="gov-btn-primary">
-                See plans
+              <Link to="/demo" className="gov-btn-secondary">
+                See sample workspace
               </Link>
             )}
-            <Link to="/demo" className="gov-btn-secondary">
-              Open read-only example cycle
-            </Link>
           </div>
         </div>
       </section>
 
-      <section className="supporting-section bg-gradient-to-br from-[#0F172A] via-[#1E3A5F] to-[#0F172A]">
-        <div className="section-container grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <article className={`${darkCardClass} lg:sticky lg:top-24`}>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-300">Shared operating record</p>
-            <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-              One product view should settle the meeting, not create more interpretation work.
-            </h2>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-slate-200">
-              Clarion is strongest when leadership, operations, and client-facing teams can work from the same client
-              feedback record, see what moved, and leave with owned follow-through.
-            </p>
-          </article>
+      <section className="supporting-section">
+        <div className="section-container grid gap-5 lg:grid-cols-3">
+          {roleBands.map((band) => (
+            <article key={band.id} className="public-route-card">
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-[#D7D0C3] bg-[#FFF9EE] text-slate-800">
+                <band.icon size={20} />
+              </div>
+              <p className="landing-kicker !text-[#5F6470]">{band.title}</p>
+              <p className="mt-3 text-base leading-7 text-slate-700">{band.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-          <div className="space-y-4">
-            {personaBands.map((band) => (
-              <article key={band.id} className={darkCardClass}>
-                <div className="grid gap-5 lg:grid-cols-[220px_1fr] lg:items-start">
-                  <div>
-                    <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl border ${band.iconTone}`}>
-                      <band.icon size={20} />
-                    </div>
-                    <h2 className="text-xl font-bold text-white">{band.title}</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-200">{band.description}</p>
-                  </div>
-                  <ul className="supporting-divider-list">
-                    {band.outcomes.map((outcome) => (
-                      <li key={outcome.label} className="py-3 text-sm text-slate-200 first:pt-0 last:pb-0">
-                        <span className="inline-flex items-start">
-                          {outcome.label}
-                          <InfoTooltip title={outcome.label} body={outcome.detail} />
-                        </span>
+      <section className="supporting-section border-y border-[#D7D0C3] bg-[rgba(255,250,244,0.72)]">
+        <div className="section-container grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <article className="supporting-lead">
+            <p className="landing-kicker">What stays consistent</p>
+            <h2 className="landing-section-title mt-4 text-[#111827]">
+              Every role works from the same governance record.
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-8 text-slate-700">
+              Clarion does not ask leadership, operations, and client-service owners to work from separate stories.
+              The same cycle produces the brief, the action rows, and the workspace record used to check whether the
+              firm is improving.
+            </p>
+            <div className="mt-8 space-y-4">
+              {featureGroups.map((group) => (
+                <article key={group.title} className="rounded-2xl border border-[#DED7CA] bg-white/80 p-5">
+                  <h3 className="text-lg font-semibold text-slate-900">{group.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{group.body}</p>
+                  <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700">
+                    {group.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8B6F3D]" />
+                        <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
+          </article>
+
+          <div className="lg:sticky lg:top-24">
+            <LandingOperatingPreview mode="outputs" />
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              The live product is strongest when the brief, action ownership, and meeting agenda are all visible in one
+              place instead of scattered across separate tools.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="supporting-section border-y border-slate-200 bg-slate-50">
-        <div className="section-container space-y-5">
-          <article className="supporting-lead">
-            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">One operating record the whole firm can use</h2>
-                <p className="mt-2 text-lg text-slate-500">
-                  Clarion is strongest when the same cycle supports leadership review, operational follow-through, and
-                  the next round of service improvement.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                <MarketingReportPreview compact />
-                <p className="mt-2 text-xs text-slate-500">
-                  One shared report view keeps recurring client issues, action owners, and the leadership brief aligned.
-                </p>
-              </div>
-            </div>
-          </article>
-
+      <section className="supporting-section">
+        <div className="section-container">
           <div className="supporting-cta-strip">
-            <p className="text-sm text-slate-600">See the example cycle if you want proof first, or move straight to the plan that fits your review rhythm.</p>
+            <div className="max-w-2xl">
+              <p className="landing-kicker !text-[#5F6470]">Next step</p>
+              <p className="mt-2 text-sm leading-7 text-slate-700">
+                Review the sample brief first if you want the finished artifact. Move to the sample workspace only if
+                you want to inspect the mechanics behind that same story.
+              </p>
+            </div>
             <div className="flex flex-wrap gap-3">
+              <Link to={defaultSampleBriefPath} className="gov-btn-primary">
+                Review sample brief
+              </Link>
               {!isLoading && isLoggedIn ? (
-                <Link to="/dashboard" className="gov-btn-primary">
-                  Go to Dashboard
+                <Link to="/upload" className="gov-btn-secondary">
+                  Begin with a CSV upload
                 </Link>
               ) : (
-                <Link to="/pricing" className="gov-btn-primary">
-                  See plans
+                <Link to="/demo" className="gov-btn-secondary">
+                  See sample workspace
                 </Link>
               )}
-              <Link to="/demo" className="gov-btn-secondary">
-                Open read-only example cycle
-              </Link>
             </div>
           </div>
         </div>

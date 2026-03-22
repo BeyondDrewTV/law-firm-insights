@@ -1,6 +1,0 @@
-feedback_id,account_id,feedback_date,milestone_context,verbatim,sentiment
-OBF-001,ACC-001,2026-01-13,first_report_generated,The themes report was clearer than I expected. Took me about 20 minutes to explore it.,positive
-OBF-002,ACC-002,2026-01-19,data_upload_completed,Uploading reviews was straightforward but I wasnt sure what format you wanted at first.,neutral
-OBF-003,ACC-003,2026-01-27,first_report_generated,Really impressive — the scoring breakdown by theme is exactly what we needed.,positive
-OBF-004,ACC-004,2026-02-10,account_setup_completed,Setup was easy. Still figuring out what the benchmark scores actually mean.,neutral
-OBF-005,ACC-005,2026-02-25,first_report_generated,Great data. Would love to see a trend chart over time added to the report.,positive

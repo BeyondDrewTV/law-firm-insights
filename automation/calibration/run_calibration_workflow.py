@@ -43,7 +43,7 @@ from pathlib import Path
 try:
     import requests
 except ImportError:
-    sys.exit("❌ Missing dependency: pip install requests")
+    sys.exit("[ERROR] Missing dependency: pip install requests")
 
 # ── Repo-root-safe paths ──────────────────────────────────────────────────────
 # Script lives at automation/calibration/ — two levels below repo root
@@ -71,19 +71,19 @@ def banner(msg: str):
 
 
 def step(msg: str):
-    print(f"\n▶  {msg}")
+    print(f"\n[STEP] {msg}")
 
 
 def ok(msg: str):
-    print(f"   ✅ {msg}")
+    print(f"   [OK] {msg}")
 
 
 def warn(msg: str):
-    print(f"   ⚠️  {msg}")
+    print(f"   [WARN] {msg}")
 
 
 def die(msg: str):
-    print(f"\n❌ {msg}")
+    print(f"\n[ERROR] {msg}")
     sys.exit(1)
 
 
@@ -164,7 +164,7 @@ def generate_synthetic(gaps: dict[int, int], run_dir: Path) -> Path | None:
     """Generate synthetic reviews to fill distribution gaps. Returns path to JSON or None."""
     needed = {star: count for star, count in gaps.items() if count > 0}
     if not needed:
-        ok("No gaps — skipping synthetic generation")
+        ok("No gaps - skipping synthetic generation")
         return None
 
     batch_arg = ",".join(f"{star}:{count}" for star, count in needed.items())
@@ -178,7 +178,7 @@ def generate_synthetic(gaps: dict[int, int], run_dir: Path) -> Path | None:
     )
     if result.returncode != 0:
         warn(f"Synthetic generation warning:\n{result.stderr}")
-    ok(f"Synthetic reviews → {out_path.name}")
+    ok(f"Synthetic reviews -> {out_path.name}")
     return out_path
 
 
@@ -207,7 +207,7 @@ def run_chunked(all_reviews: list[dict], server: str, token: str,
     results_dir.mkdir(exist_ok=True)
 
     chunks = [all_reviews[i:i+CHUNK_SIZE] for i in range(0, len(all_reviews), CHUNK_SIZE)]
-    print(f"   {len(all_reviews)} reviews → {len(chunks)} chunks of ≤{CHUNK_SIZE}")
+    print(f"   {len(all_reviews)} reviews -> {len(chunks)} chunks of <={CHUNK_SIZE}")
 
     url = server.rstrip("/") + BATCH_ENDPOINT
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
@@ -218,10 +218,10 @@ def run_chunked(all_reviews: list[dict], server: str, token: str,
         chunk_file.write_text(json.dumps(chunk, indent=2), encoding="utf-8")
 
         if dry_run:
-            print(f"   [dry-run] Chunk {idx}/{len(chunks)} — {len(chunk)} reviews (skipping API)")
+            print(f"   [dry-run] Chunk {idx}/{len(chunks)} - {len(chunk)} reviews (skipping API)")
             continue
 
-        print(f"   Chunk {idx}/{len(chunks)} — {len(chunk)} reviews … ", end="", flush=True)
+        print(f"   Chunk {idx}/{len(chunks)} - {len(chunk)} reviews ... ", end="", flush=True)
         t0 = time.time()
         try:
             resp = requests.post(url, headers=headers, json={"reviews": chunk}, timeout=CHUNK_TIMEOUT)
@@ -231,7 +231,7 @@ def run_chunked(all_reviews: list[dict], server: str, token: str,
             result_file = results_dir / f"result_{idx:03d}.json"
             result_file.write_text(json.dumps(result, indent=2), encoding="utf-8")
             chunk_results.append({"chunk": idx, "count": len(chunk), "elapsed": round(elapsed, 1), "result": result})
-            print(f"✅ {resp.status_code} in {elapsed:.1f}s")
+            print(f"[OK] {resp.status_code} in {elapsed:.1f}s")
         except requests.exceptions.Timeout:
             elapsed = time.time() - t0
             warn(f"Chunk {idx} timed out after {elapsed:.0f}s (CHUNK_TIMEOUT={CHUNK_TIMEOUT}s). "
@@ -345,14 +345,14 @@ def main():
     banner("CLARION CALIBRATION WORKFLOW")
 
     # ── 1. Validate & resolve CSV path ────────────────────────────────────────
-    step("Step 1 — Validate CSV")
+    step("Step 1 - Validate CSV")
     csv_src = Path(args.csv).resolve()
     if not csv_src.exists():
         die(f"CSV not found: {csv_src}")
     ok(f"Found: {csv_src.name}")
 
     # ── 2. Create timestamped run folder ──────────────────────────────────────
-    step("Step 2 — Create run folder")
+    step("Step 2 - Create run folder")
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     run_dir = RUNS_DIR / ts
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -365,27 +365,27 @@ def main():
     ok(f"Run folder: {run_dir.relative_to(REPO_ROOT)}")
 
     # ── 3. Load real reviews & gap report ────────────────────────────────────
-    step("Step 3 — Gap report")
+    step("Step 3 - Gap report")
     real_reviews = load_csv(csv_dest)
     if not real_reviews:
         die("No valid reviews found in CSV. Check that columns are: review_text, rating, owner_response")
     print(f"   {len(real_reviews)} real reviews loaded")
     if len(real_reviews) < MIN_REAL:
-        warn(f"Only {len(real_reviews)} real reviews — recommend {MIN_REAL}+ for reliable calibration")
+        warn(f"Only {len(real_reviews)} real reviews - recommend {MIN_REAL}+ for reliable calibration")
 
     gaps = write_gap_report(real_reviews, run_dir)
     real_counts = Counter(r["rating"] for r in real_reviews)
     for star in range(1, 6):
         g = gaps[star]
-        flag = f"  ← need {g} more" if g else "  ✅"
-        print(f"   {star}★  have {real_counts.get(star,0):>3}{flag}")
+        flag = f"  <- need {g} more" if g else "  [OK]"
+        print(f"   {star}*  have {real_counts.get(star,0):>3}{flag}")
 
     # ── 4. Generate synthetic top-ups ─────────────────────────────────────────
-    step("Step 4 — Synthetic top-up")
+    step("Step 4 - Synthetic top-up")
     synth_path = generate_synthetic(gaps, run_dir)
 
     # ── 5. Merge (audit artifact only — NOT fed into batch runner) ────────────
-    step("Step 5 — Merge (audit artifact)")
+    step("Step 5 - Merge (audit artifact)")
     merge_for_audit(csv_dest, synth_path, run_dir)
     ok("calibration_merged.json written (audit reference only)")
 
@@ -398,7 +398,7 @@ def main():
 
     # ── 7. Run chunked calibration ────────────────────────────────────────────
     ai_enabled = not args.no_ai
-    step(f"Step 6 — Calibration batch ({'dry-run' if args.dry_run else 'no-ai' if args.no_ai else 'live'})")
+    step(f"Step 6 - Calibration batch ({'dry-run' if args.dry_run else 'no-ai' if args.no_ai else 'live'})")
     if args.no_ai:
         ok("Skipped (--no-ai). Data artifacts written.")
         chunk_results = []
@@ -406,7 +406,7 @@ def main():
         chunk_results = run_chunked(all_reviews, args.server, args.token, run_dir, args.dry_run)
 
     # ── 8. Final summary ──────────────────────────────────────────────────────
-    step("Step 7 — Final summary")
+    step("Step 7 - Final summary")
     summary = write_summary(real_reviews, synthetic_reviews, chunk_results, gaps, run_dir, ai_enabled)
 
     banner("DONE")

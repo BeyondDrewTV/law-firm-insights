@@ -20,3 +20,23 @@ python tools/security_smoke.py
 python tools/export_released_outreach.py --format csv
 python tools/export_released_content.py
 ```
+
+## Seeded E2E / RC Smoke Helpers
+
+`ensure_e2e_user.py` and `reset_e2e_state.py` now resolve the active DB from backend env config (`backend/.env`) so they target the same SQLite/Postgres connection as the running app.
+
+Common environment variables:
+
+```bash
+E2E_SMOKE_EMAIL=smoke.e2e@lawfirminsights.local
+E2E_SMOKE_PASSWORD=SmokeTest123
+E2E_SMOKE_FIRM="Smoke LLP"
+E2E_SMOKE_PLAN=team   # free | team | firm
+```
+
+Example:
+
+```bash
+backend\venv312\Scripts\python.exe tools\ensure_e2e_user.py
+backend\venv312\Scripts\python.exe tools\reset_e2e_state.py
+```

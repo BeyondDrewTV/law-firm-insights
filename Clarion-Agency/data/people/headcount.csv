@@ -1,6 +1,0 @@
-role_id,function,role_title,employment_type,start_date,status
-ROLE-001,executive,CEO / Founder,full_time,2025-09-01,active
-ROLE-002,product,Head of Product,full_time,2025-10-15,active
-ROLE-003,engineering,Lead Engineer,full_time,2025-10-15,active
-ROLE-004,customer_success,Customer Success Manager,full_time,2026-01-06,active
-ROLE-005,revenue,Sales Development Rep,contract,2026-02-01,active

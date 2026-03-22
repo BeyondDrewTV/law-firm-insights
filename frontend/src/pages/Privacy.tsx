@@ -5,9 +5,7 @@ const Privacy = () => (
   <PageLayout>
     <section className="marketing-hero">
       <div className="section-container max-w-4xl space-y-5">
-        <p className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-300">
-          Privacy
-        </p>
+        <p className="landing-kicker">Privacy</p>
         <h1 className="marketing-hero-title">Privacy Policy</h1>
         <p className="max-w-3xl marketing-hero-body">
           This page explains what Clarion collects, how that data is used, and how retention, deletion, and privacy
@@ -20,9 +18,9 @@ const Privacy = () => (
             "Retention and deletion behavior included",
           ]}
         />
-        <div className="max-w-3xl rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-200">What this page is for</p>
-          <p className="mt-2 text-sm leading-6 text-slate-200">
+        <div className="public-route-card max-w-3xl">
+          <p className="landing-kicker !text-[#5F6470]">What this page is for</p>
+          <p className="mt-3 text-sm leading-7 text-slate-700">
             A plainspoken reference for current data handling. It is meant to answer practical questions about product
             data flow without turning privacy language into marketing copy.
           </p>
@@ -33,7 +31,7 @@ const Privacy = () => (
     <section className="supporting-section border-y border-slate-200 bg-slate-50">
       <div className="section-container trust-stack">
         <article className="trust-intro">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Quick map</p>
+          <p className="landing-kicker !text-[#5F6470]">Quick map</p>
           <div className="trust-divider-list mt-4">
             <div className="py-3 first:pt-0">
               <p className="text-sm text-slate-700">What data Clarion collects to run the product.</p>
@@ -68,14 +66,13 @@ const Privacy = () => (
           <div className="trust-section-body">
             <p>
               We use your data to authenticate users, enforce plan limits, process billing, validate CSV uploads,
-              generate reports and dashboard views, support PDF export, send transactional emails, and operate support
-              and security workflows.
+              generate governance reports and workspace records, support PDF export, send transactional emails, and
+              operate support and security workflows.
             </p>
             <p>
-              Clarion currently uses deterministic analysis and workflow logic to turn client feedback into governance
-              insights. Current workflows do not rely on active LLM processing. Billing is processed by Stripe.
-              Partner-brief delivery and transactional email depend on configured email providers in the deployment
-              environment, and we do not sell customer data.
+              Clarion currently uses deterministic analysis and workflow logic to structure feedback into governance
+              outputs. Billing is processed by Stripe. Partner-brief delivery and transactional email depend on
+              configured email providers in the deployment environment, and we do not sell customer data.
             </p>
           </div>
         </article>

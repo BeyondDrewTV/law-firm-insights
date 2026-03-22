@@ -1,7 +1,15 @@
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
-import { getCredits, getReportDetail, getReports, uploadCsv, type CreditsState, type ReportListItem } from "@/api/authService";
+import {
+  getCredits,
+  getReportDetail,
+  getReports,
+  uploadCsv,
+  type CreditsState,
+  type ReportDetail as ReportDetailData,
+  type ReportListItem,
+} from "@/api/authService";
 import GovSectionCard from "@/components/governance/GovSectionCard";
 import { Progress } from "@/components/ui/progress";
 import { useAuth } from "@/contexts/AuthContext";
@@ -101,6 +109,53 @@ const formatResetDate = (value: string | null | undefined) => {
   return date.toLocaleDateString();
 };
 
+const formatCycleLabel = (
+  report: Pick<ReportDetailData, "review_date_label" | "review_date_start" | "review_date_end" | "created_at"> | null,
+) => {
+  if (!report) {
+    return "Current review period";
+  }
+
+  if (report.review_date_label?.trim()) {
+    return report.review_date_label;
+  }
+
+  const start = report.review_date_start ? new Date(report.review_date_start) : null;
+  const end = report.review_date_end ? new Date(report.review_date_end) : null;
+  const validStart = Boolean(start && Number.isFinite(start.getTime()));
+  const validEnd = Boolean(end && Number.isFinite(end.getTime()));
+
+  if (validStart && validEnd && start && end) {
+    const sameYear = start.getFullYear() === end.getFullYear();
+    const sameMonth = sameYear && start.getMonth() === end.getMonth();
+
+    if (sameMonth) {
+      return start.toLocaleDateString([], { month: "long", year: "numeric" });
+    }
+
+    if (sameYear) {
+      return `${start.toLocaleDateString([], { month: "short" })} - ${end.toLocaleDateString([], {
+        month: "short",
+        year: "numeric",
+      })}`;
+    }
+
+    return `${start.toLocaleDateString([], { month: "short", year: "numeric" })} - ${end.toLocaleDateString([], {
+      month: "short",
+      year: "numeric",
+    })}`;
+  }
+
+  if (report.created_at) {
+    const created = new Date(report.created_at);
+    if (Number.isFinite(created.getTime())) {
+      return created.toLocaleDateString([], { month: "long", year: "numeric" });
+    }
+  }
+
+  return "Current review period";
+};
+
 type CollapsibleCardProps = {
   title: string;
   summary: string;
@@ -129,6 +184,7 @@ const Upload = () => {
   const [uploadAsOfTimestamp, setUploadAsOfTimestamp] = useState<string | null>(null);
   const [usageMessage, setUsageMessage] = useState("");
   const [wasTruncatedForPlan, setWasTruncatedForPlan] = useState(false);
+  const [latestUploadedReport, setLatestUploadedReport] = useState<ReportDetailData | null>(null);
   const [headerPreviews, setHeaderPreviews] = useState<Record<string, HeaderPreview>>({});
   const [credits, setCredits] = useState<CreditsState | null>(null);
   const [creditsLoading, setCreditsLoading] = useState(true);
@@ -209,6 +265,15 @@ const Upload = () => {
   const firstFile = files[0] || null;
   const headerPreview = firstFile ? headerPreviews[getFileKey(firstFile)] || null : null;
   const shouldAutoStart = searchParams.get("start") === "true";
+  const uploadedCycleLabel = useMemo(() => formatCycleLabel(latestUploadedReport), [latestUploadedReport]);
+  const uploadedReviewCountLabel = latestUploadedReport
+    ? `${latestUploadedReport.total_reviews} review${latestUploadedReport.total_reviews === 1 ? "" : "s"} analyzed`
+    : "Report packet ready";
+  const uploadedBriefAccessLabel = latestUploadedReport
+    ? latestUploadedReport.plan_type === "free"
+      ? "Preview the PDF from the report packet."
+      : "Download the PDF from the report packet."
+    : "Brief controls are available from the report packet.";
 
   useEffect(() => {
     if (!shouldAutoStart || isUploading || files.length > 0 || successMessage) {
@@ -287,6 +352,7 @@ const Upload = () => {
     setUploadAsOfTimestamp(null);
     setUsageMessage("");
     setWasTruncatedForPlan(false);
+    setLatestUploadedReport(null);
     setProgress(0);
     setHeaderPreviews({});
 
@@ -340,6 +406,7 @@ const Upload = () => {
     setUploadAsOfTimestamp(null);
     setUsageMessage("");
     setWasTruncatedForPlan(false);
+    setLatestUploadedReport(null);
 
     if (files.length === 0) {
       setError("Choose at least one CSV file before uploading.");
@@ -450,6 +517,7 @@ const Upload = () => {
       setUploadAsOfTimestamp(null);
       setUsageMessage("");
       setWasTruncatedForPlan(false);
+      setLatestUploadedReport(null);
       setFiles([]);
       setHeaderPreviews({});
       toast.info("Upload canceled.");
@@ -468,13 +536,16 @@ const Upload = () => {
       setReportId(lastReportId);
       if (lastReportId) {
         const detailResult = await getReportDetail(lastReportId);
-        if (detailResult.success && detailResult.report?.created_at) {
-          setUploadAsOfTimestamp(detailResult.report.created_at);
+        if (detailResult.success && detailResult.report) {
+          setLatestUploadedReport(detailResult.report);
+          setUploadAsOfTimestamp(detailResult.report.created_at || null);
         } else {
           setUploadAsOfTimestamp(null);
+          setLatestUploadedReport(null);
         }
       } else {
         setUploadAsOfTimestamp(null);
+        setLatestUploadedReport(null);
       }
       setWasTruncatedForPlan(truncatedDetected);
       setUsageMessage(lastUsageMessage);
@@ -537,6 +608,7 @@ const Upload = () => {
     setReportId(null);
     setUsageMessage("");
     setWasTruncatedForPlan(false);
+    setLatestUploadedReport(null);
     setError("");
     setProgress(0);
     setFiles([]);
@@ -552,9 +624,9 @@ const Upload = () => {
             <header className="space-y-2">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h1 className="gov-h1 text-balance">Upload Feedback (CSV)</h1>
+                  <h1 className="gov-h1 text-balance">Start or continue a review cycle</h1>
                   <p className="mt-1 text-sm text-neutral-600">
-                    Bring in one review-period export, let Clarion check the structure, and generate the first governance cycle from it.
+                    Bring in one review-period export, let Clarion confirm the structure, and turn it into the current report packet, follow-through list, and brief.
                   </p>
                 </div>
                 <p data-testid="upload-asof" className="text-xs text-neutral-700">
@@ -582,16 +654,16 @@ const Upload = () => {
                 </div>
                 <div>
                   <p className="gov-type-eyebrow">Step 3</p>
-                  <p className="mt-1 text-sm font-medium text-neutral-900">Open the first report.</p>
-                  <p className="mt-1 text-xs leading-5 text-neutral-700">The upload turns into your first live report, action list, and governance brief flow.</p>
+                  <p className="mt-1 text-sm font-medium text-neutral-900">Open the current report packet.</p>
+                  <p className="mt-1 text-xs leading-5 text-neutral-700">Start review in the report packet first, then move into follow-through and the partner-ready brief.</p>
                 </div>
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
                 <Link to="/demo" className="gov-text-link">
-                  Review the read-only example cycle first
+                  Review the sample workspace first
                 </Link>
                 <span className="text-neutral-600">
-                  Use the example cycle if you want to see the workflow before preparing your own export.
+                  Use the sample workspace if you want to see the workflow before preparing your own export.
                 </span>
               </div>
             </div>
@@ -621,10 +693,10 @@ const Upload = () => {
               <div ref={fileChooserCardRef} className="rounded-md border border-neutral-200 bg-white px-4 py-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="gov-type-eyebrow">Primary intake</p>
+                    <p className="gov-type-eyebrow">Start this cycle</p>
                     <p className="mt-1 text-sm font-semibold text-neutral-900">Choose the review export for this cycle</p>
                     <p className="mt-1 text-xs leading-5 text-neutral-700">
-                      Clarion automatically detects common header names and checks the required fields before full analysis. Manual column mapping is not available in this version.
+                      Clarion detects common header names, checks the required fields before full analysis, and points you into the current report packet after processing. There is no manual column-mapping step in this version.
                     </p>
                     {shouldAutoStart ? (
                       <p className="mt-2 text-xs text-neutral-600">
@@ -658,7 +730,7 @@ const Upload = () => {
                         Recommended: one clean CSV export for a single review period.
                       </p>
                       <p className="text-xs text-neutral-600">
-                        If the file matches the required structure, the upload will turn directly into your first live report.
+                        If the file matches the required structure, Clarion will turn it into the current report packet and the first brief-ready cycle.
                       </p>
                     </div>
                   )}
@@ -757,12 +829,67 @@ const Upload = () => {
               {successMessage ? (
                 <div className="rounded-md border border-neutral-200 bg-neutral-50 px-4 py-4 text-sm text-neutral-800">
                   <p className="gov-type-eyebrow">Upload complete</p>
-                  <p className="mt-1 font-semibold text-neutral-900">The first report is ready.</p>
+                  <p className="mt-1 font-semibold text-neutral-900">The current report packet is ready.</p>
                   <p className="mt-1">{successMessage}</p>
                   <p className="mt-1 text-xs text-neutral-700">
-                    Clarion finished the upload and created the first review output from this dataset. The new report is now available in Dashboard and Reports.
+                    Clarion finished the upload and created the report packet, action list, and brief path from this dataset. Start with the report packet first, then move into follow-through and the partner brief.
                   </p>
-                  {reportId && <p className="mt-1 text-xs text-neutral-700">Report snapshot ID: #{reportId}</p>}
+                  <div className="mt-4 grid gap-3 lg:grid-cols-[1.15fr_0.85fr]">
+                    <div className="rounded-md border border-neutral-200 bg-white px-4 py-4">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-neutral-700">Current cycle created</p>
+                      <p className="mt-1 text-sm font-semibold text-neutral-900">
+                        {latestUploadedReport?.name || (reportId ? `Report #${reportId}` : "Current report packet")}
+                      </p>
+                      <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                        <div className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-wide text-neutral-600">Review period</p>
+                          <p className="mt-1 text-sm font-medium text-neutral-900">{uploadedCycleLabel}</p>
+                        </div>
+                        <div className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-wide text-neutral-600">Cycle output</p>
+                          <p className="mt-1 text-sm font-medium text-neutral-900">{uploadedReviewCountLabel}</p>
+                        </div>
+                        <div className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-3">
+                          <p className="text-[11px] font-semibold uppercase tracking-wide text-neutral-600">Brief access</p>
+                          <p className="mt-1 text-sm font-medium text-neutral-900">{uploadedBriefAccessLabel}</p>
+                        </div>
+                      </div>
+                      {reportId ? <p className="mt-3 text-xs text-neutral-700">Report snapshot ID: #{reportId}</p> : null}
+                    </div>
+
+                    <div className="rounded-md border border-neutral-200 bg-white px-4 py-4">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-neutral-700">Review this first</p>
+                      <ol className="mt-3 space-y-3">
+                        {[
+                          {
+                            step: "01",
+                            title: "Open the current report packet",
+                            detail: "Review the leadership briefing, the signals that matter most, and the next decisions for this cycle.",
+                          },
+                          {
+                            step: "02",
+                            title: "Check follow-through",
+                            detail: "Confirm ownership, due dates, and anything overdue before the next partner discussion.",
+                          },
+                          {
+                            step: "03",
+                            title: "Use the brief controls",
+                            detail: "Send the partner brief or open the PDF from the report packet once the cycle reads clearly.",
+                          },
+                        ].map((item) => (
+                          <li key={item.step} className="flex gap-3">
+                            <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-[11px] font-semibold text-neutral-700">
+                              {item.step}
+                            </span>
+                            <div>
+                              <p className="text-sm font-medium text-neutral-900">{item.title}</p>
+                              <p className="mt-1 text-xs leading-5 text-neutral-700">{item.detail}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
                   {usageMessage && <p className="mt-1 text-xs text-neutral-700">{usageMessage}</p>}
                   {wasTruncatedForPlan && (
                     <div className="mt-3 rounded border border-amber-200 bg-amber-50 px-4 py-3">
@@ -802,14 +929,17 @@ const Upload = () => {
                   <div className="mt-4 rounded-md border border-neutral-200 bg-white px-4 py-4">
                     <p className="text-xs font-semibold uppercase tracking-wide text-neutral-700">What to do next</p>
                     <p className="mt-1 text-xs text-neutral-700">
-                      Open the report first to review recurring client issues, then move into actions and the governance brief.
+                      Open the report packet first. It is the fastest way into signals, assigned follow-through, partner-ready decisions, and the brief controls for this cycle.
                     </p>
                     <div className="mt-2 flex flex-wrap gap-2">
                       <Link to={reportId ? `/dashboard/reports/${reportId}` : "/dashboard/reports"} className="gov-cta-primary">
-                        Open latest report
+                        Open current report
+                      </Link>
+                      <Link to="/dashboard" className="gov-cta-secondary">
+                        Open workspace home
                       </Link>
                       <Link to="/dashboard/actions" className="gov-cta-secondary">
-                        Open Actions workspace
+                        Open follow-through
                       </Link>
                       <button type="button" className="gov-btn-quiet px-2.5 py-1.5 text-xs" onClick={startAnotherUpload}>
                         Upload another file
@@ -823,7 +953,7 @@ const Upload = () => {
 
             <aside className="space-y-3">
               <GovSectionCard accent="watch" padding="sm" className="space-y-3">
-                <h2 className="text-sm font-semibold text-neutral-900">Upload reference</h2>
+                <h2 className="text-sm font-semibold text-neutral-900">Cycle reference</h2>
                 <p className="text-xs text-neutral-700">Use the template if you need a clean starter format, then confirm current plan limits before upload.</p>
                 <button type="button" onClick={downloadTemplate} className="gov-cta-secondary w-full">
                   Download CSV Template
@@ -855,11 +985,11 @@ const Upload = () => {
                 </ul>
               </CollapsibleCard>
 
-              <CollapsibleCard title="Recent uploads" summary="Quick access to the latest report cycles.">
+              <CollapsibleCard title="Recent cycles" summary="Open the latest report packets if you need to continue an earlier cycle first.">
                 <div className="space-y-2">
                   {recentReports.length === 0 ? (
                     <p className="rounded border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-700">
-                      No recent uploads yet. Your first completed upload will appear here.
+                      No recent cycles yet. Your first completed upload will appear here.
                     </p>
                   ) : (
                     recentReports.map((report) => (

@@ -1,5 +1,3 @@
-import type { Config } from "tailwindcss";
-
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -16,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Manrope", "system-ui", "sans-serif"],
+        serif: ["Newsreader", "Georgia", "serif"],
       },
       // ── Spacing tokens ────────────────────────────────────────────────────
       // These mirror the CSS custom properties defined in index.css :root.

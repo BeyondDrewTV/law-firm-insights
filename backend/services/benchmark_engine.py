@@ -151,10 +151,18 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("kept him informed", 1.0),
             ("kept her informed", 1.0),
             ("he kept us informed", 1.5),
+            ("kept in close contact", 1.5),
+            ("stayed in contact", 1.0),
+            ("stayed in contact with me", 1.0),
+            ("quick to contact me", 1.0),
             ("stayed informed", 1.0),
             ("gave us his time", 1.5),
             ("give you his time for free", 1.5),
             ("give his time for free", 1.5),
+            ("returned my calls in a timely fashion", 1.5),
+            ("returned your calls", 1.0),
+            ("returned your call", 1.0),
+            ("very good at returning your call", 1.0),
         ],
         "negative": [
             # --- original ---
@@ -193,6 +201,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("messages not returned", 1.5),
             ("never answered my calls", 1.5),
             ("never heard back", 1.5),
+            ("never heard from them for over a year", 1.5),
             ("no follow-up", 1.0),
             ("no return call", 1.5),
             ("no updates for weeks", 1.5),
@@ -251,10 +260,28 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("never had meetings with me", 1.5),
             ("told to do it yourself", 1.5),
             ("tell me to do it yourself", 1.5),
-            ("judged for having", 1.5),
-            ("without being judged", 1.5),
             ("no one ever returns a call", 1.5),
             ("no one returns calls", 1.5),
+            ("horrible with communication", 1.5),
+            ("never spoke with my lawyer", 1.5),
+            ("never spoke with the lawyer", 1.5),
+            ("didn't contact the client", 1.5),
+            ("did not contact the client", 1.5),
+            ("can't ever talk to an actual lawyer", 1.5),
+            ("cannot ever talk to an actual lawyer", 1.5),
+            ("will not answer simple questions", 1.5),
+            ("barely had communication", 1.5),
+            ("barely had communication with the lawyer", 1.5),
+            ("multiple calls were canceled", 1.5),
+            ("multiple calls were canceled or no-showed", 1.5),
+            ("i was the only one making the main calls", 1.5),
+            ("whoever answered the phone was not pleasant or helpful", 1.5),
+            ("could not get a word in", 1.5),
+            ("couldn't get a word in", 1.5),
+            ("tell you to do it yourself", 1.5),
+            ("questions went unanswered", 1.5),
+            ("more communication from my lawyer", 1.0),
+            ("no response to my email", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -276,7 +303,15 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             # --- real-reviews wave A ---
             ("hung up on me", 2.0),
             ("stopped returning my calls", 2.0),
-            ("never heard from them for over a year", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("barely gave me any opportunity to speak", 2.0),
+            ("never even really had meetings", 2.0),
+            ("can't ever talk to an actual lawyer", 2.0),
+            ("cannot ever talk to an actual lawyer", 2.0),
+            ("multiple calls were canceled", 2.0),
+            ("multiple calls were canceled or no-showed", 2.0),
+            ("tell you to do it yourself", 2.0),
+            ("horrible with communication", 2.0),
         ],
     },
 
@@ -326,10 +361,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("walked me through everything", 1.5),
             ("well explained", 1.0),
             # --- phrase expansion: real-review evidence ---
-            ("broke it down", 1.5),
             ("step by step", 1.0),
-            ("no confusion", 1.0),
-            ("no stress", 1.0),
+            # NOTE: "broke it down" / "no confusion" / "no stress" were too
+            # generic and produced clarity extras without explicit explanatory context.
             # --- phrase expansion: missed clarity phrases ---
             ("explained everything clearly", 1.5),
             ("broke things down simply", 1.5),
@@ -346,6 +380,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("helped him understand his options", 1.0),
             ("provided the necessary information with clarity", 1.5),
             ("clear communicator", 1.5),
+            ("were fair, clear, concise", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -394,6 +429,14 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             # --- calibration: gap-report wave 2 (final_summary.json) ---
             ("cut me off and start rambling", 2.0),
             ("would want more clarity", 1.0),
+            ("wasn't fully explained", 1.5),
+            ("was not fully explained", 1.5),
+            ("had no idea what was going on", 2.0),
+            ("communication barriers made it impossible", 1.5),
+            ("barely explained things", 1.5),
+            ("wasn't providing a lot of information", 1.2),
+            ("could have been more clearly explained", 1.2),
+            ("told me that i was not going to be able to receive disability", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -406,6 +449,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("kept completely in the dark", 2.0),
             ("never told me anything", 2.0),
             ("stonewalled me", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("cut me off and start rambling", 2.0),
+            ("communication barriers made it impossible", 2.0),
         ],
     },
 
@@ -426,7 +472,10 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("made me feel comfortable", 1.0),
             ("supportive", 1.0),
             ("truly understood", 1.0),
-            ("understanding", 1.0),
+            # NOTE: bare "understanding" removed -- fires on "deep understanding of
+            # the case" and similar expertise contexts (confirmed FP in chunks 4+5).
+            # Compound form "kind and understanding" above covers the empathy sense.
+            # ("understanding", 1.0),
             # --- new: safe_import_now [W1] ---
             ("acknowledged my feelings", 1.0),
             ("always there for me", 1.5),
@@ -453,6 +502,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("truly caring", 1.5),
             ("very kind", 1.0),
             ("very patient", 1.0),
+            ("looking out for my best interest", 1.5),
             ("warm and compassionate", 1.5),
             # --- phrase expansion: real-review evidence ---
             ("reassured me", 1.5),
@@ -488,6 +538,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("best interests in mind", 1.5),
             ("i truly felt that he cared and wanted to help", 1.5),
             ("reassured me when it came to anxiety", 1.5),
+            ("when i needed help the most", 1.5),
+            ("helpful for me in navigating the process", 1.5),
             # --- real-reviews wave A ---
             ("saved my life", 2.0),
             ("never gave up on me", 2.0),
@@ -517,7 +569,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("dismissed", 1.0),
             ("dismissive", 1.5),
             ("felt like a number", 1.5),
-            ("impersonal", 1.0),
+            # NOTE: bare "impersonal" removed — it overfired on continuity /
+            # staffing-change reviews that AI routes to expectation-setting instead.
             ("no empathy", 1.5),
             ("not compassionate", 1.0),
             ("uncaring", 1.5),
@@ -544,11 +597,13 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("concerns weren't fully addressed", 1.0),
             # --- calibration: phrase expansion ---
             ("no compassion", 1.5),
+            ("zero compassion", 1.5),
             ("did not care about my situation", 1.5),
             ("made me feel ignored", 1.5),
             ("treated me like a number", 1.5),
             ("emotionally dismissive", 1.5),
             ("cold attitude", 1.2),
+            ("rude and has zero compassion", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -567,13 +622,19 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             # --- calibration: gap-report wave 2 (final_summary.json) ---
             ("won't help unless it's been figured out already", 2.0),
             # --- real-reviews wave A ---
-            ("zero compassion", 2.0),
             ("no compassion either", 2.0),
             ("sensitivity training", 2.0),
             ("no idea how to deal with a client", 2.0),
-            ("complete attitude every call", 2.0),
-            ("rude and has zero compassion", 2.0),
             ("left a lot to be desired in terms of personal attention", 1.5),
+            ("wasn't listened to", 1.5),
+            ("was not listened to", 1.5),
+            ("spoken over", 1.5),
+            ("didn't have my back", 1.5),
+            ("did not have my back", 1.5),
+            # --- calibration: severity-tier follow-up ---
+            ("not caring at all", 2.0),
+            ("are not caring at all", 2.0),
+            ("failed to provide support", 2.0),
         ],
     },
 
@@ -587,7 +648,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("ethical", 1.0),
             ("honest", 0.5),           # [FP-GUARD] single-word -- weight reduced to cut false positives
             ("integrity", 1.0),
-            ("polite", 1.0),
+            # NOTE: bare "polite" belongs with office-staff interactions in the
+            # benchmark data and created repeated extra_theme trust hits.
             ("professional", 0.5),     # [FP-GUARD] single-word -- fires in unrelated contexts
             ("respectful", 1.0),
             ("straightforward", 0.5),  # [FP-GUARD] single-word -- "straightforward matter" etc.
@@ -621,6 +683,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             # --- calibration: sample2 ---
             ("very organized with exhibits", 1.5),
             ("prepared for trial", 1.0),
+            ("confident and prepared to win at trial", 1.5),
             # --- calibration: gap-report wave (real-review evidence) ---
             ("dedicated and very thorough", 2.0),
             ("competent attorney", 2.0),
@@ -637,27 +700,30 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("never gave up on", 1.5),
             ("definition of what a defense attorney should be", 2.0),
             ("smart, strategic", 1.0),
-            # --- calibration: wave3 live-run gaps ---
-            ("kindness", 1.0),
+            # --- calibration: wave3 live-run gaps (precision-guarded) ---
+            # NOTE: "kindness" kept at reduced weight — fires correctly on
+            # "professionalism and kindness" compounds but avoids standalone FPs.
+            ("kindness", 0.3),
             ("professionalism and kindness", 1.5),
-            ("wonderful to work with", 1.5),
-            ("pleasure to work with", 1.5),
-            ("lovely experience", 1.5),
-            ("truly a lovely experience", 1.5),
-            ("great experience working with", 1.5),
-            ("highly recommend", 1.5),
-            ("would highly recommend", 1.5),
-            ("i highly recommend", 1.5),
-            ("strongly recommend", 1.5),
-            ("i would recommend", 1.0),
+            # NOTE: "wonderful/pleasure to work with" removed — too generic;
+            # AI does not tag professionalism_trust for these in isolation.
+            # NOTE: generic "lovely/great experience" phrasing is too broad for
+            # live professionalism scoring and was producing extras in positive praise.
+            # NOTE: bare "highly recommend" / "i would recommend" / "strongly recommend"
+            # removed — recommendation language is not a trust/professionalism signal.
+            # Only the attorney-specific form is retained.
+            ("i highly recommend him", 1.5),
+            ("i highly recommend her", 1.5),
+            ("i highly recommend this attorney", 1.5),
+            ("i highly recommend this firm", 1.5),
+            # NOTE: "very knowledgeable", "very thorough" removed — fires in too many
+            # non-professionalism contexts (estate planning, case expertise, etc).
+            # More specific compound forms kept.
             ("knowledgeable attorney", 1.5),
-            ("very knowledgeable", 1.5),
-            ("extremely knowledgeable", 1.5),
+            ("knowledgeable and professional", 1.5),
             ("thorough attorney", 1.5),
-            ("very thorough", 1.5),
-            ("extremely thorough", 1.5),
+            ("thorough and professional", 1.5),
             ("dedicated attorney", 1.5),
-            ("very dedicated", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -697,6 +763,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("unethical behavior", 2.0),
             # --- calibration: gap-report wave 2 (final_summary.json) ---
             ("never felt confident in the representation", 1.5),
+            ("too old for them to represent me", 2.0),
+            ("stopped working when they got paid", 2.0),
+            ("they're not even licensed in my state", 2.0),
         ],
         "severe_negative": [
             # --- original ---
@@ -737,6 +806,11 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("sent me to another courtroom", 1.5),
             ("made my situation significantly worse", 2.0),
             ("left without legal counsel", 2.0),
+            ("do not trust this firm", 2.0),
+            ("do not trust this law firm", 2.0),
+            ("arresting officer was his cousin", 2.0),
+            ("couldn't anymore bc the arresting officer was his cousin", 2.0),
+            ("was not trying to get me to the best outcome", 2.0),
             # --- real-reviews wave A ---
             ("inexperienced son", 2.0),
             ("sent his inexperienced son", 2.0),
@@ -746,6 +820,10 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("deal with your kind all the time", 2.0),
             ("absolute nightmare to deal with", 2.0),
             ("charged me the full amount and left me without legal counsel", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("too old for them to represent me", 2.0),
+            ("stopped working when they got paid", 2.0),
+            ("they're not even licensed in my state", 2.0),
         ],
     },
 
@@ -791,6 +869,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("came up with a plan", 1.0),
             ("end result exceeded my expectations", 1.5),
             ("exceeded our expectations", 1.5),
+            ("everything was resolved just like they said it would be", 1.5),
         ],
         "negative": [
             # --- original ---
@@ -829,6 +908,18 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("never gave a timeframe", 1.5),
             ("disconnect between early expectations and reality", 2.0),
             ("expected more strategic guidance", 1.0),
+            ("contact changed multiple times", 1.5),
+            ("i had to do the legwork", 1.5),
+            ("had to do the legwork", 1.5),
+            ("sent me to another courtroom", 1.5),
+            ("no attorney ever really reviewed my case", 1.5),
+            ("i had to remind them", 1.2),
+            ("our case was forgotten about", 1.5),
+            ("case was forgotten about", 1.5),
+            ("i was stuck without legal council", 1.5),
+            ("i was stuck without legal counsel", 1.5),
+            ("attorney on our case is even still employed there", 1.5),
+            ("do all the legwork of my disability appeal", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -841,6 +932,12 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("made promises they couldn't keep", 2.0),
             ("promised a specific outcome", 2.0),
             ("promised success", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("sent me to another courtroom", 2.0),
+            ("no attorney ever really reviewed my case", 2.0),
+            ("sent his inexperienced son to represent me", 2.0),
+            ("sent his son to represent me", 2.0),
+            ("he completely let me down and sent his inexperienced son to represent me", 2.0),
         ],
     },
 
@@ -936,6 +1033,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("did not disclose", 1.5),
             ("inflated charges", 1.5),
             ("charged the full amount", 1.5),
+            ("charged me the full amount", 1.5),
             # --- calibration: phrase expansion ---
             ("consultation was not free", 1.5),
             ("free consultation not free", 1.5),
@@ -949,6 +1047,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("slight billing surprise", 1.0),
             ("billing was on the higher end", 1.0),
             ("dealing with the billing department is a nightmare", 2.0),
+            ("appeared inflated", 1.5),
+            ("don't have a way to estimate the typical baseline", 1.5),
+            ("maximum they would take out of my settlement", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -1047,6 +1148,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("failed to provide value", 1.5),
             ("for the money i paid i expected more", 1.5),
             ("i felt like i could have gotten the same result for less money", 1.5),
+            ("they just want money from you", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -1062,6 +1164,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("predatory pricing", 2.0),
             ("what a scam", 2.0),
             ("total scam", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("failed to provide value", 2.0),
         ],
     },
 
@@ -1082,7 +1186,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("no unnecessary delays", 1.0),
             ("quick resolution", 1.5),
             ("resolved quickly", 1.5),
-            ("timely", 1.0),
+            # NOTE: bare "timely" removed — it overfires inside responsiveness
+            # sentences such as "returned my calls in a timely fashion".
             # --- new: safe_import_now [W1] ---
             ("acted fast", 1.0),
             ("case moved forward quickly", 1.5),
@@ -1100,6 +1205,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("handled in a timely manner", 1.5),
             ("matter was resolved quickly", 1.5),
             ("met all deadlines", 1.5),
+            ("met deadlines", 1.5),
             ("moved the case forward", 1.0),
             ("no delays", 1.0),
             ("on schedule", 1.0),
@@ -1108,6 +1214,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("resolved in a timely fashion", 1.5),
             ("stayed on schedule", 1.0),
             ("work was done promptly", 1.0),
+            ("made sure your case is ready on time", 1.5),
+            ("made sure everything was done correctly and on time", 1.5),
+            ("answered them within a day", 1.0),
             # --- calibration: sample2 ---
             ("always knew when the next court date was", 1.5),
             ("helped me get a protective order quickly", 1.5),
@@ -1188,6 +1297,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("over two years", 1.5),
             ("two and a half years", 1.5),
             ("2 and a half years", 1.5),
+            ("without achieving any meaningful progress", 1.5),
         ],
         "severe_negative": [
             # --- original ---
@@ -1202,13 +1312,13 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("irreparable harm from delay", 2.0),
             ("lost case due to missed deadline", 2.0),
             ("missed statute of limitations", 2.0),
-            # --- calibration: gap-report wave 2 (final_summary.json) ---
-            ("without achieving any meaningful progress", 2.0),
             ("showed up late", 2.0),
             ("didn't even know he had to come", 2.0),
             ("taken more than 2 years", 2.0),
             ("taken more then 2 years", 2.0),
             ("tanked my case", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("2 and a half years", 2.0),
         ],
     },
 
@@ -1228,6 +1338,9 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("staff was helpful", 1.0),
             ("support staff", 1.0),
             ("the whole team", 1.0),
+            ("very polite staff", 1.5),
+            ("polite staff", 1.5),
+            ("people picking up the phone are very nice", 1.0),
             # --- new: safe_import_now [W1] ---
             ("admin staff was excellent", 1.5),
             ("assistant was knowledgeable", 1.0),
@@ -1299,12 +1412,14 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("spoke to staff and waited for callbacks", 1.2),
             # --- calibration: gap-report wave 2 (final_summary.json) ---
             ("not pleasant or helpful", 1.5),
+            ("always got told that our message was left for our lawyer", 1.5),
+            ("paralegals are not efficient", 1.5),
+            ("whenever i call i get attitude", 1.5),
             # --- real-reviews wave A ---
             ("complete attitude", 1.5),
             ("complete attitude every call", 2.0),
             ("absolutely no compassion", 1.5),
             ("paralegal is assigned to your case", 1.0),
-            ("you can't ever talk to an actual lawyer", 1.5),
             ("completely inept at their job", 1.5),
             ("not friendly at all", 1.5),
             ("waiting room felt outdated and unprofessional", 1.0),
@@ -1405,7 +1520,8 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("results were acceptable", 1.0),
             ("the final result was satisfactory", 1.0),
             ("turned a terrifying situation into a manageable one", 2.0),
-            ("would highly recommend", 1.5),
+            # NOTE: "would highly recommend" removed -- recommendation language
+            # is not an outcome signal; confirmed extra_theme FP x2 in chunk 5.
             # --- calibration: wave3 live-run gaps ---
             ("very happy with how the matter turned out", 1.5),
             ("happy with how everything was handled", 1.5),
@@ -1418,6 +1534,10 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("helped me get approved", 1.5),
             ("got approved", 1.5),
             ("approved for", 1.0),
+            ("dismissed the battery charge", 1.8),
+            ("finally got justice", 1.8),
+            ("very happy with the final outcome", 1.8),
+            ("got more than expected out of it", 1.8),
         ],
         "negative": [
             # --- original ---
@@ -1479,6 +1599,7 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("never really fought", 1.5),
             ("never really did anything", 1.5),
             ("never fought for me", 1.5),
+            ("still lost my license", 2.0),
         ],
         "severe_negative": [
             # --- original ---
@@ -1497,6 +1618,12 @@ THEME_PHRASES: Dict[str, Dict[str, List[Tuple[str, float]]]] = {
             ("lost due to lawyer error", 2.0),
             ("lost due to negligence", 2.0),
             ("ruined any chance of winning", 2.0),
+            # --- calibration: severity-tier follow-up ---
+            ("never got proper legal help from him", 2.0),
+            ("never really fought", 2.0),
+            ("never really did anything", 2.0),
+            ("never fought for me", 2.0),
+            ("still lost my license", 2.0),
         ],
     },
 }
@@ -1511,6 +1638,12 @@ NEGATION_TOKENS = {
     "isn't", "is not", "aren't", "are not", "hardly", "barely", "scarcely",
 }
 NEGATION_WINDOW = 6
+CLAUSE_BOUNDARY_TOKENS = {
+    "but", "however", "although", "though", "except", "despite",
+    "if", "when", "while", "unless", "until",
+}
+CLAUSE_BOUNDARY_CHARS = {".", "!", "?", ";", ",", "\n", "\r", ":", "(", ")"}
+INLINE_BOUNDARY_MARKERS = (" and ", " but ", " or ", " however ", " although ", " though ", " while ")
 
 # ---------------------------------------------------------------------------
 # CONTRAST GUARDS
@@ -1531,6 +1664,42 @@ RATING_POLARITY_MAP = {
     2: "negative",
     1: "negative",
 }
+
+POSITIVE_OUTCOME_HINTS = (
+    "got it done", "dismissed", "approved", "win my case", "won my case",
+    "favorable", "successful", "resolved", "great result", "great outcome",
+)
+
+SEVERITY_RECOVERY_HINTS = (
+    "corrected quickly", "quickly corrected", "eventually resolved",
+    "resolved satisfactorily", "made it right", "made things right",
+    "ultimately resolved", "ended well", "worked out in the end",
+)
+
+TIMELINESS_LONG_DELAY_HINTS = (
+    "still waiting after", "still waiting for resolution", "still waiting",
+    "after 2 years", "after two years", "2 years later", "over two years",
+    "two and a half years", "2 and a half years", "nearly five months",
+    "five months", "5 months",
+)
+
+TIMELINESS_CASE_HARM_HINTS = (
+    "plea deal", "without achieving any meaningful progress", "no progress",
+    "nothing was completed", "nothing had been worked on", "case went nowhere",
+    "case stalled", "missed a few demands", "dropped the ball",
+)
+
+BILLING_SURPRISE_HINTS = (
+    "never knew", "didn't know", "did not know", "wasn't free", "was not free",
+    "charged me $", "charged me ", "consultation", "without notice",
+    "without telling", "did not disclose", "fees were never disclosed",
+)
+
+FEE_EXPLOITATIVE_HINTS = (
+    "only for profit", "only in it for profit", "in it only for profit",
+    "wouldn't help because", "would not help because", "quick and big",
+    "big and quick", "would collect", "collecting", "profit",
+)
 
 # ---------------------------------------------------------------------------
 # OPENROUTER CONFIG
@@ -1595,6 +1764,100 @@ def _check_negation(tokens: List[str], phrase_start_idx: int) -> bool:
     return False
 
 
+def _get_bounded_context_tokens(
+    tokens: List[str],
+    phrase_start_idx: int,
+    phrase_token_len: int,
+    before_only: bool = False,
+) -> List[str]:
+    """Return nearby tokens without crossing contrast / subordinate-clause boundaries."""
+    left_context: List[str] = []
+    idx = phrase_start_idx - 1
+    while idx >= 0 and len(left_context) < NEGATION_WINDOW:
+        tok = tokens[idx]
+        if tok in CLAUSE_BOUNDARY_TOKENS:
+            break
+        left_context.append(tok)
+        idx -= 1
+
+    if before_only:
+        return list(reversed(left_context))
+
+    right_context: List[str] = []
+    idx = phrase_start_idx + phrase_token_len
+    while idx < len(tokens) and len(right_context) < NEGATION_WINDOW:
+        tok = tokens[idx]
+        if tok in CLAUSE_BOUNDARY_TOKENS:
+            break
+        right_context.append(tok)
+        idx += 1
+
+    return list(reversed(left_context)) + right_context
+
+
+def _get_bounded_clause_text(
+    text_lower: str,
+    phrase_char_idx: int,
+    phrase_len: int,
+    before_only: bool = False,
+) -> str:
+    """Return nearby raw text without crossing punctuation clause boundaries."""
+    left = phrase_char_idx - 1
+    while left >= 0:
+        if text_lower[left] in CLAUSE_BOUNDARY_CHARS:
+            break
+        left -= 1
+    left_text = text_lower[left + 1:phrase_char_idx]
+    for marker in INLINE_BOUNDARY_MARKERS:
+        marker_idx = left_text.rfind(marker)
+        if marker_idx != -1:
+            left_text = left_text[marker_idx + len(marker):]
+            break
+
+    if before_only:
+        return left_text
+
+    right = phrase_char_idx + phrase_len
+    while right < len(text_lower):
+        if text_lower[right] in CLAUSE_BOUNDARY_CHARS:
+            break
+        right += 1
+    right_text = text_lower[phrase_char_idx + phrase_len:right]
+    for marker in INLINE_BOUNDARY_MARKERS:
+        marker_idx = right_text.find(marker)
+        if marker_idx != -1:
+            right_text = right_text[:marker_idx]
+            break
+    return f"{left_text} {right_text}".strip()
+
+
+def _has_proximal_negation(
+    text_lower: str,
+    tokens: List[str],
+    phrase_start_idx: int,
+    phrase_char_idx: int,
+    phrase: str,
+    before_only: bool = False,
+) -> bool:
+    """Return True when local clause-bounded context contains a negation token."""
+    raw_window = _get_bounded_clause_text(
+        text_lower,
+        phrase_char_idx,
+        len(phrase),
+        before_only=before_only,
+    )
+    raw_tokens = _tokenize(raw_window)
+    if raw_tokens:
+        if any(tok in NEGATION_TOKENS for tok in raw_tokens):
+            return True
+        raw_window_text = " ".join(raw_tokens)
+        for neg in NEGATION_TOKENS:
+            if " " in neg and neg in raw_window_text:
+                return True
+        return False
+    return False
+
+
 def _check_contrast(tokens: List[str], phrase_start_idx: int) -> bool:
     """Return True if a contrast token appears within CONTRAST_WINDOW tokens before phrase_start_idx."""
     window_start = max(0, phrase_start_idx - CONTRAST_WINDOW)
@@ -1629,6 +1892,49 @@ def _phrase_is_negation_anchored(phrase: str) -> bool:
     if not phrase_tokens:
         return False
     return phrase_tokens[0] in NEGATION_TOKENS
+
+
+def _text_has_any(text_lower: str, candidates: Tuple[str, ...]) -> bool:
+    return any(candidate in text_lower for candidate in candidates)
+
+
+def _polarity_rank(polarity: str) -> int:
+    return {
+        "positive": 0,
+        "negative": 1,
+        "severe_negative": 2,
+    }.get(polarity, -1)
+
+
+def _maybe_escalate_negative_severity(
+    theme_id: str,
+    actual_polarity: str,
+    phrase: str,
+    text_lower: str,
+) -> str:
+    """Promote selected negative hits to severe_negative when strong context is present."""
+    if actual_polarity != "negative":
+        return actual_polarity
+    if _text_has_any(text_lower, SEVERITY_RECOVERY_HINTS):
+        return actual_polarity
+
+    if theme_id == "timeliness_progress":
+        long_delay = _text_has_any(text_lower, TIMELINESS_LONG_DELAY_HINTS)
+        case_harm = _text_has_any(text_lower, TIMELINESS_CASE_HARM_HINTS)
+        if phrase in ("2 and a half years", "two and a half years"):
+            return "severe_negative"
+        if phrase in ("delayed", "still waiting", "still waiting after", "still waiting for resolution") and (long_delay or case_harm):
+            return "severe_negative"
+
+    if theme_id == "billing_transparency":
+        if phrase == "per hour rate" and _text_has_any(text_lower, BILLING_SURPRISE_HINTS):
+            return "severe_negative"
+
+    if theme_id == "fee_value":
+        if phrase in ("worth the money", "not worth the money", "failed to provide value", "for the money i paid i expected more") and _text_has_any(text_lower, FEE_EXPLOITATIVE_HINTS):
+            return "severe_negative"
+
+    return actual_polarity
 
 
 def score_review_deterministic(
@@ -1677,7 +1983,14 @@ def score_review_deterministic(
                 pre_text = text_lower[:idx]
                 phrase_token_start = len(pre_text.split())
 
-                negation_applied = _check_negation(tokens, phrase_token_start)
+                negation_applied = _has_proximal_negation(
+                    text_lower,
+                    tokens,
+                    phrase_token_start,
+                    idx,
+                    phrase,
+                    before_only=(phrase_family in ("negative", "severe_negative")),
+                )
                 contrast_applied = _check_contrast(tokens, phrase_token_start)
 
                 base_polarity = phrase_family
@@ -1695,6 +2008,17 @@ def score_review_deterministic(
                 else:
                     actual_polarity = phrase_family
 
+                actual_polarity = _maybe_escalate_negative_severity(
+                    theme_id,
+                    actual_polarity,
+                    phrase,
+                    text_lower,
+                )
+
+                effective_weight = base_weight
+                if actual_polarity == "severe_negative":
+                    effective_weight = max(base_weight, 1.8)
+
                 multiplier = 1.0
                 if contrast_applied and actual_polarity == "positive":
                     multiplier = 0.6
@@ -1704,7 +2028,7 @@ def score_review_deterministic(
                 elif actual_polarity == "positive" and rating_prior == "positive":
                     multiplier *= 1.2
 
-                final_impact = round(base_weight * multiplier, 3)
+                final_impact = round(effective_weight * multiplier, 3)
 
                 if actual_polarity == "severe_negative":
                     confidence = "high"
@@ -1729,7 +2053,7 @@ def score_review_deterministic(
                     "sentence_snippet": snippet,
                     "negation_applied": negation_applied,
                     "contrast_applied": contrast_applied,
-                    "base_weight": base_weight,
+                    "base_weight": effective_weight,
                     "multiplier": round(multiplier, 3),
                     "final_impact": final_impact,
                     "confidence": confidence,
@@ -1746,6 +2070,17 @@ def score_review_deterministic(
                     actual_polarity = phrase_family
                     hit["polarity"] = phrase_family
                     hit["negation_applied"] = False
+                elif (
+                    theme_id == "billing_transparency"
+                    and phrase == "per hour rate"
+                    and _text_has_any(text_lower, BILLING_SURPRISE_HINTS)
+                ):
+                    actual_polarity = "severe_negative"
+                    hit["polarity"] = "severe_negative"
+                    hit["negation_applied"] = False
+                    hit["base_weight"] = max(hit["base_weight"], 1.8)
+                    hit["final_impact"] = round(hit["base_weight"] * hit["multiplier"], 3)
+                    hit["confidence"] = "high"
 
                 # --- calibration: sample2 context guards ---
                 # GUARD 0a: "not guilty" negation-exempt -- phrase is a compound positive
@@ -1754,6 +2089,15 @@ def score_review_deterministic(
                     phrase == "not guilty"
                     and theme_id == "outcome_satisfaction"
                     and negation_applied
+                ):
+                    actual_polarity = "positive"
+                    hit["polarity"] = "positive"
+                    hit["negation_applied"] = False
+                elif (
+                    theme_id == "communication_responsiveness"
+                    and phrase in ("returned my call", "returned my calls", "returned my calls in a timely fashion")
+                    and "if not available" in text_lower
+                    and actual_polarity == "negative"
                 ):
                     actual_polarity = "positive"
                     hit["polarity"] = "positive"
@@ -1800,6 +2144,42 @@ def score_review_deterministic(
                 ):
                     continue  # suppress: "slow" here signals responsiveness or clarity, not timeliness
 
+                # GUARD 1c: clause-comparison + staffing context routing.
+                # "more professional" inside a negative comparison is not a live
+                # professionalism positive hit. Likewise bare "rude" in staff
+                # reviews belongs with office staff unless the attorney is explicit.
+                elif (
+                    phrase == "professional"
+                    and theme_id == "professionalism_trust"
+                    and actual_polarity == "positive"
+                    and rating <= 2
+                    and "more professional" in text_lower
+                ):
+                    continue
+                elif (
+                    phrase == "rude"
+                    and theme_id == "professionalism_trust"
+                    and any(kw in text_lower for kw in (
+                        "staff", "office", "receptionist", "paralegal", "assistant",
+                    ))
+                    and "attorney was rude" not in text_lower
+                    and "lawyer was rude" not in text_lower
+                ):
+                    theme_id = "office_staff_experience"
+                    hit["theme"] = "office_staff_experience"
+
+                # GUARD 1d: positive-leaning long-duration timing statements can
+                # appear in successful legal matters; do not force a negative theme
+                # when the surrounding review is positive and the result cues are strong.
+                elif (
+                    phrase in ("it took 12 months", "took 12 months", "took over a year", "took a long time")
+                    and theme_id == "timeliness_progress"
+                    and actual_polarity == "negative"
+                    and rating >= 4
+                    and _text_has_any(text_lower, POSITIVE_OUTCOME_HINTS)
+                ):
+                    continue
+
                 # GUARD 2: "expensive" praised in cost-warning context -> suppress fee_value negative hit
                 elif (
                     phrase == "expensive"
@@ -1821,10 +2201,93 @@ def score_review_deterministic(
                 ):
                     theme_id = "expectation_setting"
                     hit["theme"] = "expectation_setting"
+                elif (
+                    phrase == "clearly explained"
+                    and theme_id == "communication_clarity"
+                    and _text_has_any(text_lower, (
+                        "more clearly explained",
+                        "could have been more clearly explained",
+                        "should have been more clearly explained",
+                    ))
+                ):
+                    continue
+                elif (
+                    phrase == "never heard from them"
+                    and theme_id == "timeliness_progress"
+                    and _text_has_any(text_lower, (
+                        "contacted them", "contact the office", "tried and tried to contact",
+                        "message was left", "returns calls", "reply", "replied",
+                    ))
+                ):
+                    continue
+                elif (
+                    phrase in ("over a year", "over two years", "after 2 years", "after two years", "2 years later")
+                    and theme_id == "timeliness_progress"
+                    and _text_has_any(text_lower, (
+                        "contacted them", "contact the office", "tried and tried to contact",
+                        "message was left", "returns calls", "reply", "replied",
+                        "never heard from them",
+                    ))
+                ):
+                    continue
+                elif (
+                    phrase == "forgotten about"
+                    and theme_id == "timeliness_progress"
+                    and _text_has_any(text_lower, ("case was forgotten about", "our case was forgotten about"))
+                ):
+                    continue
+                elif (
+                    phrase == "everything was resolved just like they said it would be"
+                    and theme_id == "expectation_setting"
+                    and actual_polarity == "positive"
+                    and rating >= 4
+                    and _text_has_any(text_lower, ("resolved", "recommend", "worth it"))
+                ):
+                    continue
+                elif (
+                    phrase == "i had to remind them"
+                    and theme_id == "expectation_setting"
+                    and _text_has_any(text_lower, ("paralegal", "paralegals", "demands"))
+                ):
+                    continue
+                elif (
+                    phrase in ("wasn't fully explained", "was not fully explained")
+                    and theme_id == "communication_clarity"
+                    and _text_has_any(text_lower, (
+                        "cost me over $", "cost me over", "plea deal", "owed money",
+                        "still owed money", "settled",
+                    ))
+                ):
+                    continue
+                elif (
+                    phrase == "lack of communication"
+                    and theme_id == "communication_clarity"
+                    and _text_has_any(text_lower, (
+                        "responses", "questions", "paralegal", "paralegals",
+                        "call", "calls", "slow",
+                    ))
+                ):
+                    continue
+                elif (
+                    phrase == "not pleasant or helpful"
+                    and theme_id == "office_staff_experience"
+                    and _text_has_any(text_lower, (
+                        "phone call to schedule", "answered the phone",
+                        "didn't even get past the phone call",
+                    ))
+                ):
+                    continue
                 # --- end calibration guards ---
 
                 existing = matched_themes.get(theme_id)
-                if existing is None or final_impact > existing["final_impact"]:
+                if (
+                    existing is None
+                    or final_impact > existing["final_impact"]
+                    or (
+                        final_impact == existing["final_impact"]
+                        and _polarity_rank(hit["polarity"]) > _polarity_rank(existing["polarity"])
+                    )
+                ):
                     matched_themes[theme_id] = hit
 
     return {

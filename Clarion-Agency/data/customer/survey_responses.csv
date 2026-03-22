@@ -1,6 +1,0 @@
-response_id,account_id,response_date,survey_type,score,verbatim_response,sentiment
-SURV-001,ACC-001,2026-02-01,nps,8,Really useful tool — I recommend it to other attorneys in my network,positive
-SURV-002,ACC-002,2026-02-01,nps,6,Good product but I need more hand-holding getting started,neutral
-SURV-003,ACC-003,2026-02-01,nps,9,Best purchase decision I made for the firm this quarter,positive
-SURV-004,ACC-004,2026-02-01,nps,5,Still learning it. Withholding judgment until we run a full cycle,neutral
-SURV-005,ACC-005,2026-02-01,nps,8,Solid analytics. Would love better mobile experience,positive
