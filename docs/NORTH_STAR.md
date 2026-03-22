@@ -75,13 +75,10 @@ This order is locked. All output surfaces (on-screen, PDF, email) use it.
 
 ---
 
-## Current Product Phase
+## Current-State Boundary
 
-Release-candidate ready. Operator smoke passed. Landing and authenticated UX aligned around the governance brief as center of gravity.
-
-**Active focus:** narrative continuity tightening, domain cutover to `clarion.co`, holding the live engine stable.
-
-**Not the focus right now:** calibration work (stable, hold), broad feature additions, route architecture changes.
+`NORTH_STAR.md` is identity and design-lane authority, not live phase tracking.
+All implementation phase, current focus, and active-pass truth belongs in `PROJECT_STATE.md`.
 
 ---
 

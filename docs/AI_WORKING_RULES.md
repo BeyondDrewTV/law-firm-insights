@@ -14,6 +14,19 @@ Load only the additional files needed for the active task. Read them fully befor
 
 ---
 
+## Docs System Contract
+
+Roles are stable; content is living.
+
+- `NORTH_STAR.md` = product identity, narrative spine, design lane, canonical brief truth
+- `PROJECT_STATE.md` = live implementation truth and current phase
+- `AI_WORKING_RULES.md` = execution discipline, protected-system handling, verification rules
+- `CHANGELOG_AI.md` = append-only history of completed passes
+
+Protected docs are not frozen docs. If reality changes, update the relevant doc in the same pass that proves the change.
+
+---
+
 ## Pass Discipline
 
 **One goal per pass — not one file per pass.**
@@ -30,6 +43,11 @@ A pass can touch multiple related files when they serve a single coherent outcom
 
 Scope creep means adding *unrelated* changes — not touching multiple files for one clear purpose.
 
+Required pass behavior:
+- Confirm exact file ownership before edits.
+- Keep diffs minimal and scoped to the single pass goal.
+- No opportunistic cleanup, renames, or style churn.
+
 ---
 
 ## Inspect Before Change
@@ -38,6 +56,7 @@ Scope creep means adding *unrelated* changes — not touching multiple files for
 - Label uncertain claims: FACT / INFERENCE / UNKNOWN.
 - Do not write code that references components, routes, or data shapes without confirming they exist.
 - When a pass spans 5+ files, read them all upfront in one batch before writing anything.
+- Diagnose before risky implementation; do not patch first and investigate later.
 
 ---
 
@@ -48,7 +67,9 @@ Scope creep means adding *unrelated* changes — not touching multiple files for
 - Never change TypeScript types, API shapes, or Flask route signatures unless directly in scope.
 - Refactor only when the active pass explicitly requires it.
 - **Build verification:** `npm run build` in `frontend/` after every frontend-touching pass. `python -m py_compile` for touched Python files.
+- **Runtime verification:** Required when behavior changes (auth, routing, data fetch, workflow transitions, render paths).
 - Do not invent product states, metrics, or deployment claims.
+- If root cause is not confirmed, stop and report findings instead of shipping speculative fixes.
 
 ---
 
@@ -106,6 +127,11 @@ These docs should evolve when they're stale or wrong — fix it as part of the p
 - `AI_WORKING_RULES.md` (this file) — update when a rule is wrong, a protection level changes, or scope guidance needs adjustment
 - `CHANGELOG_AI.md` — append-only historical log; never rewrite or trim
 
+Doc update policy:
+- Update docs only when a pass materially changes live truth, operating rules, or current priorities.
+- For narrow passes, make narrow doc edits.
+- Do not duplicate the same architecture/current-state narrative across multiple docs.
+
 **Anti-scope-creep guard:** If a request implies broad reimagining while a pass is scoped to something specific — stop, document the out-of-scope items, complete only the scoped work, surface the larger question.
 
 ---
@@ -119,3 +145,20 @@ These docs should evolve when they're stale or wrong — fix it as part of the p
 **Phrase dictionary:** `THEME_PHRASES` in `benchmark_engine.py`. Add/tweak only — never remove existing phrases without explicit instruction.
 
 **Frontend contracts:** TypeScript types and `/api/*` response shapes are not changed without a matching backend change in the same scoped pass.
+
+---
+
+## Tool/Connector Recommendation Lane (Recommendation-Only)
+
+Use this lane only when a pass exposes concrete delivery friction. This lane is not roadmap authority.
+
+Recommendation format (required):
+- Observed friction
+- Suggested tool / connector / workflow improvement
+- Why it helps in this repository specifically
+- Expected payoff
+- Downside / risk
+- Priority: now / later / ignore
+- Approval required before adoption: yes
+
+No recommendation in this lane should be implemented without explicit user approval in a later scoped pass.

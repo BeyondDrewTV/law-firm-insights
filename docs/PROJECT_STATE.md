@@ -11,6 +11,20 @@ _This file reflects current live state. Historical detail lives in `CHANGELOG_AI
 
 ---
 
+## Document Role Boundary (Authoritative)
+- `NORTH_STAR.md` — product identity, narrative spine, design lane, canonical brief truth
+- `PROJECT_STATE.md` — live implementation truth, current phase, active/next pass priorities
+- `AI_WORKING_RULES.md` — pass discipline, verification standards, protected-system handling
+- `CHANGELOG_AI.md` — append-only historical record of completed passes
+
+Update role:
+- Keep section names stable.
+- Update content when current truth changes.
+- Avoid broad rewrites for narrow passes.
+- Keep durable history out of this file; put it in `CHANGELOG_AI.md`.
+
+---
+
 ## Repository Structure
 - `backend/` — Flask monolith, APIs, services, templates, pdf_generator
 - `frontend/src/` — React/TypeScript/Vite SPA (marketing + authenticated workspace)
@@ -61,43 +75,13 @@ Last completed UX pass: `2026-03-21 - Landing Modern-Motion Polish Pass`.
 
 ---
 
-## Repository Structure
-
-```
-law-firm-insights-main/
-├── backend/                     # Flask monolith — API, services, governance engine
-│   ├── app.py                   # Main application (auth boundary — high caution)
-│   ├── services/                # governance_insights.py, benchmark_engine.py, etc.
-│   ├── pdf_generator.py         # Governance brief PDF generation (high caution)
-│   └── templates/               # Jinja2 email templates
-├── frontend/                    # React / TypeScript / Vite SPA
-│   └── src/pages + components
-├── Clarion-Agency/              # AI Agent Office (22+ agents across 5 divisions)
-├── automation/calibration/      # Calibration workflow scripts
-├── data/calibration/            # Calibration inputs, synthetic reviews, run outputs
-├── docs/                        # This doc set
-├── scripts/                     # Local dev convenience scripts (.bat, .ps1)
-├── tools/                       # Maintenance, smoke test, e2e helpers
-└── tools/diagnostics/           # Diagnostic scripts (diag_*.py)
-```
-
-**Verified subsystems:**
-- Feedback ingestion: `backend/app.py` + `frontend/src/pages/Upload.tsx`
-- Governance signal engine: `backend/services/governance_insights.py`
-- Calibration harness: `automation/calibration/` + `backend/services/benchmark_engine.py`
-- Brief/PDF output: `backend/pdf_generator.py` + report PDF routes in `backend/app.py`
-- Action tracking: `frontend/src/pages/ExecutionPage.tsx` + action APIs in `backend/app.py`
-- Marketing/landing: `frontend/src/pages/Index.tsx` + landing components
-
----
-
 ## Active Pass
 
 _None in progress. Last completed: 2026-03-21 - Landing Modern-Motion Polish Pass._
 
 ---
 
-
+## Locked Architecture Truths (Live)
 
 **Calibration engines are separate:**
 - `backend/services/benchmark_engine.py` — used by `/internal/benchmark/batch` (live calibration path, all phrase/guard changes go here)
@@ -162,9 +146,7 @@ When ready to move to `clarion.co`:
 ## Last Completed Pass
 2026-03-21 - Landing Modern-Motion Polish Pass
 
-- Added lightweight IntersectionObserver-based section reveals for the landing only
-- Polished hero entrance pacing so copy and the governance brief preview settle with a calmer stagger
-- Added restrained hover and press polish to public nav, CTA, and landing card surfaces
+Summary only in this file. Full pass detail lives in `CHANGELOG_AI.md`.
 
 ## Active / Next Passes
 1. **Signals page** (`/dashboard/signals`) — audit whether it reads as governance-cycle evidence or detached data list

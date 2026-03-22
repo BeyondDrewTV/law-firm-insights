@@ -1,5 +1,23 @@
 # AI Pass Changelog
 
+## 2026-03-21 - Docs-System Hardening + Codex Operating Contract Pass
+
+### Files Changed
+- `docs/NORTH_STAR.md`
+- `docs/PROJECT_STATE.md`
+- `docs/AI_WORKING_RULES.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Tightened doc-role boundaries so each core doc has one explicit responsibility.
+- Reduced duplication in `PROJECT_STATE.md` by removing repeated repository/subsystem blocks and retaining a single authoritative live-state map.
+- Added an explicit docs-system contract and stricter Codex execution rules in `AI_WORKING_RULES.md` (ownership confirmation, diagnosis-first, runtime verification requirement, and stop/report when cause is unconfirmed).
+- Added a recommendation-only lane format for tool/connector/workflow opportunities with explicit approval required before adoption.
+- Replaced live phase text in `NORTH_STAR.md` with a boundary rule that keeps current-state tracking in `PROJECT_STATE.md`.
+
+### Verification
+- Docs-only pass (no application code changed, no build required)
+
 ## 2026-03-21 - Landing Modern-Motion Polish Pass
 
 ### Files Changed
