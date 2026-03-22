@@ -139,4 +139,4 @@ The frontend dev server proxies `/api/*` requests to the Flask backend automatic
 ## Contact
 
 **Andrew Yomantas** — AI Product & Operations Builder, Loves Park IL
-[LinkedIn](https://linkedin.com/in/andrew-yomantas-94a7383b0) · drewyomantas@gmail.com · [GitHub](https://github.com/BeyondDrewTV)
+[LinkedIn](https://linkedin.com/in/andrew-yomantas-94a7383b0) · drewyomantas@gmail.com · [GitHub](https://github.com/DrewYomantas)
