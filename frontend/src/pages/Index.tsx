@@ -53,7 +53,7 @@ const Index = () => {
   return (
     <div id="top" className="marketing-shell landing-v3-shell min-h-screen bg-[#F6F0E4] text-[#111827]">
       <SiteNav />
-      <main id="main-content" className="pt-16">
+      <main id="main-content" className="landing-main pt-16">
         <LandingHeroSection />
         <LandingTrustSection />
         <LandingWorkflowSection />

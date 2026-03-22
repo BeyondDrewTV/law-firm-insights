@@ -10,10 +10,10 @@ const LandingHeroSection = () => {
   const workspaceLink = !isLoading && isLoggedIn ? "/upload" : "/signup";
 
   return (
-    <section className="overflow-hidden border-b border-[#D7D0C3] bg-[#F6F0E4]">
+    <section className="landing-hero-band overflow-hidden border-b border-[#D7D0C3] bg-[#F6F0E4]">
       <div className="section-container py-20 lg:py-24 xl:py-28">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-14 xl:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] xl:gap-16">
-          <div className="max-w-[39rem]">
+        <div className="landing-hero-layout grid gap-12 lg:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] lg:items-start lg:gap-14 xl:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] xl:gap-16">
+          <div className="landing-hero-copy max-w-[38rem]">
             <p className="landing-kicker landing-reveal reveal--visible">Partner-ready client feedback governance</p>
             <h1 className="landing-display landing-reveal landing-reveal-delay-1 reveal--visible mt-6 max-w-[12ch] text-[3.1rem] leading-[1.03] tracking-[-0.035em] text-[#111827] sm:text-[3.55rem] md:text-[4.15rem] xl:text-[4.45rem]">
               See what clients are telling the firm, what needs attention, and what is actually assigned.
@@ -68,7 +68,7 @@ const LandingHeroSection = () => {
             </div>
           </div>
 
-          <div className="landing-reveal landing-reveal-delay-2 landing-reveal-scale reveal--visible lg:pt-3">
+          <div className="landing-hero-artifact landing-reveal landing-reveal-delay-2 landing-reveal-scale reveal--visible lg:pt-2">
             <LandingOperatingPreview compact mode="hero" />
           </div>
         </div>

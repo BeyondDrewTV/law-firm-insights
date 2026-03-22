@@ -50,7 +50,7 @@ Release-candidate ready. Operator smoke passed. V3 landing active. Authenticated
 
 **Active focus:** narrative continuity tightening (signals page, reports list next). Domain cutover to `clarion.co` pending.
 
-Last completed UX pass: `2026-03-21 - Landing Modern-Motion Polish Pass`.
+Last completed UX pass: `2026-03-21 - Landing Narrative-First Visual Modernization Pass`.
 
 ---
 
@@ -77,7 +77,7 @@ Last completed UX pass: `2026-03-21 - Landing Modern-Motion Polish Pass`.
 
 ## Active Pass
 
-_None in progress. Last completed: 2026-03-21 - Landing Modern-Motion Polish Pass._
+_None in progress. Last completed: 2026-03-21 - Landing Narrative-First Visual Modernization Pass._
 
 ---
 
@@ -144,7 +144,7 @@ When ready to move to `clarion.co`:
 ---
 
 ## Last Completed Pass
-2026-03-21 - Landing Modern-Motion Polish Pass
+2026-03-21 - Landing Narrative-First Visual Modernization Pass
 
 Summary only in this file. Full pass detail lives in `CHANGELOG_AI.md`.
 

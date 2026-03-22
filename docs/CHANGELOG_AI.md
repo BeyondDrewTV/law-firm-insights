@@ -1,5 +1,27 @@
 # AI Pass Changelog
 
+## 2026-03-21 - Landing Narrative-First Visual Modernization Pass
+
+### Files Changed
+- `frontend/src/pages/Index.tsx`
+- `frontend/src/components/SiteNav.tsx`
+- `frontend/src/components/landing/LandingHeroSection.tsx`
+- `frontend/src/components/landing/LandingOperatingPreview.tsx`
+- `frontend/src/index.css`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+- Tightened landing visual hierarchy while preserving the existing narrative spine and section order.
+- Increased first-glance premium contrast with stronger landing-specific surface treatment (hero framing, card depth, workflow rail paneling, and clearer nav interaction states).
+- Rebalanced hero composition so the governance brief artifact carries more visual authority without changing product meaning or CTA structure.
+- Kept motion restrained and compatible with the existing reduced-motion behavior.
+
+### Verification
+- `npm run build` in `frontend/` — passed
+- Pre-existing non-blocking warning remains: Vite large chunk size warning
+
 ## 2026-03-21 - Docs-System Hardening + Codex Operating Contract Pass
 
 ### Files Changed

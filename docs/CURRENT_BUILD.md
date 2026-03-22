@@ -2,6 +2,6 @@
 
 Active pass scope, next options, and recent pass history are now in `PROJECT_STATE.md` under "Active / Next Passes" and "Last Completed Pass".
 
-Latest completed pass: `2026-03-21 - Landing Modern-Motion Polish Pass`.
+Latest completed pass: `2026-03-21 - Landing Narrative-First Visual Modernization Pass`.
 
 Read `PROJECT_STATE.md`.

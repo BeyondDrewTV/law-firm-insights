@@ -91,7 +91,7 @@ const SiteNav = () => {
 
   const headerClass = isPublicRoute
     ? [
-        "fixed top-0 left-0 right-0 z-50 border-b border-[#D7D0C3] transition-all duration-200",
+        "landing-nav-shell fixed top-0 left-0 right-0 z-50 border-b border-[#D7D0C3] transition-all duration-200",
         scrolled ? "bg-[#FAF6EE]/96 backdrop-blur-md shadow-sm" : "bg-[#F6F0E4]/94 backdrop-blur-md",
       ].join(" ")
     : "fixed top-0 left-0 right-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md";
