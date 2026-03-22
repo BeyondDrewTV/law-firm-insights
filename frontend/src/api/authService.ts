@@ -73,8 +73,8 @@ export function clearCachedCsrfToken(): void {
   csrfTokenCache = null;
 }
 
-async function ensureCsrfToken(): Promise<string | null> {
-  const existing = resolveCsrfToken();
+async function ensureCsrfToken(forceRefresh = false): Promise<string | null> {
+  const existing = forceRefresh ? null : csrfTokenCache;
   if (existing) return existing;
   try {
     const response = await globalThis.fetch(apiUrl("/csrf-token"), {
@@ -95,7 +95,7 @@ async function ensureCsrfToken(): Promise<string | null> {
 
 async function refreshCsrfToken(): Promise<string | null> {
   clearCachedCsrfToken();
-  return ensureCsrfToken();
+  return ensureCsrfToken(true);
 }
 
 function normalizeCheckoutError(response: Response, payload: Record<string, unknown>, fallback: string): string {
@@ -1540,7 +1540,7 @@ export async function login(credentials: LoginCredentials): Promise<AuthResponse
 
 
     const data = await safeParseJson(response);
-
+    await refreshCsrfToken();
     return { ...data, success: true } as AuthResponse;
 
   } catch (error) {
@@ -1563,9 +1563,9 @@ export async function login(credentials: LoginCredentials): Promise<AuthResponse
 
         success: false,
 
-        error:
+          error:
 
-          "Login API returned a non-JSON/404 response. Ensure Vite proxy points to Flask on 127.0.0.1:5000 and Flask is running from law-firm-feedback-saas/app.py.",
+            "Login API returned a non-JSON/404 response. Ensure Vite is proxying /api to the Clarion Flask app in backend/app.py and that /api/version resolves to the law-firm-feedback-saas service.",
 
       };
 
@@ -2761,59 +2761,78 @@ export async function uploadCsv(
 
     form.append("file", file);
 
-
-
-    const response = await fetch(url, {
-      method: "POST",
-      body: form,
-      credentials: "include",
-      signal,
-    });
-
-
-    onProgress?.(85);
-
-
-
-    const contentType = response.headers.get("content-type") || "";
-
-    if (!contentType.includes("application/json")) {
-
-      const bodyText = await response.text();
-
-      console.error("[authService] Upload received non-JSON response:", {
-
-        status: response.status,
-
-        contentType,
-
-        body: bodyText.substring(0, 500),
-
+    const sendUpload = async (forceFreshToken = false) => {
+      const token = forceFreshToken ? await refreshCsrfToken() : await ensureCsrfToken(true);
+      const headers = new Headers();
+      if (token) {
+        headers.set("X-CSRFToken", token);
+      }
+      return globalThis.fetch(url, {
+        method: "POST",
+        body: form,
+        headers,
+        credentials: "include",
+        signal,
       });
+    };
 
-      return { success: false, error: "Upload failed: unexpected server response." };
+    const parseUploadResponse = async (
+      response: Response,
+      logLabel: string,
+    ): Promise<{ payload?: Record<string, unknown>; error?: string }> => {
+      const contentType = response.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        const bodyText = await response.text();
+        console.error(`[authService] ${logLabel} received non-JSON response:`, {
+          status: response.status,
+          contentType,
+          body: bodyText.substring(0, 500),
+        });
+        return { error: "Upload failed: unexpected server response." };
+      }
+      const payload = (await response.json()) as Record<string, unknown>;
+      return { payload };
+    };
 
-    }
-
-
-
-    const payload = (await response.json()) as Record<string, unknown>;
-
-
-
-    if (!response.ok || payload.success === false) {
+    const normalizeUploadError = (payload: Record<string, unknown>): string => {
       if (payload.error === "plan_limit") {
         emitPlanLimitError(typeof payload.message === "string" ? payload.message : "Trial limit reached");
       }
-      return {
-        success: false,
-        error:
-          (typeof payload.message === "string" ? payload.message : undefined) ||
-          (typeof payload.error === "string" ? payload.error : undefined) ||
-          "Upload failed. Please try again.",
-      };
+      return (
+        (typeof payload.message === "string" ? payload.message : undefined) ||
+        (payload.code === "csrf_failed"
+          ? "Your session needs a quick refresh before upload can continue. Please try again."
+          : undefined) ||
+        (typeof payload.error === "string" ? payload.error : undefined) ||
+        "Upload failed. Please try again."
+      );
+    };
+
+    let response = await sendUpload();
+
+    onProgress?.(85);
+
+    let parsed = await parseUploadResponse(response, "Upload");
+    if (parsed.error) {
+      return { success: false, error: parsed.error };
     }
 
+    let payload = parsed.payload as Record<string, unknown>;
+    if (payload.code === "csrf_failed") {
+      response = await sendUpload(true);
+      parsed = await parseUploadResponse(response, "Upload retry");
+      if (parsed.error) {
+        return { success: false, error: parsed.error };
+      }
+      payload = parsed.payload as Record<string, unknown>;
+    }
+
+    if (!response.ok || payload.success === false) {
+      return {
+        success: false,
+        error: normalizeUploadError(payload),
+      };
+    }
 
     const summary = (payload.summary || {}) as Record<string, unknown>;
 
@@ -4203,7 +4222,7 @@ export async function checkBackendWiring(): Promise<{ ok: boolean; message?: str
 
         message:
 
-          "Backend wiring mismatch: /api/version is missing. Ensure Flask is running from law-firm-feedback-saas/app.py on port 5000.",
+          "Backend wiring mismatch: /api/version is missing. Ensure Vite is proxying to the Clarion Flask app in backend/app.py and that the backend is reachable on the configured local proxy target.",
 
       };
 
@@ -4702,4 +4721,3 @@ export async function updateTeamMemberStatus(
     return { success: false, error: "Unable to update member status." };
   }
 }
-
