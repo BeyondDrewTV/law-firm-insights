@@ -468,3 +468,31 @@
 - No backend changes in any pass.
 - No TypeScript type changes.
 
+
+## 2026-03-24 (continued) - Signals Page Evidence Layer Reframe
+
+### Commit
+- `7929bbe` — design: signals page reframed as governance-cycle evidence layer
+
+### Files Changed
+- `frontend/src/pages/SignalsPage.tsx`
+- `docs/PROJECT_STATE.md`
+
+### What Changed
+Signals page framing updated so the page reads as the evidence layer feeding the governance brief, not a generic data table or review surface.
+
+- Eyebrow: "Review Surface" → "Client Feedback Evidence"
+- Description: rewritten to position page as evidence source behind each governance brief
+- Framing section h2: changed from directive ("Start with…") to descriptive ("Recurring client feedback patterns from [date] — the evidence this governance cycle is built on")
+- Tab "All Signals" → "Current Cycle" (default tab)
+- Tab "Triage" → "Needs Action"
+- Section label for default tab: "Issue queue" → "Current cycle evidence"
+- Sub-copy for default tab: reframed around governance-cycle purpose ("These are the patterns the governance brief is built on…")
+- Sub-copy for needs-action tab: updated to connect to brief finalization workflow
+- Bottom attribution: "Based on: …" → clean italic provenance line ("Evidence sourced from… cycle dated…")
+
+No structural, logic, or API changes. SignalsPage.tsx only.
+
+### Verification
+- `npm run build` clean. 1823 modules. Pre-existing 906kB bundle warning unchanged.
+

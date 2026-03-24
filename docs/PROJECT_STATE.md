@@ -151,7 +151,7 @@ The Approval Queue (dark card layout) and the 4-card governance rail are the two
 4. **Date/timezone display** — Audit formatDateTime in Dashboard.tsx for UTC vs local display.
 
 ### SUBSEQUENT PASSES
-5. **Signals page** — Does it read as governance-cycle evidence or detached data list?
+5. **Signals page** — Does it read as governance-cycle evidence or detached data list? — ✅ DONE (7929bbe)
 6. **ReportsPage** — Brief list presentation quality — ✅ DONE (733fe87)
 7. **Meeting Mode elevation** — Once unbroken, make it genuinely premium (full-screen, artifact-forward, one-click)
 8. **Logo iteration** — Current logo (GPT-generated C with gold pivot needle) is good DNA but needs flat variant and needs to work without the "CLIENT INTELLIGENCE" descriptor
@@ -223,6 +223,10 @@ Last fresh live run: `data/calibration/runs/20260317_223428`. Agreement rate 43.
 - [ ] CORS allowed origins update in `backend/app.py`
 
 ---
+
+## Last Completed Passes (This Session — 2026-03-24, continued ×2)
+1. Pass 6 — Signals page reframed as governance-cycle evidence layer (7929bbe). SignalsPage.tsx only. Eyebrow: "Review Surface" → "Client Feedback Evidence". Description rewritten to position page as evidence layer behind the governance brief. Section h2 reframed from directive to descriptive. Tab "All Signals" → "Current Cycle". Tab "Triage" → "Needs Action". Section eyebrow for all-tab: "Issue queue" → "Current cycle evidence". Section sub-copy for all-tab and needs-action tab rewritten for governance framing. Bottom attribution cleaned from "Based on: ..." to italic provenance line. Build clean.
+2. Commit: 7929bbe
 
 ## Last Completed Passes (This Session — 2026-03-24, continued)
 1. Pass 5 — Reports/brief library elevation. ReportsPage.tsx: eyebrow updated to "Governance Brief Library", description rewritten as artifact-authoritative copy, section label and h2 reframed around artifact primacy, body copy positions brief as the primary artifact and archive as reference, usage-meter "This month" stat replaced with "Latest" date stat (summary.latestDate), tab label "Upcoming Meetings" -> "Current Brief", active brief eyebrow "Prepared for next meeting" -> "Active governance brief". GovernanceBriefCard.tsx: "View brief" promoted to primary dark CTA; "Download PDF" demoted to secondary border button; isPast=false card gets border-t-2 border-t-[#0EA5C2] top accent stripe to distinguish active artifact from archive cards.
