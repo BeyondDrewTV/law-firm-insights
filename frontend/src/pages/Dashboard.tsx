@@ -673,6 +673,115 @@ const Dashboard = () => {
             </div>
           </header>
 
+          {/* ════════════════════════════════════
+              MEETING VIEW — partner mode active
+              Brief-first, no workspace chrome
+              ════════════════════════════════════ */}
+          {partnerMode ? (
+            <section className="space-y-6">
+              {/* Primary: the current governance brief */}
+              <div className="rounded-[12px] border border-[#D9E2EC] bg-white px-6 py-6 shadow-[0_1px_4px_rgba(0,0,0,0.07)]">
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">
+                      Meeting view · current governance brief
+                    </p>
+                    <h2 className="mt-1 text-[22px] font-semibold text-[#0D1B2A]">
+                      {latestProcessedReport
+                        ? `${reviewPeriodLabel}`
+                        : "No brief ready yet"}
+                    </h2>
+                    {latestProcessedReport && (
+                      <p className="mt-1 text-sm text-neutral-500">
+                        {reviewsAnalyzed} reviews analyzed · last processed {lastProcessedDateTime}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {latestProcessedReport && (
+                      <Button
+                        type="button"
+                        variant="primary"
+                        onClick={() => navigate(`/dashboard/reports/${latestProcessedReport.id}`)}
+                      >
+                        Open governance brief
+                        <ChevronRight size={14} />
+                      </Button>
+                    )}
+                    {latestReadyBrief && (
+                      <Button type="button" variant="secondary" onClick={() => void handleExportBrief()}>
+                        {planUsage.pdfWatermark ? "Preview brief PDF" : "Download brief PDF"}
+                        <ChevronRight size={14} />
+                      </Button>
+                    )}
+                  </div>
+                </div>
+
+                {latestProcessedReport ? (
+                  <div className="grid gap-4 sm:grid-cols-3">
+                    <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Cycle period</p>
+                      <p className="mt-2 text-sm font-semibold text-[#0D1B2A]">{reviewPeriodLabel}</p>
+                    </div>
+                    <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Client issues</p>
+                      <p className="mt-2 text-sm font-semibold text-[#0D1B2A]">
+                        {latestSignals.length} active
+                        <span className="ml-1 font-normal text-neutral-600">({highSeveritySignalsCount} high severity)</span>
+                      </p>
+                    </div>
+                    <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Posture</p>
+                      <p className="mt-2 text-sm font-semibold text-[#0D1B2A]">{exposureRisk} exposure</p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-sm text-neutral-600">
+                    Upload a CSV to generate the first governance brief before using meeting view.
+                  </p>
+                )}
+              </div>
+
+              {/* Secondary: cycle attention summary */}
+              {latestProcessedReport && (
+                <div className="rounded-[12px] border border-[#D9E2EC] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500 mb-2">
+                    Cycle attention
+                  </p>
+                  <p className="text-sm leading-6 text-neutral-700">{cycleAttentionSummary}</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                    <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Open actions</p>
+                      <p className="mt-1 text-2xl font-semibold text-[#0D1B2A]">{openActions.length}</p>
+                    </div>
+                    <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Overdue</p>
+                      <p className={`mt-1 text-2xl font-semibold ${overdueActions.length > 0 ? "text-red-600" : "text-[#0D1B2A]"}`}>
+                        {overdueActions.length}
+                      </p>
+                    </div>
+                    <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">High-severity signals</p>
+                      <p className={`mt-1 text-2xl font-semibold ${highSeveritySignalsCount > 0 ? "text-amber-600" : "text-[#0D1B2A]"}`}>
+                        {highSeveritySignalsCount}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={togglePartnerMode}
+                  className="text-xs text-neutral-400 underline underline-offset-4 hover:text-neutral-600"
+                >
+                  Exit meeting view
+                </button>
+              </div>
+            </section>
+          ) : null}
+
           {!partnerMode && isFirstRunWorkspace ? (
             <>
               <section className="mb-8 rounded-[12px] border border-[#D9E2EC] bg-white px-6 py-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
@@ -778,12 +887,7 @@ const Dashboard = () => {
             </section>
           ) : null}
 
-          {!partnerMode && latestProcessedReport ? (
-            <section className="mb-8 rounded-[10px] border border-[#E5E7EB] bg-white px-6 py-3 text-[13px] text-[#6B7280]">
-              This overview is anchored to {reviewsAnalyzed} analyzed reviews for {reviewPeriodLabel}. Latest completed
-              review cycle: {lastProcessedLabel}.
-            </section>
-          ) : null}
+          {/* Anchored-to strip: suppressed from primary view — data is surfaced in the brief card itself */}
 
           {!partnerMode && loadError ? (
             <div className="mb-8">
@@ -797,8 +901,8 @@ const Dashboard = () => {
           <section className="dash-tier">
             <div className="grid gap-[var(--dash-section-gap)] xl:grid-cols-[1.1fr_0.9fr]">
               <DashboardCard
-                title="Start with the current brief"
-                subtitle={latestProcessedReport ? `${reviewPeriodLabel} - last processed ${lastProcessedDateTime}` : "Awaiting the first completed cycle"}
+                title="Current governance brief"
+                subtitle={latestProcessedReport ? `${reviewPeriodLabel} · ${reviewsAnalyzed} reviews analyzed` : "Awaiting the first completed cycle"}
                 actions={
                   <div className="flex flex-wrap items-center gap-2">
                     {latestProcessedReport ? (
@@ -860,10 +964,10 @@ const Dashboard = () => {
 
                   {latestProcessedReport ? (
                     <div className="rounded-[10px] border border-[#E5E7EB] bg-white px-4 py-3">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Brief handoff</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-neutral-500">Brief status</p>
                       <p className="mt-2 text-sm text-neutral-700">
-                        Use dashboard home as the staging view for this cycle, then open the current brief packet for
-                        the full leadership artifact.
+                        Ready for partner review. Open the full brief packet for the five-section governance summary,
+                        assigned follow-through, and decisions record.
                       </p>
                     </div>
                   ) : null}
@@ -963,13 +1067,13 @@ const Dashboard = () => {
 
                 {latestProcessedReport ? (
                   <div className="mt-4 rounded-[10px] border border-[#E5E7EB] bg-white px-4 py-3 text-sm text-neutral-700">
-                    These items roll into{" "}
+                    These items are reflected in{" "}
                     <button
                       type="button"
                       onClick={() => navigate(`/dashboard/reports/${latestProcessedReport.id}`)}
                       className="font-semibold text-[#0D1B2A] underline underline-offset-4"
                     >
-                      the current brief packet
+                      the current governance brief
                     </button>
                     {" "}and should be reviewed there before partner discussion.
                   </div>
@@ -1118,18 +1222,8 @@ const Dashboard = () => {
                 ]}
               />
 
-              <PartnerBriefPanel
-                reportingPeriod={reviewPeriodLabel}
-                overallRisk={exposureRisk}
-                deltas={briefDeltas}
-                topClientIssue={topIssue ? { name: topIssue.label, percentage: topIssueShare, context: "of detected client issues this cycle" } : null}
-                issuePercentages={issuePercentages}
-                previousIssuePercentages={previousIssuePercentages}
-                exampleFeedback={briefFeedbackQuotes}
-                recommendedDiscussion={guidance.recommendation}
-                estimatedImpact={estimatedImpact}
-                loading={loading}
-              />
+              {/* PartnerBriefPanel (80/100 reputation score) deferred:
+                  score framing conflicts with exposure posture label — needs engine/label audit before showing publicly */}
 
               <DashboardCard title="Escalations and watchpoints" subtitle="Client issues that intensified or need leadership attention.">
                 {alerts.length === 0 ? (

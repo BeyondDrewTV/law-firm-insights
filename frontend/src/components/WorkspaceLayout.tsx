@@ -82,16 +82,10 @@ const PRIMARY_NAV = [
     iconClass: "text-[#E2E8F0]",
     iconActiveClass: "text-white",
   },
-  {
-    to: "/dashboard/approval-queue",
-    label: "Approval Queue",
-    Icon: CheckSquare,
-    badgeKey: "queue" as const,
-    badgeLabel: "Items pending approval",
-    iconClass: "text-amber-300/70",
-    iconActiveClass: "text-amber-300",
-  },
 ] as const;
+
+// Approval Queue is founder/admin only — not part of the public PRIMARY_NAV array.
+// It is rendered conditionally in WorkspaceLayout JSX using user?.is_admin.
 
 const SETTINGS_NAV = [
   {
@@ -117,8 +111,8 @@ const SETTINGS_NAV = [
   },
 ] as const;
 
-// Union type for badge key across both nav arrays
-type BadgeKey = "briefs" | "queue";
+// Union type for badge key across primary nav
+type BadgeKey = "briefs";
 
 
 // ── NavItem Component ─────────────────────────────────────────────────────────
@@ -262,8 +256,9 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
     return () => { active = false; controller.abort(); };
   }, []);
 
-  // Approval queue badge — polls every 60s
+  // Approval queue badge — polls every 60s, admin only
   useEffect(() => {
+    if (!user?.is_admin) return;
     let active = true;
     const poll = async () => {
       try {
@@ -278,7 +273,7 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
     void poll();
     const t = setInterval(poll, 60_000);
     return () => { active = false; clearInterval(t); };
-  }, []);
+  }, [user?.is_admin]);
 
   const handleLogOut = async () => {
     if (loggingOut) return;
@@ -359,9 +354,7 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
                 badgeCount={
                   "badgeKey" in item && item.badgeKey === "briefs" && briefsBadgeCount > 0
                     ? briefsBadgeCount
-                    : "badgeKey" in item && item.badgeKey === "queue" && queueBadgeCount > 0
-                      ? queueBadgeCount
-                      : undefined
+                    : undefined
                 }
                 urgent={"badgeKey" in item && item.badgeKey === "briefs" && briefsBadgeCount > 0}
                 iconClass={item.iconClass}
@@ -369,6 +362,21 @@ export default function WorkspaceLayout({ children }: { children: React.ReactNod
                 badgeLabel={"badgeLabel" in item ? item.badgeLabel : undefined}
               />
             ))}
+
+            {/* Approval Queue — admin/founder only */}
+            {user?.is_admin ? (
+              <NavItem
+                to="/dashboard/approval-queue"
+                label="Approval Queue"
+                Icon={CheckSquare}
+                isActive={isActive("/dashboard/approval-queue")}
+                badgeCount={queueBadgeCount > 0 ? queueBadgeCount : undefined}
+                urgent={false}
+                iconClass="text-amber-300/70"
+                iconActiveClass="text-amber-300"
+                badgeLabel="Items pending approval"
+              />
+            ) : null}
 
             {/* Divider */}
             <div className="my-4 mx-3 h-px bg-white/8" role="separator" />

@@ -13,6 +13,14 @@ import WorkspaceLayout from "@/components/WorkspaceLayout";
 import { useAuth } from "@/contexts/AuthContext";
 import { getRequiredAuthenticatedDestination } from "@/lib/authRedirect";
 
+/** Renders children only if the current user has is_admin === true. Otherwise redirects to /dashboard. */
+const AdminRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, isLoading } = useAuth();
+  if (isLoading) return null;
+  if (!user?.is_admin) return <Navigate to="/dashboard" replace />;
+  return <>{children}</>;
+};
+
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
@@ -113,7 +121,7 @@ const AppRoutes = ({ location }: { location: Location }) => (
       <Route path="/dashboard/account" element={<DashboardAccount />} />
       <Route path="/dashboard/team" element={<DashboardTeam />} />
       <Route path="/dashboard/brief-customization" element={<DashboardPdfPreview />} />
-      <Route path="/dashboard/approval-queue" element={<ApprovalQueuePage />} />
+      <Route path="/dashboard/approval-queue" element={<AdminRoute><ApprovalQueuePage /></AdminRoute>} />
       <Route
         path="/upload"
         element={<Upload />}

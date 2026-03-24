@@ -4,6 +4,7 @@
  * Polls every 30s for new queue items; no WebSocket dependency.
  */
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Navigate } from "react-router-dom";
 import {
   CheckCircle2, Circle, Clock, AlertTriangle, Send, FileText,
   UserPlus, Inbox, RefreshCw, ChevronDown, ChevronUp, XCircle,
@@ -15,6 +16,7 @@ import {
   updateQueueItem, type QueueItem, type QueueStats,
 } from "@/api/approvalQueueService";
 import PageWrapper from "@/components/governance/PageWrapper";
+import { useAuth } from "@/contexts/AuthContext";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 const POLL_MS = 30_000;
@@ -285,6 +287,17 @@ const STATUS_FILTERS: { key: StatusFilter; label: string }[] = [
 ];
 
 export default function ApprovalQueuePage() {
+  const { user } = useAuth();
+
+  // Defense-in-depth: redirect non-admin users even if they reach this component directly
+  if (!user?.is_admin) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <ApprovalQueueContent />;
+}
+
+function ApprovalQueueContent() {
   const [items, setItems]           = useState<QueueItem[]>([]);
   const [stats, setStats]           = useState<QueueStats | null>(null);
   const [tab, setTab]               = useState<TabType>("all");
