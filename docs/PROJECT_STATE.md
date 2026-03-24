@@ -155,7 +155,10 @@ The Approval Queue (dark card layout) and the 4-card governance rail are the two
 6. **ReportDetail page header framing polish** — ✅ DONE (5a1591a). Sub-copy rewritten to artifact-first language. "Send partner brief" button promoted to dark-border tier, visually distinct from "Download PDF".
 
 ### NEXT DESIGN PASS
-9. **Meeting Mode elevation** — The partnerMode block renders correctly but the quality bar hasn't been raised since the fix pass. Make it genuinely premium: tighter layout, cleaner artifact-first presentation, one-click feel. `Dashboard.tsx` only unless a small shared component is clearly involved.
+9. **Meeting Mode elevation** — ✅ DONE (76536c9). Primary card eyebrow reframed. Positioning line added above stat tiles. Secondary card reframed as "Pre-meeting readiness". Stat labels governance-framed. Readiness gate line added.
+
+### NEXT DESIGN PASS (current)
+10. **Dashboard Tier 2 / Tier 3 tightening** — The lower dashboard tiers (GovernanceGuidance, suggestedActions, OversightBand, GovernanceNarrativeRail) are structurally sound but the section is still long. Candidate for a focused collapse or label-polish pass. Low urgency — the brief is already dominant first-viewport. Review carefully before committing to scope.
 
 ### SUBSEQUENT PASSES
 5. **Signals page** — Does it read as governance-cycle evidence or detached data list? — ✅ DONE (7929bbe)
@@ -230,6 +233,10 @@ Last fresh live run: `data/calibration/runs/20260317_223428`. Agreement rate 43.
 - [ ] CORS allowed origins update in `backend/app.py`
 
 ---
+
+## Last Completed Passes (This Session — 2026-03-24, continued ×5)
+1. Pass 9 — Meeting Mode elevation (76536c9). Dashboard.tsx partnerMode block only. Primary card eyebrow: "Meeting view · current governance brief" → "Partner briefing · current governance brief". Positioning line added above stat tiles: "The partner-ready record for this cycle…". Secondary card eyebrow: "Cycle attention" → "Pre-meeting readiness". Stat labels: "Open actions" → "Open follow-through", "Overdue" → "Overdue items", "High-severity signals" → "High-severity issues". Readiness gate line added after stats: "Resolve overdue and unowned items before opening the brief in the meeting." Build clean (1823 modules, 907kB pre-existing warning).
+2. Commit: 76536c9
 
 ## Last Completed Passes (This Session — 2026-03-24, continued ×4)
 1. Pass 8 — ReportDetail page header framing polish (5a1591a). ReportDetail.tsx only. Sub-copy: "Use this packet for partner review, action decisions, and follow-through updates…" → "The governance brief for this cycle — the partner-ready record of what clients said, what the firm is doing about it, and what still needs a decision." "Send partner brief" button promoted from gov-btn-secondary to dark-border tier (border-[#0D1B2A] bg-white font-semibold) — visually distinct from and above "Download PDF". Build clean (1823 modules, 907kB pre-existing warning).

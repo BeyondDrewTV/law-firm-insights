@@ -1,6 +1,30 @@
 # AI Pass Changelog
 
-## 2026-03-24 (continued) - Pass 8 — ReportDetail Header Framing Polish
+## 2026-03-24 (continued) - Pass 9 — Meeting Mode Elevation
+
+### Commit
+- `76536c9` — design: meeting mode elevation — partner briefing framing, readiness card, stat labels
+
+### Files Changed
+- `frontend/src/pages/Dashboard.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+Five targeted copy and label changes inside the `partnerMode` conditional block only. No structural, logic, or behavior changes.
+
+- **Primary card eyebrow**: `"Meeting view · current governance brief"` → `"Partner briefing · current governance brief"` — drops the UI-label prefix (`Meeting view ·`) in favour of the artifact mode it actually is.
+- **Positioning line above stat tiles**: added a `col-span-full` intro line — `"The partner-ready record for this cycle. Review the brief, confirm follow-through state, and carry this into the room."` — grounds the stat tiles as pre-meeting readiness context rather than a summary widget.
+- **Secondary card eyebrow**: `"Cycle attention"` → `"Pre-meeting readiness"` — names the card as the check you run before the partner discussion, not a generic status label.
+- **Stat tile labels**: `"Open actions"` → `"Open follow-through"` · `"Overdue"` → `"Overdue items"` · `"High-severity signals"` → `"High-severity issues"` — governance-framed labels consistent with the rest of the workspace, removes task language from a briefing surface.
+- **Readiness gate line after stats**: added `"Resolve overdue and unowned items before opening the brief in the meeting."` — gives the stats directional meaning as a readiness gate, not just a count display.
+
+### Verification
+- `npm run build` clean. 1823 modules. Pre-existing 907kB bundle warning unchanged.
+- No backend changes. No TypeScript type changes. No logic or behavior changes.
+
+
 
 ### Commit
 - `5a1591a` — design: report detail header — artifact-first sub-copy, send partner brief button promoted
