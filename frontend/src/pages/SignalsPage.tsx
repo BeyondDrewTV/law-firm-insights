@@ -489,9 +489,9 @@ const SignalsPage = () => {
 
   return (
       <PageWrapper
-        eyebrow="Review Surface"
+        eyebrow="Client Feedback Evidence"
         title={DISPLAY_LABELS.clientIssuePlural}
-        description="Detected recurring themes in client feedback that may require governance action."
+        description="The evidence layer behind each governance brief. These recurring patterns from client feedback are what the brief distills into partner-ready decisions and actions."
         contentClassName="stage-sequence"
         actions={
           <div className="flex items-center gap-2">
@@ -565,7 +565,7 @@ const SignalsPage = () => {
               <div>
                 <p className="gov-label">Current issue set</p>
                 <h2 className="gov-section-intro mt-2">
-                  Start with the recurring themes from {latestReportDateLabel || "the latest ready cycle"}.
+                  Recurring client feedback patterns from {latestReportDateLabel || "the latest ready cycle"} — the evidence this governance cycle is built on.
                 </h2>
                 <p className="gov-body mt-3 max-w-2xl">
                   Review the patterns that now deserve attention, then open a single issue for details or action creation. Use the filtered view only when you specifically need what is newly introduced.
@@ -601,11 +601,11 @@ const SignalsPage = () => {
             tabs={[
               {
                 value: "triage",
-                label: "Triage",
+                label: "Needs Action",
                 badgeCount: triageCount,
                 badgeUrgent: triageCount > 0,
               },
-              { value: "all", label: "All Signals" },
+              { value: "all", label: "Current Cycle" },
               {
                 value: "in-briefs",
                 label: "In Briefs",
@@ -669,16 +669,16 @@ const SignalsPage = () => {
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="gov-type-eyebrow">
-                  {signalsTab === "triage" ? "High-severity signals" : signalsTab === "in-briefs" ? "Recurring signals in briefs" : "Issue queue"}
+                  {signalsTab === "triage" ? "High-severity signals" : signalsTab === "in-briefs" ? "Recurring signals in briefs" : "Current cycle evidence"}
                 </p>
                 <p className="mt-1 text-sm text-slate-700">
                   {selectionMode
                     ? "Click cards or checkboxes to select issues, then create a governance action for all of them at once."
                     : signalsTab === "triage"
-                      ? "These signals carry the highest severity and should be the first to receive action ownership."
+                      ? "High-severity patterns from this cycle. These should be the first to receive an owner and a response plan before the governance brief is finalized."
                       : signalsTab === "in-briefs"
                         ? "Signals that appeared in the previous cycle and are now captured in governance briefs."
-                        : "Each card is actionable, but the first pass should stay focused on the themes that carry the strongest current signal."}
+                        : "These are the patterns the governance brief is built on. Assign actions to the issues that require a partner decision or firm-wide response."}
                 </p>
               </div>
               {selectionMode ? (
@@ -827,8 +827,8 @@ const SignalsPage = () => {
         />
 
         {latestReport ? (
-          <p className="text-xs text-neutral-600">
-            Based on: {latestReport.name} - {latestReportDateLabel || "Not available"}
+          <p className="text-xs text-neutral-400 italic">
+            Evidence sourced from {latestReport.name} · cycle dated {latestReportDateLabel || "Not available"}
           </p>
         ) : null}
       </PageWrapper>
