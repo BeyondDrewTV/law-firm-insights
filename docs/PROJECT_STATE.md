@@ -147,8 +147,12 @@ The Approval Queue (dark card layout) and the 4-card governance rail are the two
 2. **Approval Queue access control** — ✅ FIXED (d95877d). Gated at nav (WorkspaceLayout), route (App.tsx AdminRoute), and page level (ApprovalQueuePage). NOTE: In DEV_MODE, backend returns is_admin=true for all sessions — gate is correct, backend dev behavior expected.
 
 ### NEXT DESIGN PASS
-3. **Dashboard hierarchy collapse** — Brief as dominant first-viewport element, everything else secondary/tertiary. Reference: Approval Queue dark card language + governance cycle rail as design inspiration within the product.
-4. **Date/timezone display** — Audit formatDateTime in Dashboard.tsx for UTC vs local display.
+3. **Dashboard hierarchy collapse** — ✅ DONE (5a83f3d + 8ccd5d2). Brief is dominant first-viewport. FirmGovernanceStatus demoted to secondary.
+4. **Date/timezone display** — ✅ CONFIRMED CORRECT. toLocaleString already uses browser local TZ.
+5. **ExecutionPage governance-cycle framing** — ✅ DONE (7e02fd1). Page reads as §3 of the brief, not a generic task list.
+
+### NEXT DESIGN PASS (current)
+6. **ReportDetail page header framing polish** — The header sub-copy is functional but flat. Should read as the flagship artifact page. Copy + minor structure only. `ReportDetail.tsx` only.
 
 ### SUBSEQUENT PASSES
 5. **Signals page** — Does it read as governance-cycle evidence or detached data list? — ✅ DONE (7929bbe)
@@ -225,7 +229,8 @@ Last fresh live run: `data/calibration/runs/20260317_223428`. Agreement rate 43.
 ---
 
 ## Last Completed Passes (This Session — 2026-03-24, continued ×3)
-1. Pass 7 — ExecutionPage framing elevated to governance-cycle artifact language (b9d0a97). ExecutionPage.tsx only. Eyebrow: "Follow-through" → "Assigned Follow-Through" (matches canonical brief spine §3). Description rewritten to artifact-first framing. Tab "All follow-through" → "Brief record". Default-tab sub-copy anchored to brief. Build clean.
+1. Pass 7 — ExecutionPage framing elevated to governance-cycle artifact language (7e02fd1). ExecutionPage.tsx only. Eyebrow: "Follow-through" → "Assigned Follow-Through" (matches canonical brief spine §3). Description rewritten to artifact-first framing. Posture card label: "Current follow-through posture" → "Follow-through posture for this cycle". Posture card h2 rewritten to partner-meeting framing. Brief context card label: "Current brief context" → "Current governance brief". Brief context copy rewritten to connect follow-through status to brief. Tab "All follow-through" → "Brief record". Default-tab sub-copy anchored to brief. Build clean (1823 modules, 907kB pre-existing warning).
+2. Commit: 7e02fd1
 
 ## Last Completed Passes (This Session — 2026-03-24, continued ×2)
 1. Pass 6 — Signals page reframed as governance-cycle evidence layer (7929bbe). SignalsPage.tsx only. Eyebrow: "Review Surface" → "Client Feedback Evidence". Description rewritten to position page as evidence layer behind the governance brief. Section h2 reframed from directive to descriptive. Tab "All Signals" → "Current Cycle". Tab "Triage" → "Needs Action". Section eyebrow for all-tab: "Issue queue" → "Current cycle evidence". Section sub-copy for all-tab and needs-action tab rewritten for governance framing. Bottom attribution cleaned from "Based on: ..." to italic provenance line. Build clean.
