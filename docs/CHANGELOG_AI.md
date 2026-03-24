@@ -1,5 +1,28 @@
 # AI Pass Changelog
 
+## 2026-03-24 (continued) - Pass 7 — ExecutionPage Governance-Cycle Framing Elevation
+
+### Commit
+- `b9d0a97` — design: ExecutionPage framing elevated to governance-cycle artifact language
+
+### Files Changed
+- `frontend/src/pages/ExecutionPage.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+Four targeted copy-only changes. No structural, logic, or API changes.
+
+- **PageWrapper eyebrow**: `"Follow-through"` → `"Assigned Follow-Through"` — matches §3 of the canonical brief spine exactly, tying the page directly to the governance artifact.
+- **PageWrapper description**: replaced generic task-state framing ("Review what is overdue, unowned, blocked…") with artifact-first framing ("The assigned follow-through record for the current governance brief. Review ownership, due-state, and blockers before the next partner discussion.").
+- **Tab "firm-wide" label**: `"All follow-through"` → `"Brief record"` — names the default tab as the artifact's record, not an undifferentiated action bucket.
+- **Default-tab section sub-copy**: added one opening sentence anchoring the view to the brief ("This is the complete follow-through record for the current brief.") before the existing directive copy.
+
+### Verification
+- `npm run build` clean. 1823 modules. Pre-existing 906kB bundle warning unchanged.
+- No backend changes. No TypeScript type changes.
+
+
 ## 2026-03-21 - Landing Narrative-First Visual Modernization Pass
 
 ### Files Changed

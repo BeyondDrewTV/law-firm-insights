@@ -224,6 +224,9 @@ Last fresh live run: `data/calibration/runs/20260317_223428`. Agreement rate 43.
 
 ---
 
+## Last Completed Passes (This Session — 2026-03-24, continued ×3)
+1. Pass 7 — ExecutionPage framing elevated to governance-cycle artifact language (b9d0a97). ExecutionPage.tsx only. Eyebrow: "Follow-through" → "Assigned Follow-Through" (matches canonical brief spine §3). Description rewritten to artifact-first framing. Tab "All follow-through" → "Brief record". Default-tab sub-copy anchored to brief. Build clean.
+
 ## Last Completed Passes (This Session — 2026-03-24, continued ×2)
 1. Pass 6 — Signals page reframed as governance-cycle evidence layer (7929bbe). SignalsPage.tsx only. Eyebrow: "Review Surface" → "Client Feedback Evidence". Description rewritten to position page as evidence layer behind the governance brief. Section h2 reframed from directive to descriptive. Tab "All Signals" → "Current Cycle". Tab "Triage" → "Needs Action". Section eyebrow for all-tab: "Issue queue" → "Current cycle evidence". Section sub-copy for all-tab and needs-action tab rewritten for governance framing. Bottom attribution cleaned from "Based on: ..." to italic provenance line. Build clean.
 2. Commit: 7929bbe
