@@ -388,9 +388,9 @@ const ExecutionPage = () => {
 
   return (
     <PageWrapper
-      eyebrow="Follow-through"
+      eyebrow="Assigned Follow-Through"
       title="Follow-through for the current brief"
-      description="Review what is overdue, unowned, blocked, and ready before these items roll into the next partner discussion."
+      description="The assigned follow-through record for the current governance brief. Review ownership, due-state, and blockers before the next partner discussion."
       contentClassName="stage-sequence"
       actions={
         <>
@@ -579,7 +579,7 @@ const ExecutionPage = () => {
             if (value !== "overdue" && isOverdueOnlyFilter) clearUrlFilter();
           }}
           tabs={[
-            { value: "firm-wide", label: "All follow-through" },
+            { value: "firm-wide", label: "Brief record" },
             {
               value: "my-actions",
               label: "Assigned to me",
@@ -669,7 +669,7 @@ const ExecutionPage = () => {
                 ? "These items have passed their due date and require immediate partner review."
                 : actionsTab === "my-actions"
                   ? "This view keeps your owned follow-through visible before the next leadership discussion."
-                  : "Review the work that is at risk first, then confirm what is moving cleanly in the current cycle."}
+                  : "This is the complete follow-through record for the current brief. Review at-risk items first, then confirm what is moving cleanly."}
             </p>
           </div>
 
