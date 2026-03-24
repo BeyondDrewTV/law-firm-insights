@@ -687,7 +687,7 @@ const Dashboard = () => {
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="gov-type-eyebrow mb-1">
-                    Meeting view · current governance brief
+                    Partner briefing · current governance brief
                   </p>
                   <h2 className="gov-type-h2">
                     {latestProcessedReport
@@ -722,6 +722,11 @@ const Dashboard = () => {
 
               {latestProcessedReport ? (
                 <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="col-span-full">
+                    <p className="gov-type-body text-slate-600">
+                      The partner-ready record for this cycle. Review the brief, confirm follow-through state, and carry this into the room.
+                    </p>
+                  </div>
                   <div className="rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
                     <p className="gov-type-eyebrow mb-2">Cycle period</p>
                     <p className="gov-type-h3">{reviewPeriodLabel}</p>
@@ -748,26 +753,29 @@ const Dashboard = () => {
             {/* Secondary: cycle attention summary */}
             {latestProcessedReport && (
               <div className="rounded-[12px] border border-[#D9E2EC] bg-white px-6 py-5 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
-                <p className="gov-type-eyebrow mb-2">Cycle attention</p>
+                <p className="gov-type-eyebrow mb-2">Pre-meeting readiness</p>
                 <p className="gov-type-body">{cycleAttentionSummary}</p>
                 <div className="workspace-inline-stats mt-4">
                   <div className="workspace-inline-stat">
-                    <p className="gov-type-eyebrow">Open actions</p>
+                    <p className="gov-type-eyebrow">Open follow-through</p>
                     <p className="mt-1 text-2xl font-semibold text-[#0D1B2A]">{openActions.length}</p>
                   </div>
                   <div className="workspace-inline-stat">
-                    <p className="gov-type-eyebrow">Overdue</p>
+                    <p className="gov-type-eyebrow">Overdue items</p>
                     <p className={`mt-1 text-2xl font-semibold ${overdueActions.length > 0 ? "text-red-600" : "text-[#0D1B2A]"}`}>
                       {overdueActions.length}
                     </p>
                   </div>
                   <div className="workspace-inline-stat">
-                    <p className="gov-type-eyebrow">High-severity signals</p>
+                    <p className="gov-type-eyebrow">High-severity issues</p>
                     <p className={`mt-1 text-2xl font-semibold ${highSeveritySignalsCount > 0 ? "text-amber-600" : "text-[#0D1B2A]"}`}>
                       {highSeveritySignalsCount}
                     </p>
                   </div>
                 </div>
+                <p className="mt-4 text-[12px] text-slate-500">
+                  Resolve overdue and unowned items before opening the brief in the meeting.
+                </p>
               </div>
             )}
 
