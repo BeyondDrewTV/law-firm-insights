@@ -230,6 +230,8 @@ Last fresh live run: `data/calibration/runs/20260317_223428`. Agreement rate 43.
 3. Pass 1 — Date/time display confirmed correct (toLocaleString already uses browser local TZ — no bug)
 4. Pass 2 — Dashboard hierarchy: suppressed "anchored to" metadata strip, renamed brief card title to "Current governance brief", removed PartnerBriefPanel (80/100 score — contradicts posture label, needs engine audit), cleaned "Brief handoff" label copy
 5. Commit: d95877d
+6. Pass 3 — Brief card promoted to full-width first-viewport anchor; FirmGovernanceStatus demoted to secondary row below it (removed xl:grid-cols side-by-side layout from Tier 1). Dashboard.tsx only. Build clean.
+7. Commit: 5a83f3d
 
 ## Last Completed Passes (This Session — 2026-03-21)
 1. Design system token reset — warm canvas, card elevation, sidebar identity, topbar
