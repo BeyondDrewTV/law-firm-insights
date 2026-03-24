@@ -1,6 +1,27 @@
 # AI Pass Changelog
 
-## 2026-03-24 (continued) - Pass 7 — ExecutionPage Governance-Cycle Framing Elevation
+## 2026-03-24 (continued) - Pass 8 — ReportDetail Header Framing Polish
+
+### Commit
+- `5a1591a` — design: report detail header — artifact-first sub-copy, send partner brief button promoted
+
+### Files Changed
+- `frontend/src/pages/ReportDetail.tsx`
+- `docs/PROJECT_STATE.md`
+- `docs/CURRENT_BUILD.md`
+- `docs/CHANGELOG_AI.md`
+
+### What Changed
+Two targeted changes. No structural, logic, or API changes.
+
+- **Header sub-copy**: `"Use this packet for partner review, action decisions, and follow-through updates for the current cycle."` → `"The governance brief for this cycle — the partner-ready record of what clients said, what the firm is doing about it, and what still needs a decision."` — replaces task-description language with artifact-positioning language. The page now opens with a statement of what it *is*, not what you can *do* with it.
+- **"Send partner brief" button**: promoted from `gov-btn-secondary` (same visual weight as "Download PDF") to a dark-border tier — `border-[#0D1B2A] bg-white font-semibold text-[#0D1B2A]`. The artifact delivery action now reads as clearly above the export utility. Toolbar hierarchy is now: (1) Present brief — dark fill primary, (2) Send partner brief — dark border secondary, (3) Download PDF — neutral secondary, (4) Add follow-through — quiet tertiary.
+
+### Verification
+- `npm run build` clean. 1823 modules. Pre-existing 907kB bundle warning unchanged.
+- No backend changes. No TypeScript type changes. No logic changes.
+
+
 
 ### Commit
 - `7e02fd1` — design: execution page governance-cycle framing — posture card, brief context, PageWrapper copy

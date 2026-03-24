@@ -152,7 +152,10 @@ The Approval Queue (dark card layout) and the 4-card governance rail are the two
 5. **ExecutionPage governance-cycle framing** — ✅ DONE (7e02fd1). Page reads as §3 of the brief, not a generic task list.
 
 ### NEXT DESIGN PASS (current)
-6. **ReportDetail page header framing polish** — The header sub-copy is functional but flat. Should read as the flagship artifact page. Copy + minor structure only. `ReportDetail.tsx` only.
+6. **ReportDetail page header framing polish** — ✅ DONE (5a1591a). Sub-copy rewritten to artifact-first language. "Send partner brief" button promoted to dark-border tier, visually distinct from "Download PDF".
+
+### NEXT DESIGN PASS
+9. **Meeting Mode elevation** — The partnerMode block renders correctly but the quality bar hasn't been raised since the fix pass. Make it genuinely premium: tighter layout, cleaner artifact-first presentation, one-click feel. `Dashboard.tsx` only unless a small shared component is clearly involved.
 
 ### SUBSEQUENT PASSES
 5. **Signals page** — Does it read as governance-cycle evidence or detached data list? — ✅ DONE (7929bbe)
@@ -227,6 +230,10 @@ Last fresh live run: `data/calibration/runs/20260317_223428`. Agreement rate 43.
 - [ ] CORS allowed origins update in `backend/app.py`
 
 ---
+
+## Last Completed Passes (This Session — 2026-03-24, continued ×4)
+1. Pass 8 — ReportDetail page header framing polish (5a1591a). ReportDetail.tsx only. Sub-copy: "Use this packet for partner review, action decisions, and follow-through updates…" → "The governance brief for this cycle — the partner-ready record of what clients said, what the firm is doing about it, and what still needs a decision." "Send partner brief" button promoted from gov-btn-secondary to dark-border tier (border-[#0D1B2A] bg-white font-semibold) — visually distinct from and above "Download PDF". Build clean (1823 modules, 907kB pre-existing warning).
+2. Commit: 5a1591a
 
 ## Last Completed Passes (This Session — 2026-03-24, continued ×3)
 1. Pass 7 — ExecutionPage framing elevated to governance-cycle artifact language (7e02fd1). ExecutionPage.tsx only. Eyebrow: "Follow-through" → "Assigned Follow-Through" (matches canonical brief spine §3). Description rewritten to artifact-first framing. Posture card label: "Current follow-through posture" → "Follow-through posture for this cycle". Posture card h2 rewritten to partner-meeting framing. Brief context card label: "Current brief context" → "Current governance brief". Brief context copy rewritten to connect follow-through status to brief. Tab "All follow-through" → "Brief record". Default-tab sub-copy anchored to brief. Build clean (1823 modules, 907kB pre-existing warning).
