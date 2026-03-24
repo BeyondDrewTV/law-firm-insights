@@ -448,13 +448,13 @@ const ExecutionPage = () => {
       <section className="rounded-[12px] border border-[#E3E8EF] bg-white px-6 py-5 shadow-sm">
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="gov-label">Current follow-through posture</p>
-            <h2 className="gov-section-intro mt-2">Keep the current cycle credible before the next partner review.</h2>
+            <p className="gov-label">Follow-through posture for this cycle</p>
+            <h2 className="gov-section-intro mt-2">What needs partner attention before the brief goes into a meeting.</h2>
             <p className="gov-body mt-3 max-w-xl">
               {accountabilityDirective}{" "}
               {latestReadyReport
-                ? `The current brief packet is ready for review in ${latestReadyReport.name || `Report #${latestReadyReport.id}`}.`
-                : "Open the latest report packet or upload the next cycle to keep follow-through current."}
+                ? `Review and resolve these items in the current brief packet before the next partner discussion.`
+                : "Upload feedback and generate the first brief to begin tracking follow-through here."}
             </p>
             <div className="mt-4 workspace-inline-stats">
               <div className="workspace-inline-stat">
@@ -476,13 +476,13 @@ const ExecutionPage = () => {
             </div>
             {latestReadyReport ? (
               <div className="mt-4 rounded-[10px] border border-[#E5E7EB] bg-[#FAFBFC] px-4 py-3">
-                <p className="gov-label">Current brief context</p>
+                <p className="gov-label">Current governance brief</p>
                 <p className="mt-2 text-sm font-semibold text-slate-900">
                   {latestReadyReport.name || `Report #${latestReadyReport.id}`}
                 </p>
                 <p className="mt-1 text-xs leading-5 text-slate-600">
-                  Keep ownership and due-state aligned here, then carry the same record into the brief packet for
-                  partner review.
+                  Follow-through status here feeds directly into the brief. Confirm ownership and due-state before
+                  opening the brief for partner review.
                 </p>
                 <div className="mt-3">
                   <Link
