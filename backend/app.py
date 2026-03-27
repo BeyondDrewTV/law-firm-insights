@@ -8279,6 +8279,8 @@ def login():
 
 
     # Legacy GET /login -> SPA handoff
+    if _react_dist_exists:
+        return send_from_directory(_REACT_DIST, 'index.html')
     return redirect(_resolve_public_app_base_url() + '/login', code=302)
 
 
