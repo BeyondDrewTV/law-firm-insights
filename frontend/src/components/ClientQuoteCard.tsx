@@ -21,6 +21,14 @@ const sentimentStyles = (sentiment: "complaint" | "praise") => {
   };
 };
 
+const normalizeQuote = (value: string) =>
+  value
+    .trim()
+    .replace(/^[“”"']+|[“”"']+$/g, "")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([,.;!?])/g, "$1")
+    .replace(/([.!?])([A-Z])/g, "$1 $2");
+
 export default function ClientQuoteCard({
   quote,
   issue,
@@ -29,6 +37,7 @@ export default function ClientQuoteCard({
   className = "",
 }: ClientQuoteCardProps) {
   const styles = sentimentStyles(sentiment);
+  const normalizedQuote = normalizeQuote(quote);
 
   return (
     <article
@@ -44,7 +53,7 @@ export default function ClientQuoteCard({
           {styles.label}
         </span>
       </div>
-      <p className="text-[14px] leading-relaxed text-[#0D1B2A]">&quot;{quote}&quot;</p>
+      <p className="text-[14px] leading-relaxed text-[#0D1B2A]">&quot;{normalizedQuote}&quot;</p>
       {meta ? <p className="mt-2 text-[11px] text-[#6B7280]">{meta}</p> : null}
     </article>
   );

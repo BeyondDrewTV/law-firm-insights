@@ -175,7 +175,7 @@ const Onboarding = () => {
         <header className="mb-8 space-y-2">
           {isPreview ? (
             <p className="inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-800">
-              Internal Preview
+              Preview Mode
             </p>
           ) : null}
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -187,7 +187,7 @@ const Onboarding = () => {
           </p>
           {isPreview ? (
             <p className="text-[13px] text-slate-600">
-              Internal owner preview. This walk-through is read-only and does not change firm setup or upload live data.
+              Preview mode. This walk-through is read-only and does not change firm setup or upload live data.
             </p>
           ) : null}
         </header>
@@ -402,7 +402,7 @@ const Onboarding = () => {
                     setVisible(true);
                   }}
                 >
-                  Restart internal preview
+                  Restart preview
                 </button>
               ) : null}
             </div>

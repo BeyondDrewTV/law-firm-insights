@@ -79,7 +79,7 @@ function EmptyState({ filter }: { filter: string }) {
     <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-[#1E293B] py-16 text-center">
       <Inbox size={32} className="mb-3 text-slate-600" />
       <p className="text-sm font-medium text-slate-400">No {filter === "all" ? "" : filter} items</p>
-      <p className="mt-1 text-xs text-slate-600">Items will appear here after the office run</p>
+      <p className="mt-1 text-xs text-slate-600">Items will appear here after new submissions are staged for review.</p>
     </div>
   );
 }
@@ -105,7 +105,7 @@ function ItemPanel({ item, onAction, onClose }: {
           <TypeChip type={item.type} />
           <h3 className="mt-1.5 truncate text-[15px] font-semibold text-white">{item.title}</h3>
           <p className="mt-0.5 text-[11px] text-slate-500">
-            {item.created_by_agent} · {new Date(item.created_at).toLocaleString()}
+            Submitted by {item.created_by_agent} · {new Date(item.created_at).toLocaleString()}
           </p>
         </div>
         <div className="flex shrink-0 flex-col items-end gap-2">
@@ -153,7 +153,7 @@ function ItemPanel({ item, onAction, onClose }: {
             onClick={() => setExpanded(e => !e)}
             className="flex w-full items-center justify-between px-4 py-3 text-left text-[12px] font-semibold text-slate-400 hover:text-slate-200 transition-colors"
           >
-            <span>Full Payload</span>
+            <span>Submission details</span>
             {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
           </button>
           {expanded && (
@@ -373,7 +373,7 @@ function ApprovalQueueContent() {
   );
 
   return (
-    <PageWrapper title="Approval Queue" description="Founder command center — review and release staged agent work">
+    <PageWrapper title="Approval Queue" description="Internal review queue for approving, holding, and releasing staged items.">
       <div className="space-y-5">
 
         {/* Notification banner */}

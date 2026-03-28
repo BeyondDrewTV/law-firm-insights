@@ -30,7 +30,6 @@ import RecentGovernanceBriefs from "@/components/dashboard/RecentGovernanceBrief
 import PlanBadge from "@/components/dashboard/PlanBadge";
 import PartnerBriefPanel from "@/components/dashboard/PartnerBriefPanel";
 import DashboardSectionDivider from "@/components/dashboard/DashboardSectionDivider";
-import GovernanceLoop from "@/components/dashboard/GovernanceLoop";
 import OversightBand from "@/components/dashboard/OversightBand";
 import GovernanceNarrativeRail from "@/components/dashboard/GovernanceNarrativeRail";
 import { DashboardCard } from "@/components/ui/card";
@@ -568,6 +567,47 @@ const Dashboard = () => {
     };
   }, [currentPlan, reports, teamSeatsUsed]);
 
+  const nextUpgradePlan =
+    currentPlan?.firmPlan === "leadership"
+      ? null
+      : currentPlan?.firmPlan === "professional"
+        ? "firm"
+        : "team";
+  const nextUpgradeLabel = nextUpgradePlan === "firm" ? "Firm" : nextUpgradePlan === "team" ? "Team" : null;
+  const planDetailsPath = nextUpgradePlan ? `/pricing?intent=${nextUpgradePlan}` : "/dashboard/billing";
+  const oversightMetrics = [
+    {
+      label: "High-risk signals",
+      value: highSeveritySignalsCount,
+      sub: `of ${latestSignals.length} total client issues`,
+      risk: true,
+      route: "/dashboard/signals",
+      routeQuery: "filter=high",
+    },
+    {
+      label: "Unowned actions",
+      value: unownedActionsCount,
+      sub: `${openActions.length} open actions total`,
+      warn: true,
+      route: "/dashboard/actions",
+    },
+    {
+      label: "Briefs ready",
+      value: readyReportCount,
+      sub: readyReportCount === 1 ? "1 completed review cycle" : `${readyReportCount} completed cycles`,
+      success: readyReportCount > 0,
+      route: "/dashboard/reports",
+    },
+    {
+      label: "Overdue actions",
+      value: overdueActions.length,
+      sub: overdueActions.length === 0 ? "No overdue items" : "Require immediate attention",
+      risk: true,
+      route: "/dashboard/actions",
+      routeQuery: "filter=overdue",
+    },
+  ];
+
   const dismissBaselineNotice = () => {
     window.localStorage.setItem(baselineDismissKey, "1");
     setBaselineDismissed(true);
@@ -650,12 +690,9 @@ const Dashboard = () => {
                 ? "Upload one CSV to generate recurring client issues, assign follow-through, and prepare the first governance brief."
                 : "Use workspace home to see what needs attention now, whether the latest brief is ready, and which follow-through items still need partner review."}
             </p>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <GovernanceLoop />
-              {latestProcessedReport ? (
-                <span className="gov-type-meta">Last processed {lastProcessedDateTime}</span>
-              ) : null}
-            </div>
+            {latestProcessedReport ? (
+              <p className="gov-type-meta mt-3">Last processed {lastProcessedDateTime}</p>
+            ) : null}
           </div>
           <div className="flex items-center gap-2">
             {isFirstRunWorkspace ? (
@@ -929,34 +966,6 @@ const Dashboard = () => {
           </>
         ) : null}
 
-        {!partnerMode && showBaselineNotice ? (
-          <section className="relative mb-8 rounded-[8px] border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-[14px]">
-            <button
-              type="button"
-              onClick={dismissBaselineNotice}
-              aria-label="Dismiss baseline notice"
-              className="absolute right-3 top-3 inline-flex h-6 w-6 items-center justify-center rounded text-slate-500 transition-colors hover:bg-slate-200/60 hover:text-slate-700"
-            >
-              <X size={14} />
-            </button>
-            <div className="pr-8">
-              <div className="flex items-center gap-2">
-                <Info size={16} className="text-[#0EA5C2]" />
-                <h2 className="text-[14px] font-semibold text-[#1E40AF]">Cycle baseline</h2>
-              </div>
-              <p className="gov-body mt-1">
-                This is your first review cycle. Future uploads will allow the system to detect trends and changes over time. Your client issues reflect patterns from this upload only.
-              </p>
-            </div>
-          </section>
-        ) : null}
-
-        {!partnerMode && historyTruncated && historyNotice ? (
-          <section className="mb-8 rounded-[8px] border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-[12px] gov-body text-[#1E3A8A]">
-            {historyNotice}
-          </section>
-        ) : null}
-
         {/* Anchored-to strip: suppressed from primary view — data is surfaced in the brief card itself */}
 
         {!partnerMode && loadError ? (
@@ -1044,24 +1053,9 @@ const Dashboard = () => {
             </div>
           </DashboardCard>
 
-          {/* ── Tier 1b: Firm posture — secondary, below the brief ── */}
+          {/* ── Tier 1b: Oversight snapshot — secondary, below the brief ── */}
           <div style={{ marginTop: "var(--dash-section-gap)" }}>
-            <FirmGovernanceStatus
-              status={exposureRisk}
-              reviewPeriodLabel={reviewPeriodLabel}
-              reviewsAnalyzed={reviewsAnalyzed}
-              metrics={{
-                signals: latestSignals.length,
-                newSignals: newSignalsCount,
-                openActions: openActions.length,
-                overdueActions: overdueActions.length,
-              }}
-              loading={loading}
-              onOpenSignals={() => navigate("/dashboard/signals")}
-              onOpenNewSignals={() => navigate("/dashboard/signals?filter=new")}
-              onOpenOpenActions={() => navigate("/dashboard/actions")}
-              onOpenOverdueActions={() => navigate("/dashboard/actions?filter=overdue")}
-            />
+            <OversightBand loading={loading} metrics={oversightMetrics} />
           </div>
 
           <div>
@@ -1189,6 +1183,36 @@ const Dashboard = () => {
 
           </div>
 
+          {!partnerMode && showBaselineNotice ? (
+            <section className="rounded-[8px] border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-[14px]">
+              <div className="flex items-start gap-3">
+                <Info size={16} className="mt-0.5 text-[#0EA5C2]" />
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <h2 className="text-[14px] font-semibold text-[#1E40AF]">Cycle baseline</h2>
+                    <button
+                      type="button"
+                      onClick={dismissBaselineNotice}
+                      aria-label="Dismiss baseline notice"
+                      className="inline-flex h-6 w-6 items-center justify-center rounded text-slate-500 transition-colors hover:bg-slate-200/60 hover:text-slate-700"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                  <p className="gov-body mt-1">
+                    This is your first review cycle. Future uploads will allow the system to detect trends and changes over time. Your client issues reflect patterns from this upload only.
+                  </p>
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          {!partnerMode && historyTruncated && historyNotice ? (
+            <section className="rounded-[8px] border border-[#BFDBFE] bg-[#EFF6FF] px-[18px] py-[12px] gov-body text-[#1E3A8A]">
+              {historyNotice}
+            </section>
+          ) : null}
+
           {/* ════════════════════════════════════
               TIER 3 — Supporting context
               Governance posture, history, brief prep
@@ -1242,40 +1266,21 @@ const Dashboard = () => {
             />
 
             <div className="grid gap-[var(--dash-section-gap)] xl:grid-cols-2">
-              <OversightBand
+              <FirmGovernanceStatus
+                status={exposureRisk}
+                reviewPeriodLabel={reviewPeriodLabel}
+                reviewsAnalyzed={reviewsAnalyzed}
+                metrics={{
+                  signals: latestSignals.length,
+                  newSignals: newSignalsCount,
+                  openActions: openActions.length,
+                  overdueActions: overdueActions.length,
+                }}
                 loading={loading}
-                metrics={[
-                  {
-                    label: "High-risk signals",
-                    value: highSeveritySignalsCount,
-                    sub: `of ${latestSignals.length} total client issues`,
-                    risk: true,
-                    route: "/dashboard/signals",
-                    routeQuery: "filter=high",
-                  },
-                  {
-                    label: "Unowned actions",
-                    value: unownedActionsCount,
-                    sub: `${openActions.length} open actions total`,
-                    warn: true,
-                    route: "/dashboard/actions",
-                  },
-                  {
-                    label: "Briefs ready",
-                    value: readyReportCount,
-                    sub: readyReportCount === 1 ? "1 completed review cycle" : `${readyReportCount} completed cycles`,
-                    success: readyReportCount > 0,
-                    route: "/dashboard/reports",
-                  },
-                  {
-                    label: "Overdue actions",
-                    value: overdueActions.length,
-                    sub: overdueActions.length === 0 ? "No overdue items" : "Require immediate attention",
-                    risk: true,
-                    route: "/dashboard/actions",
-                    routeQuery: "filter=overdue",
-                  },
-                ]}
+                onOpenSignals={() => navigate("/dashboard/signals")}
+                onOpenNewSignals={() => navigate("/dashboard/signals?filter=new")}
+                onOpenOpenActions={() => navigate("/dashboard/actions")}
+                onOpenOverdueActions={() => navigate("/dashboard/actions?filter=overdue")}
               />
 
               <GovernanceNarrativeRail
@@ -1335,7 +1340,15 @@ const Dashboard = () => {
           </div>
 
           <div>
-            <DashboardCard title="Plan and capacity" subtitle="Current month usage and seat coverage for this workspace.">
+            <DashboardCard
+              title="Plan and capacity"
+              subtitle="Current month usage and seat coverage for this workspace."
+              actions={(
+                <Button type="button" variant="secondary" onClick={() => navigate(planDetailsPath)}>
+                  {nextUpgradeLabel ? `Review ${nextUpgradeLabel} plan` : "Open billing"}
+                </Button>
+              )}
+            >
               <div className="workspace-inline-stats">
                 <div className="workspace-inline-stat">
                   <p className="gov-type-eyebrow">Reports this month</p>

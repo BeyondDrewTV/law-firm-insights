@@ -130,16 +130,6 @@ const DashboardBilling = () => {
           isLoading={isLoading}
         />
 
-        <GovSectionCard accent="watch" padding="lg">
-          <h2 className="gov-h2 mb-2">Upgrade Plan</h2>
-          <p className="mb-4 text-sm text-neutral-700">
-            Move from Free to Team or Firm to unlock higher report capacity, scheduled delivery settings, broader workspace coverage, deleted-report restore during the current retention window, and final governance brief downloads without the free-plan watermark.
-          </p>
-          <Link to={focusedUpgradePath} className="gov-btn-primary">
-            {nextUpgradePlan ? `Review ${nextUpgradeLabel} plan` : "View plan details"}
-          </Link>
-        </GovSectionCard>
-
         <GovSectionCard accent="attention" padding="lg" className="space-y-4">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
